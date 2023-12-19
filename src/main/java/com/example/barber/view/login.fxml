@@ -8,9 +8,9 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.LoginController">
    <children>
-      <TextField layoutX="226.0" layoutY="140.0" prefHeight="36.0" prefWidth="156.0" promptText="Username" />
-      <PasswordField layoutX="226.0" layoutY="189.0" prefHeight="36.0" prefWidth="156.0" promptText="Password" />
-      <Button layoutX="308.0" layoutY="241.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="LOGIN" />
+      <TextField id="usernameField" fx:id="usernameField" layoutX="226.0" layoutY="140.0" prefHeight="36.0" prefWidth="156.0" promptText="Username" />
+      <PasswordField id="passwordField" fx:id="passwordField" layoutX="226.0" layoutY="189.0" prefHeight="36.0" prefWidth="156.0" promptText="Password" />
+      <Button id="loginButton" layoutX="308.0" layoutY="241.0" mnemonicParsing="false" onAction="#onloginButton" prefHeight="25.0" prefWidth="67.0" text="LOGIN" />
       <Button layoutX="226.0" layoutY="241.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Resgistrati" />
       <FontAwesomeIconView glyphName="SCISSORS" layoutX="295.0" layoutY="81.0" scaleX="3.0" scaleY="3.0" scaleZ="3.0" />
    </children>

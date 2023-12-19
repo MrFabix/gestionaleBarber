@@ -1,23 +1,27 @@
 package com.example.barber.controller;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import javafx.fxml.FXML;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-public class LoginController extends Application {
-    @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(LoginController.class.getResource("view/login.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Barber");
-        stage.setScene(scene);
-        stage.show();
+public class LoginController {
+
+    @FXML
+    private TextField usernameField;
+    @FXML
+    private PasswordField passwordField;
+
+
+    @FXML
+    protected void onloginButton() throws IOException {
+        //prendo i valori inseriti dall'utente
+        String username = usernameField.getText();
+        String password = passwordField.getText();
+        System.out.println("Username: " + username + " Password: " + password);
+
+
     }
 
-    public static void main(String[] args) {
-        launch();
-    }
 }

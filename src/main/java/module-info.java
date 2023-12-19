@@ -6,6 +6,7 @@ module com.example.barber {
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
 
+
     opens com.example.barber to javafx.fxml;
     exports com.example.barber;
     exports com.example.barber.controller;
