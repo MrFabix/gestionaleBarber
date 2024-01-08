@@ -46,7 +46,7 @@
       </font>
    </Text>
    <ListView layoutX="231.0" layoutY="272.0" prefHeight="200.0" prefWidth="418.0" />
-   <Button layoutX="503.0" layoutY="506.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="339.0" text="Send prenotation" />
+   <Button layoutX="503.0" layoutY="506.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="339.0" text="Book" />
    <Text layoutX="579.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vedi sulla mappa da vedere " />
    <Text layoutX="678.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prezzi e servizi offerti " wrappingWidth="163.4700927734375" />
    <ListView layoutX="660.0" layoutY="288.0" prefHeight="101.0" prefWidth="200.0" />
