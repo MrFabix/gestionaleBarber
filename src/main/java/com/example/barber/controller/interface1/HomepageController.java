@@ -1,4 +1,4 @@
-package com.example.barber.controller;
+package com.example.barber.controller.interface1;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
