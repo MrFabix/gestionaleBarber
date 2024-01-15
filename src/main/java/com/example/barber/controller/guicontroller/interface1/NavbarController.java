@@ -1,4 +1,4 @@
-package com.example.barber.controller.interface1;
+package com.example.barber.controller.guicontroller.interface1;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

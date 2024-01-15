@@ -9,4 +9,12 @@ public class Trigger {
         exception.initCause(e);
         throw exception;
     }
+
+    public void throwEmptyInputException(String field) throws EmptyInputException {
+        throw new EmptyInputException(field);
+    }
+    public void throwPasswordNotCompliantException() throws PasswordNotCompliantException {
+        throw new PasswordNotCompliantException();
+    }
+
 }

@@ -10,6 +10,6 @@ module com.example.barber {
 
     opens com.example.barber to javafx.fxml;
     exports com.example.barber;
-    exports com.example.barber.controller.interface1;
-    opens com.example.barber.controller.interface1 to javafx.fxml;
+    exports com.example.barber.controller.guicontroller.interface1;
+    opens com.example.barber.controller.guicontroller.interface1 to javafx.fxml;
 }
