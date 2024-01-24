@@ -1,6 +1,6 @@
 package com.example.barber.model;
 
-import com.example.barber.utlis.bean.CredentialsBean;
+import com.example.barber.utils.bean.CredentialsBean;
 
 public class CredentialsModel {
     private String username;

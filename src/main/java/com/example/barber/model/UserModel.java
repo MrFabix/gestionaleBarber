@@ -1,6 +1,6 @@
 package com.example.barber.model;
 
-import com.example.barber.utlis.bean.UserBean;
+import com.example.barber.utils.bean.UserBean;
 
 import java.io.File;
 

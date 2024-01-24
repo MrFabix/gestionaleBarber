@@ -1,7 +1,7 @@
 package com.example.barber.controller.guicontroller.interface1;
 
 import com.example.barber.controller.appcontroller.LoginAppController;
-import com.example.barber.utlis.bean.CredentialsBean;
+import com.example.barber.utils.bean.CredentialsBean;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;

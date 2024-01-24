@@ -4,7 +4,6 @@ public abstract class ProfileModel {
 protected int id ;
 protected String email;
 protected String username;
-
 protected File profileImg;
 
 protected ProfileModel() {
