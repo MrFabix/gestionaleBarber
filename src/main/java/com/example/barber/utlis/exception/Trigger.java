@@ -16,5 +16,13 @@ public class Trigger {
     public void throwPasswordNotCompliantException() throws PasswordNotCompliantException {
         throw new PasswordNotCompliantException();
     }
+    public void throwUsernameAlreadyTakenException(String username) throws UsernameAlreadyTakenException {
+        throw new UsernameAlreadyTakenException(username);
+    }
+
+    public void throwWrongCredentials() throws WrongCredentialsException {
+        throw new WrongCredentialsException();
+    }
+
 
 }
