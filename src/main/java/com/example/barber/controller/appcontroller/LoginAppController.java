@@ -20,7 +20,6 @@ public class LoginAppController {
         LoginDAO loginDAO = new LoginDAO();
 
         if (credenialBeans.getType().equalsIgnoreCase("user")) {
-
             UserModel userModel = null;
             CredentialsModel credentialsModel = new CredentialsModel(credenialBeans);
             if (loginDAO.checkIsRegistered(credentialsModel)) {

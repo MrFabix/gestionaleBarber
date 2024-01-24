@@ -17,8 +17,8 @@ public UserModel(){
 
 public UserModel(UserBean userbean){
     super(userbean.getUsername(), userbean.getEmail(), userbean.getId(), userbean.getImg());
-    this.name = userbean.getName();
-    this.surname = userbean.getSurname();
+    //this.name = userbean.getName();
+    //this.surname = userbean.getSurname();
 
 }
 

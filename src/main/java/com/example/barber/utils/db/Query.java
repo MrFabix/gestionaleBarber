@@ -12,8 +12,8 @@ public class Query {
         }
 
        public UserModel searchUserByUsername(String username) throws SystemException {
+            System.out.println("Query.searchUserByUsername");
             return null;
-            //implentare query
         }
     public boolean checkUsernameAlreadyTaken(String username) throws SystemException {
         return false;

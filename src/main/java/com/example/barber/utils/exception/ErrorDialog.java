@@ -18,7 +18,7 @@ public class ErrorDialog {
         return instance;
     }
 
-    public void handleExceptiSystemExceptionon(Exception e) {
+    public void handleException(Exception e) {
         // ErrorDialog Pattern + Factory Pattern
         MyDialogBox myDialogBox = factory.createMyDialogBox(e);
         myDialogBox.useMyDialogBox(e.getMessage());
