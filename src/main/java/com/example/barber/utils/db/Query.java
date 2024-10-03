@@ -8,6 +8,7 @@ import com.example.barber.model.CredentialsModel;
 public class Query {
 
         public boolean searchUserInLogged(CredentialsModel credentialsModel) throws SystemException {
+
             return false;
         }
 

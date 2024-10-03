@@ -14,6 +14,7 @@ public class StartApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Barber");
         stage.setScene(scene);
+        //implementare gestione degli eventi andrea ispw 00
         stage.show();
     }
 
