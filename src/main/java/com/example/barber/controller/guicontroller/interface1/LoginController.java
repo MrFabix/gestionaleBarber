@@ -11,7 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import org.controlsfx.control.action.Action;
+
+import java.io.IOException;
 
 
 public class LoginController {
@@ -26,6 +27,8 @@ public class LoginController {
     private Button loginButton;
 
     @FXML
+    private Button signInButton;
+    @FXML
     private void onloginButton(ActionEvent event) {
         String type = "user";
         LoginAppController controller;
@@ -39,6 +42,10 @@ public class LoginController {
         } catch (SystemException | WrongCredentialsException e) {
             ErrorDialog.getInstance().handleException(e);
         }
+    }
+    @FXML
+    private void onSignInbutton(ActionEvent event) throws IOException {
+     //da implementare
     }
 
 
