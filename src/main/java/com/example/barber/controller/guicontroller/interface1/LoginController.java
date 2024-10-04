@@ -6,6 +6,7 @@ import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.myecxeption.EmptyInputException;
 import com.example.barber.utils.exception.myecxeption.SystemException;
 import com.example.barber.utils.exception.myecxeption.WrongCredentialsException;
+import com.example.barber.utils.switchPage.SwitchPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -27,6 +28,7 @@ public class LoginController {
     @FXML
     private Button signInButton;
 
+    private SwitchPage sp = new SwitchPage();
     @FXML
     private void onloginButton(ActionEvent event) {
         String type = "user";
@@ -63,7 +65,13 @@ public class LoginController {
 
     @FXML
     private void onSignInbutton(ActionEvent event) throws IOException {
-     //TODO implementare
+        try{
+            sp.replaceScene(event, "/interface1/SignIn.fxml");
+        }catch(SystemException e){
+            ErrorDialog.getInstance().handleException(e);
+        }
+
+
     }
 
 
