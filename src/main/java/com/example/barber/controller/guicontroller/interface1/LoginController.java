@@ -70,9 +70,8 @@ public class LoginController {
         }catch(SystemException e){
             ErrorDialog.getInstance().handleException(e);
         }
-
-
     }
+
 
 
 }
