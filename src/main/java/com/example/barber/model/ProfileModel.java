@@ -1,11 +1,15 @@
 package com.example.barber.model;
 import java.io.File;
 public abstract class ProfileModel {
+    /*
+        Questo è il Model del profilo, cioè contiene le informazioni IN COMUNE per gli Users
+        e i Barber
+     */
+
 protected int id ;
 protected String email;
 protected String username;
 protected File profileImg;
-
 protected ProfileModel() {
 
 }

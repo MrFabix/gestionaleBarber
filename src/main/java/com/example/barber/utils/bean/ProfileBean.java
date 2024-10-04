@@ -8,7 +8,7 @@ import com.example.barber.utils.exception.myecxeption.SystemException;
 import com.example.barber.utils.exception.myecxeption.UsernameAlreadyTakenException;
 
 import java.io.File;
-public class ProfileBean {
+public class ProfileBean implements GenericBean {
     private final Trigger trigger = new Trigger();
     protected int id ;
     protected String email;
