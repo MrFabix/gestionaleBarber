@@ -58,7 +58,7 @@ public class Query {
 
     public BarberModel searchBarberByUsername(String username) throws SystemException {
         return null;
-        //implentare query
+
     }
 
 

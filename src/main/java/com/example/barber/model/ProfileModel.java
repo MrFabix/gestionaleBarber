@@ -10,6 +10,8 @@ protected int id ;
 protected String email;
 protected String username;
 protected File profileImg;
+protected String name; //Nome dell utente oppure nome del BarberShop
+
 protected ProfileModel() {
 
 }
@@ -21,10 +23,12 @@ protected ProfileModel(String username) {
 this.username = username;
 }
 
-protected ProfileModel(String username, String email, int id, File profileImg) {
+protected ProfileModel(String username, String email, int id, File profileImg, String name) {
+this.username = username;
 this.email = email;
 this.id = id;
 this.profileImg = profileImg;
+this.name = name;
 }
 
 public int getId() {
@@ -55,7 +59,11 @@ public void setUsername(String username) {
 this.username = username;
 }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 
-
-
+    public String getName() {
+        return name;
+    }
 }

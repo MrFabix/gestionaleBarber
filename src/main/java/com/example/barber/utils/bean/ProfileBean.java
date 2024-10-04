@@ -10,25 +10,25 @@ import com.example.barber.utils.exception.myecxeption.UsernameAlreadyTakenExcept
 import java.io.File;
 public class ProfileBean implements GenericBean {
     private final Trigger trigger = new Trigger();
+
+    protected String name; //Nome dell utente oppure nome del BarberShop
     protected int id ;
     protected String email;
 
     protected String username;
     protected File img;
 
-    public int getId() {
-        return id;
-    }
 
+    public int getId() {return id;}
     public String getEmail() {
         return email;
     }
-
     public String getUsername() {
         return username;
     }
 
     public File getImg(){return img;}
+    public String getName() {return name;}
 
 
     public void setId(int id) {
@@ -63,6 +63,14 @@ public class ProfileBean implements GenericBean {
         } else {
             this.username = username;
         }
+    }
+
+
+
+    public void setName(String name) throws EmptyInputException {
+        if (name.equals(""))
+            trigger.throwEmptyInputException("Name");
+        this.name = name;
     }
 
 }
