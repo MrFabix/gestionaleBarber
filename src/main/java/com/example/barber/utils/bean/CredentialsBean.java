@@ -32,6 +32,7 @@ public class CredentialsBean {
         return type;
     }
     public  void setUsername(String Username) throws EmptyInputException {
+
         if (Username.equals("")) {
             trigger.throwEmptyInputException("Username");
         } else {
