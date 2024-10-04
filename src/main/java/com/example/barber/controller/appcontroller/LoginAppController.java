@@ -15,6 +15,9 @@ public class LoginAppController {
 
     Trigger trigger = new Trigger();
 
+    //TODO implementare switch tra le pagine
+
+
     public void login(CredentialsBean credenialBeans) throws WrongCredentialsException, SystemException {
 
         LoginDAO loginDAO = new LoginDAO();
@@ -49,5 +52,18 @@ public class LoginAppController {
                 Session.getInstance().deleteSession();
             }
         }
+
+        //in base al tipo di utente ritorno la pagina corrispondente
+
+        if (credenialBeans.getType().equalsIgnoreCase("user")) {
+            //ritorno la pagina dell'utente
+            System.out.println("Utente");
+        } else {
+            //ritorno la pagina del barbiere
+            System.out.println("Barbiere");
+        }
+
+
+
     }
 }

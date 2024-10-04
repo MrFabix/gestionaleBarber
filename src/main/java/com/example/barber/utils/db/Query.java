@@ -31,35 +31,59 @@ public class Query {
     }
 
     public UserModel searchUserByUsername(String username) throws SystemException {
-            String query = "SELECT * FROM user WHERE username = ?";
-                UserModel userModel = null;
-               try(PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
-                     preparedStatement.setString(1, username);
-                     ResultSet rs = preparedStatement.executeQuery();
-                     if (rs.next()) {
-                          userModel = new UserModel();
-                          userModel.setUsername(rs.getString("username"));
-                          userModel.setSurname(rs.getString("surname"));
-                          userModel.setName(rs.getString("name"));
-                          userModel.setGender(rs.getString("gender"));
-                          userModel.setEmail(rs.getString("email"));
-                     }
-                     return userModel;
+        String query = "SELECT * FROM user WHERE username = ?";
+        UserModel userModel = null;
+        try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
+            preparedStatement.setString(1, username);
+            ResultSet rs = preparedStatement.executeQuery();
+            if (rs.next()) {
+                userModel = new UserModel();
+                userModel.setUsername(rs.getString("username"));
+                userModel.setSurname(rs.getString("surname"));
+                userModel.setName(rs.getString("name"));
+                userModel.setGender(rs.getString("gender"));
+                userModel.setEmail(rs.getString("email"));
+                userModel.setId(rs.getInt("id"));
 
-               }catch (SQLException e) {
-                   SystemException exception = new SystemException();
-                   exception.initCause(e);
-                   throw exception;
-               }
+            }
+            return userModel;
+
+        } catch (SQLException e) {
+            SystemException exception = new SystemException();
+            exception.initCause(e);
+            throw exception;
         }
+    }
+
     public boolean checkUsernameAlreadyTaken(String username) throws SystemException {
         return false;
     }
 
     public BarberModel searchBarberByUsername(String username) throws SystemException {
-        return null;
+        String query = "SELECT * FROM barber WHERE username = ?";
+        BarberModel barberModel = null;
+        try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
+            preparedStatement.setString(1, username);
+            ResultSet rs = preparedStatement.executeQuery();
+            if (rs.next()) {
+                barberModel = new BarberModel();
+                barberModel.setUsername(rs.getString("username"));
+                barberModel.setName(rs.getString("name"));
+                barberModel.setAddress(rs.getString("address"));
+                barberModel.setCity(rs.getString("city"));
+                barberModel.setPhone(rs.getString("phone"));
+                barberModel.setEmail(rs.getString("email"));
+                barberModel.setId(rs.getInt("id"));
+            }
+            return barberModel;
+
+
+        } catch (SQLException e) {
+            SystemException exception = new SystemException();
+            exception.initCause(e);
+            throw exception;
+        }
+
 
     }
-
-
-    }
+}

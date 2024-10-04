@@ -5,6 +5,7 @@ import com.example.barber.utils.exception.Trigger;
 public class BarberBean extends ProfileBean {
     protected String address;
     protected String city;
+    protected String phone;
 
     public final Trigger trigger = new Trigger();
 
@@ -34,5 +35,13 @@ public class BarberBean extends ProfileBean {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

@@ -26,6 +26,7 @@ public class LoginController {
 
     @FXML
     private Button signInButton;
+
     @FXML
     private void onloginButton(ActionEvent event) {
         String type = "user";
