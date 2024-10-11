@@ -18,7 +18,7 @@ public class WelcomePageController {
     @FXML
     private void goToRegistrationChoice(ActionEvent event) throws IOException {
         try{
-            sp.replaceScene(event, "/interface1/registrationChoice.fxml");
+            sp.replaceScene(event, "/registrationChoice.fxml");
         }catch(SystemException e){
             ErrorDialog.getInstance().handleException(e);
         }
@@ -27,7 +27,7 @@ public class WelcomePageController {
     @FXML
     private void goToLogin(ActionEvent event) throws IOException {
         try{
-            sp.replaceScene(event, "/interface1/Login.fxml");
+            sp.replaceScene(event, "/Login.fxml");
         }catch(SystemException e){
             ErrorDialog.getInstance().handleException(e);
         }

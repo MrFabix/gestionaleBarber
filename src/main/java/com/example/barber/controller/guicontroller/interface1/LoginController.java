@@ -65,7 +65,7 @@ public class LoginController {
     @FXML
     private void backToWelcomePage(ActionEvent event) throws IOException {
         try{
-            sp.replaceScene(event, "/interface1/welcomePage.fxml");
+            sp.replaceScene(event, "/welcomePage.fxml");
         }catch(SystemException e){
             ErrorDialog.getInstance().handleException(e);
         }
