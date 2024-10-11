@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface1.RegistrationChoiceController">
+   <children>
+      <Button fx:id="userChoice" layoutX="265.0" layoutY="139.0" mnemonicParsing="false" onAction="#onSingInUser" prefHeight="25.0" prefWidth="51.0" text="User" />
+      <Button fx:id="barberChoice" layoutX="265.0" layoutY="200.0" mnemonicParsing="false" onAction="#onSignInBarber" text="Barber" />
+      <Button fx:id="backToWelcomePage" layoutX="86.0" layoutY="250.0" mnemonicParsing="false" onAction="#backToWelcomePage" text="Torna alla welcome page " />
+      <Text layoutX="76.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrati come barbiere o Utente" wrappingWidth="447.3333943684896">
+         <font>
+            <Font size="33.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

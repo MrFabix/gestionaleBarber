@@ -1,8 +1,8 @@
 package com.example.barber.utils.bean;
 
 import com.example.barber.utils.exception.Trigger;
-import com.example.barber.utils.exception.myecxeption.EmptyInputException;
-import com.example.barber.utils.exception.myecxeption.PasswordNotCompliantException;
+import com.example.barber.utils.exception.myexception.EmptyInputException;
+import com.example.barber.utils.exception.myexception.PasswordNotCompliantException;
 
 public class CredentialsBean {
 

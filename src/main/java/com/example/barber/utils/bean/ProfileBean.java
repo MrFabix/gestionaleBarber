@@ -2,10 +2,10 @@ package com.example.barber.utils.bean;
 import com.example.barber.utils.engineering.CheckEmailEngineering;
 import com.example.barber.utils.engineering.RegistrationEngineering;
 import com.example.barber.utils.exception.Trigger;
-import com.example.barber.utils.exception.myecxeption.EmailNotValidException;
-import com.example.barber.utils.exception.myecxeption.EmptyInputException;
-import com.example.barber.utils.exception.myecxeption.SystemException;
-import com.example.barber.utils.exception.myecxeption.UsernameAlreadyTakenException;
+import com.example.barber.utils.exception.myexception.EmailNotValidException;
+import com.example.barber.utils.exception.myexception.EmptyInputException;
+import com.example.barber.utils.exception.myexception.SystemException;
+import com.example.barber.utils.exception.myexception.UsernameAlreadyTakenException;
 
 import java.io.File;
 public class ProfileBean implements GenericBean {

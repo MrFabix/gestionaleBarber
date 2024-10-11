@@ -2,7 +2,7 @@ package com.example.barber.utils.exception;
 
 import java.sql.SQLException;
 
-import com.example.barber.utils.exception.myecxeption.*;
+import com.example.barber.utils.exception.myexception.*;
 public class Trigger {
     public void throwDBConnectionFailedException(SQLException e) throws DBConnectionFailedException {
         DBConnectionFailedException exception = new DBConnectionFailedException();
@@ -16,6 +16,8 @@ public class Trigger {
     public void throwPasswordNotCompliantException() throws PasswordNotCompliantException {
         throw new PasswordNotCompliantException();
     }
+
+
     public void throwUsernameAlreadyTakenException(String username) throws UsernameAlreadyTakenException {
         throw new UsernameAlreadyTakenException(username);
     }

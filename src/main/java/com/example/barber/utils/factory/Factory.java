@@ -1,6 +1,6 @@
 package com.example.barber.utils.factory;
 
-import com.example.barber.utils.exception.myecxeption.SystemException;
+import com.example.barber.utils.exception.myexception.SystemException;
 public class Factory {
 
         public MyDialogBox createMyDialogBox(Exception e) {

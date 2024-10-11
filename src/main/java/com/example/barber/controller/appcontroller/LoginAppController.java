@@ -7,15 +7,15 @@ import com.example.barber.utils.bean.CredentialsBean;
 import com.example.barber.utils.dao.BarberDAO;
 import com.example.barber.utils.dao.UserDAO;
 import com.example.barber.utils.exception.Trigger;
-import com.example.barber.utils.exception.myecxeption.SystemException;
-import com.example.barber.utils.exception.myecxeption.WrongCredentialsException;
+import com.example.barber.utils.exception.myexception.SystemException;
+import com.example.barber.utils.exception.myexception.WrongCredentialsException;
 import com.example.barber.utils.dao.LoginDAO;
 import com.example.barber.utils.Session;
 public class LoginAppController {
 
     Trigger trigger = new Trigger();
 
-    //TODO implementare switch tra le pagine
+    //TODO implementer switch tra le pagine
     public void login(CredentialsBean credenialBeans) throws WrongCredentialsException, SystemException {
 
         LoginDAO loginDAO = new LoginDAO();

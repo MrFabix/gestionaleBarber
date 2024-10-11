@@ -3,9 +3,9 @@ package com.example.barber.controller.guicontroller.interface1;
 import com.example.barber.controller.appcontroller.LoginAppController;
 import com.example.barber.utils.bean.CredentialsBean;
 import com.example.barber.utils.exception.ErrorDialog;
-import com.example.barber.utils.exception.myecxeption.EmptyInputException;
-import com.example.barber.utils.exception.myecxeption.SystemException;
-import com.example.barber.utils.exception.myecxeption.WrongCredentialsException;
+import com.example.barber.utils.exception.myexception.EmptyInputException;
+import com.example.barber.utils.exception.myexception.SystemException;
+import com.example.barber.utils.exception.myexception.WrongCredentialsException;
 import com.example.barber.utils.switchPage.SwitchPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,9 +24,6 @@ public class LoginController {
     private CheckBox checkBoxBarber;
     @FXML
     private Button loginButton;
-
-    @FXML
-    private Button signInButton;
 
     private SwitchPage sp = new SwitchPage();
     @FXML
@@ -61,16 +58,20 @@ public class LoginController {
             // Gestisce altri tipi di eccezioni
             ErrorDialog.getInstance().handleException(e);
         }
+
+
     }
 
     @FXML
-    private void onSignInbutton(ActionEvent event) throws IOException {
+    private void backToWelcomePage(ActionEvent event) throws IOException {
         try{
-            sp.replaceScene(event, "/interface1/SignIn.fxml");
+            sp.replaceScene(event, "/interface1/welcomePage.fxml");
         }catch(SystemException e){
             ErrorDialog.getInstance().handleException(e);
         }
     }
+
+
 
 
 

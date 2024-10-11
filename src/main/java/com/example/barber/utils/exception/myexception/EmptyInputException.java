@@ -1,4 +1,4 @@
-package com.example.barber.utils.exception.myecxeption;
+package com.example.barber.utils.exception.myexception;
 
 public class EmptyInputException extends Exception {
     public EmptyInputException(String field) {

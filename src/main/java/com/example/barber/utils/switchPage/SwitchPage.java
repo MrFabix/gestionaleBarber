@@ -1,7 +1,7 @@
 package com.example.barber.utils.switchPage;
 
 import com.example.barber.StartApplication;
-import com.example.barber.utils.exception.myecxeption.SystemException;
+import com.example.barber.utils.exception.myexception.SystemException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;

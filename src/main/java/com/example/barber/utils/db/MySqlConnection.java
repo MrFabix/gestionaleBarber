@@ -1,6 +1,6 @@
 package com.example.barber.utils.db;
 import com.example.barber.utils.exception.Trigger;
-import com.example.barber.utils.exception.myecxeption.SystemException;
+import com.example.barber.utils.exception.myexception.SystemException;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

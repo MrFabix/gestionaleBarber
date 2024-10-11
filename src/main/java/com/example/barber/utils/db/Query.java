@@ -2,12 +2,19 @@ package com.example.barber.utils.db;
 
 import com.example.barber.model.BarberModel;
 import com.example.barber.model.UserModel;
-import com.example.barber.utils.exception.myecxeption.SystemException;
+import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.model.CredentialsModel;
 
+import java.io.FileNotFoundException;
 import java.sql.*;
 public class Query {
-
+    //TODO metodo per l'inserimento di un utente
+    /*public void insertUser(UserModel userModel) throws SystemException{
+        String query = "INSERT INTO `user`(`username`,`password`,`email`,`ruolo`) VALUES(?,?,?,?);";
+        try(PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)){
+            preparedStatement.setString(1, UserModel.);
+        }
+    }*/
     public boolean searchUserInLogged(CredentialsModel credentialsModel) throws SystemException {
 
         // Correggi la query SQL con il segno di uguaglianza per la password
@@ -85,5 +92,9 @@ public class Query {
         }
 
 
+    }
+
+    public void insertCredentials(){
+        //TODO IMPLEMENTARE IL PORCO DUE DI INSERIMENTO (ALE)
     }
 }

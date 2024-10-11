@@ -1,4 +1,4 @@
-package com.example.barber.utils.exception.myecxeption;
+package com.example.barber.utils.exception.myexception;
 
 public class WrongCredentialsException extends Exception {
     public WrongCredentialsException( ){

@@ -24,11 +24,11 @@ public class CredentialsModel {
     public void setType(String type) {this.type = type;}
 
     public String getUsername() {
-        return username;
+        return this.username;
     }
     public  String getPassword(){return this.password;}
     public String getType() {
-        return type;
+        return this.type;
     }
 
 }
