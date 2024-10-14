@@ -11,11 +11,14 @@ import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.utils.exception.myexception.WrongCredentialsException;
 import com.example.barber.utils.dao.LoginDAO;
 import com.example.barber.utils.Session;
+import com.example.barber.utils.switchPage.SwitchPage;
+
 public class LoginAppController {
 
     Trigger trigger = new Trigger();
+     SwitchPage sp = new SwitchPage();
 
-    //TODO implementer switch tra le pagine
+
     public void login(CredentialsBean credenialBeans) throws WrongCredentialsException, SystemException {
 
         LoginDAO loginDAO = new LoginDAO();
@@ -49,14 +52,6 @@ public class LoginAppController {
                 trigger.throwWrongCredentials();
                 Session.getInstance().deleteSession();
             }
-        }
-        //in base al tipo di utente ritorno la pagina corrispondente
-        if (credenialBeans.getType().equalsIgnoreCase("user")) {
-            //ritorno la pagina dell'utente
-            System.out.println("Utente");
-        } else {
-            //ritorno la pagina del barbiere
-            System.out.println("Barbiere");
         }
 
 

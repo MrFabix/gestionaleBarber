@@ -51,6 +51,13 @@ public class LoginController {
             CredentialsBean credentialsBean = new CredentialsBean(usernameField.getText(), passwordField.getText(), type);
             controller.login(credentialsBean);
 
+            // Se il login è andato a buon fine, mostra la pagina corrispondente
+            if (type.equals("user")) {
+                sp.replaceScene(event, "/homepageUser.fxml");
+            } else {
+                sp.replaceScene(event, "/homepageBarber.fxml");
+            }
+
         } catch (EmptyInputException e) {
             // Gestisce il caso dei campi vuoti mostrando un messaggio di errore
             ErrorDialog.getInstance().handleException(e);
