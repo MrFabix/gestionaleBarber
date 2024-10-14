@@ -5,7 +5,6 @@ import com.example.barber.utils.bean.BarberBean;
 public class BarberModel extends ProfileModel {
     private String city;
     private String address;
-
     private String phone;
     public BarberModel() {
         super();

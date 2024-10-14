@@ -21,6 +21,17 @@ public class BarberBean extends ProfileBean {
 
     }
 
+
+    public BarberBean(BarberBean barberBean){
+        this.name = barberBean.getName();
+        this.id = barberBean.getId();
+        this.email = barberBean.getEmail();
+        this.address = barberBean.getAddress();
+        this.city = barberBean.getCity();
+        this.username = barberBean.getUsername();
+    }
+
+
     public String getAddress() {
         return address;
     }
