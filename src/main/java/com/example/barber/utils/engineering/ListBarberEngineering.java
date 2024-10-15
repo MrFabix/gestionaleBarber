@@ -33,4 +33,22 @@ public class ListBarberEngineering {
         }
         return listBean;
     }
+
+
+    public List<BarberBean> getBarberByName(String name) throws SystemException {
+        List<BarberModel> list = null;
+        List<BarberBean> listBean = null;
+        BarberDAO barberDAO = new BarberDAO();
+        list = barberDAO.searchBarber(name);
+        listBean = new ArrayList<>();
+        for(BarberModel barberModel : list){
+            BarberBean bean = new BarberBean(barberModel);
+            listBean.add(bean);
+        }
+        return listBean;
+    }
+
+
+
+
 }

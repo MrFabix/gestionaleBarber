@@ -124,6 +124,34 @@ public class Query {
     }
 
 
+    public List<BarberModel> searchBarberbyName(String name) throws SystemException {
+        List<BarberModel> list = null;
+        String query = "SELECT * FROM barber WHERE name LIKE ?";
+        list = new ArrayList<>();
+        try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
+            preparedStatement.setString(1, name + "%");
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                BarberModel barberModel = new BarberModel();
+                barberModel.setUsername(rs.getString("username"));
+                barberModel.setName(rs.getString("name"));
+                barberModel.setAddress(rs.getString("address"));
+                barberModel.setCity(rs.getString("city"));
+                barberModel.setPhone(rs.getString("phone"));
+                barberModel.setEmail(rs.getString("email"));
+                barberModel.setId(rs.getInt("id"));
+                list.add(barberModel);
+            }
+        }
+        catch (SQLException e) {
+            SystemException exception = new SystemException();
+            exception.initCause(e);
+            throw exception;
+        }
+        return list;
+    }
+
+
 
 
 

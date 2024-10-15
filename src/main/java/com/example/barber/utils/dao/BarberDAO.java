@@ -17,6 +17,10 @@ public class BarberDAO {
         return query.searchAllBarber();
     }
 
+    public List<BarberModel> searchBarber(String name) throws SystemException {
+        return query.searchBarberbyName(name);
+    }
+
 
 
 }

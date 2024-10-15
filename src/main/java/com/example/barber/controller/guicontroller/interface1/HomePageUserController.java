@@ -21,7 +21,7 @@ public class HomePageUserController implements Observer, Initializable {
     @FXML
     private ListView<Pane> barberListView;  // La ListView che mostrerà i barbieri
     @FXML
-    private TextField searchBarber;         // Barra di ricerca
+    private TextField searchBarber; // Barra di ricerca
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -54,5 +54,28 @@ public class HomePageUserController implements Observer, Initializable {
             }
         }
     }
+
+    //funzione per il filtraggio dei barbieri
+    @FXML
+    private void search() {
+        String query = searchBarber.getText().trim();
+        this.barberListView.getItems().clear(); // Pulisci la lista prima di riempirla di nuovo
+
+        if (query.isEmpty()) {
+            initialize(null, null);
+            return;
+        }
+
+        try {
+            ListBarberEngineering listBarber = new ListBarberEngineering();
+            GenericBeanList list = new GenericBeanList(this);
+            list.addBarbersToList(listBarber.getBarberByName(query));
+        } catch (Exception e) {
+            ErrorDialog.getInstance().handleException(e);
+        }
+    }
+
+
+
 
 }
