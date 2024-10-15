@@ -1,4 +1,5 @@
 package com.example.barber.utils.db;
+import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.Trigger;
 import com.example.barber.utils.exception.myexception.SystemException;
 
@@ -56,7 +57,7 @@ public class MySqlConnection {
             Trigger trigger = new Trigger();
             trigger.throwDBConnectionFailedException(e);
         } catch (ClassNotFoundException | IOException e) {
-            e.printStackTrace();
+            ErrorDialog.getInstance().handleException(e);
 
             throw new SystemException();
         }
