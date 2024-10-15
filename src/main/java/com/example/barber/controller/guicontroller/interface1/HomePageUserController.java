@@ -31,7 +31,7 @@ public class HomePageUserController implements Observer, Initializable {
             GenericBeanList list = new GenericBeanList(this);
             list.addBarbersToList(listBarber.getAllBarber());
         } catch (Exception e) {
-            e.printStackTrace();
+            ErrorDialog.getInstance().handleException(e);
         }
     }
 
