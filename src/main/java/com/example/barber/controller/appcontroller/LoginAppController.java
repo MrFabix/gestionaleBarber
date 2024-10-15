@@ -30,7 +30,6 @@ public class LoginAppController {
             CredentialsModel credentialsModel = new CredentialsModel(credenialBeans);
             //controllo se le credenziali sono registrate
             if (loginDAO.checkIsRegistered(credentialsModel)) {
-                System.out.println("Utente registrato");
                 UserDAO userDAO = new UserDAO();
                 userModel = userDAO.getUserByUsername(credenialBeans.getUsername());
                 Session.getInstance().setUser(userModel);

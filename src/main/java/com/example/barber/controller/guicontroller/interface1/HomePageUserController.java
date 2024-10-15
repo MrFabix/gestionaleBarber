@@ -25,7 +25,6 @@ public class HomePageUserController implements Observer, Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("HomePageUserController.initialize");
         ListBarberEngineering listBarber;
         try {
             listBarber = new ListBarberEngineering();
@@ -38,7 +37,6 @@ public class HomePageUserController implements Observer, Initializable {
 
     @Override
     public void update(Object ob) {
-        System.out.println("HomePageUserController.update");
         FXMLLoader fxmlLoader = new FXMLLoader();
         Pane pane;
         if (ob instanceof BarberBean bBean) {

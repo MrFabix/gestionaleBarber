@@ -2,7 +2,6 @@ package com.example.barber.model;
 
 import com.example.barber.utils.bean.UserBean;
 
-import java.io.File;
 
 public class UserModel extends ProfileModel {
 
