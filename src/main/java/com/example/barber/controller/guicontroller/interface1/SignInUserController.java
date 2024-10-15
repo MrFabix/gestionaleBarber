@@ -16,7 +16,6 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-//import javafx.scene.control.CheckBox;
 public class SignInUserController {
 
     @FXML

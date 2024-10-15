@@ -11,7 +11,6 @@ public class Session {
     private static final String TYPE_ADMIN= "Admin";
     private static final String TYPE_BARBER= "Barbers";
 
-    private Session(){};
 
     private static Session session;
     private UserBean userBean;
@@ -30,9 +29,7 @@ public class Session {
     public UserBean getUser() {
         return userBean;
     }
-    /*public BarberBean getBarber() {
-        return barberBean;
-    }*/
+    
 
     public void setUser(UserModel userModel) {
         if (this.userBean == null) {

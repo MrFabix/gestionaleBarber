@@ -70,7 +70,7 @@ public class LoginController {
     }
 
     @FXML
-    private void backToWelcomePage(ActionEvent event) throws IOException {
+    private void backToWelcomePage(ActionEvent event)   {
         try{
             sp.replaceScene(event, "/welcomePage.fxml");
         }catch(SystemException e){
