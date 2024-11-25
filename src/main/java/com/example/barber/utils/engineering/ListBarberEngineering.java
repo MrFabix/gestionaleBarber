@@ -14,7 +14,6 @@ public class ListBarberEngineering {
 
 
     public void listBarber(Observer observer ) throws SystemException {
-
         GenericBeanList list = new GenericBeanList(observer);
         list.addBarbersToList(getAllBarber());
 
@@ -33,8 +32,6 @@ public class ListBarberEngineering {
         }
         return listBean;
     }
-
-
     public List<BarberBean> getBarberByName(String name) throws SystemException {
         List<BarberModel> list = null;
         List<BarberBean> listBean = null;

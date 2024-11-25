@@ -49,14 +49,17 @@
         <ListView fx:id="reviewsList" prefHeight="131.0" prefWidth="779.0">
             <items>
                 <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="Ottimo servizio!" />
-                    <String fx:value=" Buon taglio, personale gentile." />
-                    <String fx:value=" Il migliore a Milano!" />
+                    <String fx:value="⭐️⭐️⭐️⭐️⭐️ Ottimo servizio!" />
+                    <String fx:value="⭐️⭐️⭐️⭐️ Buon taglio, personale gentile." />
+                    <String fx:value="⭐️⭐️⭐️⭐️⭐️ Il migliore a Milano!" />
                 </FXCollections>
             </items>
         </ListView>
 
         <!-- Pulsante Prenotazione -->
         <Button fx:id="bookButton" style="-fx-background-color: #ff4d4d; -fx-text-fill: white; -fx-font-size: 14px;" text="Prenota Ora" />
+        <!-- Pulsante Indietro -->
+        <Button fx:id="backButton" style="-fx-background-color: #ff4d4d; -fx-text-fill: white; -fx-font-size: 14px;" text="Indietro" onAction="#backToBarberList" />
+
     </VBox>
 </AnchorPane>

@@ -151,6 +151,32 @@ public class Query {
         return list;
     }
 
+    //query per prendere i dettagli di un barbiere tramite l'id
+
+    public BarberModel searchBarberById(int id) throws SystemException {
+        String query = "SELECT * FROM barber WHERE id = ?";
+        BarberModel barberModel = null;
+        try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
+            preparedStatement.setInt(1, id);
+            ResultSet rs = preparedStatement.executeQuery();
+            if (rs.next()) {
+                barberModel = new BarberModel();
+                barberModel.setUsername(rs.getString("username"));
+                barberModel.setName(rs.getString("name"));
+                barberModel.setAddress(rs.getString("address"));
+                barberModel.setCity(rs.getString("city"));
+                barberModel.setPhone(rs.getString("phone"));
+                barberModel.setEmail(rs.getString("email"));
+                barberModel.setId(rs.getInt("id"));
+            }
+            return barberModel;
+        } catch (SQLException e) {
+            SystemException exception = new SystemException();
+            exception.initCause(e);
+            throw exception;
+        }
+    }
+
 
 
 

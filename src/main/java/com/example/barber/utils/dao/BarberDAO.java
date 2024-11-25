@@ -21,6 +21,11 @@ public class BarberDAO {
         return query.searchBarberbyName(name);
     }
 
+    public BarberModel getBarberById(int id) throws SystemException {
+        return query.searchBarberById(id);
+    }
+
+
 
 
 }

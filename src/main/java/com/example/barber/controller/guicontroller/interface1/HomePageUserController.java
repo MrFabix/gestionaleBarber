@@ -46,11 +46,13 @@ public class HomePageUserController implements Observer, Initializable {
                 // Ottieni il controller del layout caricato
                 BarberItemController controller = fxmlLoader.getController();
                 // Imposta i dettagli del barbiere
-                controller.setBarberDetails(bBean.getName(), bBean.getCity(), bBean.getAddress());
+                controller.setBarberDetails(bBean.getName(), bBean.getCity(), bBean.getAddress(), bBean.getId());
                 // Aggiungi il pane alla ListView
                 this.barberListView.getItems().add(pane);
             } catch (Exception e) {
                 ErrorDialog.getInstance().handleException(e);
+                //stampo l'errore
+                e.printStackTrace();
             }
         }
     }
