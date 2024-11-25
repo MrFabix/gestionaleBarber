@@ -3,6 +3,7 @@ package com.example.barber.utils.bean;
 import com.example.barber.model.BarberModel;
 import com.example.barber.utils.exception.Trigger;
 public class BarberBean extends ProfileBean {
+
     protected String address;
     protected String city;
     protected String phone;

@@ -74,8 +74,4 @@ public class HomePageUserController implements Observer, Initializable {
             ErrorDialog.getInstance().handleException(e);
         }
     }
-
-
-
-
 }

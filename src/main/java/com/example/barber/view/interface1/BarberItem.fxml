@@ -9,5 +9,4 @@
     <Label fx:id="barberNameLabel" text="Nome del Barbiere" style="-fx-background-radius: 5; -fx-padding: 5;"/>
     <Label fx:id="barberAddressLabel" text="Via del Barbiere" style="-fx-background-radius: 5; -fx-padding: 5;"/>
     <Label fx:id="barberCityLabel" prefWidth="100.0" text="Città del Barbiere" style="-fx-background-radius: 5; -fx-padding: 5;"/>
-    <MFXButton prefHeight="26.0" prefWidth="120.0" text="Dettaglio" style="-fx-background-radius: 5;"/>
-</HBox>
+<MFXButton prefHeight="26.0" prefWidth="120.0" text="Dettaglio" style="-fx-background-radius: 5;" onAction="#showBarberDetails"/></HBox>

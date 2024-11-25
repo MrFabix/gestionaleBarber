@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.image.Image?>
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface1.BarberDetailController">
+
+    <!-- Layout principale -->
+    <VBox alignment="TOP_CENTER" spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+
+        <!-- Immagine del barbiere -->
+        <ImageView fx:id="barberImage" fitHeight="133.0" fitWidth="241.0">
+             <Image url="barber.jpg" />
+        </ImageView>
+
+        <!-- Informazioni del barbiere -->
+        <Label fx:id="barberName" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Nome: Giovanni Rossi" />
+        <Label fx:id="barberAddress" text="Indirizzo: Via Roma, 15, Milano" />
+        <Label fx:id="barberPhone" text="Telefono: +39 123 456 789" />
+        <Label fx:id="barberHours" text="Orari: Lun-Sab 09:00 - 19:00" />
+
+        <!-- Descrizione -->
+        <TextArea fx:id="description" editable="false" prefHeight="96.0" prefWidth="779.0" text="Giovanni Rossi è un barbiere con oltre 10 anni di esperienza. Specializzato in tagli moderni e tradizionali." wrapText="true">
+                Giovanni Rossi è un barbiere con oltre 10 anni di esperienza. Specializzato in tagli moderni e tradizionali.
+        </TextArea>
+
+        <!-- Servizi Offerti -->
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Servizi Offerti:" />
+        <ListView fx:id="servicesList" prefHeight="132.0" prefWidth="779.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Taglio Uomo - 20€" />
+                    <String fx:value="Barba - 10€" />
+                    <String fx:value="Taglio Completo - 25€" />
+                </FXCollections>
+            </items>
+        </ListView>
+
+        <!-- Recensioni -->
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Recensioni:" />
+        <ListView fx:id="reviewsList" prefHeight="131.0" prefWidth="779.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Ottimo servizio!" />
+                    <String fx:value=" Buon taglio, personale gentile." />
+                    <String fx:value=" Il migliore a Milano!" />
+                </FXCollections>
+            </items>
+        </ListView>
+
+        <!-- Pulsante Prenotazione -->
+        <Button fx:id="bookButton" style="-fx-background-color: #ff4d4d; -fx-text-fill: white; -fx-font-size: 14px;" text="Prenota Ora" />
+    </VBox>
+</AnchorPane>

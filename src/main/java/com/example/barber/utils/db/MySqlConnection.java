@@ -35,7 +35,6 @@ public class MySqlConnection {
 
         try {
             if (connection == null || connection.isClosed()) {
-                System.out.println("INIZIO CONNESSIONE");
                 String resourceName = "config.properties";
                 InputStream inputStream = MySqlConnection.class.getClassLoader().getResourceAsStream(resourceName);
                 if (inputStream == null) {
