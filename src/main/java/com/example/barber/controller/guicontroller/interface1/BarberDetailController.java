@@ -2,6 +2,7 @@ package com.example.barber.controller.guicontroller.interface1;
 
 import com.example.barber.controller.appcontroller.BarberAppController;
 import com.example.barber.utils.bean.BarberBean;
+import com.example.barber.utils.bean.IdBean;
 import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.utils.switchPage.SwitchPage;
@@ -30,9 +31,7 @@ public class BarberDetailController  {
 
     SwitchPage switchPage = new SwitchPage();
 
-    public void setBarberDetails(int id) {
-        System.out.println("ID selezionato barber details: " + id);
-
+    public void setBarberDetails(IdBean id) {
         // Chiamare l'AppController per ottenere i dettagli
         BarberAppController barberAppController = new BarberAppController();
 
@@ -59,7 +58,7 @@ public class BarberDetailController  {
     // Metodo per tornare alla lista dei barbieri
     public void backToBarberList(ActionEvent event) {
         try {
-            switchPage.replaceScene(event, "/welcomePage.fxml");
+            switchPage.replaceScene(event, "/homepageUser.fxml");
         } catch(SystemException e) {
             ErrorDialog.getInstance().handleException(e);
         }
