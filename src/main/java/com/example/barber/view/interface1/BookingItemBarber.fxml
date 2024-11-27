@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox prefHeight="43.0" prefWidth="387.0" spacing="10" style="-fx-background-color: #dc0f3f; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: black; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface1.BarberItemController">
+   <children>
+      <MFXDatePicker prefHeight="58.0" prefWidth="138.0" />
+      <Label prefHeight="42.0" prefWidth="98.0" text="NOME DEL BARBIERE" />
+      <MFXButton prefHeight="50.0" prefWidth="54.0" text=" ">
+         <graphic>
+            <FontAwesomeIconView glyphName="CHECK" />
+         </graphic>
+      </MFXButton>
+      <MFXButton prefHeight="40.0" prefWidth="54.0" text=" ">
+         <graphic>
+            <FontAwesomeIconView glyphName="TIMES" />
+         </graphic>
+      </MFXButton>
+      <MFXButton prefHeight="38.0" prefWidth="47.0" text=" ">
+         <graphic>
+            <FontAwesomeIconView glyphName="EDIT" />
+         </graphic>
+      </MFXButton>
+   </children></HBox>
