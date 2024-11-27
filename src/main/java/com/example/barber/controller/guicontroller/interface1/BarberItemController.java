@@ -29,7 +29,6 @@ public class BarberItemController {
         barberNameLabel.setText(name);
         barberCityLabel.setText(city);
         barberAddressLabel.setText(address);
-
         // Usa setUserData per associare l'ID al pulsante
         barberButton.setUserData(id);
     }

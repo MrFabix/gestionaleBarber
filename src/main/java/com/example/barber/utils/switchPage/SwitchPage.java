@@ -2,6 +2,7 @@ package com.example.barber.utils.switchPage;
 
 import com.example.barber.StartApplication;
 import com.example.barber.controller.guicontroller.interface1.BarberDetailController;
+import com.example.barber.controller.guicontroller.interface1.BookingFormController;
 import com.example.barber.utils.bean.IdBean;
 import com.example.barber.utils.exception.myexception.SystemException;
 import javafx.event.ActionEvent;
@@ -44,26 +45,38 @@ public class SwitchPage {
         FXMLLoader fxmlLoader = new FXMLLoader(StartApplication.class.getResource(fxml));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = null;
+        System.out.println("SWITCH PAGE ID: " + fxml + " " + id.getId());
+
         try {
             scene = new Scene(fxmlLoader.load());
-            BarberDetailController controller = fxmlLoader.getController();
-            controller.setBarberDetails(id);
+
+            // Gestisci BarberDetailController
+            if (fxml.equals("/BarberDetail.fxml")) {
+                BarberDetailController controller = fxmlLoader.getController();
+                if (controller != null) {
+                    controller.setBarberDetails(id); // Passa l'IdBean al controller
+                }
+            }
+            // Gestisci BookingFormController
+            else if (fxml.equals("/BookingForm.fxml")) {
+                BookingFormController controller = fxmlLoader.getController();
+                System.out.println("BookingFormController: " + controller);
+                if (controller != null) {
+                    controller.setBookingForm(id); // Passa l'IdBean al controller
+                }
+            }
+
         } catch (IOException e) {
+            // Cattura le eccezioni di I/O
             SystemException exception = new SystemException();
             exception.initCause(e);
             throw exception;
         }
+
+        // Imposta la scena e mostra la finestra
         stage.setScene(scene);
         stage.show();
     }
-
-
-
-
-
-
-
-
 
 
 }

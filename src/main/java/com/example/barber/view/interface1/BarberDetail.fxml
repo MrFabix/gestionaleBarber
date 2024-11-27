@@ -57,7 +57,7 @@
         </ListView>
 
         <!-- Pulsante Prenotazione -->
-        <Button fx:id="bookButton" style="-fx-background-color: #ff4d4d; -fx-text-fill: white; -fx-font-size: 14px;" text="Prenota Ora" />
+        <Button fx:id="bookButton" style="-fx-background-color: #ff4d4d; -fx-text-fill: white; -fx-font-size: 14px;" text="Prenota Ora" onAction="#bookAppointment" />
         <!-- Pulsante Indietro -->
         <Button fx:id="backButton" style="-fx-background-color: #ff4d4d; -fx-text-fill: white; -fx-font-size: 14px;" text="Indietro" onAction="#backToBarberList" />
 
