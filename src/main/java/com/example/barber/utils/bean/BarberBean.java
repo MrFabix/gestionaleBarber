@@ -5,9 +5,9 @@ import com.example.barber.utils.exception.Trigger;
 
 public class BarberBean extends ProfileBean {
 
+
     protected String address;
     protected String city;
-    protected String phone;
     protected String hours;
     protected String description;
     protected String[] services;
@@ -26,7 +26,6 @@ public class BarberBean extends ProfileBean {
         this.address = barberModel.getAddress();
         this.city = barberModel.getCity();
         this.username = barberModel.getUsername();
-        this.phone = barberModel.getPhone();
         this.hours = barberModel.getHours();
         this.description = barberModel.getDescription();
         this.services = barberModel.getServices();
@@ -41,7 +40,6 @@ public class BarberBean extends ProfileBean {
         this.address = barberBean.getAddress();
         this.city = barberBean.getCity();
         this.username = barberBean.getUsername();
-        this.phone = barberBean.getPhone();
         this.hours = barberBean.getHours();
         this.description = barberBean.getDescription();
         this.services = barberBean.getServices();
@@ -65,13 +63,6 @@ public class BarberBean extends ProfileBean {
         this.city = city;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 
     public String getHours() {
         return hours;

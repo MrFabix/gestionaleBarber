@@ -1,6 +1,9 @@
 package com.example.barber.utils.dao;
 
+import com.example.barber.model.CredentialsModel;
 import com.example.barber.model.UserModel;
+import com.example.barber.utils.bean.CredentialsBean;
+import com.example.barber.utils.bean.UserBean;
 import com.example.barber.utils.db.Query;
 import com.example.barber.utils.exception.myexception.SystemException;
 
@@ -13,5 +16,11 @@ Query query = new Query();
         return query.checkUsernameAlreadyTaken(username);
     }
 
+    public void addUser(CredentialsModel credentialModel, UserModel userModel) throws SystemException {
+        query.insertCredential(credentialModel);
+
+        query.insertUser(userModel);
+
+    }
 
 }

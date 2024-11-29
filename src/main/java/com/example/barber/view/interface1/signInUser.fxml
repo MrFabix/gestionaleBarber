@@ -8,17 +8,20 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface1.SignInUserController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface1.SignInUserController">
    <children>
-      <PasswordField id="passwordField" fx:id="passwordField" layoutX="223.0" layoutY="96.0" prefHeight="36.0" prefWidth="156.0" promptText="Password" />
+      <PasswordField id="passwordField" fx:id="passwordField" layoutX="34.0" layoutY="114.0" prefHeight="36.0" prefWidth="156.0" promptText="Password" />
       <Button fx:id="registrationButton" layoutX="331.0" layoutY="301.0" mnemonicParsing="false" onAction="#signIn" prefHeight="25.0" prefWidth="75.0" text="Registrati" />
       <FontAwesomeIconView glyphName="SCISSORS" layoutX="298.0" layoutY="36.0" scaleX="3.0" scaleY="3.0" scaleZ="3.0" />
-      <TextField id="surnameField" fx:id="surnameField" layoutX="36.0" layoutY="96.0" prefHeight="36.0" prefWidth="156.0" promptText="Surname" text="Username" />
-      <TextField id="emailField" fx:id="emailField" layoutX="73.0" layoutY="158.0" prefHeight="36.0" prefWidth="156.0" promptText="Email" />
-      <TextField id="emailRepeatField" fx:id="emailRepeatField" layoutX="369.0" layoutY="158.0" prefHeight="36.0" prefWidth="156.0" promptText="Ripeti email" />
-      <PasswordField id="confirmPasswordField" fx:id="confirmPasswordField" layoutX="396.0" layoutY="96.0" prefHeight="36.0" prefWidth="156.0" promptText="Confirm Password" />
+      <TextField id="surnameField" fx:id="usernameField" layoutX="34.0" layoutY="66.0" prefHeight="36.0" prefWidth="156.0" promptText="Username" />
+      <TextField id="emailField" fx:id="emailField" layoutX="213.0" layoutY="66.0" prefHeight="36.0" prefWidth="156.0" promptText="Email" />
+      <PasswordField id="confirmPasswordField" fx:id="confirmPasswordField" layoutX="34.0" layoutY="164.0" prefHeight="36.0" prefWidth="156.0" promptText="Confirm Password" />
       <MFXCheckbox layoutX="-65.0" layoutY="114.0" />
-      <ComboBox fx:id="roleField" layoutX="229.0" layoutY="239.0" prefWidth="150.0" promptText="Ruolo" visibleRowCount="3" />
+      <ComboBox id="role" fx:id="roleField" layoutX="229.0" layoutY="239.0" prefWidth="150.0" promptText="Ruolo" visibleRowCount="3" />
       <Button fx:id="backToLogin" layoutX="181.0" layoutY="301.0" mnemonicParsing="false" onAction="#backToWelcomePage" prefHeight="25.0" prefWidth="96.0" text="Torna al Login" />
+      <TextField id="telephone" fx:id="telephone" layoutX="213.0" layoutY="164.0" prefHeight="36.0" prefWidth="156.0" promptText="Tel" />
+      <TextField id="name" fx:id="name" layoutX="393.0" layoutY="66.0" prefHeight="36.0" prefWidth="156.0" promptText="Name" />
+      <TextField id="surname" fx:id="surname" layoutX="393.0" layoutY="116.0" prefHeight="36.0" prefWidth="156.0" promptText="Surname" />
+      <ComboBox id="gender" fx:id="genderField" layoutX="396.0" layoutY="170.0" prefWidth="150.0" promptText="Gender" visibleRowCount="3" />
    </children>
 </Pane>

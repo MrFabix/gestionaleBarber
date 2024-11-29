@@ -11,6 +11,60 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Query {
+
+
+    public void insertUser(UserModel userModel) throws SystemException {
+        String query = "INSERT INTO user (name, surname, gender, email, username,  phone) VALUES (?,?,?,?,?,?)";
+        try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)){
+
+            //Imposta i parametri della query
+            preparedStatement.setString(1, userModel.getName());
+            preparedStatement.setString(2, userModel.getSurname());
+            preparedStatement.setString(3, userModel.getGender());
+            preparedStatement.setString(4, userModel.getEmail());
+            preparedStatement.setString(5, userModel.getUsername());
+            preparedStatement.setString(6, userModel.getPhone());
+
+        }catch(SQLException e){
+
+            System.out.println("Errore nella ricerca dell'utente nel database");
+            // Stampa un messaggio di errore e lancia una SystemException
+            SystemException exception = new SystemException();
+            exception.initCause(e);
+            throw exception;
+
+        } catch (SystemException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        //TODO manca da implementare l'inserimaneto di un immagine del profilo
+    }
+
+    public void insertCredential(CredentialsModel credentialsModel) throws SystemException {
+        String query = "INSERT INTO (username, password, tipo) VALUES (?,?,?)";
+        try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)){
+
+            //Imposta i parametri della query
+
+            preparedStatement.setString(1, credentialsModel.getUsername());
+            preparedStatement.setString(2, credentialsModel.getPassword());
+            preparedStatement.setString(3, credentialsModel.getType());
+
+        }catch(SQLException e){
+
+            System.out.println("Errore nella ricerca dell'utente nel database");
+            // Stampa un messaggio di errore e lancia una SystemException
+            SystemException exception = new SystemException();
+            exception.initCause(e);
+            throw exception;
+
+        } catch (SystemException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
     //TODO metodo per l'inserimento di un utente
     /*public void insertUser(UserModel userModel) throws SystemException{
         String query = "INSERT INTO `user`(`username`,`password`,`email`,`ruolo`) VALUES(?,?,?,?);";
