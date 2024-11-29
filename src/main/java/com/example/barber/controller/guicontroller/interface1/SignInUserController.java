@@ -84,8 +84,10 @@ public class SignInUserController {
             //System.out.println("password is too short" + credentialBean.getPassword());
             //Carichiamo il credentialBean con i campi delle credenziali.
             credentialBean.setUsername(usernameField.getText());
-            credentialBean.setPassword(passwordField.getText());
+            //TODO inserire entrambi all'interno del setPassword del credential bean cambiare
             credentialBean.setConfirmPassword(confirmPasswordField.getText());
+            credentialBean.setPassword(passwordField.getText());
+
 
             System.out.println("La password che sta dentro credentialBean    "+credentialBean.getPassword());
             credentialBean.setType(roleField.getValue());
