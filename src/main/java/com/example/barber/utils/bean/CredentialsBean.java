@@ -3,6 +3,7 @@ package com.example.barber.utils.bean;
 import com.example.barber.utils.exception.Trigger;
 import com.example.barber.utils.exception.myexception.EmptyInputException;
 import com.example.barber.utils.exception.myexception.PasswordNotCompliantException;
+import com.example.barber.utils.exception.myexception.PasswordNotEquals;
 
 public class CredentialsBean {
 
@@ -46,15 +47,18 @@ public class CredentialsBean {
         }
     }
 
-    public void setPassword(String Password) throws EmptyInputException, PasswordNotCompliantException {
-        if (password.equals("")) {
+    public void setPassword(String password) throws EmptyInputException, PasswordNotCompliantException, PasswordNotEquals {
+       if (password.equals("")) {
             trigger.throwEmptyInputException("Password");
         } else if (password.length() < 8) {
+            System.out.println("password is too short" + password);
             trigger.throwPasswordNotCompliantException();
         }else if(!password.equals(confirmPassword)){
-            trigger.throwPasswordNotCompliantException();
+           System.out.println("password does not match");
+            trigger.throwPasswordNotEquals();
+            //ho creato una mia eccezione, trigger chiama il metodo che richiama la mia eccezione
         }else {
-            this.password = Password;
+            this.password = password;
         }
     }
 

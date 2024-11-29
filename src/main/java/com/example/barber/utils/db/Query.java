@@ -14,7 +14,7 @@ public class Query {
 
 
     public void insertUser(UserModel userModel) throws SystemException {
-        String query = "INSERT INTO user (name, surname, gender, email, username,  phone) VALUES (?,?,?,?,?,?)";
+        String query = "INSERT INTO user (name, surname, gender, email, username, phone) VALUES (?,?,?,?,?,?)";
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)){
 
             //Imposta i parametri della query
@@ -42,18 +42,25 @@ public class Query {
     }
 
     public void insertCredential(CredentialsModel credentialsModel) throws SystemException {
-        String query = "INSERT INTO (username, password, tipo) VALUES (?,?,?)";
+        String query = "INSERT INTO credentials (username, password, type) VALUES (?,?,?)";
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)){
 
             //Imposta i parametri della query
-
+            System.out.println("Sei nell'insert credential "+ credentialsModel.getUsername());
             preparedStatement.setString(1, credentialsModel.getUsername());
             preparedStatement.setString(2, credentialsModel.getPassword());
             preparedStatement.setString(3, credentialsModel.getType());
+            int rowsAffected = preparedStatement.executeUpdate();
+            if (rowsAffected == 0) {
+                System.out.println("Il numero di righe inserite è 0 c'è un errore");
+            }else{
+
+                System.out.println("i dati sono inseriti ");
+            }
 
         }catch(SQLException e){
 
-            System.out.println("Errore nella ricerca dell'utente nel database");
+            System.out.println("Errore nell'inserimento dell'utente nel database");
             // Stampa un messaggio di errore e lancia una SystemException
             SystemException exception = new SystemException();
             exception.initCause(e);
@@ -65,13 +72,7 @@ public class Query {
     }
 
 
-    //TODO metodo per l'inserimento di un utente
-    /*public void insertUser(UserModel userModel) throws SystemException{
-        String query = "INSERT INTO `user`(`username`,`password`,`email`,`ruolo`) VALUES(?,?,?,?);";
-        try(PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)){
-            preparedStatement.setString(1, UserModel.);
-        }
-    }*/
+
     public boolean searchUserInLogged(CredentialsModel credentialsModel) throws SystemException {
 
         // Correggi la query SQL con il segno di uguaglianza per la password

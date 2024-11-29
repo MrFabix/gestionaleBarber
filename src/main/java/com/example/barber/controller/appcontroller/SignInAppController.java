@@ -3,9 +3,7 @@ package com.example.barber.controller.appcontroller;
 import com.example.barber.model.CredentialsModel;
 import com.example.barber.model.UserModel;
 import com.example.barber.utils.bean.CredentialsBean;
-import com.example.barber.utils.bean.SignInBean;
 import com.example.barber.utils.bean.UserBean;
-import com.example.barber.utils.dao.SignInDAO;
 import com.example.barber.utils.dao.UserDAO;
 import com.example.barber.utils.exception.myexception.SystemException;
 

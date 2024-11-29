@@ -8,6 +8,7 @@ import com.example.barber.utils.bean.UserBean;
 import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.myexception.*;
 import com.example.barber.utils.switchPage.SwitchPage;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -50,7 +51,15 @@ public class SignInUserController {
     @FXML
     private ComboBox<String> roleField;
 
+    @FXML
+    public void initialize() {
+
+        genderField.getItems().addAll("Male", "Female");
+        roleField.getItems().addAll("user", "barber");
+    }
+
     private SwitchPage sp = new SwitchPage();
+
 
 
 
@@ -71,18 +80,16 @@ public class SignInUserController {
 
         try{
             System.out.println("Sei qui");
-
-            System.out.println(System.getProperty("java.version"));
-            System.out.println(System.getProperty("javafx.version"));
-
-            appController = new SignInAppController();
             credentialBean = new CredentialsBean();
-
+            //System.out.println("password is too short" + credentialBean.getPassword());
             //Carichiamo il credentialBean con i campi delle credenziali.
             credentialBean.setUsername(usernameField.getText());
             credentialBean.setPassword(passwordField.getText());
-            credentialBean.setType(roleField.getValue());
             credentialBean.setConfirmPassword(confirmPasswordField.getText());
+
+            System.out.println("La password che sta dentro credentialBean    "+credentialBean.getPassword());
+            credentialBean.setType(roleField.getValue());
+
 
             //Carichiamo lo UserBean con le informazioni del cliente
             userBean.setName(name.getText());
@@ -92,18 +99,25 @@ public class SignInUserController {
             userBean.setUsername(usernameField.getText());
             userBean.setPhone(telephone.getText());
 
+            appController = new SignInAppController();
+
+
             //Spediamo tutto al controller dello user che poi si interfaccia con il livello sottostante ancora
             appController.registerUser(userBean, credentialBean);
             sp.replaceScene(event, "/welcomePage.fxml");
 
-        }catch( EmptyInputException | PasswordNotCompliantException e) {
+        }catch( EmptyInputException e) {
             ErrorDialog.getInstance().handleException(e);
         } catch (SystemException e) {
-            throw new RuntimeException(e);
+            ErrorDialog.getInstance().handleException(e);
         } catch (UsernameAlreadyTakenException e) {
-            throw new RuntimeException(e);
+            ErrorDialog.getInstance().handleException(e);
         } catch (EmailNotValidException e) {
-            throw new RuntimeException(e);
+            ErrorDialog.getInstance().handleException(e);
+        } catch (PasswordNotCompliantException e) {
+            ErrorDialog.getInstance().handleException(e);
+        } catch (PasswordNotEquals e) {
+            ErrorDialog.getInstance().handleException(e);
         }
     }
 }
