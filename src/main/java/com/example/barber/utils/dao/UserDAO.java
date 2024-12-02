@@ -18,7 +18,7 @@ Query query = new Query();
 
     public void addUser(CredentialsModel credentialModel, UserModel userModel) throws SystemException {
         query.insertCredential(credentialModel);
-
+        System.out.println("Sei dopo il credential model, hai inserito ora inserisci lo user");
         query.insertUser(userModel);
 
     }

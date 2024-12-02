@@ -14,21 +14,31 @@ public class Query {
 
 
     public void insertUser(UserModel userModel) throws SystemException {
+        System.out.print("stai inserendo lo user sei dentro il metodo");
         String query = "INSERT INTO user (name, surname, gender, email, username, phone) VALUES (?,?,?,?,?,?)";
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)){
 
             //Imposta i parametri della query
             preparedStatement.setString(1, userModel.getName());
             preparedStatement.setString(2, userModel.getSurname());
+
             preparedStatement.setString(3, userModel.getGender());
             preparedStatement.setString(4, userModel.getEmail());
             preparedStatement.setString(5, userModel.getUsername());
             preparedStatement.setString(6, userModel.getPhone());
+            int rowsAffected = preparedStatement.executeUpdate();
+            //TODO domanda da fare al pellegrini???
+            if (rowsAffected == 0) {
+                System.out.println("Il numero di righe inserite è 0 c'è un errore");
+            }else{
 
+                System.out.println("i dati sono inseriti ");
+            }
         }catch(SQLException e){
 
             System.out.println("Errore nella ricerca dell'utente nel database");
             // Stampa un messaggio di errore e lancia una SystemException
+
             SystemException exception = new SystemException();
             exception.initCause(e);
             throw exception;
