@@ -25,10 +25,10 @@ public class SignInUserController {
     UserBean userBean = new UserBean();
 
     //Dichiaro un credentialBean per il fatto che è lui che si occupa di prendere le credenziali(Username, Pswd, Type)
-    CredentialsBean credentialsBean = new CredentialsBean();
 
 
 
+    private SwitchPage sp = new SwitchPage();
 
     @FXML
     private TextField usernameField;
@@ -48,17 +48,15 @@ public class SignInUserController {
     private TextField surname;
     @FXML
     private ComboBox<String> genderField;
-    @FXML
-    private ComboBox<String> roleField;
+
+    private String roleField;
 
     @FXML
     public void initialize() {
-
         genderField.getItems().addAll("Male", "Female");
-        roleField.getItems().addAll("user", "barber");
     }
 
-    private SwitchPage sp = new SwitchPage();
+
 
 
 
@@ -73,7 +71,7 @@ public class SignInUserController {
     }
 
     @FXML
-    private void signIn(ActionEvent event){
+    private void signInUser(ActionEvent event){
 
         CredentialsBean credentialBean;
         SignInAppController appController;
@@ -85,12 +83,13 @@ public class SignInUserController {
             //Carichiamo il credentialBean con i campi delle credenziali.
             credentialBean.setUsername(usernameField.getText());
             //TODO inserire entrambi all'interno del setPassword del credential bean cambiare
-            credentialBean.setConfirmPassword(confirmPasswordField.getText());
-            credentialBean.setPassword(passwordField.getText());
 
+            credentialBean.setPassword(passwordField.getText(), confirmPasswordField.getText());
+
+            roleField = "user";
 
             System.out.println("La password che sta dentro credentialBean    "+credentialBean.getPassword());
-            credentialBean.setType(roleField.getValue());
+            credentialBean.setType(roleField);
 
 
             //Carichiamo lo UserBean con le informazioni del cliente

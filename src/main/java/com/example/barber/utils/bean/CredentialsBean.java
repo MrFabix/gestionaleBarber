@@ -22,7 +22,7 @@ public class CredentialsBean {
     protected String username;
     protected String password;
     protected String type;
-    protected String confirmPassword;
+
 
     public String getUsername() {
         return username;
@@ -33,12 +33,10 @@ public class CredentialsBean {
     public String getType() {
         return type;
     }
-    public String getConfirmPassword() {  return confirmPassword; }
 
 
-    public void setConfirmPassword(String confirmPassword) { this.confirmPassword = confirmPassword; }
 
-    public  void setUsername(String Username) throws EmptyInputException {
+   public  void setUsername(String Username) throws EmptyInputException {
 
         if (Username.equals("")) {
             trigger.throwEmptyInputException("Username");
@@ -47,7 +45,7 @@ public class CredentialsBean {
         }
     }
 
-    public void setPassword(String password) throws EmptyInputException, PasswordNotCompliantException, PasswordNotEquals {
+    public void setPassword(String password, String confirmPassword) throws EmptyInputException, PasswordNotCompliantException, PasswordNotEquals {
        if (password.equals("")) {
             trigger.throwEmptyInputException("Password");
         } else if (password.length() < 8) {

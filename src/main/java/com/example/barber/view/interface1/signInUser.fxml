@@ -15,12 +15,11 @@
       <TextField id="emailField" fx:id="emailField" layoutX="36.0" layoutY="165.0" prefHeight="36.0" prefWidth="156.0" promptText="Email" />
       <TextField id="telephone" fx:id="telephone" layoutX="36.0" layoutY="216.0" prefHeight="36.0" prefWidth="156.0" promptText="Tel" />
       <ComboBox id="gender" fx:id="genderField" layoutX="38.0" layoutY="259.0" prefHeight="16.0" prefWidth="131.0" promptText="Gender" visibleRowCount="3" />
-      <ComboBox id="role" fx:id="roleField" layoutX="38.0" layoutY="339.0" prefWidth="150.0" promptText="Ruolo" visibleRowCount="3" />
       <TextField id="surnameField" fx:id="usernameField" layoutX="291.0" layoutY="66.0" prefHeight="36.0" prefWidth="156.0" promptText="Username" />
       <PasswordField id="passwordField" fx:id="passwordField" layoutX="291.0" layoutY="116.0" prefHeight="36.0" prefWidth="156.0" promptText="Password" />
       <PasswordField id="confirmPasswordField" fx:id="confirmPasswordField" layoutX="291.0" layoutY="165.0" prefHeight="36.0" prefWidth="156.0" promptText="Confirm Password" />
-      <Button fx:id="registrationButton" layoutX="444.0" layoutY="330.0" mnemonicParsing="false" onAction="#signIn" prefHeight="25.0" prefWidth="75.0" text="Registrati" />
-      <Button fx:id="backToLogin" layoutX="423.0" layoutY="296.0" mnemonicParsing="false" onAction="#backToWelcomePage" prefHeight="25.0" prefWidth="96.0" text="Torna al Login" />
+      <Button fx:id="registrationButton" layoutX="444.0" layoutY="330.0" mnemonicParsing="false" onAction="#signInUser" prefHeight="25.0" prefWidth="75.0" text="Registrati" />
+      <Button fx:id="backToLogin" layoutX="423.0" layoutY="296.0" mnemonicParsing="false" onAction="#backToWelcomePage" prefHeight="25.0" prefWidth="96.0" text="Torna indietro" />
       <Text layoutX="25.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dati Personali" wrappingWidth="177.31818389892578">
          <font>
             <Font size="25.0" />
@@ -31,7 +30,6 @@
             <Font size="25.0" />
          </font>
       </Text>
-      <Text layoutX="38.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vuoi essere un cliente?" wrappingWidth="168.53673934936523" />
-      <Text layoutX="38.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" text="oppure hai una tua attività?" wrappingWidth="168.53673934936523" />
+      <Text layoutX="38.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ti stai registrando come user!" wrappingWidth="168.53673934936523" />
    </children>
 </Pane>

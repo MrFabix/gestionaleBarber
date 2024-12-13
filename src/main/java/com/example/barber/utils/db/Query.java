@@ -13,6 +13,41 @@ import java.util.List;
 public class Query {
 
 
+    public void insertBarber(BarberModel barberModel) throws SystemException{
+        System.out.print("Stai inserendo il barbieree");
+        String query = "INSERT INTO barber (username, name, address, city, phone, email) VALUES (?,?,?,?,?,?)";
+        try(PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)){
+            //Impostiamo i parametri della query
+            System.out.println("Username del barbiere"+ barberModel.getUsername());
+            preparedStatement.setString(1, barberModel.getUsername());
+            System.out.println("Name del barbiere"+ barberModel.getName());
+            preparedStatement.setString(2, barberModel.getName());
+            System.out.println("address del barbiere"+ barberModel.getAddress());
+            preparedStatement.setString(3, barberModel.getAddress());
+            System.out.println("city del barbiere"+ barberModel.getCity());
+            preparedStatement.setString(4, barberModel.getCity());
+            System.out.println("phone del barbiere"+ barberModel.getPhone());
+            preparedStatement.setString(5, barberModel.getPhone());
+            System.out.println("email del barbiere"+ barberModel.getEmail());
+            preparedStatement.setString(6, barberModel.getEmail());
+            int rowsAffected = preparedStatement.executeUpdate();
+            if(rowsAffected == 0){
+                System.out.print("Il numero di riche inserite è 0");
+
+            }
+
+        } catch (SQLException e) {
+            SystemException exception = new SystemException();
+            exception.initCause(e);
+            throw exception;
+        } catch (SystemException e ){
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
     public void insertUser(UserModel userModel) throws SystemException {
         System.out.print("stai inserendo lo user sei dentro il metodo");
         String query = "INSERT INTO user (name, surname, gender, email, username, phone) VALUES (?,?,?,?,?,?)";
@@ -48,7 +83,7 @@ public class Query {
         }
 
 
-        //TODO manca da implementare l'inserimaneto di un immagine del profilo
+        //TODO manca da implementare l'inserimento di un immagine del profilo
     }
 
     public void insertCredential(CredentialsModel credentialsModel) throws SystemException {

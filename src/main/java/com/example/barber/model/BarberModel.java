@@ -49,6 +49,8 @@ public class BarberModel extends ProfileModel {
         return reviews;
     }
 
+
+
     //Setter
     public void setCity(String city) {
         this.city = city;
