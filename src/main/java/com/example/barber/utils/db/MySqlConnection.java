@@ -18,6 +18,7 @@ public class MySqlConnection {
 
     private static MySqlConnection instance;
 
+    //Stiamo utilizzando un singleton qui(?)
     public static MySqlConnection getInstance() {
         if (instance == null)
             instance = new MySqlConnection();
