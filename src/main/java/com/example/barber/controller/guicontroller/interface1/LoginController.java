@@ -21,7 +21,9 @@ public class LoginController {
     @FXML
     private PasswordField passwordField;
     @FXML
-    private CheckBox checkBoxBarber;
+    private RadioButton radioBarber;
+    @FXML
+    private RadioButton radioAdmin;
     @FXML
     private Button loginButton;
 
@@ -43,9 +45,13 @@ public class LoginController {
             }
 
             // Se la checkbox è selezionata, imposta il tipo a "barber"
-            if (checkBoxBarber.isSelected()) {
+            if (radioBarber.isSelected()) {
                 type = "barber";
+            } else if (radioAdmin.isSelected()) {
+                type = "admin";
             }
+
+
             // Inizializza il controller e tenta il login
             controller = new LoginAppController();
             CredentialsBean credentialsBean = new CredentialsBean(usernameField.getText(), passwordField.getText(), type);
@@ -54,8 +60,10 @@ public class LoginController {
             // Se il login è andato a buon fine, mostra la pagina corrispondente
             if (type.equals("user")) {
                 sp.replaceScene(event, "/homepageUser.fxml");
-            } else {
+            } else if (type.equals("barber")) {
                 sp.replaceScene(event, "/homepageBarber.fxml");
+            } else {
+                sp.replaceScene(event, "/homepageAdmin.fxml");
             }
 
         } catch (EmptyInputException e) {

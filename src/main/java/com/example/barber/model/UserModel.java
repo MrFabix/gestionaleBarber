@@ -4,10 +4,6 @@ import com.example.barber.utils.bean.UserBean;
 
 
 public class UserModel extends ProfileModel {
-
-
-
-
     private String surname;
     private String gender;
 

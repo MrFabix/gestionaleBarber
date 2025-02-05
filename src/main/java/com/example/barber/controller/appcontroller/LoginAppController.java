@@ -19,9 +19,11 @@ public class LoginAppController {
      SwitchPage sp = new SwitchPage();
 
 
+
     public void login(CredentialsBean credenialBeans) throws WrongCredentialsException, SystemException {
 
         LoginDAO loginDAO = new LoginDAO();
+
 
         if (credenialBeans.getType().equalsIgnoreCase("user")) {
             //creo il modello per l'utente
@@ -37,7 +39,7 @@ public class LoginAppController {
                 trigger.throwWrongCredentials();
                 Session.getInstance().deleteSession();
             }
-        } else {
+        } else if(credenialBeans.getType().equalsIgnoreCase("barber")) {
 
             BarberModel barberModel = null;
             CredentialsModel credentialsModel = new CredentialsModel(credenialBeans);
@@ -51,6 +53,11 @@ public class LoginAppController {
                 trigger.throwWrongCredentials();
                 Session.getInstance().deleteSession();
             }
+        }else {
+            //Sezione Admin
+
+
+
         }
 
 
