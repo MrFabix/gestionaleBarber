@@ -14,26 +14,35 @@ public class ProfileBean implements GenericBean {
     protected String name; //Nome dell utente oppure nome del BarberShop
     protected int id ;
     protected String email;
-
+    protected String phone;
     protected String username;
     protected File img;
 
 
+    //Getter
     public int getId() {return id;}
+
     public String getEmail() {
         return email;
     }
+
     public String getUsername() {
         return username;
     }
 
     public File getImg(){return img;}
-    public String getName() {return name;}
+
+    public String getName() { return name; }
+
+    public String getPhone(){ return phone; }
 
 
+
+    //Setter
     public void setId(int id) {
         this.id = id;
     }
+
     public void setEmail(String email) throws EmptyInputException, EmailNotValidException {
         if(email.isEmpty())
             trigger.throwEmptyInputException("email");
@@ -65,6 +74,10 @@ public class ProfileBean implements GenericBean {
         }
     }
 
+
+    public String setPhone(String phone){
+        return this.phone = phone;
+    }
 
 
     public void setName(String name) throws EmptyInputException {

@@ -5,13 +5,17 @@ import com.example.barber.utils.exception.Trigger;
 
 public class BarberBean extends ProfileBean {
 
+    protected String barberShopName;
     protected String address;
     protected String city;
-    protected String phone;
     protected String hours;
     protected String description;
     protected String[] services;
     protected String[] reviews;
+
+
+
+    protected String username;
 
     public final Trigger trigger = new Trigger();
 
@@ -26,7 +30,6 @@ public class BarberBean extends ProfileBean {
         this.address = barberModel.getAddress();
         this.city = barberModel.getCity();
         this.username = barberModel.getUsername();
-        this.phone = barberModel.getPhone();
         this.hours = barberModel.getHours();
         this.description = barberModel.getDescription();
         this.services = barberModel.getServices();
@@ -41,7 +44,6 @@ public class BarberBean extends ProfileBean {
         this.address = barberBean.getAddress();
         this.city = barberBean.getCity();
         this.username = barberBean.getUsername();
-        this.phone = barberBean.getPhone();
         this.hours = barberBean.getHours();
         this.description = barberBean.getDescription();
         this.services = barberBean.getServices();
@@ -49,56 +51,54 @@ public class BarberBean extends ProfileBean {
     }
 
     // Getter e Setter
+
+
+
+    //getter
     public String getAddress() {
         return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getCity() {
         return city;
     }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
     public String getHours() {
         return hours;
-    }
-
-    public void setHours(String hours) {
-        this.hours = hours;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String[] getServices() {
         return services;
     }
 
-    public void setServices(String[] services) {
-        this.services = services;
-    }
-
     public String[] getReviews() {
         return reviews;
+    }
+
+
+    //Setter
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setHours(String hours) {
+        this.hours = hours;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setServices(String[] services) {
+        this.services = services;
     }
 
     public void setReviews(String[] reviews) {

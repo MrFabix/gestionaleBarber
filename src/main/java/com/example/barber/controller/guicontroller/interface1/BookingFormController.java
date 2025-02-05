@@ -35,24 +35,33 @@ public class BookingFormController {
 
     // Handle the form submission
     @FXML
-    private void handleBooking() {
-        String name = nameField.getText();
-        String phone = phoneField.getText();
-        String date = appointmentDatePicker.getValue() != null ? appointmentDatePicker.getValue().toString() : "No date selected";
-        String service = serviceComboBox.getValue();
-        String notes = notesField.getText();
-        String email = emailField.getText();
+    private void handleBooking(ActionEvent event) {
+        try{
+            switchPage.replaceScene(event, "/homepageUser.fxml");
+            String name = nameField.getText();
+            String phone = phoneField.getText();
+            String date = appointmentDatePicker.getValue() != null ? appointmentDatePicker.getValue().toString() : "No date selected";
+            String service = serviceComboBox.getValue();
+            String notes = notesField.getText();
+            String email = emailField.getText();
 
-        // Handle booking logic here (e.g., save to database, send confirmation, etc.)
-        System.out.println("Booking Details:");
-        System.out.println("Name: " + name);
-        System.out.println("Phone: " + phone);
-        System.out.println("Appointment Date: " + date);
-        System.out.println("Service: " + service);
-        System.out.println("Notes: " + notes);
-        System.out.println("Email: " + email);
+            // Handle booking logic here (e.g., save to database, send confirmation, etc.)
+            System.out.println("Booking Details:");
+            System.out.println("Name: " + name);
+            System.out.println("Phone: " + phone);
+            System.out.println("Appointment Date: " + date);
+            System.out.println("Service: " + service);
+            System.out.println("Notes: " + notes);
+            System.out.println("Email: " + email);
 
-        // Add your logic for saving or sending booking information here.
+
+
+
+            // Add your logic for saving or sending booking information here.
+        }catch(SystemException e){
+            ErrorDialog.getInstance().handleException(e);
+        }
+
     }
 
     @FXML

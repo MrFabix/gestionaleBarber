@@ -11,13 +11,113 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Query {
-    //TODO metodo per l'inserimento di un utente
-    /*public void insertUser(UserModel userModel) throws SystemException{
-        String query = "INSERT INTO `user`(`username`,`password`,`email`,`ruolo`) VALUES(?,?,?,?);";
+
+
+    public void insertBarber(BarberModel barberModel) throws SystemException{
+        System.out.print("Stai inserendo il barbieree");
+        String query = "INSERT INTO barber (username, name, address, city, phone, email) VALUES (?,?,?,?,?,?)";
         try(PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)){
-            preparedStatement.setString(1, UserModel.);
+            //Impostiamo i parametri della query
+            System.out.println("Username del barbiere"+ barberModel.getUsername());
+            preparedStatement.setString(1, barberModel.getUsername());
+            System.out.println("Name del barbiere"+ barberModel.getName());
+            preparedStatement.setString(2, barberModel.getName());
+            System.out.println("address del barbiere"+ barberModel.getAddress());
+            preparedStatement.setString(3, barberModel.getAddress());
+            System.out.println("city del barbiere"+ barberModel.getCity());
+            preparedStatement.setString(4, barberModel.getCity());
+            System.out.println("phone del barbiere"+ barberModel.getPhone());
+            preparedStatement.setString(5, barberModel.getPhone());
+            System.out.println("email del barbiere"+ barberModel.getEmail());
+            preparedStatement.setString(6, barberModel.getEmail());
+            int rowsAffected = preparedStatement.executeUpdate();
+            if(rowsAffected == 0){
+                System.out.print("Il numero di riche inserite è 0");
+
+            }
+
+        } catch (SQLException e) {
+            SystemException exception = new SystemException();
+            exception.initCause(e);
+            throw exception;
+        } catch (SystemException e ){
+            throw new RuntimeException(e);
         }
-    }*/
+
+
+    }
+
+
+    public void insertUser(UserModel userModel) throws SystemException {
+        System.out.print("stai inserendo lo user sei dentro il metodo");
+        String query = "INSERT INTO user (name, surname, gender, email, username, phone) VALUES (?,?,?,?,?,?)";
+        try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)){
+
+            //Imposta i parametri della query
+            preparedStatement.setString(1, userModel.getName());
+            preparedStatement.setString(2, userModel.getSurname());
+
+            preparedStatement.setString(3, userModel.getGender());
+            preparedStatement.setString(4, userModel.getEmail());
+            preparedStatement.setString(5, userModel.getUsername());
+            preparedStatement.setString(6, userModel.getPhone());
+            int rowsAffected = preparedStatement.executeUpdate();
+            //TODO domanda da fare al pellegrini???
+            if (rowsAffected == 0) {
+                System.out.println("Il numero di righe inserite è 0 c'è un errore");
+            }else{
+
+                System.out.println("i dati sono inseriti ");
+            }
+        }catch(SQLException e){
+
+            System.out.println("Errore nella ricerca dell'utente nel database");
+            // Stampa un messaggio di errore e lancia una SystemException
+
+            SystemException exception = new SystemException();
+            exception.initCause(e);
+            throw exception;
+
+        } catch (SystemException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        //TODO manca da implementare l'inserimento di un immagine del profilo
+    }
+
+    public void insertCredential(CredentialsModel credentialsModel) throws SystemException {
+        String query = "INSERT INTO credentials (username, password, type) VALUES (?,?,?)";
+        try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)){
+
+            //Imposta i parametri della query
+            System.out.println("Sei nell'insert credential "+ credentialsModel.getUsername());
+            preparedStatement.setString(1, credentialsModel.getUsername());
+            preparedStatement.setString(2, credentialsModel.getPassword());
+            preparedStatement.setString(3, credentialsModel.getType());
+            int rowsAffected = preparedStatement.executeUpdate();
+            if (rowsAffected == 0) {
+                System.out.println("Il numero di righe inserite è 0 c'è un errore");
+            }else{
+
+                System.out.println("i dati sono inseriti ");
+            }
+
+        }catch(SQLException e){
+
+            System.out.println("Errore nell'inserimento dell'utente nel database");
+            // Stampa un messaggio di errore e lancia una SystemException
+            SystemException exception = new SystemException();
+            exception.initCause(e);
+            throw exception;
+
+        } catch (SystemException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
     public boolean searchUserInLogged(CredentialsModel credentialsModel) throws SystemException {
 
         // Correggi la query SQL con il segno di uguaglianza per la password

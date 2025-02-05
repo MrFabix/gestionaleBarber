@@ -55,7 +55,7 @@ public class LoginController {
             if (type.equals("user")) {
                 sp.replaceScene(event, "/homepageUser.fxml");
             } else {
-                sp.replaceScene(event, "/homepageBarber.fxml");
+                sp.replaceScene(event, "/BarberItem.fxml");
             }
 
         } catch (EmptyInputException e) {

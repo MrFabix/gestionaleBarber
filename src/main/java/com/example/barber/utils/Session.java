@@ -6,6 +6,8 @@ import com.example.barber.utils.bean.BarberBean;
 import com.example.barber.utils.bean.*;
 
 public class Session {
+
+    //TODO modificare da Admin a moderatore il nome del super utente a de angelis non piace
     //dichiarazione tipi di ruoli
     private static final String TYPE_USER= "User";
     private static final String TYPE_ADMIN= "Admin";

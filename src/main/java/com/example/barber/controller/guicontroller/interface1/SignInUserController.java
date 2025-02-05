@@ -2,10 +2,13 @@ package com.example.barber.controller.guicontroller.interface1;
 
 
 import com.example.barber.controller.appcontroller.SignInAppController;
+import com.example.barber.utils.bean.CredentialsBean;
 import com.example.barber.utils.bean.SignInBean;
+import com.example.barber.utils.bean.UserBean;
 import com.example.barber.utils.exception.ErrorDialog;
-import com.example.barber.utils.exception.myexception.SystemException;
+import com.example.barber.utils.exception.myexception.*;
 import com.example.barber.utils.switchPage.SwitchPage;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -18,27 +21,46 @@ import java.io.IOException;
 
 public class SignInUserController {
 
+    //Dichiaro uno UserBean che prende tutti i details di clienti(Name, surname, e-mail, telephone, gender)
+    UserBean userBean = new UserBean();
+
+    //Dichiaro un credentialBean per il fatto che è lui che si occupa di prendere le credenziali(Username, Pswd, Type)
+
+
+
+    private SwitchPage sp = new SwitchPage();
+
     @FXML
     private TextField usernameField;
     @FXML
     private TextField emailField;
     @FXML
-    private TextField emailRepeatField;
-    @FXML
-    private Button signInButton;
+    private Button registrationButton;
     @FXML
     private PasswordField passwordField;
     @FXML
     private PasswordField confirmPasswordField;
+    @FXML
+    private TextField telephone;
+    @FXML
+    private TextField name;
+    @FXML
+    private TextField surname;
+    @FXML
+    private ComboBox<String> genderField;
+
+    private String roleField;
 
     @FXML
-    private ComboBox ruolo;
-
-    private SwitchPage sp = new SwitchPage();
-
-    private void registrationButton(ActionEvent event){
-
+    public void initialize() {
+        genderField.getItems().addAll("Male", "Female");
     }
+
+
+
+
+
+
     @FXML
     private void backToWelcomePage(ActionEvent event) throws IOException {
         try{
@@ -47,11 +69,56 @@ public class SignInUserController {
             ErrorDialog.getInstance().handleException(e);
         }
     }
-    @FXML
-    private void signIn(ActionEvent event){
 
-        SignInAppController controller = new SignInAppController();
-        SignInBean signinBean = new SignInBean(usernameField.getText(), passwordField.getText(), emailField.getText(), ruolo.getValue().toString());
-        controller.registration(signinBean);
+    @FXML
+    private void signInUser(ActionEvent event){
+
+        CredentialsBean credentialBean;
+        SignInAppController appController;
+
+        try{
+            System.out.println("Sei qui");
+            credentialBean = new CredentialsBean();
+            //System.out.println("password is too short" + credentialBean.getPassword());
+            //Carichiamo il credentialBean con i campi delle credenziali.
+            credentialBean.setUsername(usernameField.getText());
+            //TODO inserire entrambi all'interno del setPassword del credential bean cambiare
+
+            credentialBean.setPassword(passwordField.getText(), confirmPasswordField.getText());
+
+            roleField = "user";
+
+            System.out.println("La password che sta dentro credentialBean    "+credentialBean.getPassword());
+            credentialBean.setType(roleField);
+
+
+            //Carichiamo lo UserBean con le informazioni del cliente
+            userBean.setName(name.getText());
+            userBean.setSurname(surname.getText());
+            userBean.setGender(genderField.getValue());
+            userBean.setEmail(emailField.getText());
+            userBean.setUsername(usernameField.getText());
+            userBean.setPhone(telephone.getText());
+
+            appController = new SignInAppController();
+
+
+            //Spediamo tutto al controller dello user che poi si interfaccia con il livello sottostante ancora
+            appController.registerUser(userBean, credentialBean);
+            sp.replaceScene(event, "/welcomePage.fxml");
+
+        }catch( EmptyInputException e) {
+            ErrorDialog.getInstance().handleException(e);
+        } catch (SystemException e) {
+            ErrorDialog.getInstance().handleException(e);
+        } catch (UsernameAlreadyTakenException e) {
+            ErrorDialog.getInstance().handleException(e);
+        } catch (EmailNotValidException e) {
+            ErrorDialog.getInstance().handleException(e);
+        } catch (PasswordNotCompliantException e) {
+            ErrorDialog.getInstance().handleException(e);
+        } catch (PasswordNotEquals e) {
+            ErrorDialog.getInstance().handleException(e);
+        }
     }
 }

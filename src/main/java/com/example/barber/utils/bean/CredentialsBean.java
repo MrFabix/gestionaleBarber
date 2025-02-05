@@ -3,6 +3,7 @@ package com.example.barber.utils.bean;
 import com.example.barber.utils.exception.Trigger;
 import com.example.barber.utils.exception.myexception.EmptyInputException;
 import com.example.barber.utils.exception.myexception.PasswordNotCompliantException;
+import com.example.barber.utils.exception.myexception.PasswordNotEquals;
 
 public class CredentialsBean {
 
@@ -11,44 +12,54 @@ public class CredentialsBean {
     public CredentialsBean() {
     }
 
-    public CredentialsBean(String Username, String Password, String type){
-        this.Username = Username;
-        this.Password = Password;
+    public CredentialsBean(String username, String password, String type){
+        this.username = username;
+        this.password = password;
         this.type = type;
 
     }
 
-    protected String Username;
-    protected String Password;
+    protected String username;
+    protected String password;
     protected String type;
 
+
     public String getUsername() {
-        return Username;
+        return username;
     }
     public String getPassword() {
-        return Password;
+        return password;
     }
     public String getType() {
         return type;
     }
-    public  void setUsername(String Username) throws EmptyInputException {
+
+
+
+   public  void setUsername(String Username) throws EmptyInputException {
 
         if (Username.equals("")) {
             trigger.throwEmptyInputException("Username");
         } else {
-            this.Username = Username;
+            this.username = Username;
         }
     }
 
-    public void setPassword(String Password) throws EmptyInputException, PasswordNotCompliantException {
-        if (Password.equals("")) {
+    public void setPassword(String password, String confirmPassword) throws EmptyInputException, PasswordNotCompliantException, PasswordNotEquals {
+       if (password.equals("")) {
             trigger.throwEmptyInputException("Password");
-        } else if (Password.length() < 8) {
+        } else if (password.length() < 8) {
+            System.out.println("password is too short" + password);
             trigger.throwPasswordNotCompliantException();
-        } else {
-            this.Password = Password;
+        }else if(!password.equals(confirmPassword)){
+           System.out.println("password does not match");
+            trigger.throwPasswordNotEquals();
+            //ho creato una mia eccezione, trigger chiama il metodo che richiama la mia eccezione
+        }else {
+            this.password = password;
         }
     }
+
 
     public void setType(String type) {
         this.type = type;
