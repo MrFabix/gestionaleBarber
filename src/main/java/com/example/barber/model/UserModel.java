@@ -7,7 +7,7 @@ public class UserModel extends ProfileModel {
 
 
 
-    private String name;
+
     private String surname;
     private String gender;
 

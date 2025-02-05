@@ -15,8 +15,6 @@ public class BarberBean extends ProfileBean {
 
 
 
-    protected String username;
-
     public final Trigger trigger = new Trigger();
 
     // Costruttore di default
