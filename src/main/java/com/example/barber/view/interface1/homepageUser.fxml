@@ -3,9 +3,34 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface1.HomePageUserController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.barber.controller.guicontroller.interface1.HomePageModeratorGuiController">
+
    <!-- Includi il menu di navigazione -->
    <fx:include fx:id="navigationBar" source="navbar.fxml" />
-   <ListView fx:id="barberListView" layoutX="258.0" layoutY="96.0" prefHeight="442.0" prefWidth="515.0" />
-   <TextField fx:id="searchBarber" layoutX="258.0" layoutY="38.0" onAction="#search" prefHeight="36.0" prefWidth="156.0" promptText="Search" />
+
+   <!-- Campo di ricerca per filtrare i messaggi segnalati -->
+   <TextField fx:id="searchReportedMessage" layoutX="258.0" layoutY="38.0"
+              onAction="#search" prefHeight="36.0" prefWidth="200.0"
+              promptText="Cerca messaggi segnalati" />
+
+   <!-- Lista dei messaggi segnalati -->
+   <ListView fx:id="reportedMessagesListView" layoutX="258.0" layoutY="96.0"
+             prefHeight="300.0" prefWidth="515.0" />
+
+   <!-- Dettagli del messaggio selezionato -->
+   <TextArea fx:id="messageDetails" layoutX="258.0" layoutY="410.0"
+             prefHeight="100.0" prefWidth="515.0"
+             editable="false" wrapText="true"
+             promptText="Dettagli del messaggio selezionato..." />
+
+   <!-- Pulsanti di moderazione -->
+   <Button fx:id="approveButton" layoutX="258.0" layoutY="520.0"
+           text="Approva" onAction="#approveMessage" />
+
+   <Button fx:id="deleteButton" layoutX="370.0" layoutY="520.0"
+           text="Elimina" onAction="#deleteMessage"
+           style="-fx-background-color: red; -fx-text-fill: white;" />
+
 </AnchorPane>

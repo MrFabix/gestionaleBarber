@@ -1,14 +1,14 @@
 package com.example.barber.model;
 
-import com.example.barber.utils.bean.AdminBean;
+import com.example.barber.utils.bean.BarberBean;
 
-public class AdminModel extends ProfileModel {
+public class ModeratorModel extends ProfileModel {
 
-    public AdminModel() {
+    public ModeratorModel() {
         super();
     }
 
-    public AdminModel(AdminBean adminBean) {
+    public ModeratorModel(BarberBean adminBean) {
         super(adminBean.getId(), adminBean.getUsername(), adminBean.getEmail(), adminBean.getImg(), adminBean.getName(), adminBean.getPhone());
     }
 

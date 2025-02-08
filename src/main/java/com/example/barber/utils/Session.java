@@ -1,6 +1,6 @@
 package com.example.barber.utils;
 
-import com.example.barber.model.AdminModel;
+import com.example.barber.model.ModeratorModel;
 import com.example.barber.model.BarberModel;
 import com.example.barber.model.UserModel;
 import com.example.barber.utils.bean.BarberBean;
@@ -17,7 +17,7 @@ public class Session {
 
     private static Session session;
     private UserBean userBean;
-    private AdminBean adminBean;
+    private ModeratorBean moderatorBean;
     private BarberBean barberBean;
     private String type;
 
@@ -47,9 +47,9 @@ public class Session {
         }
     }
 
-        public void setAdmin(AdminModel adminModel) {
-            if (this.adminBean == null) {
-                adminBean = new AdminBean(adminModel);
+        public void setModerator(ModeratorModel moderatorModel) {
+            if (this.moderatorBean == null) {
+                moderatorBean = new ModeratorBean(moderatorModel);
                 type = TYPE_ADMIN;
             }
         }
