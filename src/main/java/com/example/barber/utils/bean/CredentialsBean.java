@@ -36,12 +36,12 @@ public class CredentialsBean {
 
 
 
-   public  void setUsername(String Username) throws EmptyInputException {
+   public  void setUsername(String username) throws EmptyInputException {
 
-        if (Username.equals("")) {
+        if (username.equals("")) {
             trigger.throwEmptyInputException("Username");
         } else {
-            this.username = Username;
+            this.username = username;
         }
     }
 

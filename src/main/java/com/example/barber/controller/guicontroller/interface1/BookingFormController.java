@@ -2,6 +2,7 @@ package com.example.barber.controller.guicontroller.interface1;
 
 import com.example.barber.controller.appcontroller.BarberAppController;
 import com.example.barber.utils.Session;
+import com.example.barber.utils.bean.AppointmentsBean;
 import com.example.barber.utils.bean.BarberBean;
 import com.example.barber.utils.bean.IdBean;
 import com.example.barber.utils.exception.ErrorDialog;
@@ -15,6 +16,9 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
 public class BookingFormController {
+
+    AppointmentsBean appointmentsBean = new AppointmentsBean();
+
 
     @FXML
     private TextField nameField;
@@ -33,10 +37,14 @@ public class BookingFormController {
 
     SwitchPage switchPage = new SwitchPage();
 
+
+
     // Handle the form submission
     @FXML
     private void handleBooking(ActionEvent event) {
         try{
+            IdBean idBean;
+
             switchPage.replaceScene(event, "/homepageUser.fxml");
             String name = nameField.getText();
             String phone = phoneField.getText();
@@ -54,6 +62,7 @@ public class BookingFormController {
             System.out.println("Notes: " + notes);
             System.out.println("Email: " + email);
 
+            //Carichiamo l'appointmentsBean
 
 
 
@@ -83,7 +92,6 @@ public class BookingFormController {
         bookButton.setUserData(id.getId());
         // Print user information (for debugging)
         if (session.getUser() != null) {
-
             //Inserisco il Nome della persona che ha effettuato il login
             nameField.setText(session.getUser().getName()+" "+session.getUser().getSurname());
             emailField.setText(session.getUser().getEmail());

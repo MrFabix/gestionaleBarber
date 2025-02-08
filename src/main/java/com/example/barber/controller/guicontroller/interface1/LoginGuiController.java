@@ -11,10 +11,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import java.io.IOException;
 
-
-public class LoginController {
+public class LoginGuiController {
 
     @FXML
     private TextField usernameField;
@@ -34,16 +32,6 @@ public class LoginController {
         LoginAppController controller;
 
         try {
-            // Verifica se il campo username è vuoto
-            if (usernameField.getText().isEmpty()) {
-                throw new EmptyInputException("username");
-            }
-
-            // Verifica se il campo password è vuoto
-            if (passwordField.getText().isEmpty()) {
-                throw new EmptyInputException("password");
-            }
-
             // Se la checkbox è selezionata, imposta il tipo a "barber"
             if (radioBarber.isSelected()) {
                 type = "barber";
@@ -66,10 +54,7 @@ public class LoginController {
                 sp.replaceScene(event, "/homepageAdmin.fxml");
             }
 
-        } catch (EmptyInputException e) {
-            // Gestisce il caso dei campi vuoti mostrando un messaggio di errore
-            ErrorDialog.getInstance().handleException(e);
-        } catch (SystemException | WrongCredentialsException e) {
+        } catch (SystemException | WrongCredentialsException | EmptyInputException e) {
             // Gestisce altri tipi di eccezioni
             ErrorDialog.getInstance().handleException(e);
         }

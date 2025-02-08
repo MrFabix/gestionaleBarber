@@ -49,8 +49,10 @@ public class BarberDetailController {
             barberPhone.setText(barberBean.getPhone());
             barberHours.setText(barberBean.getHours());
             description.setText(barberBean.getDescription());
+
             //aggiugni attirbuto idBarber al button per prenotare
             bookButton.setUserData(barberBean.getId());
+
 
 
 
@@ -85,6 +87,7 @@ public class BarberDetailController {
 
     // Metodo per prenotare un appuntamento
     public void bookAppointment(ActionEvent event) {
+
 
         System.out.println("BOOK APPOINTEMENT");
         // prendo Id dal button

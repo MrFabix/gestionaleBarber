@@ -73,23 +73,23 @@ public class SignInUserController {
     @FXML
     private void signInUser(ActionEvent event){
 
-        CredentialsBean credentialBean;
+        CredentialsBean credentialsBean;
         SignInAppController appController;
 
         try{
             System.out.println("Sei qui");
-            credentialBean = new CredentialsBean();
-            //System.out.println("password is too short" + credentialBean.getPassword());
-            //Carichiamo il credentialBean con i campi delle credenziali.
-            credentialBean.setUsername(usernameField.getText());
-            //TODO inserire entrambi all'interno del setPassword del credential bean cambiare
+            credentialsBean = new CredentialsBean();
+            //System.out.println("password is too short" + credentialsBean.getPassword());
+            //Carichiamo il credentialsBean con i campi delle credenziali.
+            credentialsBean.setUsername(usernameField.getText());
 
-            credentialBean.setPassword(passwordField.getText(), confirmPasswordField.getText());
+
+            credentialsBean.setPassword(passwordField.getText(), confirmPasswordField.getText());
 
             roleField = "user";
 
-            System.out.println("La password che sta dentro credentialBean    "+credentialBean.getPassword());
-            credentialBean.setType(roleField);
+            System.out.println("La password che sta dentro credentialsBean    "+credentialsBean.getPassword());
+            credentialsBean.setType(roleField);
 
 
             //Carichiamo lo UserBean con le informazioni del cliente
@@ -104,7 +104,7 @@ public class SignInUserController {
 
 
             //Spediamo tutto al controller dello user che poi si interfaccia con il livello sottostante ancora
-            appController.registerUser(userBean, credentialBean);
+            appController.registerUser(userBean, credentialsBean);
             sp.replaceScene(event, "/welcomePage.fxml");
 
         }catch( EmptyInputException e) {
