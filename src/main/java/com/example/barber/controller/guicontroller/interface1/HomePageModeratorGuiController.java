@@ -14,7 +14,7 @@ public class HomePageModeratorGuiController {
 
     @FXML
     private void initialize() {
-       //TODO
+
 
     }
 

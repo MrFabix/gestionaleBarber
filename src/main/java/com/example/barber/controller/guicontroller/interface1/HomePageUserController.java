@@ -60,12 +60,10 @@ public class HomePageUserController implements Observer, Initializable {
     private void search() {
         String query = searchBarber.getText().trim();
         this.barberListView.getItems().clear(); // Pulisci la lista prima di riempirla di nuovo
-
         if (query.isEmpty()) {
             initialize(null, null);
             return;
         }
-
         try {
             ListBarberEngineering listBarber = new ListBarberEngineering();
             GenericBeanList list = new GenericBeanList(this);
