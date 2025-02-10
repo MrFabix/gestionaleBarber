@@ -51,8 +51,6 @@ public class HomePageUserController implements Observer, Initializable {
                 this.barberListView.getItems().add(pane);
             } catch (Exception e) {
                 ErrorDialog.getInstance().handleException(e);
-                //stampo l'errore
-                e.printStackTrace();
             }
         }
     }
