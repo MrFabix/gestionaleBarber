@@ -2,9 +2,11 @@ package com.example.barber.controller.appcontroller;
 
 import com.example.barber.model.BarberModel;
 import com.example.barber.model.CredentialsModel;
+import com.example.barber.model.ModeratorModel;
 import com.example.barber.model.UserModel;
 import com.example.barber.utils.bean.CredentialsBean;
 import com.example.barber.utils.dao.BarberDAO;
+import com.example.barber.utils.dao.ModeratorDAO;
 import com.example.barber.utils.dao.UserDAO;
 import com.example.barber.utils.exception.Trigger;
 import com.example.barber.utils.exception.myexception.SystemException;
@@ -53,8 +55,18 @@ public class LoginAppController {
                 trigger.throwWrongCredentials();
                 Session.getInstance().deleteSession();
             }
-        }else {
-            //Sezione Admin
+        }else if (credenialBeans.getType().equalsIgnoreCase("moderator")) {
+            System.out.println("Moderator");
+            ModeratorModel moderatorModel = null;
+            CredentialsModel credentialsModel = new CredentialsModel(credenialBeans);
+            if (loginDAO.checkIsRegistered(credentialsModel)) {
+                ModeratorDAO moderatorDAO = new ModeratorDAO();
+                moderatorModel = moderatorDAO.searchModeratorByUsername(credenialBeans.getUsername());
+                Session.getInstance().setModerator(moderatorModel);
+            } else {
+                trigger.throwWrongCredentials();
+                Session.getInstance().deleteSession();
+            }
 
 
 

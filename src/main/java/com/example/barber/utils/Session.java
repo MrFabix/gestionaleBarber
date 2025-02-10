@@ -8,10 +8,9 @@ import com.example.barber.utils.bean.*;
 
 public class Session {
 
-    //TODO modificare da Admin a moderatore il nome del super utente a de angelis non piace
     //dichiarazione tipi di ruoli
     private static final String TYPE_USER= "User";
-    private static final String TYPE_ADMIN= "Admin";
+    private static final String TYPE_MODERATOR = "Moderator";
     private static final String TYPE_BARBER= "Barbers";
 
 
@@ -50,7 +49,7 @@ public class Session {
         public void setModerator(ModeratorModel moderatorModel) {
             if (this.moderatorBean == null) {
                 moderatorBean = new ModeratorBean(moderatorModel);
-                type = TYPE_ADMIN;
+                type = TYPE_MODERATOR;
             }
         }
 

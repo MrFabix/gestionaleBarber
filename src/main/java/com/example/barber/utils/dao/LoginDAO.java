@@ -8,6 +8,7 @@ import com.example.barber.model.CredentialsModel;
 public class LoginDAO {
     Query query = new Query();
     public boolean checkIsRegistered(CredentialsModel credentialsModel) throws SystemException {
+        System.out.println("LoginDAO.checkIsRegistered");
         return query.searchUserInLogged(credentialsModel);
     }
 }

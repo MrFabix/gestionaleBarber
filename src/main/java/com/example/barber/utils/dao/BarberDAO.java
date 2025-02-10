@@ -16,9 +16,6 @@ public class BarberDAO {
 
     }
 
-
-
-
     public BarberModel getBarberByUsername(String username) throws SystemException {
         return query.searchBarberByUsername(username);
     }

@@ -1,18 +1,18 @@
 package com.example.barber.utils.db;
 
 import com.example.barber.model.BarberModel;
+import com.example.barber.model.ModeratorModel;
 import com.example.barber.model.UserModel;
 import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.model.CredentialsModel;
 
+import javax.swing.text.Style;
 import java.io.FileNotFoundException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Query {
-
-
     public void insertBarber(BarberModel barberModel) throws SystemException{
         System.out.print("Stai inserendo il barbieree");
         String query = "INSERT INTO barber (username, name, address, city, phone, email) VALUES (?,?,?,?,?,?)";
@@ -120,6 +120,8 @@ public class Query {
 
     public boolean searchUserInLogged(CredentialsModel credentialsModel) throws SystemException {
 
+        System.out.println("Stai cercando l'utente nel database");
+
         // Correggi la query SQL con il segno di uguaglianza per la password
         String query = "SELECT * FROM credentials WHERE username = ? AND password = ? AND type = ?";
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
@@ -141,6 +143,7 @@ public class Query {
     }
 
     public UserModel searchUserByUsername(String username) throws SystemException {
+        System.out.println("Stai cercando l'utente nel database");
         String query = "SELECT * FROM user WHERE username = ?";
         UserModel userModel = null;
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
@@ -159,6 +162,7 @@ public class Query {
             return userModel;
 
         } catch (SQLException e) {
+
             SystemException exception = new SystemException();
             exception.initCause(e);
             throw exception;
@@ -270,6 +274,30 @@ public class Query {
                 barberModel.setId(rs.getInt("id"));
             }
             return barberModel;
+        } catch (SQLException e) {
+            SystemException exception = new SystemException();
+            exception.initCause(e);
+            throw exception;
+        }
+    }
+
+    //query per prendere i dettagli di un Moderator tramite Username
+    public ModeratorModel searchModeratorByUsername(String username) throws SystemException {
+
+        String query = "SELECT * FROM moderator WHERE username = ?";
+        ModeratorModel moderatorModel = null;
+        try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
+            preparedStatement.setString(1, username);
+            ResultSet rs = preparedStatement.executeQuery();
+            if (rs.next()) {
+                moderatorModel = new ModeratorModel();
+                moderatorModel.setUsername(rs.getString("username"));
+                moderatorModel.setName(rs.getString("name"));
+                moderatorModel.setEmail(rs.getString("email"));
+                moderatorModel.setPhone(rs.getString("phone"));
+                moderatorModel.setId(rs.getInt("id"));
+            }
+            return moderatorModel;
         } catch (SQLException e) {
             SystemException exception = new SystemException();
             exception.initCause(e);

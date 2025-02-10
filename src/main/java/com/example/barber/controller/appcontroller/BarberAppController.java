@@ -11,6 +11,7 @@ public class BarberAppController {
     Trigger trigger = new Trigger();
     SwitchPage sp = new SwitchPage();
     public BarberAppController() {
+        // Costruttore
     }
 
     //funzione per prendere i dettagli del barbiere dal DB

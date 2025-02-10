@@ -39,6 +39,7 @@ public class CredentialsBean {
    public  void setUsername(String username) throws EmptyInputException {
 
         if (username.equals("")) {
+            //vuoto
             trigger.throwEmptyInputException("Username");
         } else {
             this.username = username;

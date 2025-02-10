@@ -12,7 +12,7 @@
 
     <!-- Campo di ricerca per filtrare i messaggi segnalati -->
     <TextField fx:id="searchReportedMessage" layoutX="258.0" layoutY="38.0"
-               onAction="#search" prefHeight="36.0" prefWidth="200.0"
+                prefHeight="36.0" prefWidth="200.0"
                promptText="Cerca messaggi segnalati" />
 
     <!-- Lista dei messaggi segnalati -->
@@ -27,10 +27,10 @@
 
     <!-- Pulsanti di moderazione -->
     <Button fx:id="approveButton" layoutX="258.0" layoutY="520.0"
-            text="Approva" onAction="#approveMessage" />
+            text="Approva"  />
 
     <Button fx:id="deleteButton" layoutX="370.0" layoutY="520.0"
-            text="Elimina" onAction="#deleteMessage"
+            text="Elimina"
             style="-fx-background-color: red; -fx-text-fill: white;" />
 
 </AnchorPane>

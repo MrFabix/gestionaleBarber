@@ -36,27 +36,30 @@ public class LoginGuiController {
             if (radioBarber.isSelected()) {
                 type = "barber";
             } else if (radioAdmin.isSelected()) {
-                type = "admin";
+                type = "moderator";
             }
 
+            System.out.println("type: " + type);
 
             // Inizializza il controller e tenta il login
             controller = new LoginAppController();
             CredentialsBean credentialsBean = new CredentialsBean(usernameField.getText(), passwordField.getText(), type);
             controller.login(credentialsBean);
-
             // Se il login è andato a buon fine, mostra la pagina corrispondente
             if (type.equals("user")) {
                 sp.replaceScene(event, "/homepageUser.fxml");
             } else if (type.equals("barber")) {
                 sp.replaceScene(event, "/homepageBarber.fxml");
+
             } else {
-                sp.replaceScene(event, "/homepageAdmin.fxml");
+                sp.replaceScene(event, "/homepageModerator.fxml");
             }
 
-        } catch (SystemException | WrongCredentialsException | EmptyInputException e) {
+        } catch (SystemException | WrongCredentialsException e) {
             // Gestisce altri tipi di eccezioni
             ErrorDialog.getInstance().handleException(e);
+
+
         }
 
 

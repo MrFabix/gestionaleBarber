@@ -1,6 +1,6 @@
 package com.example.barber.utils.switchPage;
 
-import com.example.barber.StartApplication;
+import com.example.barber.Main;
 import com.example.barber.controller.guicontroller.interface1.BarberDetailController;
 import com.example.barber.controller.guicontroller.interface1.BookingFormController;
 import com.example.barber.utils.bean.IdBean;
@@ -17,7 +17,7 @@ import java.io.IOException;
 public class SwitchPage {
 
     public void replaceScene(ActionEvent event, String fxml) throws SystemException {
-        FXMLLoader fxmlLoader = new FXMLLoader(StartApplication.class.getResource(fxml));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = null;
         try {
@@ -42,7 +42,7 @@ public class SwitchPage {
 
     //switchPage per passare l'id del barbiere
     public void switchPageId(String fxml, ActionEvent event, IdBean id) throws SystemException {
-        FXMLLoader fxmlLoader = new FXMLLoader(StartApplication.class.getResource(fxml));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = null;
         System.out.println("SWITCH PAGE ID: " + fxml + " " + id.getId());
