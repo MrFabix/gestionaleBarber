@@ -17,10 +17,7 @@ import java.util.ResourceBundle;
 
 public class PageManageUserAppointmentsGuiController implements Observer, Initializable {
 
-    //TODO manca da -> costruire la pagina che accolga gli appuntamenti, 3 riquadri
-    //Pendenti Accetati Rifiutati
-    //Quindi 3 liste
-    //Bisogna costruirla con SceneBuilder
+
 
     @FXML
     private ListView<Pane> listViewPendingAppointments;
