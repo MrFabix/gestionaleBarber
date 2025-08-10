@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="150.0" prefWidth="550.0" style="-fx-background-color: #dc0f3f; -fx-background-radius: 50;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nightsout.control.guicontroller.interface1.item.ManageRequestsItemGUIController1">
+   <children>
+      <Line endX="227.71786499023438" layoutX="134.0" layoutY="91.0" startX="-112.66917419433594" startY="-1.1444091796875E-5" stroke="#e8e7fc">
+         <effect>
+            <DropShadow />
+         </effect></Line>
+      <Label layoutX="29.0" layoutY="95.0" prefHeight="22.0" prefWidth="121.0" text="Data:" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="19.0" />
+         </font>
+      </Label>
+      <Label fx:id="ServizioDaInserire" layoutX="151.0" layoutY="119.0" prefHeight="22.0" prefWidth="189.0" text="Nome Servizio" textFill="#e8e7fc" AnchorPane.bottomAnchor="8.599999999999994">
+         <font>
+            <Font name="Arial Bold" size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="28.0" layoutY="119.0" prefHeight="22.0" prefWidth="128.0" text="Servizio:" textFill="WHITE" AnchorPane.bottomAnchor="9.0">
+         <font>
+            <Font name="Arial Bold" size="19.0" />
+         </font>
+      </Label>
+      <Label fx:id="dataDaInserire" layoutX="153.0" layoutY="96.0" prefHeight="22.0" prefWidth="206.0" text="Data appuntamento " textFill="#e8e7fc">
+         <font>
+            <Font name="Arial Bold" size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="29.0" layoutY="14.0" prefHeight="22.0" prefWidth="247.0" text="Appuntamento Inviato a:" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="19.0" />
+         </font>
+      </Label>
+      <Label fx:id="nomeBarbiereDaInserire" layoutX="28.0" layoutY="47.0" prefHeight="22.0" prefWidth="206.0" text="Nome Barbiere" textFill="#e8e7fc">
+         <font>
+            <Font name="Arial Bold" size="19.0" />
+         </font>
+      </Label>
+      <Button fx:id="statoRichiesta" layoutX="330.0" layoutY="13.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="190.0" style="-fx-background-color: white; -fx-background-radius: 14;" text="Stato Richiesta">
+         <effect>
+            <DropShadow height="30.0" radius="14.5" spread="0.3" width="30.0" />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Button>
+      <Label layoutX="356.0" layoutY="96.0" prefHeight="22.0" prefWidth="121.0" text="orario:" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="19.0" />
+         </font>
+      </Label>
+      <Label fx:id="orarioDaInserire" layoutX="440.0" layoutY="96.0" prefHeight="22.0" prefWidth="121.0" text="Ora" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="19.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

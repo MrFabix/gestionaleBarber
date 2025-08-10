@@ -1,5 +1,8 @@
 package com.example.barber.controller.guicontroller.interface1;
 
+
+
+import com.example.barber.controller.guicontroller.interface1.item.BarberItemController;
 import com.example.barber.utils.bean.BarberBean;
 import com.example.barber.utils.engineering.ListBarberEngineering;
 import com.example.barber.utils.exception.ErrorDialog;
@@ -16,12 +19,21 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class HomePageUserController implements Observer, Initializable {
+public class HomePageClientGuiController implements Observer, Initializable {
+
+
+
 
     @FXML
     private ListView<Pane> barberListView;  // La ListView che mostrerà i barbieri
     @FXML
     private TextField searchBarber; // Barra di ricerca
+
+
+
+
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -34,6 +46,9 @@ public class HomePageUserController implements Observer, Initializable {
             ErrorDialog.getInstance().handleException(e);
         }
     }
+
+
+
 
     @Override
     public void update(Object ob) {

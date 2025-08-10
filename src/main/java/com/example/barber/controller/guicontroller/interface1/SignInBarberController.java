@@ -5,18 +5,15 @@ import com.example.barber.utils.bean.BarberBean;
 import com.example.barber.utils.bean.CredentialsBean;
 import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.myexception.*;
-import com.example.barber.utils.switchPage.SwitchPage;
+import com.example.barber.utils.ruoli.Role;
+import com.example.barber.utils.switchpage.SwitchPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-import java.io.IOException;
 
 public class SignInBarberController {
-    //TODO gestione della registrazione come barbiere
-
-    //Dichiariamo i bean per la registrazione
     BarberBean barberBean = new BarberBean();
     CredentialsBean credentialsBean = new CredentialsBean();
 
@@ -34,15 +31,13 @@ public class SignInBarberController {
     private PasswordField passwordField;
     @FXML
     private TextField usernameField;
-    @FXML
-    private PasswordField confirmPasswordField;
 
-    private String roleField;
+
 
     private SwitchPage sp = new SwitchPage();
 
     @FXML
-    private void backToWelcomePage(ActionEvent event) throws IOException {
+    private void backToWelcomePage(ActionEvent event){
         try {
             sp.replaceScene(event, "/welcomePage.fxml");
         } catch (SystemException e) {
@@ -52,7 +47,6 @@ public class SignInBarberController {
 
     @FXML
     private void signInBarber(ActionEvent event) {
-        CredentialsBean credentiaBean;
         SignInAppController appController;
         try {
             credentialsBean = new CredentialsBean();
@@ -60,10 +54,8 @@ public class SignInBarberController {
 
             //Credenziali
             credentialsBean.setUsername(usernameField.getText());
-            credentialsBean.setPassword(passwordField.getText(), confirmPasswordField.getText());
-
-            roleField = "barber";
-            credentialsBean.setType(roleField);
+            credentialsBean.setPassword(passwordField.getText());
+            credentialsBean.setType(Role.BARBER);
 
 
             //Carichiamo il barberBean
@@ -73,6 +65,7 @@ public class SignInBarberController {
             barberBean.setAddress(addressField.getText());
             barberBean.setEmail(emailField.getText());
             barberBean.setUsername(usernameField.getText());
+            System.out.println("Mandiamo bean ");
 
 
             //Passiamo tutto al controller che si occupa di gestire l'inserimento dela barbiere e delle sue credenziali
@@ -80,21 +73,9 @@ public class SignInBarberController {
             sp.replaceScene(event, "/welcomePage.fxml");
 
 
-        } catch (EmptyInputException e) {
-            ErrorDialog.getInstance().handleException(e);
-        } catch (EmailNotValidException e) {
-            ErrorDialog.getInstance().handleException(e);
-        } catch (PasswordNotCompliantException e) {
-            ErrorDialog.getInstance().handleException(e);
-        } catch (PasswordNotEquals e) {
-            ErrorDialog.getInstance().handleException(e);
-        } catch (SystemException e) {
-            ErrorDialog.getInstance().handleException(e);
-        } catch (UsernameAlreadyTakenException e) {
+        } catch (EmptyInputException | EmailNotValidException | PasswordNotCompliantException | SystemException |
+                 UsernameAlreadyTakenException e) {
             ErrorDialog.getInstance().handleException(e);
         }
-
-        //private void
-
     }
 }

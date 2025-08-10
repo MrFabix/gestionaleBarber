@@ -1,32 +1,34 @@
 package com.example.barber.model;
 import java.io.File;
+//La classe profile è una generalizzazione di barber e user, che andrà cambiato in client!!
+//TODO effettuare la modifica da user a client
 public abstract class ProfileModel {
     /*
         Questo è il Model del profilo, cioè contiene le informazioni IN COMUNE per gli Users
         e i Barber
      */
 
-protected int id ;
-protected String email;
-protected String phone;
-protected String username;
-protected File profileImg;
-protected String name; //Nome dell utente oppure nome del BarberShop
-protected ProfileModel() {}
+    protected int id ;
+    protected String email;
+    protected String phone;
+    protected String username;
+    protected File profileImg;
+    protected String name; //Nome dell utente oppure nome del BarberShop
+    protected ProfileModel() {}
 
 
-protected ProfileModel(String username) {
-this.username = username;
-}
+    protected ProfileModel(String username) {
+    this.username = username;
+    }
 
-protected ProfileModel(int id, String username, String email,  File profileImg, String name, String phone) {
-this.username = username;
-this.email = email;
-this.id = id;
-this.profileImg = profileImg;
-this.name = name;
-this.phone = phone;
-}
+    protected ProfileModel(int id, String username, String email,  File profileImg, String name, String phone) {
+    this.username = username;
+    this.email = email;
+    this.id = id;
+    this.profileImg = profileImg;
+    this.name = name;
+    this.phone = phone;
+    }
 
     //Getter
     public int getId() { return id; }

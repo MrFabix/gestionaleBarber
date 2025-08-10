@@ -6,8 +6,9 @@ public class BarberModel extends ProfileModel {
     private String city;
     private String address;
     private String description;
+    private String phone;
     private String hours;
-    private String[] services;
+    private ServiceModel services;
     private String[] reviews;
 
     // Costruttore di default
@@ -19,6 +20,7 @@ public class BarberModel extends ProfileModel {
     public BarberModel(BarberBean barberBean) {
         super(barberBean.getId(), barberBean.getUsername(), barberBean.getEmail(), barberBean.getImg(), barberBean.getName(), barberBean.getPhone());
         this.city = barberBean.getCity();
+        this.phone = barberBean.getPhone();
         this.address = barberBean.getAddress();
         this.hours = barberBean.getHours();
         this.description = barberBean.getDescription();
@@ -41,7 +43,7 @@ public class BarberModel extends ProfileModel {
 
     public String getHours() { return hours; }
 
-    public String[] getServices() {
+    public ServiceModel getServices() {
         return services;
     }
 
@@ -49,7 +51,7 @@ public class BarberModel extends ProfileModel {
         return reviews;
     }
 
-
+    public String getPhone(){return phone; }
 
     //Setter
     public void setCity(String city) {
@@ -68,9 +70,11 @@ public class BarberModel extends ProfileModel {
         this.hours = hours;
     }
 
-    public void setServices(String[] services) {
+    public void setServices(ServiceModel services) {
         this.services = services;
     }
+
+    public void setPhone(String phone) {this.phone = phone;}
 
     public void setReviews(String[] reviews) {
         this.reviews = reviews;

@@ -11,7 +11,8 @@ public class BarberDAO {
     Query query = new Query();
 
     public void addBarber(CredentialsModel credentialModel, BarberModel barberModel) throws SystemException {
-        query.insertCredential(credentialModel);
+        System.out.println("Sei dentro l' add barber");
+        query.insertCredentials(credentialModel);
         query.insertBarber(barberModel);
 
     }
@@ -31,6 +32,8 @@ public class BarberDAO {
     public BarberModel getBarberById(int id) throws SystemException {
         return query.searchBarberById(id);
     }
+
+
 
 
 

@@ -3,6 +3,10 @@ package com.example.barber.utils.bean;
 public class IdBean {
     private int id;
 
+    public IdBean() {
+
+    }
+
     // Costruttore corretto
     public IdBean(int id) {
         this.id = id;

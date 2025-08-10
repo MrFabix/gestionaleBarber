@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface1.PageManageUserAppointmentsGuiController">
+    <fx:include fx:id="navigationBar" source="navbar.fxml" />
+   <AnchorPane layoutX="233.0" prefHeight="600.0" prefWidth="666.0">
+      <children>
+         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-41.0" layoutY="230.0" prefHeight="31.0" prefWidth="255.0" text="Accepted" textFill="#00ff26" AnchorPane.leftAnchor="-41.0" AnchorPane.topAnchor="230.0">
+            <font>
+               <Font name="Arial Bold" size="20.0" />
+            </font>
+         </Label>
+         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-41.0" layoutY="63.0" prefHeight="31.0" prefWidth="255.0" text="Pending" textFill="#ccdb0f" AnchorPane.leftAnchor="-41.0" AnchorPane.topAnchor="63.0">
+            <font>
+               <Font name="Arial Bold" size="20.0" />
+            </font>
+         </Label>
+         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="402.0" prefHeight="31.0" prefWidth="170.0" text="Declined" textFill="#dc0f3f" AnchorPane.rightAnchor="582.2" AnchorPane.topAnchor="402.0">
+            <font>
+               <Font name="Arial Bold" size="20.0" />
+            </font>
+         </Label>
+         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="118.0" layoutY="14.0" prefHeight="9.0" prefWidth="575.0" text="Appointments" textFill="#030205" AnchorPane.leftAnchor="118.0" AnchorPane.rightAnchor="97.19999999999993" AnchorPane.topAnchor="14.0">
+            <font>
+               <Font name="Arial Bold" size="40.0" />
+            </font>
+         </Label>
+         <ListView fx:id="listViewPendingAppointments" layoutX="46.0" layoutY="95.2" prefHeight="135.0" prefWidth="668.0" style="-fx-border-color: black; -fx-border-width: 5;" AnchorPane.bottomAnchor="370.0" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="95.0">
+            <effect>
+               <DropShadow />
+            </effect>
+         </ListView>
+         <ListView fx:id="listViewAcceptedAppointments" layoutX="46.0" layoutY="262.0" prefHeight="135.0" prefWidth="668.0" style="-fx-border-color: black; -fx-border-width: 5;" AnchorPane.bottomAnchor="204.39999999999998" AnchorPane.leftAnchor="46.0" AnchorPane.topAnchor="262.0">
+            <effect>
+               <DropShadow />
+            </effect>
+         </ListView>
+         <ListView fx:id="listViewRefiutedDeclined" layoutX="46.0" layoutY="434.0" prefHeight="134.0" prefWidth="668.0" style="-fx-border-color: black; -fx-border-width: 5;" AnchorPane.bottomAnchor="32.39999999999998" AnchorPane.rightAnchor="38.799999999999955" AnchorPane.topAnchor="434.0">
+            <effect>
+               <DropShadow />
+            </effect>
+         </ListView>
+      </children>
+   </AnchorPane>
+
+</AnchorPane>

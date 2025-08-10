@@ -10,16 +10,10 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface1.LoginGuiController">
      <children>
-      <TextField id="usernameField" fx:id="usernameField" layoutX="226.0" layoutY="140.0" prefHeight="36.0" prefWidth="156.0" promptText="Username" />
-      <PasswordField id="passwordField" fx:id="passwordField" layoutX="226.0" layoutY="189.0" prefHeight="36.0" prefWidth="156.0" promptText="Password" />
-      <Button id="loginButton" fx:id="loginButton" layoutX="226.0" layoutY="277.0" mnemonicParsing="false" onAction="#onloginButton" prefHeight="25.0" prefWidth="67.0" text="LOGIN" />
-      <FontAwesomeIconView glyphName="SCISSORS" layoutX="295.0" layoutY="81.0" scaleX="3.0" scaleY="3.0" scaleZ="3.0" />
-      <Button fx:id="backToWelcomePage" layoutX="313.0" layoutY="277.0" mnemonicParsing="false" onAction="#backToWelcomePage" text="TORNA INDIETRO" />
-
-      <RadioButton fx:id="radioAdmin" layoutX="241.0" layoutY="237.0" mnemonicParsing="false" text="Admin">
-      <toggleGroup>
-         <ToggleGroup fx:id="role" />
-      </toggleGroup></RadioButton>
-      <RadioButton fx:id="radioBarber" layoutX="304.0" layoutY="237.0" mnemonicParsing="false" text="barber" toggleGroup="$role" />
+          <TextField id="usernameField" fx:id="usernameField" layoutX="226.0" layoutY="140.0" prefHeight="36.0" prefWidth="156.0" promptText="Username" />
+          <PasswordField id="passwordField" fx:id="passwordField" layoutX="226.0" layoutY="189.0" prefHeight="36.0" prefWidth="156.0" promptText="Password" />
+          <Button id="loginButton" fx:id="loginButton" layoutX="226.0" layoutY="277.0" mnemonicParsing="false" onAction="#onloginButton" prefHeight="25.0" prefWidth="67.0" text="LOGIN" />
+          <FontAwesomeIconView glyphName="SCISSORS" layoutX="295.0" layoutY="81.0" scaleX="3.0" scaleY="3.0" scaleZ="3.0" />
+          <Button fx:id="backToWelcomePage" layoutX="313.0" layoutY="277.0" mnemonicParsing="false" onAction="#backToWelcomePage" text="TORNA INDIETRO" />
      </children>
 </Pane>

@@ -13,66 +13,42 @@ import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.utils.exception.myexception.WrongCredentialsException;
 import com.example.barber.utils.dao.LoginDAO;
 import com.example.barber.utils.Session;
-import com.example.barber.utils.switchPage.SwitchPage;
 
 public class LoginAppController {
 
     Trigger trigger = new Trigger();
-     SwitchPage sp = new SwitchPage();
 
+    public void login(CredentialsBean credentialsBean) throws WrongCredentialsException, SystemException {
 
-
-    public void login(CredentialsBean credenialBeans) throws WrongCredentialsException, SystemException {
-
+        CredentialsModel credentialsModel = new CredentialsModel(credentialsBean);
         LoginDAO loginDAO = new LoginDAO();
-
-
-        if (credenialBeans.getType().equalsIgnoreCase("user")) {
-            //creo il modello per l'utente
+        credentialsModel.setType(loginDAO.getRole(credentialsModel));
+        credentialsBean.setType(credentialsModel.getType());
+        if(credentialsModel.getType() == null){
+            trigger.throwWrongCredentials();
+            Session.getInstance().deleteSession();
+        }else if (credentialsModel.getType().getId().equals("CLIENTE")) {
+            System.out.println("SEI DENTRO LOGINAPPCONTROLLER DEL CLIENTE PRIMA DI USERMODEL");
             UserModel userModel = null;
-            //creo il modello per le credenziali
-            CredentialsModel credentialsModel = new CredentialsModel(credenialBeans);
-            //controllo se le credenziali sono registrate
-            if (loginDAO.checkIsRegistered(credentialsModel)) {
-                UserDAO userDAO = new UserDAO();
-                userModel = userDAO.getUserByUsername(credenialBeans.getUsername());
-                Session.getInstance().setUser(userModel);
-            } else {
-                trigger.throwWrongCredentials();
-                Session.getInstance().deleteSession();
-            }
-        } else if(credenialBeans.getType().equalsIgnoreCase("barber")) {
-
+            UserDAO userDAO = new UserDAO();
+            userModel = userDAO.getUserByUsername(credentialsBean.getUsername());
+            Session.getInstance().setCredentials(credentialsModel);
+            Session.getInstance().setUser(userModel);
+        } else if (credentialsModel.getType().getId().equals("BARBIERE")) {
             BarberModel barberModel = null;
-            CredentialsModel credentialsModel = new CredentialsModel(credenialBeans);
-
-            if (loginDAO.checkIsRegistered(credentialsModel)) {
-                BarberDAO barberDAO = new BarberDAO();
-                barberModel = barberDAO.getBarberByUsername(credenialBeans.getUsername());
-                Session.getInstance().setBarber(barberModel);
-
-            } else {
-                trigger.throwWrongCredentials();
-                Session.getInstance().deleteSession();
-            }
-        }else if (credenialBeans.getType().equalsIgnoreCase("moderator")) {
-            System.out.println("Moderator");
+            BarberDAO barberDAO = new BarberDAO();
+            barberModel = barberDAO.getBarberByUsername(credentialsBean.getUsername());
+            Session.getInstance().setCredentials(credentialsModel);
+            Session.getInstance().setBarber(barberModel);
+        } else if (credentialsModel.getType().getId().equals("MODERATORE")) {
             ModeratorModel moderatorModel = null;
-            CredentialsModel credentialsModel = new CredentialsModel(credenialBeans);
-            if (loginDAO.checkIsRegistered(credentialsModel)) {
-                ModeratorDAO moderatorDAO = new ModeratorDAO();
-                moderatorModel = moderatorDAO.searchModeratorByUsername(credenialBeans.getUsername());
-                Session.getInstance().setModerator(moderatorModel);
-            } else {
-                trigger.throwWrongCredentials();
-                Session.getInstance().deleteSession();
-            }
-
-
-
+            ModeratorDAO moderatorDAO = new ModeratorDAO();
+            moderatorModel = moderatorDAO.searchModeratorByUsername(credentialsBean.getUsername());
+            Session.getInstance().setCredentials(credentialsModel);
+            Session.getInstance().setModerator(moderatorModel);
         }
-
-
-
     }
 }
+
+
+

@@ -26,11 +26,11 @@ import java.util.ArrayList;
     }
 
     //Aggiungo gli appuntamenti alla lista degli appuntamnti pendenti del barbiere
-    public void addAppointmentsPendingList(List<AppointmentsBean> listBean) {
+    public void addAppointmentsPendingList(List<RequestAppointmentsBean> listBean) {
         if(listBean != null && !listBean.isEmpty()) {
-            for (AppointmentsBean appointmentsBean : listBean) {
-                beans.add(appointmentsBean);
-                notify(appointmentsBean);
+            for (RequestAppointmentsBean requestAppointmentsBean : listBean) {
+                beans.add(requestAppointmentsBean);
+                notify(requestAppointmentsBean);
             }
         }
     }

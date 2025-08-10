@@ -6,7 +6,7 @@ public class SignInBean implements GenericBean{
 
     private Trigger trigger = new Trigger();
 
-    //TODO implementare controlli sintattici all'interno del bean
+
     protected String username;
     protected String password;
     protected String repeatPassword;
@@ -23,7 +23,6 @@ public class SignInBean implements GenericBean{
         this.password = password;
         this.eMail = eMail;
         this.ruolo = ruolo;
-
     }
 
     public String getUsername(){

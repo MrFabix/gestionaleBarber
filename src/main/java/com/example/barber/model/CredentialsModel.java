@@ -1,14 +1,14 @@
 package com.example.barber.model;
 
 import com.example.barber.utils.bean.CredentialsBean;
+import com.example.barber.utils.ruoli.Role;
 
 public class CredentialsModel {
     private String username;
     private String password;
-    private String type;
+    private Role type;
 
-    public CredentialsModel() {
-    }
+
 
     public CredentialsModel(CredentialsBean credentialsBean){
         setUsername(credentialsBean.getUsername());
@@ -21,13 +21,13 @@ public class CredentialsModel {
     public void setUsername(String username) {
         this.username = username;
     }
-    public void setType(String type) {this.type = type;}
+    public void setType(Role type) {this.type = type;}
 
     public String getUsername() {
         return this.username;
     }
     public  String getPassword(){return this.password;}
-    public String getType() {
+    public Role getType() {
         return this.type;
     }
 

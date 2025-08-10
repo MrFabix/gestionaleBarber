@@ -6,7 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 
-<HBox prefHeight="43.0" prefWidth="387.0" spacing="10" style="-fx-background-color: #dc0f3f; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: black; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface1.BarberItemController">
+<HBox prefHeight="43.0" prefWidth="387.0" spacing="10" style="-fx-background-color: #dc0f3f; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: black; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface1.item.BarberItemController">
    <children>
       <MFXDatePicker prefHeight="58.0" prefWidth="138.0" />
       <Label prefHeight="42.0" prefWidth="98.0" text="NOME DEL BARBIERE" />

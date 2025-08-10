@@ -3,10 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface1.HomePageUserController">
-
-
-
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface1.HomePageClientGuiController">
    <!-- Includi il menu di navigazione -->
    <fx:include fx:id="navigationBar" source="navbar.fxml" />
    <ListView fx:id="barberListView" layoutX="258.0" layoutY="96.0" prefHeight="442.0" prefWidth="515.0" />

@@ -1,10 +1,8 @@
-package com.example.barber.controller.guicontroller.interface1;
+package com.example.barber.controller.guicontroller.interface1.item;
 
-import com.example.barber.utils.bean.BarberBean;
 import com.example.barber.utils.bean.IdBean;
-import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.myexception.SystemException;
-import com.example.barber.utils.switchPage.SwitchPage;
+import com.example.barber.utils.switchpage.SwitchPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -36,14 +34,12 @@ public class BarberItemController {
 
     @FXML
     private void showBarberDetails(ActionEvent event) throws SystemException {
-        // Recupera l'ID dal pulsante tramite getUserData
+        //Recupera l'ID dal pulsante tramite getUserData
         int id = (int) barberButton.getUserData();
         //creo il bean per passare l'id
         IdBean idBean = new IdBean(id);
-        System.out.println("ID selezionato: " + id);
         //cambio pagina passando l'id del barbiere
         sp.switchPageId("/BarberDetail.fxml", event, idBean);
-
     }
 
 

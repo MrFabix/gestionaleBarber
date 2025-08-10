@@ -4,9 +4,10 @@ import com.example.barber.controller.appcontroller.LoginAppController;
 import com.example.barber.utils.bean.CredentialsBean;
 import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.myexception.EmptyInputException;
+import com.example.barber.utils.exception.myexception.PasswordNotCompliantException;
 import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.utils.exception.myexception.WrongCredentialsException;
-import com.example.barber.utils.switchPage.SwitchPage;
+import com.example.barber.utils.switchpage.SwitchPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -14,57 +15,39 @@ import javafx.scene.control.*;
 
 public class LoginGuiController {
 
+
+
     @FXML
     private TextField usernameField;
     @FXML
     private PasswordField passwordField;
-    @FXML
-    private RadioButton radioBarber;
-    @FXML
-    private RadioButton radioAdmin;
-    @FXML
-    private Button loginButton;
+
 
     private SwitchPage sp = new SwitchPage();
     @FXML
     private void onloginButton(ActionEvent event) {
-        String type = "user";
         LoginAppController controller;
-
         try {
-            // Se la checkbox è selezionata, imposta il tipo a "barber"
-            if (radioBarber.isSelected()) {
-                type = "barber";
-            } else if (radioAdmin.isSelected()) {
-                type = "moderator";
-            }
-
-            System.out.println("type: " + type);
-
             // Inizializza il controller e tenta il login
             controller = new LoginAppController();
-            CredentialsBean credentialsBean = new CredentialsBean(usernameField.getText(), passwordField.getText(), type);
+            CredentialsBean credentialsBean = new CredentialsBean();
+            credentialsBean.setUsername(usernameField.getText());
+            credentialsBean.setPassword(passwordField.getText());
+            //Ancora non so che ruolo avrò dipende come mi sono registrato
+            //chiama qui il login controller che manda la query e cerca che ruolo ha quell'utente nel database
             controller.login(credentialsBean);
-            // Se il login è andato a buon fine, mostra la pagina corrispondente
-            if (type.equals("user")) {
-                sp.replaceScene(event, "/homepageUser.fxml");
-            } else if (type.equals("barber")) {
+            if (credentialsBean.getType().getId().equals("CLIENTE")) {
+                sp.replaceScene(event, "/homePageClient.fxml");
+            } else if (credentialsBean.getType().getId().equals("BARBIERE")) {
                 sp.replaceScene(event, "/homepageBarber.fxml");
-
-            } else {
+            } else if(credentialsBean.getType().getId().equals("MODERATORE")){
                 sp.replaceScene(event, "/homepageModerator.fxml");
             }
-
-        } catch (SystemException | WrongCredentialsException e) {
+        } catch (SystemException | WrongCredentialsException | EmptyInputException | PasswordNotCompliantException e) {
             // Gestisce altri tipi di eccezioni
             ErrorDialog.getInstance().handleException(e);
-
-
         }
-
-
     }
-
     @FXML
     private void backToWelcomePage(ActionEvent event)   {
         try{
@@ -73,10 +56,5 @@ public class LoginGuiController {
             ErrorDialog.getInstance().handleException(e);
         }
     }
-
-
-
-
-
 }
 

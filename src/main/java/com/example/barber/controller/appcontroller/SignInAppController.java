@@ -13,13 +13,14 @@ import com.example.barber.utils.exception.myexception.SystemException;
 public class SignInAppController {
 
     public void registerUser(UserBean userBean, CredentialsBean credentialsBean) throws SystemException {
-
        CredentialsModel credentialsModel = new CredentialsModel(credentialsBean);
        UserModel userModel = new UserModel(userBean);
        UserDAO userDAO = new UserDAO();
        userDAO.addUser(credentialsModel, userModel);
     }
+
     public void registerBarber(BarberBean barberBean, CredentialsBean credentialsBean) throws SystemException {
+        System.out.println("Stai dentro il register barber");
         CredentialsModel credentialsModel = new CredentialsModel(credentialsBean);
         BarberModel barberModel = new BarberModel(barberBean);
         BarberDAO barberDAO = new BarberDAO();

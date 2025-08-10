@@ -1,40 +1,36 @@
 package com.example.barber.utils.db;
+// NOSONAR
 
-import com.example.barber.model.BarberModel;
-import com.example.barber.model.ModeratorModel;
-import com.example.barber.model.UserModel;
+import com.example.barber.model.*;
 import com.example.barber.utils.exception.myexception.SystemException;
-import com.example.barber.model.CredentialsModel;
+import com.example.barber.utils.ruoli.Role;
+import com.example.barber.utils.statorichiesta.StatoRichieste;
 
-import javax.swing.text.Style;
-import java.io.FileNotFoundException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Query {
+
+    private static final String USERNAME = "username";
+    private static final String ADDRESS = "address";
+    private static final String PHONE = "phone";
+    private static final String EMAIL = "email";
+
     public void insertBarber(BarberModel barberModel) throws SystemException{
-        System.out.print("Stai inserendo il barbieree");
+        //TODO implementare il controllo se l'username esiste già
         String query = "INSERT INTO barber (username, name, address, city, phone, email) VALUES (?,?,?,?,?,?)";
+        System.out.println("Funziona l'inserimento");
         try(PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)){
             //Impostiamo i parametri della query
-            System.out.println("Username del barbiere"+ barberModel.getUsername());
             preparedStatement.setString(1, barberModel.getUsername());
-            System.out.println("Name del barbiere"+ barberModel.getName());
             preparedStatement.setString(2, barberModel.getName());
-            System.out.println("address del barbiere"+ barberModel.getAddress());
             preparedStatement.setString(3, barberModel.getAddress());
-            System.out.println("city del barbiere"+ barberModel.getCity());
             preparedStatement.setString(4, barberModel.getCity());
-            System.out.println("phone del barbiere"+ barberModel.getPhone());
             preparedStatement.setString(5, barberModel.getPhone());
-            System.out.println("email del barbiere"+ barberModel.getEmail());
             preparedStatement.setString(6, barberModel.getEmail());
-            int rowsAffected = preparedStatement.executeUpdate();
-            if(rowsAffected == 0){
-                System.out.print("Il numero di riche inserite è 0");
+            preparedStatement.executeUpdate();
 
-            }
 
         } catch (SQLException e) {
             SystemException exception = new SystemException();
@@ -46,6 +42,8 @@ public class Query {
 
 
     }
+
+
 
 
     public void insertUser(UserModel userModel) throws SystemException {
@@ -62,7 +60,7 @@ public class Query {
             preparedStatement.setString(5, userModel.getUsername());
             preparedStatement.setString(6, userModel.getPhone());
             int rowsAffected = preparedStatement.executeUpdate();
-            //TODO domanda da fare al pellegrini???
+
             if (rowsAffected == 0) {
                 System.out.println("Il numero di righe inserite è 0 c'è un errore");
             }else{
@@ -82,19 +80,16 @@ public class Query {
             throw new RuntimeException(e);
         }
 
-
-        //TODO manca da implementare l'inserimento di un immagine del profilo
     }
 
-    public void insertCredential(CredentialsModel credentialsModel) throws SystemException {
+    public void insertCredentials(CredentialsModel credentialsModel) throws SystemException {
         String query = "INSERT INTO credentials (username, password, type) VALUES (?,?,?)";
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)){
 
             //Imposta i parametri della query
-            System.out.println("Sei nell'insert credential "+ credentialsModel.getUsername());
             preparedStatement.setString(1, credentialsModel.getUsername());
             preparedStatement.setString(2, credentialsModel.getPassword());
-            preparedStatement.setString(3, credentialsModel.getType());
+            preparedStatement.setString(3, credentialsModel.getType().getId());
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected == 0) {
                 System.out.println("Il numero di righe inserite è 0 c'è un errore");
@@ -104,13 +99,10 @@ public class Query {
             }
 
         }catch(SQLException e){
-
-            System.out.println("Errore nell'inserimento dell'utente nel database");
             // Stampa un messaggio di errore e lancia una SystemException
             SystemException exception = new SystemException();
             exception.initCause(e);
             throw exception;
-
         } catch (SystemException e) {
             throw new RuntimeException(e);
         }
@@ -119,16 +111,13 @@ public class Query {
 
 
     public boolean searchUserInLogged(CredentialsModel credentialsModel) throws SystemException {
-
         System.out.println("Stai cercando l'utente nel database");
-
-        // Correggi la query SQL con il segno di uguaglianza per la password
         String query = "SELECT * FROM credentials WHERE username = ? AND password = ? AND type = ?";
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
             // Imposta i parametri della query
             preparedStatement.setString(1, credentialsModel.getUsername());
             preparedStatement.setString(2, credentialsModel.getPassword());
-            preparedStatement.setString(3, credentialsModel.getType());
+            preparedStatement.setString(3, credentialsModel.getType().getId());
             //stampo il risultato della query
             System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
@@ -142,6 +131,36 @@ public class Query {
         }
     }
 
+    public Role getRoleByUsername(String username, String password) throws SystemException{
+        System.out.println("Stai cercando l'utente nel database per restituire il ruolo");
+        Role ruolo = null;
+        System.out.println("Sei qui");
+        String query = "SELECT * FROM credentials WHERE username = ? AND password = ?";
+        try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, password);
+            ResultSet rs = preparedStatement.executeQuery();
+            if(rs.next()){
+                ruolo = Role.fromString(rs.getString("type"));
+                System.out.println("Sei qui");
+                System.out.println("Il ruolo che hai trovato è+"+ruolo.getId());
+                return ruolo;
+
+            }else{
+                return null;
+            }
+
+
+
+
+        } catch (SQLException e) {
+            SystemException exception = new SystemException();
+            exception.initCause(e);
+            throw exception;
+        }
+    }
+
+
     public UserModel searchUserByUsername(String username) throws SystemException {
         System.out.println("Stai cercando l'utente nel database");
         String query = "SELECT * FROM user WHERE username = ?";
@@ -151,11 +170,11 @@ public class Query {
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
                 userModel = new UserModel();
-                userModel.setUsername(rs.getString("username"));
+                userModel.setUsername(rs.getString(USERNAME));
                 userModel.setSurname(rs.getString("surname"));
                 userModel.setName(rs.getString("name"));
                 userModel.setGender(rs.getString("gender"));
-                userModel.setEmail(rs.getString("email"));
+                userModel.setEmail(rs.getString(EMAIL));
                 userModel.setId(rs.getInt("id"));
 
             }
@@ -181,12 +200,12 @@ public class Query {
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
                 barberModel = new BarberModel();
-                barberModel.setUsername(rs.getString("username"));
+                barberModel.setUsername(rs.getString(USERNAME));
                 barberModel.setName(rs.getString("name"));
-                barberModel.setAddress(rs.getString("address"));
+                barberModel.setAddress(rs.getString(ADDRESS));
                 barberModel.setCity(rs.getString("city"));
-                barberModel.setPhone(rs.getString("phone"));
-                barberModel.setEmail(rs.getString("email"));
+                barberModel.setPhone(rs.getString(PHONE));
+                barberModel.setEmail(rs.getString(EMAIL));
                 barberModel.setId(rs.getInt("id"));
             }
             return barberModel;
@@ -209,12 +228,12 @@ public class Query {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 BarberModel barberModel = new BarberModel();
-                barberModel.setUsername(rs.getString("username"));
+                barberModel.setUsername(rs.getString(USERNAME));
                 barberModel.setName(rs.getString("name"));
-                barberModel.setAddress(rs.getString("address"));
+                barberModel.setAddress(rs.getString(ADDRESS));
                 barberModel.setCity(rs.getString("city"));
-                barberModel.setPhone(rs.getString("phone"));
-                barberModel.setEmail(rs.getString("email"));
+                barberModel.setPhone(rs.getString(PHONE));
+                barberModel.setEmail(rs.getString(EMAIL));
                 barberModel.setId(rs.getInt("id"));
                 list.add(barberModel);
             }
@@ -237,12 +256,12 @@ public class Query {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 BarberModel barberModel = new BarberModel();
-                barberModel.setUsername(rs.getString("username"));
+                barberModel.setUsername(rs.getString(USERNAME));
                 barberModel.setName(rs.getString("name"));
-                barberModel.setAddress(rs.getString("address"));
+                barberModel.setAddress(rs.getString(ADDRESS));
                 barberModel.setCity(rs.getString("city"));
-                barberModel.setPhone(rs.getString("phone"));
-                barberModel.setEmail(rs.getString("email"));
+                barberModel.setPhone(rs.getString(PHONE));
+                barberModel.setEmail(rs.getString(EMAIL));
                 barberModel.setId(rs.getInt("id"));
                 list.add(barberModel);
             }
@@ -258,22 +277,46 @@ public class Query {
     //query per prendere i dettagli di un barbiere tramite l'id
 
     public BarberModel searchBarberById(int id) throws SystemException {
+        System.out.println("Sei prima della query");
         String query = "SELECT * FROM barber WHERE id = ?";
-        BarberModel barberModel = null;
+        BarberModel barberModel = new BarberModel();
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
             preparedStatement.setInt(1, id);
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
-                barberModel = new BarberModel();
-                barberModel.setUsername(rs.getString("username"));
+                barberModel.setUsername(rs.getString(USERNAME));
                 barberModel.setName(rs.getString("name"));
-                barberModel.setAddress(rs.getString("address"));
+                barberModel.setAddress(rs.getString(ADDRESS));
                 barberModel.setCity(rs.getString("city"));
-                barberModel.setPhone(rs.getString("phone"));
-                barberModel.setEmail(rs.getString("email"));
+                barberModel.setPhone(rs.getString(PHONE));
+                barberModel.setEmail(rs.getString(EMAIL));
                 barberModel.setId(rs.getInt("id"));
+
             }
+            System.out.println("Sei nella query "+ barberModel.toString());
             return barberModel;
+        } catch (SQLException e) {
+            SystemException exception = new SystemException();
+            exception.initCause(e);
+            throw exception;
+        }
+
+    }
+    public List<ServiceModel> serviceByIdBarber(int id) throws SystemException {
+        String query = "SELECT * FROM service WHERE id = ?";
+        List<ServiceModel> serviceModels = new ArrayList<>();
+        try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
+            preparedStatement.setInt(1, id);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while(rs.next()) {
+                ServiceModel serviceModel = new ServiceModel();
+                serviceModel.setId_barber(rs.getInt("id_barber"));
+                serviceModel.setNome_servizio(rs.getString("servizi"));
+                serviceModel.setPrezzo(rs.getInt("prezzo"));
+                serviceModels.add(serviceModel);
+            }
+            return serviceModels;
         } catch (SQLException e) {
             SystemException exception = new SystemException();
             exception.initCause(e);
@@ -291,10 +334,10 @@ public class Query {
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
                 moderatorModel = new ModeratorModel();
-                moderatorModel.setUsername(rs.getString("username"));
+                moderatorModel.setUsername(rs.getString(USERNAME));
                 moderatorModel.setName(rs.getString("name"));
-                moderatorModel.setEmail(rs.getString("email"));
-                moderatorModel.setPhone(rs.getString("phone"));
+                moderatorModel.setEmail(rs.getString(EMAIL));
+                moderatorModel.setPhone(rs.getString(PHONE));
                 moderatorModel.setId(rs.getInt("id"));
             }
             return moderatorModel;
@@ -305,13 +348,71 @@ public class Query {
         }
     }
 
+    public void insertAppointments(RequestAppointmentsModel requestAppointmentsModel) throws SystemException{
+        System.out.println("Hai quasi inserito nel databse");
+        System.out.println("Nome del barbiere: "+requestAppointmentsModel.getNameBarber());
+        System.out.println("Phone del barbiere "+requestAppointmentsModel.getPhone());
+        String query = "INSERT INTO appointments (" +
+                "idbarber, idutente, data, name_user, name_barber, description, address_barber, " +
+                "service, state, orario, phone) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
+        try (PreparedStatement ps = MySqlConnection.getInstance().connect().prepareStatement(query)) {
+            ps.setInt(1, requestAppointmentsModel.getIdBarber());
+            ps.setInt(2, requestAppointmentsModel.getIdUser());
+            ps.setDate(3, java.sql.Date.valueOf(requestAppointmentsModel.getDate())); // LocalDate → java.sql.Date
+            ps.setString(4, requestAppointmentsModel.getNameUser());
+            ps.setString(5, requestAppointmentsModel.getNameBarber());
+            ps.setString(6, requestAppointmentsModel.getDescription());
+            ps.setString(7, requestAppointmentsModel.getAddressBarber());
+            ps.setString(8, requestAppointmentsModel.getService());
+            ps.setString(9, requestAppointmentsModel.getState().name()); // enum → stringa
+            ps.setString(10, requestAppointmentsModel.getOrario());
+            ps.setString(11, requestAppointmentsModel.getPhone());
 
+            ps.executeUpdate();
+        }catch (SQLException | SystemException e){
+            SystemException exception = new SystemException();
+            e.printStackTrace();
+            exception.initCause(e);
+            throw exception;
+        }
+    }
 
+    //Restituzione Lista appuntamenti pendenti
+    public List<RequestAppointmentsModel> searchAllAppointments(int idUser, StatoRichieste state) throws SystemException {
 
+        String query = "SELECT appointments.idbarber, appointments.idutente, appointments.data, appointments.name_user, appointments.name_barber, appointments.description, appointments.service, appointments.state,appointments.orario, appointments.phone " +
+                       " FROM appointments WHERE state = ? AND idUtente = ?";
+        List<RequestAppointmentsModel> listRequestAppModel = new ArrayList<>();
 
+        try(PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)){
+            preparedStatement.setString(1,state.getId());
+            preparedStatement.setInt(2,idUser);
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()) {
+                RequestAppointmentsModel ram = new RequestAppointmentsModel();
+                ram.setIdUser(rs.getInt("idUser"));
+                ram.setIdBarber(rs.getInt("idbarber"));
+                Date sqlDate = rs.getDate("data");
+                ram.setDate(sqlDate.toLocalDate());
+                ram.setNameUser(rs.getString("name_user"));
+                ram.setNameBarber(rs.getString("name_barber"));
+                ram.setDescription(rs.getString("description"));
+                ram.setAddressBarber(rs.getString("address_barber"));
+                ram.setService(rs.getString("service"));
+                ram.setOrario(rs.getString("orario"));
+                ram.setPhone(rs.getString(PHONE));
+                StatoRichieste stato = StatoRichieste.fromString(rs.getString("stato"));
+                ram.setState(stato);
+                listRequestAppModel.add(ram);
 
-    public void insertCredentials(){
-        //TODO IMPLEMENTARE IL PORCO DUE DI INSERIMENTO (ALE)
+            }
+        } catch (SQLException e) {
+            SystemException exception = new SystemException();
+            exception.initCause(e);
+            throw exception;
+        }
+        return listRequestAppModel;
     }
 }

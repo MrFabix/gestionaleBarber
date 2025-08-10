@@ -1,25 +1,24 @@
 package com.example.barber.utils;
 
+import com.example.barber.model.CredentialsModel;
 import com.example.barber.model.ModeratorModel;
 import com.example.barber.model.BarberModel;
 import com.example.barber.model.UserModel;
 import com.example.barber.utils.bean.BarberBean;
 import com.example.barber.utils.bean.*;
+import com.example.barber.utils.exception.myexception.PasswordNotCompliantException;
+import com.example.barber.utils.ruoli.Role;
 
 public class Session {
 
-    //dichiarazione tipi di ruoli
-    private static final String TYPE_USER= "User";
-    private static final String TYPE_MODERATOR = "Moderator";
-    private static final String TYPE_BARBER= "Barbers";
+
 
 
     private static Session session;
+    private CredentialsBean credentialsBean;
     private UserBean userBean;
     private ModeratorBean moderatorBean;
     private BarberBean barberBean;
-    private String type;
-
 
     public static Session getInstance(){
         if (session == null){
@@ -30,38 +29,42 @@ public class Session {
     public UserBean getUser() {
         return userBean;
     }
-    
 
+
+    public CredentialsBean getCredentials() {
+        return credentialsBean;
+    }
+
+    public void setCredentials(CredentialsModel credentialsModel) {
+        try{
+            credentialsBean = new CredentialsBean(credentialsModel);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
     public void setUser(UserModel userModel) {
         if (this.userBean == null) {
             userBean = new UserBean(userModel);
-            type = TYPE_USER;
         }
     }
 
     public void setBarber(BarberModel barberModel) {
         if (this.barberBean == null) {
             barberBean = new BarberBean(barberModel);
-            type = TYPE_BARBER;
         }
     }
 
-        public void setModerator(ModeratorModel moderatorModel) {
-            if (this.moderatorBean == null) {
-                moderatorBean = new ModeratorBean(moderatorModel);
-                type = TYPE_MODERATOR;
-            }
+    public void setModerator(ModeratorModel moderatorModel) {
+        if (this.moderatorBean == null) {
+            moderatorBean = new ModeratorBean(moderatorModel);
         }
+    }
 
     public void deleteSession() {
         //barberBean = null;
         userBean = null;
-        type = "";
     }
 
-    public String checkInstanceType() {
-        return type;
-    }
 
 
 
