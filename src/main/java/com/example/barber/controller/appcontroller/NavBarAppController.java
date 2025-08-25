@@ -57,9 +57,5 @@ public class NavBarAppController {
         return button;
     }
 
-    private void SetActionButton(String fxml){
-
-
-    }
 
 }

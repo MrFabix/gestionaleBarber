@@ -26,6 +26,10 @@ public class CheckRequestAppController {
 
 
 
+    public void addAppointmentsToList(RequestAppointmentsBean requestAppointmentsBean){
+        manageRequestBeanList.addRequest(requestAppointmentsBean);
+    }
+
     //tutte le richieste che ha mandato un utente
     private List<RequestAppointmentsBean> searchRequestByIdUser(int idUser) throws SystemException{
         RequestAppointmentsDAO requestAppointmentsDAO = new RequestAppointmentsDAO();

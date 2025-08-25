@@ -22,6 +22,7 @@ import java.util.ResourceBundle;
 
 public class PageManageUserAppointmentsGuiController implements Observer, Initializable {
     private RequestAppointmentsBean requestAppointmentsBean;
+    private CheckRequestAppController controller = new CheckRequestAppController();
     private static final String APPOINTMENTS_ITEM_FXML = "/AppointmentsItemUser.fxml";
 
 
@@ -30,7 +31,6 @@ public class PageManageUserAppointmentsGuiController implements Observer, Initia
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        CheckRequestAppController controller = new CheckRequestAppController();
         try{
             controller.manageRequestAppointments(this, Session.getInstance().getUser().getId());
         }catch (SystemException e ){
@@ -72,6 +72,7 @@ public class PageManageUserAppointmentsGuiController implements Observer, Initia
 
     public void setAll(RequestAppointmentsBean rBean, BookingAppController bookingAppController) {
         this.requestAppointmentsBean = new RequestAppointmentsBean(rBean);
+        bookingAppController.addToList(controller, rBean);
     }
 
 

@@ -24,7 +24,7 @@ public class ManageRequestBeanList extends Subject{
     }
 
     public void addRequest(RequestAppointmentsBean bean) {
-        if (beans != null && !beans.isEmpty()) {
+        if (beans != null) {
             beans.add(bean);
             notify(bean);
         }
