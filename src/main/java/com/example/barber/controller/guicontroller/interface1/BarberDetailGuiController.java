@@ -47,12 +47,10 @@ public class BarberDetailGuiController {
         // Ottieni i dettagli del barbiere
         BarberBean barberBean = barberAppController.getBarberDetails(id);
         if (barberBean != null) {
-            System.out.println("BarberBean: " + barberBean);
             barberName.setText(barberBean.getName());
             barberAddress.setText(barberBean.getAddress());
             barberPhone.setText(barberBean.getPhone());
             barberHours.setText(barberBean.getHours());
-            System.out.println("Il numero del barbiere è in barberdetailguicontroller"+ barberBean.getPhone());
             description.setText(barberBean.getDescription());
 
             //aggiugni attirbuto idBarber al button per prenotare

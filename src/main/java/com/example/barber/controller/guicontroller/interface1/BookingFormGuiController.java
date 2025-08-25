@@ -1,10 +1,12 @@
 package com.example.barber.controller.guicontroller.interface1;
 
-import com.example.barber.controller.appcontroller.BookingFormAppController;
+import com.example.barber.controller.appcontroller.BookingAppController;
+import com.example.barber.controller.appcontroller.CheckRequestAppController;
 import com.example.barber.utils.Session;
 import com.example.barber.utils.bean.*;
 import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.myexception.EmptyInputException;
+import com.example.barber.utils.exception.myexception.InvalidDateException;
 import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.utils.statorichiesta.StatoRichieste;
 import com.example.barber.utils.switchpage.SwitchAndSetPage;
@@ -17,13 +19,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class BookingFormGuiController implements Initializable {
+public class BookingFormGuiController{
 
     private UserBean userBean = new UserBean();
     private PreFormBarberBean preFormBarberBean = new PreFormBarberBean();
+
 
     @FXML
     private TextField nameField;
@@ -47,62 +48,45 @@ public class BookingFormGuiController implements Initializable {
     private SwitchAndSetPage switchAndSetPage = new SwitchAndSetPage();
     private SwitchPage switchPage = new SwitchPage();
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        userBean = Session.getInstance().getUser();
-        nameField.setText(userBean.getName());
-        phoneField.setText(userBean.getPhone());
-        emailField.setText(userBean.getEmail());
+
+    public void setAll(PreFormBarberBean bean){
+            userBean = Session.getInstance().getUser();
+            System.out.println("userBean = " + userBean.toString());
+            nameField.setText(userBean.getName());
+            phoneField.setText(userBean.getPhone());
+            emailField.setText(userBean.getEmail());
+            this.preFormBarberBean.setIdBarber(bean.getIdBarber());
+            this.preFormBarberBean.setBarberName(bean.getBarberName());
+            this.preFormBarberBean.setBarberAddress(bean.getBarberAddress());
     }
-
-    public void setAll(PreFormBarberBean bean) {
-
-
-        System.out.println("setAll: "+ bean.toString());
-
-        this.preFormBarberBean.setIdBarber(bean.getIdBarber());
-        this.preFormBarberBean.setBarberName(bean.getBarberName());
-        this.preFormBarberBean.setBarberAddress(bean.getBarberAddress());
-    }
-
-
-
-
-
 
     // Handle the form submission
     @FXML
-    private void handleBooking(ActionEvent event) throws EmptyInputException{
-        BookingFormAppController bookingFormAppController = new BookingFormAppController();
+    private void handleBooking(ActionEvent event) throws InvalidDateException, EmptyInputException{
+        BookingAppController bookingAppController = new BookingAppController();
         RequestAppointmentsBean requestAppointmentsBean = new RequestAppointmentsBean();
+        CheckRequestAppController checkRequestAppController = new CheckRequestAppController();
+
         //Setto l'appointmentsBean
-        System.out.println("Nome del barbiere in bookingformguicontroller prima del set: "+preFormBarberBean.getBarberName());
-        requestAppointmentsBean.setIdUser(userBean.getId());
-        requestAppointmentsBean.setIdBarber(preFormBarberBean.getIdBarber());
-        requestAppointmentsBean.setNameBarber(preFormBarberBean.getBarberName());
-        requestAppointmentsBean.setNameUser(userBean.getName());
-        requestAppointmentsBean.setPhoneUser(phoneField.getText());
-        requestAppointmentsBean.setDate(appointmentDatePicker.getValue());
-        requestAppointmentsBean.setDescription(notesField.getText());
-        requestAppointmentsBean.setAddressBarber(preFormBarberBean.getBarberAddress());
-        requestAppointmentsBean.setService(serviceComboBox.getValue());
-        requestAppointmentsBean.setPhoneUser(phoneField.getText());
-        requestAppointmentsBean.setState(StatoRichieste.PENDENTE);
-        requestAppointmentsBean.setOrario(orarioComboBox.getValue());
-
-        System.out.println("Il campo phone vale "+ requestAppointmentsBean.getPhoneUser());
-
-        System.out.println("Nome del barbiere in bookingFormGuiController: "+requestAppointmentsBean.getNameBarber());
-        bookingFormAppController.sendAppointments(requestAppointmentsBean);
 
         try{
-            //Carichiamo l'requestAppointmentsBean
-            switchAndSetPage.switchAndSetHomePageClient(event, "/HomePageClientAppointments.fxml", requestAppointmentsBean , bookingFormAppController);
-            // Add your logic for saving or sending booking information here.
-        }catch(SystemException e ){
+            requestAppointmentsBean.setIdUser(userBean.getId());
+            requestAppointmentsBean.setIdBarber(preFormBarberBean.getIdBarber());
+            requestAppointmentsBean.setNameBarber(preFormBarberBean.getBarberName());
+            requestAppointmentsBean.setPhoneUser(phoneField.getText());
+            requestAppointmentsBean.setNameUser(userBean.getName());
+            requestAppointmentsBean.setDate(appointmentDatePicker.getValue());
+            requestAppointmentsBean.setDescription(notesField.getText());
+            requestAppointmentsBean.setAddressBarber(preFormBarberBean.getBarberAddress());
+            requestAppointmentsBean.setService(serviceComboBox.getValue());
+            requestAppointmentsBean.setState(StatoRichieste.PENDENTE);
+            requestAppointmentsBean.setOrario(orarioComboBox.getValue());
+            switchAndSetPage.switchAndSetHomePageClient(event, "/HomePageClientAppointments.fxml", requestAppointmentsBean , bookingAppController);
+        }catch(SystemException | InvalidDateException | EmptyInputException e ){
             ErrorDialog.getInstance().handleException(e);
+            e.printStackTrace();
         }
-
+        bookingAppController.sendAppointments(requestAppointmentsBean);
     }
 
     @FXML

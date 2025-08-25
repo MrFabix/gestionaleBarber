@@ -22,12 +22,12 @@ public abstract class ProfileModel {
     }
 
     protected ProfileModel(int id, String username, String email,  File profileImg, String name, String phone) {
-    this.username = username;
-    this.email = email;
-    this.id = id;
-    this.profileImg = profileImg;
-    this.name = name;
-    this.phone = phone;
+        this.username = username;
+        this.email = email;
+        this.id = id;
+        this.profileImg = profileImg;
+        this.name = name;
+        this.phone = phone;
     }
 
     //Getter

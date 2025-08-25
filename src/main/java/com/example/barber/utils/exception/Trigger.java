@@ -14,14 +14,12 @@ public class Trigger {
     }
 
 
+    public void throwInvalidDateException(String field) throws InvalidDateException{
+        throw new InvalidDateException(field);
+    }
+
     public void throwEmptyInputException(String field) throws EmptyInputException {
         throw new EmptyInputException(field);
-    }
-    public void throwPasswordNotCompliantException() throws PasswordNotCompliantException {
-        throw new PasswordNotCompliantException();
-    }
-    public void throwPasswordNotEquals() throws PasswordNotEquals{
-        throw new PasswordNotEquals();
     }
 
 

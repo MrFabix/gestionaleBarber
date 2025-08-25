@@ -3,6 +3,7 @@ package com.example.barber.utils.bean;
 import com.example.barber.model.RequestAppointmentsModel;
 import com.example.barber.utils.exception.Trigger;
 import com.example.barber.utils.exception.myexception.EmptyInputException;
+import com.example.barber.utils.exception.myexception.InvalidDateException;
 import com.example.barber.utils.statorichiesta.StatoRichieste;
 
 import java.time.LocalDate;
@@ -90,17 +91,22 @@ public class RequestAppointmentsBean implements GenericBean{
 
     public void setIdUser(int idUser) { this.idUser = idUser; }
 
-    public void setNameUser(String nameUser) throws EmptyInputException {
-        if(nameUser.equals("")) {
-            trigger.throwEmptyInputException("name");
-        }
+    public void setNameUser(String nameUser){
         this.nameUser = nameUser;
     }
 
     public void setNameBarber(String nameBarber) { this.nameBarber = nameBarber; }
 
 
-    public void setDate(LocalDate date) { this.date = date; }
+    public void setDate(LocalDate date) throws InvalidDateException,EmptyInputException {
+        if (date == null) {
+            trigger.throwEmptyInputException("date");
+        } else if (date.isBefore(LocalDate.now())) {
+            trigger.throwInvalidDateException("date");
+        } else {
+            this.date = date;
+        }
+    }
 
     public void setDescription(String description) { this.description = description; }
 
@@ -108,7 +114,10 @@ public class RequestAppointmentsBean implements GenericBean{
 
     public void setService(String service) { this.service = service;}
 
-    public void setPhoneUser(String phoneUser) { this.phoneUser = phoneUser; }
+    public void setPhoneUser(String phoneUser){
+        this.phoneUser = phoneUser;
+
+    }
 
     public void setState(StatoRichieste state) { this.state = state; }
 

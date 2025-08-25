@@ -10,8 +10,8 @@ import java.util.List;
 
 public class RequestAppointmentsDAO {
     Query query = new Query();
-    public List<RequestAppointmentsModel> getAllRequestAppointments(int idUser, StatoRichieste stato) throws SystemException {
-        return query.searchAllAppointments(idUser, stato);
+    public List<RequestAppointmentsModel> getAllRequestAppointments(int idUser) throws SystemException {
+        return query.searchAllAppointments(idUser);
     }
 
     public void addAppointments(RequestAppointmentsModel requestAppointmentsModel) throws SystemException {

@@ -91,8 +91,12 @@ public class ProfileBean implements GenericBean {
     }
 
 
-    public String setPhone(String phone){
-        return this.phone = phone;
+    public void setPhone(String phone) throws EmptyInputException{
+        if(phone == null || phone.equals("")) {
+            trigger.throwEmptyInputException("phone user");
+        }else{
+            this.phone = phone;
+        }
     }
 
 
@@ -101,5 +105,4 @@ public class ProfileBean implements GenericBean {
             trigger.throwEmptyInputException("Name");
         this.name = name;
     }
-
 }

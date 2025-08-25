@@ -1,5 +1,6 @@
 package com.example.barber.controller.guicontroller.interface1.item;
 
+import com.example.barber.utils.bean.BarberBean;
 import com.example.barber.utils.bean.IdBean;
 import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.utils.switchpage.SwitchPage;
@@ -8,7 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-public class BarberItemController {
+public class BarberItemGuiController {
 
     @FXML
     private Label barberNameLabel;
@@ -23,12 +24,12 @@ public class BarberItemController {
     private SwitchPage sp = new SwitchPage();
 
     // Metodo per impostare i dettagli del barbiere
-    public void setBarberDetails(String name, String city, String address, int id) {
-        barberNameLabel.setText(name);
-        barberCityLabel.setText(city);
-        barberAddressLabel.setText(address);
+    public void setBarberDetails(BarberBean bean) {
+        barberNameLabel.setText(bean.getName());
+        barberCityLabel.setText(bean.getCity());
+        barberAddressLabel.setText(bean.getAddress());
         // Usa setUserData per associare l'ID al pulsante
-        barberButton.setUserData(id);
+        barberButton.setUserData(bean.getId());
     }
 
 

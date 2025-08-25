@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane style="-fx-background-color: dc0f3f;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface1.item.AppointmentsItemUserGuiController">
+   <children>
+      <Label fx:id="labelNameBarber" layoutX="14.0" layoutY="24.0" text="Name">
+         <font>
+            <Font name="Arial Bold" size="28.0" />
+         </font>
+      </Label>
+      <Line endX="318.6999816894531" endY="22.700000762939453" layoutX="-2.0" layoutY="3.0" startX="193.69288635253906" startY="22.700016021728516" />
+      <Label fx:id="indirizzo" layoutX="192.0" layoutY="5.0" text="Indirizzo" />
+      <Label fx:id="orario" layoutX="286.0" layoutY="43.0" text="Orario" />
+      <Label fx:id="servizio" layoutX="192.0" layoutY="26.0" text="Servizio" />
+      <Label fx:id="stato" layoutX="440.0" layoutY="14.0" text="Stato">
+         <font>
+            <Font name="Arial Bold" size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="5.0" prefHeight="18.0" prefWidth="146.0" text="Nome Barbiere: " />
+      <Label fx:id="labelData" layoutX="192.0" layoutY="43.0" text="Data" />
+      <Line endX="318.6999816894531" endY="22.700000762939453" layoutX="-1.0" layoutY="21.0" startX="193.69288635253906" startY="22.700016021728516" />
+   </children>
+   <effect>
+      <Blend />
+   </effect>
+</AnchorPane>

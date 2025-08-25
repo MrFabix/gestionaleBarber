@@ -170,13 +170,13 @@ public class Query {
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
                 userModel = new UserModel();
-                userModel.setUsername(rs.getString(USERNAME));
-                userModel.setSurname(rs.getString("surname"));
+                userModel.setId(rs.getInt("id"));
                 userModel.setName(rs.getString("name"));
+                userModel.setSurname(rs.getString("surname"));
                 userModel.setGender(rs.getString("gender"));
                 userModel.setEmail(rs.getString(EMAIL));
-                userModel.setId(rs.getInt("id"));
-
+                userModel.setUsername(rs.getString(USERNAME));
+                userModel.setPhone(rs.getString("phone"));
             }
             return userModel;
 
@@ -380,19 +380,18 @@ public class Query {
     }
 
     //Restituzione Lista appuntamenti pendenti
-    public List<RequestAppointmentsModel> searchAllAppointments(int idUser, StatoRichieste state) throws SystemException {
+    public List<RequestAppointmentsModel> searchAllAppointments(int idUser) throws SystemException {
 
-        String query = "SELECT appointments.idbarber, appointments.idutente, appointments.data, appointments.name_user, appointments.name_barber, appointments.description, appointments.service, appointments.state,appointments.orario, appointments.phone " +
-                       " FROM appointments WHERE state = ? AND idUtente = ?";
+        String query = "SELECT appointments.idbarber, appointments.idutente, appointments.data, appointments.name_user, appointments.name_barber, appointments.description, appointments.address_barber ,appointments.service, appointments.state,appointments.orario, appointments.phone " +
+                       " FROM appointments WHERE  idUtente = ?";
         List<RequestAppointmentsModel> listRequestAppModel = new ArrayList<>();
 
         try(PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)){
-            preparedStatement.setString(1,state.getId());
-            preparedStatement.setInt(2,idUser);
+            preparedStatement.setInt(1,idUser);
             ResultSet rs = preparedStatement.executeQuery();
             while(rs.next()) {
                 RequestAppointmentsModel ram = new RequestAppointmentsModel();
-                ram.setIdUser(rs.getInt("idUser"));
+                ram.setIdUser(rs.getInt("idUtente"));
                 ram.setIdBarber(rs.getInt("idbarber"));
                 Date sqlDate = rs.getDate("data");
                 ram.setDate(sqlDate.toLocalDate());
@@ -403,7 +402,7 @@ public class Query {
                 ram.setService(rs.getString("service"));
                 ram.setOrario(rs.getString("orario"));
                 ram.setPhone(rs.getString(PHONE));
-                StatoRichieste stato = StatoRichieste.fromString(rs.getString("stato"));
+                StatoRichieste stato = StatoRichieste.fromString(rs.getString("state"));
                 ram.setState(stato);
                 listRequestAppModel.add(ram);
 
