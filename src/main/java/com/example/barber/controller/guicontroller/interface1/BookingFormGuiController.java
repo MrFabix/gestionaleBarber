@@ -65,7 +65,6 @@ public class BookingFormGuiController{
     private void handleBooking(ActionEvent event) throws InvalidDateException, EmptyInputException{
         BookingAppController bookingAppController = new BookingAppController();
         RequestAppointmentsBean requestAppointmentsBean = new RequestAppointmentsBean();
-        CheckRequestAppController checkRequestAppController = new CheckRequestAppController();
 
         //Setto l'appointmentsBean
 
@@ -81,7 +80,7 @@ public class BookingFormGuiController{
             requestAppointmentsBean.setService(serviceComboBox.getValue());
             requestAppointmentsBean.setState(StatoRichieste.PENDENTE);
             requestAppointmentsBean.setOrario(orarioComboBox.getValue());
-            switchAndSetPage.switchAndSetHomePageClient(event, "/HomePageClientAppointments.fxml", requestAppointmentsBean , bookingAppController);
+            switchAndSetPage.switchAndSetHomePageClient(event, "/HomePageClientAppointments.fxml", requestAppointmentsBean);
         }catch(SystemException | InvalidDateException | EmptyInputException e ){
             ErrorDialog.getInstance().handleException(e);
             e.printStackTrace();

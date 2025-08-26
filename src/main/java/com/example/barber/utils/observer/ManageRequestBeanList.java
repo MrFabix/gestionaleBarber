@@ -29,4 +29,5 @@ public class ManageRequestBeanList extends Subject{
             notify(bean);
         }
     }
+
 }

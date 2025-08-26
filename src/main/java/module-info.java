@@ -5,6 +5,7 @@ module com.example.barber {
     requires java.naming;
     requires MaterialFX;
     requires javafx.fxml;
+    requires jdk.dynalink;
 
 
     opens com.example.barber to javafx.fxml;

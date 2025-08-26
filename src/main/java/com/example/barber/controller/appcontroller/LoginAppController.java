@@ -27,20 +27,20 @@ public class LoginAppController {
         if(credentialsModel.getType() == null){
             trigger.throwWrongCredentials();
             Session.getInstance().deleteSession();
-        }else if (credentialsModel.getType().getId().equals("CLIENTE")) {
+        }else if (credentialsModel.getType().getRoleId().equals("CLIENTE")) {
             System.out.println("SEI DENTRO LOGINAPPCONTROLLER DEL CLIENTE PRIMA DI USERMODEL");
             UserModel userModel = null;
             UserDAO userDAO = new UserDAO();
             userModel = userDAO.getUserByUsername(credentialsBean.getUsername());
             Session.getInstance().setCredentials(credentialsModel);
             Session.getInstance().setUser(userModel);
-        } else if (credentialsModel.getType().getId().equals("BARBIERE")) {
+        } else if (credentialsModel.getType().getRoleId().equals("BARBIERE")) {
             BarberModel barberModel = null;
             BarberDAO barberDAO = new BarberDAO();
             barberModel = barberDAO.getBarberByUsername(credentialsBean.getUsername());
             Session.getInstance().setCredentials(credentialsModel);
             Session.getInstance().setBarber(barberModel);
-        } else if (credentialsModel.getType().getId().equals("MODERATORE")) {
+        } else if (credentialsModel.getType().getRoleId().equals("MODERATORE")) {
             ModeratorModel moderatorModel = null;
             ModeratorDAO moderatorDAO = new ModeratorDAO();
             moderatorModel = moderatorDAO.searchModeratorByUsername(credentialsBean.getUsername());

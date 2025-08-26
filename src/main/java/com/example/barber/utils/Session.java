@@ -30,7 +30,9 @@ public class Session {
         return userBean;
     }
 
-
+    public BarberBean getBarber() {
+        return barberBean;
+    }
     public CredentialsBean getCredentials() {
         return credentialsBean;
     }

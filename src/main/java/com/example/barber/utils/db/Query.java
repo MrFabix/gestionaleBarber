@@ -17,11 +17,11 @@ public class Query {
     private static final String PHONE = "phone";
     private static final String EMAIL = "email";
 
-    public void insertBarber(BarberModel barberModel) throws SystemException{
+    public void insertBarber(BarberModel barberModel) throws SystemException {
         //TODO implementare il controllo se l'username esiste già
         String query = "INSERT INTO barber (username, name, address, city, phone, email) VALUES (?,?,?,?,?,?)";
         System.out.println("Funziona l'inserimento");
-        try(PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)){
+        try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
             //Impostiamo i parametri della query
             preparedStatement.setString(1, barberModel.getUsername());
             preparedStatement.setString(2, barberModel.getName());
@@ -36,7 +36,7 @@ public class Query {
             SystemException exception = new SystemException();
             exception.initCause(e);
             throw exception;
-        } catch (SystemException e ){
+        } catch (SystemException e) {
             throw new RuntimeException(e);
         }
 
@@ -44,12 +44,10 @@ public class Query {
     }
 
 
-
-
     public void insertUser(UserModel userModel) throws SystemException {
         System.out.print("stai inserendo lo user sei dentro il metodo");
         String query = "INSERT INTO user (name, surname, gender, email, username, phone) VALUES (?,?,?,?,?,?)";
-        try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)){
+        try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
 
             //Imposta i parametri della query
             preparedStatement.setString(1, userModel.getName());
@@ -63,11 +61,11 @@ public class Query {
 
             if (rowsAffected == 0) {
                 System.out.println("Il numero di righe inserite è 0 c'è un errore");
-            }else{
+            } else {
 
                 System.out.println("i dati sono inseriti ");
             }
-        }catch(SQLException e){
+        } catch (SQLException e) {
 
             System.out.println("Errore nella ricerca dell'utente nel database");
             // Stampa un messaggio di errore e lancia una SystemException
@@ -84,21 +82,21 @@ public class Query {
 
     public void insertCredentials(CredentialsModel credentialsModel) throws SystemException {
         String query = "INSERT INTO credentials (username, password, type) VALUES (?,?,?)";
-        try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)){
+        try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
 
             //Imposta i parametri della query
             preparedStatement.setString(1, credentialsModel.getUsername());
             preparedStatement.setString(2, credentialsModel.getPassword());
-            preparedStatement.setString(3, credentialsModel.getType().getId());
+            preparedStatement.setString(3, credentialsModel.getType().getRoleId());
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected == 0) {
                 System.out.println("Il numero di righe inserite è 0 c'è un errore");
-            }else{
+            } else {
 
                 System.out.println("i dati sono inseriti ");
             }
 
-        }catch(SQLException e){
+        } catch (SQLException e) {
             // Stampa un messaggio di errore e lancia una SystemException
             SystemException exception = new SystemException();
             exception.initCause(e);
@@ -109,7 +107,6 @@ public class Query {
     }
 
 
-
     public boolean searchUserInLogged(CredentialsModel credentialsModel) throws SystemException {
         System.out.println("Stai cercando l'utente nel database");
         String query = "SELECT * FROM credentials WHERE username = ? AND password = ? AND type = ?";
@@ -117,7 +114,7 @@ public class Query {
             // Imposta i parametri della query
             preparedStatement.setString(1, credentialsModel.getUsername());
             preparedStatement.setString(2, credentialsModel.getPassword());
-            preparedStatement.setString(3, credentialsModel.getType().getId());
+            preparedStatement.setString(3, credentialsModel.getType().getRoleId());
             //stampo il risultato della query
             System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
@@ -131,7 +128,7 @@ public class Query {
         }
     }
 
-    public Role getRoleByUsername(String username, String password) throws SystemException{
+    public Role getRoleByUsername(String username, String password) throws SystemException {
         System.out.println("Stai cercando l'utente nel database per restituire il ruolo");
         Role ruolo = null;
         System.out.println("Sei qui");
@@ -140,17 +137,15 @@ public class Query {
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
             ResultSet rs = preparedStatement.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 ruolo = Role.fromString(rs.getString("type"));
                 System.out.println("Sei qui");
-                System.out.println("Il ruolo che hai trovato è+"+ruolo.getId());
+                System.out.println("Il ruolo che hai trovato è+" + ruolo.getRoleId());
                 return ruolo;
 
-            }else{
+            } else {
                 return null;
             }
-
-
 
 
         } catch (SQLException e) {
@@ -221,7 +216,7 @@ public class Query {
     }
 
     public List<BarberModel> searchAllBarber() throws SystemException {
-        List<BarberModel>   list = null;
+        List<BarberModel> list = null;
         String query = "SELECT * FROM barber";
         list = new ArrayList<>();
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
@@ -237,8 +232,7 @@ public class Query {
                 barberModel.setId(rs.getInt("id"));
                 list.add(barberModel);
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             SystemException exception = new SystemException();
             exception.initCause(e);
             throw exception;
@@ -265,8 +259,7 @@ public class Query {
                 barberModel.setId(rs.getInt("id"));
                 list.add(barberModel);
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             SystemException exception = new SystemException();
             exception.initCause(e);
             throw exception;
@@ -293,7 +286,7 @@ public class Query {
                 barberModel.setId(rs.getInt("id"));
 
             }
-            System.out.println("Sei nella query "+ barberModel.toString());
+            System.out.println("Sei nella query " + barberModel.toString());
             return barberModel;
         } catch (SQLException e) {
             SystemException exception = new SystemException();
@@ -302,6 +295,7 @@ public class Query {
         }
 
     }
+
     public List<ServiceModel> serviceByIdBarber(int id) throws SystemException {
         String query = "SELECT * FROM service WHERE id = ?";
         List<ServiceModel> serviceModels = new ArrayList<>();
@@ -309,7 +303,7 @@ public class Query {
             preparedStatement.setInt(1, id);
             ResultSet rs = preparedStatement.executeQuery();
 
-            while(rs.next()) {
+            while (rs.next()) {
                 ServiceModel serviceModel = new ServiceModel();
                 serviceModel.setId_barber(rs.getInt("id_barber"));
                 serviceModel.setNome_servizio(rs.getString("servizi"));
@@ -348,10 +342,10 @@ public class Query {
         }
     }
 
-    public void insertAppointments(RequestAppointmentsModel requestAppointmentsModel) throws SystemException{
+    public void insertAppointments(RequestAppointmentsModel requestAppointmentsModel) throws SystemException {
         System.out.println("Hai quasi inserito nel databse");
-        System.out.println("Nome del barbiere: "+requestAppointmentsModel.getNameBarber());
-        System.out.println("Phone del barbiere "+requestAppointmentsModel.getPhone());
+        System.out.println("Nome del barbiere: " + requestAppointmentsModel.getNameBarber());
+        System.out.println("Phone del barbiere " + requestAppointmentsModel.getPhone());
         String query = "INSERT INTO appointments (" +
                 "idbarber, idutente, data, name_user, name_barber, description, address_barber, " +
                 "service, state, orario, phone) " +
@@ -371,7 +365,7 @@ public class Query {
             ps.setString(11, requestAppointmentsModel.getPhone());
 
             ps.executeUpdate();
-        }catch (SQLException | SystemException e){
+        } catch (SQLException | SystemException e) {
             SystemException exception = new SystemException();
             e.printStackTrace();
             exception.initCause(e);
@@ -380,17 +374,30 @@ public class Query {
     }
 
     //Restituzione Lista appuntamenti pendenti
-    public List<RequestAppointmentsModel> searchAllAppointments(int idUser) throws SystemException {
+    public List<RequestAppointmentsModel> searchAllAppointmentsByUser(int id, String role) throws SystemException {
 
-        String query = "SELECT appointments.idbarber, appointments.idutente, appointments.data, appointments.name_user, appointments.name_barber, appointments.description, appointments.address_barber ,appointments.service, appointments.state,appointments.orario, appointments.phone " +
-                       " FROM appointments WHERE  idUtente = ?";
+        String column = "";
+
+        switch (role) {
+            case "BARBIERE" -> column = "idBarber";
+            case "CLIENTE" -> column = "idUtente";
+        }
+
+        final String query =
+                "SELECT appointments.idAppointments ,appointments.idbarber, appointments.idutente, appointments.data, " +
+                        "appointments.name_user, appointments.name_barber, appointments.description, " +
+                        "appointments.address_barber, appointments.service, appointments.state, " +
+                        "appointments.orario, appointments.phone " +
+                        "FROM appointments WHERE " + column + " = ?";
+
         List<RequestAppointmentsModel> listRequestAppModel = new ArrayList<>();
 
-        try(PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)){
-            preparedStatement.setInt(1,idUser);
+        try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
+            preparedStatement.setInt(1, id);
             ResultSet rs = preparedStatement.executeQuery();
-            while(rs.next()) {
+            while (rs.next()) {
                 RequestAppointmentsModel ram = new RequestAppointmentsModel();
+                ram.setIdAppointement(rs.getInt("idAppointments"));
                 ram.setIdUser(rs.getInt("idUtente"));
                 ram.setIdBarber(rs.getInt("idbarber"));
                 Date sqlDate = rs.getDate("data");
@@ -413,5 +420,23 @@ public class Query {
             throw exception;
         }
         return listRequestAppModel;
+    }
+
+    public void updateAppointmentById(int appointmentId, String newState) throws SystemException {
+        final String sql = "UPDATE appointments SET state = ? WHERE idAppointments = ?"; // o appoitments
+
+        try (PreparedStatement ps = MySqlConnection.getInstance().connect().prepareStatement(sql)) {
+            ps.setString(1, newState);   // "ACCETTATA" | "RIFIUTATA" | "PENDENTE"
+            ps.setInt(2, appointmentId);
+
+            int rows = ps.executeUpdate();
+            if (rows != 1) {
+                throw new SQLException("Nessuna riga aggiornata (id=" + appointmentId + ")");
+            }
+        } catch (SQLException e) {
+            SystemException ex = new SystemException();
+            ex.initCause(e);
+            throw ex;
+        }
     }
 }

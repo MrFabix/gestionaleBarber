@@ -10,7 +10,7 @@ import java.time.LocalDate;
 
 public class RequestAppointmentsBean implements GenericBean{
     private Trigger trigger = new Trigger();
-   //protected int idAppointement;
+   protected int idAppointement;
 
     protected int idBarber;
     protected int idUser;
@@ -29,7 +29,7 @@ public class RequestAppointmentsBean implements GenericBean{
     }
 
     public RequestAppointmentsBean(RequestAppointmentsBean requestAppointmentsBean) {
-        //this.idAppointement = requestAppointmentsBean.getIdAppointement();
+        this.idAppointement = requestAppointmentsBean.getIdAppointement();
         this.idBarber = requestAppointmentsBean.getIdBarber();
         this.idUser = requestAppointmentsBean.getIdUser();
         this.date = requestAppointmentsBean.getDate();
@@ -44,7 +44,7 @@ public class RequestAppointmentsBean implements GenericBean{
     }
 
     public RequestAppointmentsBean(RequestAppointmentsModel requestAppointmentsModel) {
-        //this.idAppointement = requestAppointmentsModel.getIdAppointement();
+        this.idAppointement = requestAppointmentsModel.getIdAppointement();
         this.idBarber = requestAppointmentsModel.getIdBarber();
         this.idUser = requestAppointmentsModel.getIdUser();
         this.date = requestAppointmentsModel.getDate();
@@ -59,7 +59,7 @@ public class RequestAppointmentsBean implements GenericBean{
     }
 
     //Getter
-  //  public int getIdAppointement() { return idAppointement; }
+   public int getIdAppointement() { return idAppointement; }
 
     public int getIdBarber() { return idBarber; }
 
@@ -85,7 +85,7 @@ public class RequestAppointmentsBean implements GenericBean{
 
     public String getOrario() { return orario; }
 
-    //TODO se serve rimettere setIdAppointemntes che avevo commentato
+    public void setIdAppointement(int idAppointement){ this.idAppointement=idAppointement; }
 
     public void setIdBarber(int idBarber) { this.idBarber = idBarber; }
 

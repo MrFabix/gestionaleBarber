@@ -6,7 +6,6 @@ public class PreFormBarberBean{
 
 
 
-
     private int idBarber;
     private String barberName;
     private String barberAddress;

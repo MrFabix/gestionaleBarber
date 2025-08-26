@@ -36,11 +36,11 @@ public class LoginGuiController {
             //Ancora non so che ruolo avrò dipende come mi sono registrato
             //chiama qui il login controller che manda la query e cerca che ruolo ha quell'utente nel database
             controller.login(credentialsBean);
-            if (credentialsBean.getType().getId().equals("CLIENTE")) {
+            if (credentialsBean.getType().getRoleId().equals("CLIENTE")) {
                 sp.replaceScene(event, "/homePageClient.fxml");
-            } else if (credentialsBean.getType().getId().equals("BARBIERE")) {
-                sp.replaceScene(event, "/homepageBarber.fxml");
-            } else if(credentialsBean.getType().getId().equals("MODERATORE")){
+            } else if (credentialsBean.getType().getRoleId().equals("BARBIERE")) {
+                sp.replaceScene(event, "/homePageBarber.fxml");
+            } else if(credentialsBean.getType().getRoleId().equals("MODERATORE")){
                 sp.replaceScene(event, "/homepageModerator.fxml");
             }
         } catch (SystemException | WrongCredentialsException | EmptyInputException | PasswordNotCompliantException e) {

@@ -11,11 +11,11 @@ public enum Role {
 
    public static Role fromString(String input) {
         for (Role role : Role.values()) {
-            if(role.getId().equals(input)) { return role; }
+            if(role.getRoleId().equals(input)) { return role; }
         }
        return null;
    }
 
-    public String getId() {return id;}
+    public String getRoleId() {return id;}
 
 }

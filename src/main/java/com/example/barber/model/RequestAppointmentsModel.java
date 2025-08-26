@@ -8,7 +8,7 @@ public class RequestAppointmentsModel {
 
 
 
-    //protected int idAppointement;
+    protected int idAppointement;
     protected int idBarber;
     protected int idUser;
     protected String nameUser;
@@ -26,7 +26,7 @@ public class RequestAppointmentsModel {
     }
 
     public RequestAppointmentsModel(RequestAppointmentsBean requestAppointmentsBean){
-       // this.idAppointement = requestAppointmentsBean.getIdAppointement();
+        this.idAppointement = requestAppointmentsBean.getIdAppointement();
         this.idBarber = requestAppointmentsBean.getIdBarber();
         this.idUser = requestAppointmentsBean.getIdUser();
         this.date = requestAppointmentsBean.getDate();
@@ -41,7 +41,7 @@ public class RequestAppointmentsModel {
     }
 
     //Getter
-    //public int getIdAppointement() { return idAppointement; }
+    public int getIdAppointement() { return idAppointement; }
 
     public int getIdBarber() { return idBarber; }
 
@@ -73,7 +73,7 @@ public class RequestAppointmentsModel {
     }
 
     //Setter
-    //public void setIdAppointement(int idAppointement) { this.idAppointement = idAppointement; }
+    public void setIdAppointement(int idAppointement) { this.idAppointement = idAppointement; }
 
     public void setIdBarber(int idBarber) { this.idBarber = idBarber; }
 

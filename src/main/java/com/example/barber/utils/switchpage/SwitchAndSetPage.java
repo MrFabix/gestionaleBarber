@@ -33,16 +33,13 @@ public class SwitchAndSetPage{
 
     }
 
-    //La strada da fare è questa, BookingGuiController dopo che ho premuto il bottone, chiama HomeRitornaSull homePage del client, ma bisogna settare l'item delle richieste
-    //settato l'item delle richeste deve e noi clicchiamo sugli appuntamenti, la pagine deve mostrare tre liste con pendenti, accettati e rifiutati,
-    //Se si vuole si può implementare un'altra pagine che porti agli appuntamenti conclusi ma questo è da vedere se abbiamo tempo.
-    public void switchAndSetHomePageClient(ActionEvent event, String fxml, RequestAppointmentsBean requestAppointmentsBean , BookingAppController bookingAppController) throws SystemException {
+    public void switchAndSetHomePageClient(ActionEvent event, String fxml, RequestAppointmentsBean requestAppointmentsBean) throws SystemException {
         System.out.println("Sei ne Switch and scene home page client");
         try{
             FXMLLoader loader = new FXMLLoader(SwitchAndSetPage.class.getResource(fxml));
             Parent root = loader.load();
             HomePageClientSetter homePageClientSetter = new HomePageClientSetter();
-            homePageClientSetter.setter(requestAppointmentsBean, bookingAppController, loader.getController());
+            homePageClientSetter.setter(requestAppointmentsBean, loader.getController());
             SwitchPage.showStage(event,root);
 
         }catch (IOException e){

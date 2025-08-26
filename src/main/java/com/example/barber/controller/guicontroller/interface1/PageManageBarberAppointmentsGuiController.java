@@ -1,7 +1,7 @@
 package com.example.barber.controller.guicontroller.interface1;
 
 import com.example.barber.controller.appcontroller.CheckRequestAppController;
-import com.example.barber.controller.guicontroller.interface1.item.AppointmentsItemUserGuiController;
+import com.example.barber.controller.guicontroller.interface1.item.AppointmentsItemBarberGuiController;
 import com.example.barber.utils.Session;
 import com.example.barber.utils.bean.RequestAppointmentsBean;
 import com.example.barber.utils.exception.myexception.SystemException;
@@ -16,11 +16,10 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class PageManageUserAppointmentsGuiController implements Observer, Initializable {
-    private RequestAppointmentsBean requestAppointmentsBean;
-    private CheckRequestAppController controller = new CheckRequestAppController();
-    private String APPOINTMENTS_ITEM_FXML = "/AppointmentsItemUser.fxml";
+public class PageManageBarberAppointmentsGuiController implements Observer, Initializable {
 
+    private CheckRequestAppController controller = new CheckRequestAppController();
+    private String AppointmentsItemFxml = "/AppointmentsItemBarber.fxml";
 
     @FXML
     private ListView<Pane> listViewPendingAppointments;
@@ -32,7 +31,7 @@ public class PageManageUserAppointmentsGuiController implements Observer, Initia
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try{
-            controller.manageRequestAppointments(this, Session.getInstance().getUser().getId(), Session.getInstance().getCredentials().getType().getRoleId());
+            controller.manageRequestAppointments(this, Session.getInstance().getBarber().getId(), Session.getInstance().getCredentials().getType().getRoleId());
         }catch (SystemException e ){
             e.printStackTrace();
         }
@@ -40,27 +39,27 @@ public class PageManageUserAppointmentsGuiController implements Observer, Initia
     }
 
     private void handleRequest(RequestAppointmentsBean rBean){
-        AppointmentsItemUserGuiController controller;
+        AppointmentsItemBarberGuiController itemController;
         FXMLLoader fxmlLoader = new FXMLLoader();
         Pane pane = null;
         try{
             if(Objects.equals(rBean.getState().getId(), "PENDENTE")){
-                pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource(APPOINTMENTS_ITEM_FXML).openStream()));
-                controller = fxmlLoader.getController();
-                controller.setAll(rBean);
+                pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource(AppointmentsItemFxml).openStream()));
+                itemController = fxmlLoader.getController();
+                itemController.setAll(rBean, controller);
                 this.listViewPendingAppointments.getItems().add(pane);
             }else if(Objects.equals(rBean.getState().getId(), "RIFIUTATA")){
-                pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource(APPOINTMENTS_ITEM_FXML).openStream()));
-                controller = fxmlLoader.getController();
-                controller.setAll(rBean);
+                pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource(AppointmentsItemFxml).openStream()));
+                itemController = fxmlLoader.getController();
+                itemController.setVisibilityButton();
+                itemController.setAll(rBean,controller);
+
                 this.listViewRefiutedDeclined.getItems().add(pane);
-                //SETTA IL PANE RIFIUTATA
             } else if (Objects.equals(rBean.getState().getId(), "ACCETTATA")) {
-                pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource(APPOINTMENTS_ITEM_FXML).openStream()));
-                controller = fxmlLoader.getController();
-                controller.setAll(rBean);
+                pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource(AppointmentsItemFxml).openStream()));
+                itemController = fxmlLoader.getController();
+                itemController.setAll(rBean,controller);
                 this.listViewAcceptedAppointments.getItems().add(pane);
-                //SETTA IL PANE ACCETATA
             }
         }catch (Exception e){
             //DA mette le systemexception
@@ -69,10 +68,6 @@ public class PageManageUserAppointmentsGuiController implements Observer, Initia
     }
 
 
-    public void setAll(RequestAppointmentsBean rBean) {
-        this.requestAppointmentsBean = new RequestAppointmentsBean(rBean);
-        controller.addAppointmentsToList(requestAppointmentsBean);
-    }
 
 
 
@@ -82,4 +77,6 @@ public class PageManageUserAppointmentsGuiController implements Observer, Initia
             handleRequest(rBean);
         }
     }
+
+
 }

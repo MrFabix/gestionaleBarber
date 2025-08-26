@@ -2,6 +2,7 @@ package com.example.barber.controller.guicontroller.interface1.item;
 
 import com.example.barber.utils.bean.RequestAppointmentsBean;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 
@@ -19,6 +20,8 @@ public class AppointmentsItemUserGuiController {
     private Label stato;
     @FXML
     private Label labelData;
+
+
 
     public void setAll(RequestAppointmentsBean rBean){
         this.labelNameBarber.setText(rBean.getNameBarber());

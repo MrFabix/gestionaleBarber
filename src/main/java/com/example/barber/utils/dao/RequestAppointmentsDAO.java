@@ -1,24 +1,26 @@
 package com.example.barber.utils.dao;
 
 import com.example.barber.model.RequestAppointmentsModel;
-import com.example.barber.utils.bean.RequestAppointmentsBean;
 import com.example.barber.utils.db.Query;
 import com.example.barber.utils.exception.myexception.SystemException;
-import com.example.barber.utils.statorichiesta.StatoRichieste;
 
 import java.util.List;
 
 public class RequestAppointmentsDAO {
     Query query = new Query();
-    public List<RequestAppointmentsModel> getAllRequestAppointments(int idUser) throws SystemException {
-        return query.searchAllAppointments(idUser);
+    public List<RequestAppointmentsModel> getAllRequestAppointments(int id, String role) throws SystemException {
+        return query.searchAllAppointmentsByUser(id, role);
     }
 
+
+
     public void addAppointments(RequestAppointmentsModel requestAppointmentsModel) throws SystemException {
-        System.out.println("Sei nel RequestAppointmentsDAO");
         query.insertAppointments(requestAppointmentsModel);
     }
 
+    public void updateStateByIdApp(int idAppointemnts, String state) throws SystemException {
+        query.updateAppointmentById(idAppointemnts, state);
+    }
 
 
 }
