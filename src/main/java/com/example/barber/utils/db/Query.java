@@ -442,20 +442,22 @@ public class Query {
     //Restituzione Lista appuntamenti pendenti
     public List<RequestAppointmentsModel> searchAllAppointmentsByUser(int id, String role) throws SystemException {
 
-        String column = "";
+        final String query;
 
         switch (role) {
-            case "BARBIERE" -> column = "idBarber";
-            case "CLIENTE" -> column = "idUtente";
+            case "BARBIERE" -> query = "SELECT appointments.idAppointments ,appointments.idbarber, appointments.idutente, appointments.data, " +
+                    "appointments.name_user, appointments.name_barber, appointments.description, " +
+                    "appointments.address_barber, appointments.service, appointments.state, " +
+                    "appointments.orario, appointments.phone " +
+                    "FROM appointments WHERE idBarber = ?";
+
+            case "CLIENTE" -> query = "SELECT appointments.idAppointments ,appointments.idbarber, appointments.idutente, appointments.data, " +
+                    "appointments.name_user, appointments.name_barber, appointments.description, " +
+                    "appointments.address_barber, appointments.service, appointments.state, " +
+                    "appointments.orario, appointments.phone " +
+                    "FROM appointments WHERE idUtente = ?";
+
         }
-
-        final String query =
-                "SELECT appointments.idAppointments ,appointments.idbarber, appointments.idutente, appointments.data, " +
-                        "appointments.name_user, appointments.name_barber, appointments.description, " +
-                        "appointments.address_barber, appointments.service, appointments.state, " +
-                        "appointments.orario, appointments.phone " +
-                        "FROM appointments WHERE " + column + " = ?";
-
         List<RequestAppointmentsModel> listRequestAppModel = new ArrayList<>();
 
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {

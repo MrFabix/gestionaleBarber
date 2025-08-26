@@ -21,7 +21,7 @@ public class BarberAppController {
         try {
             return new BarberBean(barberDAO.getBarberById(id.getId())); //devo passare l'id del barbiere con un Bean
         } catch (Exception e) {
-            System.out.println("Errore nel prendere i dettagli del barbiere: " + e.getMessage());
+            e.printStackTrace();
             return null;
         }
     }
