@@ -16,7 +16,6 @@ public class ServiceAppController {
     }
 
     public List<ServiceBean> getServiceBarber(IdBean id){
-        System.out.println("Sei qui nel getserviceBarber, l'id del barbiere è " + id.getId());
         ServiceDAO serviceDao = new ServiceDAO();
         List<ServiceBean> serviceBean = new ArrayList<>();
         List<ServiceModel> serviceModels = new ArrayList<>();

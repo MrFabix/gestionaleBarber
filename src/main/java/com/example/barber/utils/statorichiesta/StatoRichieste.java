@@ -3,7 +3,8 @@ package com.example.barber.utils.statorichiesta;
 public enum StatoRichieste {
         ACCETTATA("ACCETTATA"),
         RIFIUTATA("RIFIUTATA"),
-        PENDENTE("PENDENTE");
+        PENDENTE("PENDENTE"),
+        TERMINATA("TERMINATA");
 
         private final String id;
 

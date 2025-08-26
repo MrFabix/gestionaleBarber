@@ -4,20 +4,28 @@ import com.example.barber.controller.appcontroller.BarberAppController;
 import com.example.barber.controller.appcontroller.ServiceAppController;
 import com.example.barber.utils.Session;
 import com.example.barber.utils.bean.BarberBean;
+import com.example.barber.utils.bean.IdBean;
 import com.example.barber.utils.bean.ServiceBean;
 import com.example.barber.utils.exception.myexception.SystemException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 
-public class ManageShopGuiController {
+
+public class ManageShopGuiController implements Initializable {
 
     private ServiceBean serviceBean = new ServiceBean();
     private BarberBean barberBean = new BarberBean();
 
+    private IdBean idBean = new IdBean(Session.getInstance().getBarber().getId());
+    private ServiceAppController controller = new ServiceAppController();
 
     @FXML
     private TextField nomeServizio;
@@ -30,9 +38,23 @@ public class ManageShopGuiController {
     @FXML
     private TextField fineOrario;
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+       List<ServiceBean> serviceBeanList;
+       serviceBeanList = controller.getServiceBarber(idBean);
+       if(serviceBeanList == null){
+           listService.getChildren().clear();
+       }else {
+           for (ServiceBean s : serviceBeanList) {
+               String prezzo = String.format(java.util.Locale.US, "%.2f", s.getPrezzo());
+               buildItemVbox(s.getNome_servizio(), prezzo);
+           }
+       }
+    }
+
     @FXML
     private void addServiceInVbox() {
-        ServiceAppController controller = new ServiceAppController();
+
         serviceBean.setId_barber(Session.getInstance().getBarber().getId());
         serviceBean.setNome_servizio(nomeServizio.getText());
         String price = costo.getText();
@@ -58,16 +80,8 @@ public class ManageShopGuiController {
             return;
         }
 
-        HBox row = new HBox(8);
-        Label bullet = new Label("•");
-        Label lblName = new Label(name);
-        Label prezzo = new Label(price);
-        Button remove = new Button("X");
-        remove.setOnAction(e -> deleteService(row, controller, serviceBean));
+        buildItemVbox(name,price);
         new Alert(Alert.AlertType.WARNING, "Aggiunto un serivzio").showAndWait();
-        row.getChildren().addAll(bullet, lblName, prezzo, remove);
-        listService.getChildren().add(row);
-
         try{
             controller.insertService(serviceBean);
         } catch (SystemException e) {
@@ -82,6 +96,16 @@ public class ManageShopGuiController {
         nomeServizio.requestFocus();
     }
 
+    private void buildItemVbox(String name, String price){
+        HBox row = new HBox(8);
+        Label bullet = new Label("•");
+        Label lblName = new Label(name);
+        Label prezzo = new Label(price);
+        Button remove = new Button("X");
+        remove.setOnAction(e -> deleteService(row, controller, serviceBean));
+        row.getChildren().addAll(bullet, lblName, prezzo, remove);
+        listService.getChildren().add(row);
+    }
 
     private void deleteService(HBox row, ServiceAppController controller, ServiceBean serviceBean){
         listService.getChildren().remove(row);
@@ -94,12 +118,12 @@ public class ManageShopGuiController {
 
     @FXML
     public void upgradeOrarioLavoro(ActionEvent e){
-        BarberAppController controller = new BarberAppController();
+        BarberAppController barberAppController = new BarberAppController();
         barberBean.setOrarioInizio(inizioOrario.getText());
         barberBean.setOrarioFine(fineOrario.getText());
         barberBean.setId(Session.getInstance().getBarber().getId());
         try{
-            controller.insertOrarioBarber(barberBean);
+            barberAppController.insertOrarioBarber(barberBean);
         }catch (SystemException ex){
             ex.printStackTrace();
         }

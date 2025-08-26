@@ -3,15 +3,11 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface1.HomePageBarberGuiController">
     <fx:include source="navbar.fxml" />
-    <!-- Main Content -->
-    <VBox layoutX="194.4" prefHeight="600.0" prefWidth="706.0" spacing="20.0" style="-fx-padding: 20;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <Label style="-fx-font-size: 18; -fx-font-weight: bold;" text="Prossimi Appuntamenti" />
-      <ListView fx:id="appointmentList1" prefHeight="142.0" prefWidth="666.0" />
-      <Label style="-fx-font-size: 18; -fx-font-weight: bold;" text="Appuntamenti Terminati " />
-      <ListView fx:id="notificationList1" prefHeight="150.0" />
-    </VBox>
+      <Label layoutX="235.0" layoutY="100.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Prossimi Appuntamenti" />
+      <ListView fx:id="listNextAppointemtns" layoutX="255.0" layoutY="127.0" prefHeight="142.0" prefWidth="615.0" />
+      <Label layoutX="235.0" layoutY="300.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Appuntamenti Terminati " />
+      <ListView fx:id="listTerminateAppointments" layoutX="254.0" layoutY="327.0" prefHeight="150.0" prefWidth="615.0" />
 </AnchorPane>

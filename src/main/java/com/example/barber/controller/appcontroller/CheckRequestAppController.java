@@ -14,14 +14,12 @@ import java.util.List;
 
 public class CheckRequestAppController {
 
-    private Observer observer;
+
     private ManageRequestBeanList manageRequestBeanList;
 
 
-
     public void manageRequestAppointments(Observer observer, int id, String role) throws SystemException {
-        this.observer = observer;
-        this.manageRequestBeanList = new ManageRequestBeanList(observer);
+        manageRequestBeanList = new ManageRequestBeanList(observer);
         manageRequestBeanList.addRequestsToList(searchRequestById(id, role));
     }
 
