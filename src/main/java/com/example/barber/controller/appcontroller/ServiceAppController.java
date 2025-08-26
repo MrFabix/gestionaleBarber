@@ -6,6 +6,7 @@ import com.example.barber.utils.bean.ServiceBean;
 import com.example.barber.utils.bean.IdBean;
 import com.example.barber.utils.dao.BarberDAO;
 import com.example.barber.utils.dao.ServiceDAO;
+import com.example.barber.utils.exception.myexception.SystemException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,4 +29,23 @@ public class ServiceAppController {
             return null;
         }
     }*/
+
+
+    public void insertService(ServiceBean serviceBean) throws SystemException {
+        ServiceModel serviceModel = new ServiceModel();
+        serviceModel.setPrezzo(serviceBean.getPrezzo());
+        serviceModel.setId_barber(serviceBean.getId_barber());
+        serviceModel.setNome_servizio(serviceBean.getNome_servizio());
+        ServiceDAO serviceDAO = new ServiceDAO();
+        serviceDAO.insertService(serviceModel);
+    }
+
+    public void deleteService(ServiceBean serviceBean) throws SystemException {
+        ServiceModel serviceModel = new ServiceModel();
+        serviceModel.setPrezzo(serviceBean.getPrezzo());
+        serviceModel.setId_barber(serviceBean.getId_barber());
+        serviceModel.setNome_servizio(serviceBean.getNome_servizio());
+        ServiceDAO serviceDAO = new ServiceDAO();
+        serviceDAO.deleteService(serviceModel);
+    }
 }

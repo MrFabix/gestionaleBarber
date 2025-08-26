@@ -10,6 +10,9 @@ public class ServiceBean {
     protected double prezzo;
 
 
+    public ServiceBean(){
+
+    }
 
     public ServiceBean(int id_barber, String nome_servizio, double prezzo) {
         this.id_barber = id_barber;

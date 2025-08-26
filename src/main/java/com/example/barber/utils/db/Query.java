@@ -1,5 +1,5 @@
 package com.example.barber.utils.db;
-// NOSONAR
+
 
 import com.example.barber.model.*;
 import com.example.barber.utils.exception.myexception.SystemException;
@@ -16,6 +16,45 @@ public class Query {
     private static final String ADDRESS = "address";
     private static final String PHONE = "phone";
     private static final String EMAIL = "email";
+
+    public void deleteService(ServiceModel serviceModel) throws SystemException {
+            String query = "DELETE FROM service WHERE id_barber = ? AND servizi = ? AND prezzo = ?";
+            try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
+
+                preparedStatement.setInt(1, serviceModel.getId_barber());
+                preparedStatement.setString(2, serviceModel.getNome_servizio());
+                preparedStatement.setDouble(3, serviceModel.getPrezzo());
+
+                preparedStatement.executeUpdate();
+
+            } catch (SQLException e) {
+                SystemException exception = new SystemException();
+                exception.initCause(e);
+                throw exception;
+            } catch (SystemException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+
+    public void insertService(ServiceModel serviceModel) throws SystemException{
+        String query = "INSERT INTO service (id_barber, servizi, prezzo) VALUES (?,?,?)";
+        try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
+            preparedStatement.setInt(1, serviceModel.getId_barber());
+            preparedStatement.setString(2, serviceModel.getNome_servizio());
+            preparedStatement.setDouble(3, serviceModel.getPrezzo());
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            SystemException exception = new SystemException();
+            exception.initCause(e);
+            throw exception;
+        } catch (SystemException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     public void insertBarber(BarberModel barberModel) throws SystemException {
         //TODO implementare il controllo se l'username esiste già
@@ -171,7 +210,7 @@ public class Query {
                 userModel.setGender(rs.getString("gender"));
                 userModel.setEmail(rs.getString(EMAIL));
                 userModel.setUsername(rs.getString(USERNAME));
-                userModel.setPhone(rs.getString("phone"));
+                userModel.setPhone(rs.getString(PHONE));
             }
             return userModel;
 

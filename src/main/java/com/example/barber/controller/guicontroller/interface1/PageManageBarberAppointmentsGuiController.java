@@ -59,6 +59,7 @@ public class PageManageBarberAppointmentsGuiController implements Observer, Init
                 pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource(AppointmentsItemFxml).openStream()));
                 itemController = fxmlLoader.getController();
                 itemController.setAll(rBean,controller);
+                itemController.setVisibilityButton();
                 this.listViewAcceptedAppointments.getItems().add(pane);
             }
         }catch (Exception e){

@@ -6,8 +6,8 @@ public class BarberModel extends ProfileModel {
     private String city;
     private String address;
     private String description;
-    private String phone;
-    private String hours;
+    private String orarioInizio;
+    private String orarioFine;
     private ServiceModel services;
     private String[] reviews;
 
@@ -20,9 +20,7 @@ public class BarberModel extends ProfileModel {
     public BarberModel(BarberBean barberBean) {
         super(barberBean.getId(), barberBean.getUsername(), barberBean.getEmail(), barberBean.getImg(), barberBean.getName(), barberBean.getPhone());
         this.city = barberBean.getCity();
-        this.phone = barberBean.getPhone();
         this.address = barberBean.getAddress();
-        this.hours = barberBean.getHours();
         this.description = barberBean.getDescription();
         this.services = barberBean.getServices();
         this.reviews = barberBean.getReviews();
@@ -41,7 +39,6 @@ public class BarberModel extends ProfileModel {
         return address;
     }
 
-    public String getHours() { return hours; }
 
     public ServiceModel getServices() {
         return services;
@@ -51,7 +48,13 @@ public class BarberModel extends ProfileModel {
         return reviews;
     }
 
-    public String getPhone(){return phone; }
+    public String getOrarioInizio() {
+        return orarioInizio;
+    }
+
+    public String getOrarioFine() {
+        return orarioFine;
+    }
 
     //Setter
     public void setCity(String city) {
@@ -66,15 +69,18 @@ public class BarberModel extends ProfileModel {
         this.description = description;
     }
 
-    public void setHours(String hours) {
-        this.hours = hours;
+    public void setOrarioInizio(String orarioInizio) {
+        this.orarioInizio = orarioInizio;
+    }
+
+    public void setOrarioFine(String orarioFine) {
+        this.orarioFine = orarioFine;
     }
 
     public void setServices(ServiceModel services) {
         this.services = services;
     }
 
-    public void setPhone(String phone) {this.phone = phone;}
 
     public void setReviews(String[] reviews) {
         this.reviews = reviews;

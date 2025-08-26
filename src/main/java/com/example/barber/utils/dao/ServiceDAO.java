@@ -11,4 +11,12 @@ public class ServiceDAO {
     public List<ServiceModel> getServiceById(int id) throws SystemException {
         return query.serviceByIdBarber(id);
     }
+
+    public void insertService(ServiceModel serviceModel) throws SystemException {
+        query.insertService(serviceModel);
+    }
+
+    public void deleteService(ServiceModel serviceModel) throws SystemException {
+        query.deleteService(serviceModel);
+    }
 }

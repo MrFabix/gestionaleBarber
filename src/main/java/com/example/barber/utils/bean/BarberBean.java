@@ -5,11 +5,11 @@ import com.example.barber.model.ServiceModel;
 import com.example.barber.utils.exception.Trigger;
 
 public class BarberBean extends ProfileBean {
-
+    protected String orarioInizio;
+    protected String orarioFine;
     protected String barberShopName;
     protected String address;
     protected String city;
-    protected String hours;
     protected String description;
     protected ServiceModel services;
     protected String[] reviews;
@@ -30,7 +30,6 @@ public class BarberBean extends ProfileBean {
         this.city = barberModel.getCity();
         this.phone = barberModel.getPhone();
         this.username = barberModel.getUsername();
-        this.hours = barberModel.getHours();
         this.description = barberModel.getDescription();
         this.services = barberModel.getServices();
         this.reviews = barberModel.getReviews();
@@ -45,7 +44,6 @@ public class BarberBean extends ProfileBean {
         this.address = barberBean.getAddress();
         this.city = barberBean.getCity();
         this.username = barberBean.getUsername();
-        this.hours = barberBean.getHours();
         this.description = barberBean.getDescription();
         this.services = barberBean.getServices();
         this.reviews = barberBean.getReviews();
@@ -65,8 +63,12 @@ public class BarberBean extends ProfileBean {
         return city;
     }
 
-    public String getHours() {
-        return hours;
+    public String getOrarioInizio() {
+        return orarioInizio;
+    }
+
+    public String getOrarioFine() {
+        return orarioFine;
     }
 
     public String getDescription() {
@@ -92,9 +94,12 @@ public class BarberBean extends ProfileBean {
     public void setCity(String city) {
         this.city = city;
     }
+    public void setOrarioInizio(String orarioInizio) {
+        this.orarioInizio = orarioInizio;
+    }
 
-    public void setHours(String hours) {
-        this.hours = hours;
+    public void setOrarioFine(String orarioFine) {
+        this.orarioFine = orarioFine;
     }
 
     public void setDescription(String description) {
@@ -117,7 +122,8 @@ public class BarberBean extends ProfileBean {
                 ", address='" + address + '\'' +
                 ", city='" + city + '\'' +
                 ", phone='" + phone + '\'' +
-                ", hours='" + hours + '\'' +
+                ", hours='" + orarioInizio + '\'' +
+                ", hours='" + orarioFine + '\'' +
                  "phone"+ phone + '\'' +
                 ", description='" + description + '\'' +
                 ", services=" + (services != null ? String.join(", ", services.getNome_servizio()) : "No services available") +

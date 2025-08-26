@@ -8,7 +8,7 @@
 
 <?import javafx.scene.control.Spinner?>
 <AnchorPane prefHeight="531.0" prefWidth="715.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface1.ManageShopGuiController">
-<fx:include source="navbar.fxml" />
+
    <children>
       <Label layoutX="281.0" layoutY="405.0" text="Setta orario di lavoro" />
       <Label layoutX="282.0" layoutY="47.0" prefHeight="18.0" prefWidth="83.0" text="Nome servizio" />
@@ -20,7 +20,7 @@
       <TextField fx:id="fineOrario" layoutX="467.0" layoutY="431.0" prefHeight="26.0" prefWidth="83.0" />
       <Label layoutX="267.0" layoutY="436.0" text="inizio" />
       <Label layoutX="440.0" layoutY="436.0" text="fine" />
-      <Spinner fx:id="prezzo" layoutX="468.0" layoutY="64.0" prefHeight="26.0" prefWidth="83.0"/>
+      <TextField fx:id="costo" layoutX="468.0" layoutY="64.0" prefHeight="26.0" prefWidth="83.0"/>
       <Label layoutX="468.0" layoutY="46.0" prefHeight="18.0" prefWidth="83.0" text="Prezzo" />
    </children>
 </AnchorPane>
