@@ -36,12 +36,6 @@
     <Label text="Service:" GridPane.columnIndex="2" GridPane.rowIndex="10" />
     <ComboBox fx:id="serviceComboBox" prefHeight="26.0" prefWidth="281.0" GridPane.columnIndex="3" GridPane.rowIndex="10">
         <items>
-            <FXCollections fx:factory="observableArrayList">
-                <String fx:value="Haircut" />
-                <String fx:value="Shave" />
-                <String fx:value="Beard Trim" />
-                <String fx:value="Full Grooming" />
-            </FXCollections>
         </items>
     </ComboBox>
 
@@ -53,16 +47,7 @@
     <Button fx:id="bookButton" onAction="#handleBooking" prefHeight="26.0" prefWidth="198.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Book Appointment" GridPane.columnIndex="3" GridPane.rowIndex="12" />
       <Button fx:id="goBackButton" onAction="#goBack" mnemonicParsing="false"  prefHeight="26.0" prefWidth="126.0" text="Back To barber" GridPane.columnIndex="2" GridPane.rowIndex="12" />
       <Label text="Orario" GridPane.columnIndex="2" GridPane.rowIndex="8" />
-      <ComboBox fx:id="orarioComboBox" prefHeight="26.0" prefWidth="281.0" GridPane.columnIndex="3" GridPane.rowIndex="8">
-         <items>
-            <FXCollections fx:factory="observableArrayList">
-               <String fx:value="Haircut" />
-               <String fx:value="Shave" />
-               <String fx:value="Beard Trim" />
-               <String fx:value="Full Grooming" />
-            </FXCollections>
-         </items>
-      </ComboBox>
+      <TextField fx:id="orario" prefHeight="26.0" prefWidth="281.0" GridPane.columnIndex="3" GridPane.rowIndex="8"/>
 
 
 

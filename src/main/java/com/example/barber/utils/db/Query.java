@@ -17,6 +17,33 @@ public class Query {
     private static final String PHONE = "phone";
     private static final String EMAIL = "email";
 
+
+
+    public void insertOrarioDB(BarberModel barberModel) throws SystemException {
+        String query = "INSERT INTO working_hours (id_barber, orarioInizio, orarioFine) VALUES (?,?,?)";
+        try (PreparedStatement preparedStatement =
+                     MySqlConnection.getInstance().connect().prepareStatement(query)) {
+
+            preparedStatement.setInt(1, barberModel.getId());
+            preparedStatement.setString(2, barberModel.getOrarioInizio());
+            preparedStatement.setString(3, barberModel.getOrarioFine());
+
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            if (rowsAffected == 0) {
+                System.out.println("Il numero di righe inserite è 0: c'è un errore");
+            } else {
+                System.out.println("Orari di lavoro inseriti correttamente");
+            }
+
+        } catch (SQLException e) {
+            SystemException exception = new SystemException();
+            exception.initCause(e);
+            throw exception;
+        } catch (SystemException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public void deleteService(ServiceModel serviceModel) throws SystemException {
             String query = "DELETE FROM service WHERE id_barber = ? AND servizi = ? AND prezzo = ?";
             try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
@@ -336,7 +363,7 @@ public class Query {
     }
 
     public List<ServiceModel> serviceByIdBarber(int id) throws SystemException {
-        String query = "SELECT * FROM service WHERE id = ?";
+        String query = "SELECT * FROM service WHERE id_barber = ?";
         List<ServiceModel> serviceModels = new ArrayList<>();
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
             preparedStatement.setInt(1, id);

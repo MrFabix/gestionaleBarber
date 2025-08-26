@@ -94,6 +94,7 @@ public class BarberBean extends ProfileBean {
     public void setCity(String city) {
         this.city = city;
     }
+
     public void setOrarioInizio(String orarioInizio) {
         this.orarioInizio = orarioInizio;
     }

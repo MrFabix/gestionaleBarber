@@ -1,7 +1,6 @@
 package com.example.barber.controller.guicontroller.interface1;
 
 import com.example.barber.controller.appcontroller.BookingAppController;
-import com.example.barber.controller.appcontroller.CheckRequestAppController;
 import com.example.barber.utils.Session;
 import com.example.barber.utils.bean.*;
 import com.example.barber.utils.exception.ErrorDialog;
@@ -13,11 +12,12 @@ import com.example.barber.utils.switchpage.SwitchAndSetPage;
 import com.example.barber.utils.switchpage.SwitchPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+
+import java.util.List;
 
 
 public class BookingFormGuiController{
@@ -35,7 +35,7 @@ public class BookingFormGuiController{
     @FXML
     private ComboBox<String> serviceComboBox;
     @FXML
-    private ComboBox<String> orarioComboBox;
+    private TextField orario;
     @FXML
     private TextField notesField;
     @FXML
@@ -50,14 +50,21 @@ public class BookingFormGuiController{
 
 
     public void setAll(PreFormBarberBean bean){
+            List<String> serviceList;
             userBean = Session.getInstance().getUser();
-            System.out.println("userBean = " + userBean.toString());
             nameField.setText(userBean.getName());
             phoneField.setText(userBean.getPhone());
             emailField.setText(userBean.getEmail());
             this.preFormBarberBean.setIdBarber(bean.getIdBarber());
             this.preFormBarberBean.setBarberName(bean.getBarberName());
             this.preFormBarberBean.setBarberAddress(bean.getBarberAddress());
+
+            serviceList = bean.getServiceList();
+
+            for(String s : serviceList){
+                serviceComboBox.getItems().add(s);
+            }
+
     }
 
     // Handle the form submission
@@ -79,7 +86,7 @@ public class BookingFormGuiController{
             requestAppointmentsBean.setAddressBarber(preFormBarberBean.getBarberAddress());
             requestAppointmentsBean.setService(serviceComboBox.getValue());
             requestAppointmentsBean.setState(StatoRichieste.PENDENTE);
-            requestAppointmentsBean.setOrario(orarioComboBox.getValue());
+            requestAppointmentsBean.setOrario(orario.getText());
             switchAndSetPage.switchAndSetHomePageClient(event, "/HomePageClientAppointments.fxml", requestAppointmentsBean);
         }catch(SystemException | InvalidDateException | EmptyInputException e ){
             ErrorDialog.getInstance().handleException(e);

@@ -12,23 +12,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceAppController {
-
-   /* public ServiceAppController() {
+    public ServiceAppController() {
     }
 
     public List<ServiceBean> getServiceBarber(IdBean id){
+        System.out.println("Sei qui nel getserviceBarber, l'id del barbiere è " + id.getId());
         ServiceDAO serviceDao = new ServiceDAO();
         List<ServiceBean> serviceBean = new ArrayList<>();
         List<ServiceModel> serviceModels = new ArrayList<>();
 
-       /* try {
-            (serviceDao.getServiceById(id.getId())); //devo passare l'id del barbiere con un Bean
+       try {
+           serviceModels = serviceDao.getServiceById(id.getId()); //devo passare l'id del barbiere con un Bean
+           if (serviceModels != null && !serviceModels.isEmpty()) {
+               System.out.println("Lista piena: " + serviceModels.size() + " elementi");
+           } else {
+               System.out.println("Lista vuota");
+           }
 
-        } catch (Exception e) {
+           for(ServiceModel serviceModel : serviceModels){
+                serviceBean.add(new ServiceBean(serviceModel));
+            }
+       } catch (Exception e) {
             System.out.println("Errore nel prendere i dettagli del barbiere: " + e.getMessage());
             return null;
         }
-    }*/
+       return serviceBean;
+    }
 
 
     public void insertService(ServiceBean serviceBean) throws SystemException {

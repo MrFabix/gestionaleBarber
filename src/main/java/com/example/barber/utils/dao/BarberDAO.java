@@ -16,6 +16,7 @@ public class BarberDAO {
 
     }
 
+
     public BarberModel getBarberByUsername(String username) throws SystemException {
         return query.searchBarberByUsername(username);
     }
@@ -32,6 +33,9 @@ public class BarberDAO {
         return query.searchBarberById(id);
     }
 
+    public void insertOrarioBarbiere(BarberModel barberModel) throws SystemException{
+        query.insertOrarioDB(barberModel);
+    }
 
 
 

@@ -29,12 +29,6 @@ public class HomePageClientGuiController implements Observer, Initializable {
     @FXML
     private TextField searchBarber; // Barra di ricerca
 
-
-
-
-
-
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ListBarberEngineering listBarber;

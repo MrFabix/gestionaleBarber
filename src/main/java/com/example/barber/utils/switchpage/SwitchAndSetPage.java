@@ -1,7 +1,6 @@
 package com.example.barber.utils.switchpage;
 
 
-import com.example.barber.controller.appcontroller.BookingAppController;
 import com.example.barber.utils.bean.PreFormBarberBean;
 import com.example.barber.utils.bean.RequestAppointmentsBean;
 import com.example.barber.utils.exception.myexception.SystemException;
@@ -34,7 +33,6 @@ public class SwitchAndSetPage{
     }
 
     public void switchAndSetHomePageClient(ActionEvent event, String fxml, RequestAppointmentsBean requestAppointmentsBean) throws SystemException {
-        System.out.println("Sei ne Switch and scene home page client");
         try{
             FXMLLoader loader = new FXMLLoader(SwitchAndSetPage.class.getResource(fxml));
             Parent root = loader.load();

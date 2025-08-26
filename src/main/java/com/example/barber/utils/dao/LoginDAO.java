@@ -8,10 +8,6 @@ import com.example.barber.utils.ruoli.Role;
 
 public class LoginDAO {
     Query query = new Query();
-    /*public boolean checkIsRegistered(CredentialsModel credentialsModel) throws SystemException {
-        System.out.println("LoginDAO.checkIsRegistered");
-        return query.searchUserInLogged(credentialsModel);
-    }*/
 
     public Role getRole(CredentialsModel credentialsModel) throws SystemException {
         System.out.println("Restituisci Il ruolo di quell'utente");

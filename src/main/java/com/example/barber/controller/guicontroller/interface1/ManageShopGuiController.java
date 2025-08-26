@@ -1,9 +1,12 @@
 package com.example.barber.controller.guicontroller.interface1;
 
+import com.example.barber.controller.appcontroller.BarberAppController;
 import com.example.barber.controller.appcontroller.ServiceAppController;
 import com.example.barber.utils.Session;
+import com.example.barber.utils.bean.BarberBean;
 import com.example.barber.utils.bean.ServiceBean;
 import com.example.barber.utils.exception.myexception.SystemException;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
@@ -13,7 +16,7 @@ import javafx.scene.layout.VBox;
 public class ManageShopGuiController {
 
     private ServiceBean serviceBean = new ServiceBean();
-
+    private BarberBean barberBean = new BarberBean();
 
 
     @FXML
@@ -22,6 +25,10 @@ public class ManageShopGuiController {
     private VBox listService;
     @FXML
     private TextField costo;
+    @FXML
+    private TextField inizioOrario;
+    @FXML
+    private TextField fineOrario;
 
     @FXML
     private void addServiceInVbox() {
@@ -83,6 +90,21 @@ public class ManageShopGuiController {
         } catch (SystemException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    public void upgradeOrarioLavoro(ActionEvent e){
+        BarberAppController controller = new BarberAppController();
+        barberBean.setOrarioInizio(inizioOrario.getText());
+        barberBean.setOrarioFine(fineOrario.getText());
+        barberBean.setId(Session.getInstance().getBarber().getId());
+        try{
+            controller.insertOrarioBarber(barberBean);
+        }catch (SystemException ex){
+            ex.printStackTrace();
+        }
+
+
     }
 }
 

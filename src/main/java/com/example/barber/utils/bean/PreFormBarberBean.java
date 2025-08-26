@@ -1,6 +1,8 @@
 package com.example.barber.utils.bean;
 
 
+import java.util.Arrays;
+import java.util.List;
 
 public class PreFormBarberBean{
 
@@ -9,8 +11,7 @@ public class PreFormBarberBean{
     private int idBarber;
     private String barberName;
     private String barberAddress;
-    //da capire se possiamo usare
-    //private List<ServiceModel> serviceModel;
+    private List<String> serviceList;
 
     //Getter
     public int getIdBarber() {
@@ -23,6 +24,10 @@ public class PreFormBarberBean{
 
     public String getBarberAddress() {
         return barberAddress;
+    }
+
+    public List<String> getServiceList() {
+        return serviceList;
     }
 
     //Setter
@@ -38,7 +43,9 @@ public class PreFormBarberBean{
         this.barberAddress = barberAddress;
     }
 
-
+    public void setServiceList(List<String> serviceList) {
+       this.serviceList = serviceList;
+    }
 
     @Override
     public String toString() {

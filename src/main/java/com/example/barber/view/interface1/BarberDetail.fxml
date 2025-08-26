@@ -36,11 +36,6 @@
         <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Servizi Offerti:" />
         <ListView fx:id="servicesList" prefHeight="132.0" prefWidth="779.0">
             <items>
-                <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="Taglio Uomo - 20€" />
-                    <String fx:value="Barba - 10€" />
-                    <String fx:value="Taglio Completo - 25€" />
-                </FXCollections>
             </items>
         </ListView>
 
