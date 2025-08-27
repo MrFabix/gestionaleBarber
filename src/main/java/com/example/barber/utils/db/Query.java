@@ -127,11 +127,7 @@ public class Query {
         try (PreparedStatement ps = MySqlConnection.getInstance().connect().prepareStatement(sql)) {
             ps.setString(1, newState);   // "ACCETTATA" | "RIFIUTATA" | "PENDENTE"
             ps.setInt(2, appointmentId);
-
-            int rows = ps.executeUpdate();
-            if (rows != 1) {
-                throw new SQLException("Nessuna riga aggiornata (id=" + appointmentId + ")");
-            }
+            ps.executeUpdate();
         } catch (SQLException e) {
             SystemException ex = new SystemException();
             ex.initCause(e);
@@ -142,14 +138,11 @@ public class Query {
 
     public void deleteService(ServiceModel serviceModel) throws SystemException {
             String query = "DELETE FROM service WHERE id_barber = ? AND servizi = ? AND prezzo = ?";
-            try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
-
-                preparedStatement.setInt(1, serviceModel.getId_barber());
-                preparedStatement.setString(2, serviceModel.getNome_servizio());
-                preparedStatement.setDouble(3, serviceModel.getPrezzo());
-
-                preparedStatement.executeUpdate();
-
+            try (PreparedStatement prpstmt = MySqlConnection.getInstance().connect().prepareStatement(query)) {
+                prpstmt.setInt(1, serviceModel.getId_barber());
+                prpstmt.setString(2, serviceModel.getNome_servizio());
+                prpstmt.setDouble(3, serviceModel.getPrezzo());
+                prpstmt.executeUpdate();
             } catch (SQLException e) {
                 SystemException exception = new SystemException();
                 exception.initCause(e);
@@ -162,12 +155,12 @@ public class Query {
 
     public void insertService(ServiceModel serviceModel) throws SystemException{
         String query = "INSERT INTO service (id_barber, servizi, prezzo) VALUES (?,?,?)";
-        try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
-            preparedStatement.setInt(1, serviceModel.getId_barber());
-            preparedStatement.setString(2, serviceModel.getNome_servizio());
-            preparedStatement.setDouble(3, serviceModel.getPrezzo());
+        try (PreparedStatement ps = MySqlConnection.getInstance().connect().prepareStatement(query)) {
+            ps.setInt(1, serviceModel.getId_barber());
+            ps.setString(2, serviceModel.getNome_servizio());
+            ps.setDouble(3, serviceModel.getPrezzo());
 
-            preparedStatement.executeUpdate();
+            ps.executeUpdate();
 
         } catch (SQLException e) {
             SystemException exception = new SystemException();
