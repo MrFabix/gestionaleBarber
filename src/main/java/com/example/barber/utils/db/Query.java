@@ -337,7 +337,6 @@ public class Query {
     //query per prendere i dettagli di un barbiere tramite l'id
 
     public BarberModel searchBarberById(int id) throws SystemException {
-        System.out.println("Sei prima della query");
         String query = "SELECT * FROM barber WHERE id = ?";
         BarberModel barberModel = new BarberModel();
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
@@ -439,13 +438,7 @@ public class Query {
 
     //Restituzione Lista appuntamenti pendenti
     public List<RequestAppointmentsModel> searchAllAppointmentsByUser(int id, String role) throws SystemException {
-
-        if (id <= 0) throw new IllegalArgumentException("id non valido");
-        if (role == null) throw new IllegalArgumentException("role nullo");
-
-        String query = "";
-
-        switch (role) {
+        String query = switch (role) {
             case "BARBIERE" -> query = "SELECT appointments.idAppointments ,appointments.idbarber, appointments.idutente, appointments.data, " +
                     "appointments.name_user, appointments.name_barber, appointments.description, " +
                     "appointments.address_barber, appointments.service, appointments.state, " +
@@ -457,9 +450,9 @@ public class Query {
                     "appointments.address_barber, appointments.service, appointments.state, " +
                     "appointments.orario, appointments.phone " +
                     "FROM appointments WHERE idUtente = ?";
-            default -> query = "";
+            default -> throw new IllegalArgumentException("Ruolo non supportato: " + role);
 
-        }
+        };
 
 
         List<RequestAppointmentsModel> listRequestAppModel = new ArrayList<>();
