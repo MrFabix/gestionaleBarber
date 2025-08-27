@@ -41,23 +41,6 @@ public class HomePageClientGuiController2 implements Observer, Initializable {
         }
     }
 
-
-    @Override
-    public void update(Object ob) {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        Pane pane;
-        if (ob instanceof BarberBean bBean) {
-            try {
-                pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource("/view/interface2/BarberItem2.fxml")).openStream());
-                BarberItemGuiController2 controller = fxmlLoader.getController();
-                controller.setBarberDetails(bBean);
-                this.listBarber.getItems().add(pane);
-            } catch (Exception e) {
-                ErrorDialog.getInstance().handleException(e);
-            }
-        }
-    }
-
     //funzione per il filtraggio dei barbieri
     @FXML
     private void search() {
@@ -75,4 +58,22 @@ public class HomePageClientGuiController2 implements Observer, Initializable {
             ErrorDialog.getInstance().handleException(e);
         }
     }
+
+    @Override
+    public void update(Object ob) {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        Pane pane;
+        if (ob instanceof BarberBean bBean) {
+            try {
+                pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource("/view/interface2/BarberItem2.fxml")).openStream());
+                BarberItemGuiController2 controller = fxmlLoader.getController();
+                controller.setBarberDetails(bBean);
+                this.listBarber.getItems().add(pane);
+            } catch (Exception e) {
+                ErrorDialog.getInstance().handleException(e);
+            }
+        }
+    }
+
+
 }

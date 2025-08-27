@@ -35,6 +35,24 @@ public class NavBarGuiController2 implements Initializable {
             }
         }
 
+
+        private MFXButton logOutButton(String name) {
+            MFXButton button = new MFXButton(name);
+            button.setPrefHeight(44.0);
+            button.setMinWidth(120.0);
+            button.setAlignment(Pos.CENTER);
+            button.setOnAction(e -> {
+                try {
+                    Session.getInstance().deleteSession();
+                    MySqlConnection.getInstance().closeConnection();
+                    switchPage.replaceScene(e, "/view/interface2/welcomePage2.fxml");
+                } catch (SystemException | SQLException ex) {
+                    ErrorDialog.getInstance().handleException(ex);
+                }
+            });
+            return button;
+        }
+        
         private void initNavBar(AnchorPane pane) {
             HBox hBox = new HBox();
             hBox.setAlignment(Pos.CENTER_LEFT);
@@ -87,20 +105,5 @@ public class NavBarGuiController2 implements Initializable {
             return button;
         }
 
-        private MFXButton logOutButton(String name) {
-            MFXButton button = new MFXButton(name);
-            button.setPrefHeight(44.0);
-            button.setMinWidth(120.0);
-            button.setAlignment(Pos.CENTER);
-            button.setOnAction(e -> {
-                try {
-                    Session.getInstance().deleteSession();
-                    MySqlConnection.getInstance().closeConnection();
-                    switchPage.replaceScene(e, "/view/interface2/welcomePage2.fxml");
-                } catch (SystemException | SQLException ex) {
-                    ErrorDialog.getInstance().handleException(ex);
-                }
-            });
-            return button;
-        }
+
 }

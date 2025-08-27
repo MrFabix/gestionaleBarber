@@ -19,9 +19,19 @@ public class BarberItemGuiController2 {
     private Label barberAddressLabel;
     @FXML
     private Button barberButton;
-
-
     private SwitchPage sp = new SwitchPage();
+
+    @FXML
+    private void showBarberDetails(ActionEvent event) throws SystemException {
+        //Recupera l'ID dal pulsante tramite getUserData
+        int id = (int) barberButton.getUserData();
+        //creo il bean per passare l'id
+        IdBean idBean = new IdBean(id);
+        //cambio pagina passando l'id del barbiere
+        sp.switchPageId("/view/Interface2/BarberDetail.fxml", event, idBean);
+    }
+
+
 
     // Metodo per impostare i dettagli del barbiere
     public void setBarberDetails(BarberBean bean) {
@@ -33,15 +43,7 @@ public class BarberItemGuiController2 {
     }
 
 
-    @FXML
-    private void showBarberDetails(ActionEvent event) throws SystemException {
-        //Recupera l'ID dal pulsante tramite getUserData
-        int id = (int) barberButton.getUserData();
-        //creo il bean per passare l'id
-        IdBean idBean = new IdBean(id);
-        //cambio pagina passando l'id del barbiere
-        sp.switchPageId("/view/Interface2/BarberDetail.fxml", event, idBean);
-    }
+
 
 
 
