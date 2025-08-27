@@ -17,17 +17,17 @@
       </Text>
 
       <Button fx:id="userChoice" layoutX="220.0" layoutY="130.0" mnemonicParsing="false"
-              text="Registrati come Utente" onAction="#onSingInUser"
+              text="Registrati come Utente" onAction="#userSign"
               prefHeight="50.0" prefWidth="220.0"
               style="-fx-background-color: #10b981; -fx-text-fill: white; -fx-background-radius: 999; -fx-font-size: 14px; -fx-font-weight: bold;"/>
 
       <Button fx:id="barberChoice" layoutX="220.0" layoutY="195.0" mnemonicParsing="false"
-              text="Registrati come Barbiere" onAction="#onSignInBarber"
+              text="Registrati come Barbiere" onAction="#barberSign"
               prefHeight="50.0" prefWidth="220.0"
               style="-fx-background-color: #6366f1; -fx-text-fill: white; -fx-background-radius: 999; -fx-font-size: 14px; -fx-font-weight: bold;"/>
 
       <Button fx:id="backToWelcomePage" layoutX="220.0" layoutY="260.0" mnemonicParsing="false"
-              text="Torna alla Welcome Page" onAction="#backToWelcomePage"
+              text="Torna alla Welcome Page" onAction="#goBack"
               prefHeight="44.0" prefWidth="220.0"
               style="-fx-background-color: #e5e7eb; -fx-text-fill: #111827; -fx-background-radius: 999; -fx-font-size: 13px;"/>
 

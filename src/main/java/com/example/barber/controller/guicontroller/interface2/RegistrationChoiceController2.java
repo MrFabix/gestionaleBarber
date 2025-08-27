@@ -7,27 +7,27 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 public class RegistrationChoiceController2 {
-    private SwitchPage sp = new SwitchPage();
+    private SwitchPage switchP = new SwitchPage();
     @FXML
-    private void onSingInUser(ActionEvent event) {
+    private void userSign(ActionEvent event) {
       try {
-          sp.replaceScene(event, "/view/interface2/signInUser2.fxml");
+          switchP.replaceScene(event, "/view/interface2/signInUser2.fxml");
       }catch(SystemException e){
           ErrorDialog.getInstance().handleException(e);
       }
     }
     @FXML
-    private void onSignInBarber(ActionEvent event) {
+    private void barberSign(ActionEvent event) {
         try {
-            sp.replaceScene(event, "/view/interface2/signInBarber2.fxml");
+            switchP.replaceScene(event, "/view/interface2/signInBarber2.fxml");
         }catch(SystemException e){
             ErrorDialog.getInstance().handleException(e);
         }
     }
     @FXML
-    private void backToWelcomePage(ActionEvent event) {
+    private void goBack(ActionEvent event) {
         try {
-            sp.replaceScene(event, "/view/interface2/welcomePage2.fxml");
+            switchP.replaceScene(event, "/view/interface2/welcomePage2.fxml");
         }catch (SystemException e){
             ErrorDialog.getInstance().handleException(e);
         }
