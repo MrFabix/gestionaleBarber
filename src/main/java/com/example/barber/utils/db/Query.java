@@ -37,6 +37,77 @@ public class Query {
             throw new IllegalArgumentException(e);
         }
     }
+
+    //Restituzione Lista appuntamenti pendenti
+    public List<RequestAppointmentsModel> searchAllAppointmentsByUser(int id, String role) throws SystemException {
+        String query = switch (role) {
+            case "BARBIERE" -> query = "SELECT appointments.idAppointments ,appointments.idbarber, appointments.idutente, appointments.data, " +
+                    "appointments.name_user, appointments.name_barber, appointments.description, " +
+                    "appointments.address_barber, appointments.service, appointments.state, " +
+                    "appointments.orario, appointments.phone " +
+                    "FROM appointments WHERE idBarber = ?";
+
+            case "CLIENTE" -> query = "SELECT appointments.idAppointments ,appointments.idbarber, appointments.idutente, appointments.data, " +
+                    "appointments.name_user, appointments.name_barber, appointments.description, " +
+                    "appointments.address_barber, appointments.service, appointments.state, " +
+                    "appointments.orario, appointments.phone " +
+                    "FROM appointments WHERE idUtente = ?";
+            default -> throw new IllegalArgumentException("Ruolo non supportato: " + role);
+
+        };
+
+
+        List<RequestAppointmentsModel> listRequestAppModel = new ArrayList<>();
+
+        try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
+            preparedStatement.setInt(1, id);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                RequestAppointmentsModel ram = new RequestAppointmentsModel();
+                ram.setAppId(rs.getInt("idAppointments"));
+                ram.setIdUser(rs.getInt("idUtente"));
+                ram.setIdBarber(rs.getInt("idbarber"));
+                Date sqlDate = rs.getDate("data");
+                ram.setDate(sqlDate.toLocalDate());
+                ram.setNameUser(rs.getString("name_user"));
+                ram.setNameBarber(rs.getString("name_barber"));
+                ram.setDescription(rs.getString("description"));
+                ram.setAddressBarber(rs.getString("address_barber"));
+                ram.setService(rs.getString("service"));
+                ram.setOrario(rs.getString("orario"));
+                ram.setPhone(rs.getString(PHONE));
+                StatoRichieste stato = StatoRichieste.fromString(rs.getString("state"));
+                ram.setState(stato);
+                listRequestAppModel.add(ram);
+
+            }
+        } catch (SQLException e) {
+            SystemException exception = new SystemException();
+            ErrorDialog.getInstance().handleException(e);
+            throw exception;
+        }
+        return listRequestAppModel;
+    }
+
+    public void updateAppointmentById(int appointmentId, String newState) throws SystemException {
+        final String sql = "UPDATE appointments SET state = ? WHERE idAppointments = ?"; // o appoitments
+
+        try (PreparedStatement ps = MySqlConnection.getInstance().connect().prepareStatement(sql)) {
+            ps.setString(1, newState);   // "ACCETTATA" | "RIFIUTATA" | "PENDENTE"
+            ps.setInt(2, appointmentId);
+
+            int rows = ps.executeUpdate();
+            if (rows != 1) {
+                throw new SQLException("Nessuna riga aggiornata (id=" + appointmentId + ")");
+            }
+        } catch (SQLException e) {
+            SystemException ex = new SystemException();
+            ex.initCause(e);
+            throw ex;
+        }
+    }
+
+
     public void deleteService(ServiceModel serviceModel) throws SystemException {
             String query = "DELETE FROM service WHERE id_barber = ? AND servizi = ? AND prezzo = ?";
             try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
@@ -399,75 +470,6 @@ public class Query {
             ErrorDialog.getInstance().handleException(e);
             exception.initCause(e);
             throw exception;
-        }
-    }
-
-    //Restituzione Lista appuntamenti pendenti
-    public List<RequestAppointmentsModel> searchAllAppointmentsByUser(int id, String role) throws SystemException {
-        String query = switch (role) {
-            case "BARBIERE" -> query = "SELECT appointments.idAppointments ,appointments.idbarber, appointments.idutente, appointments.data, " +
-                    "appointments.name_user, appointments.name_barber, appointments.description, " +
-                    "appointments.address_barber, appointments.service, appointments.state, " +
-                    "appointments.orario, appointments.phone " +
-                    "FROM appointments WHERE idBarber = ?";
-
-            case "CLIENTE" -> query = "SELECT appointments.idAppointments ,appointments.idbarber, appointments.idutente, appointments.data, " +
-                    "appointments.name_user, appointments.name_barber, appointments.description, " +
-                    "appointments.address_barber, appointments.service, appointments.state, " +
-                    "appointments.orario, appointments.phone " +
-                    "FROM appointments WHERE idUtente = ?";
-            default -> throw new IllegalArgumentException("Ruolo non supportato: " + role);
-
-        };
-
-
-        List<RequestAppointmentsModel> listRequestAppModel = new ArrayList<>();
-
-        try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
-            preparedStatement.setInt(1, id);
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                RequestAppointmentsModel ram = new RequestAppointmentsModel();
-                ram.setAppId(rs.getInt("idAppointments"));
-                ram.setIdUser(rs.getInt("idUtente"));
-                ram.setIdBarber(rs.getInt("idbarber"));
-                Date sqlDate = rs.getDate("data");
-                ram.setDate(sqlDate.toLocalDate());
-                ram.setNameUser(rs.getString("name_user"));
-                ram.setNameBarber(rs.getString("name_barber"));
-                ram.setDescription(rs.getString("description"));
-                ram.setAddressBarber(rs.getString("address_barber"));
-                ram.setService(rs.getString("service"));
-                ram.setOrario(rs.getString("orario"));
-                ram.setPhone(rs.getString(PHONE));
-                StatoRichieste stato = StatoRichieste.fromString(rs.getString("state"));
-                ram.setState(stato);
-                listRequestAppModel.add(ram);
-
-            }
-        } catch (SQLException e) {
-            SystemException exception = new SystemException();
-            ErrorDialog.getInstance().handleException(e);
-            throw exception;
-        }
-        return listRequestAppModel;
-    }
-
-    public void updateAppointmentById(int appointmentId, String newState) throws SystemException {
-        final String sql = "UPDATE appointments SET state = ? WHERE idAppointments = ?"; // o appoitments
-
-        try (PreparedStatement ps = MySqlConnection.getInstance().connect().prepareStatement(sql)) {
-            ps.setString(1, newState);   // "ACCETTATA" | "RIFIUTATA" | "PENDENTE"
-            ps.setInt(2, appointmentId);
-
-            int rows = ps.executeUpdate();
-            if (rows != 1) {
-                throw new SQLException("Nessuna riga aggiornata (id=" + appointmentId + ")");
-            }
-        } catch (SQLException e) {
-            SystemException ex = new SystemException();
-            ex.initCause(e);
-            throw ex;
         }
     }
 }

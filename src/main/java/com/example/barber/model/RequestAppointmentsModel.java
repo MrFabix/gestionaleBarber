@@ -68,6 +68,7 @@ public class RequestAppointmentsModel {
     public void setOrario(String orario) {
         this.orario = orario;
     }
+
     protected int appId;
     protected int idBarber;
     protected int idUser;
