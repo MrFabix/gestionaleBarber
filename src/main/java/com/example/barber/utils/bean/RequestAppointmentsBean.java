@@ -58,12 +58,15 @@ public class RequestAppointmentsBean implements GenericBean{
         this.orario = requestAppointmentsModel.getOrario();
     }
 
-    //Getter
    public int getIdAppointement() { return idAppointement; }
 
     public int getIdBarber() { return idBarber; }
 
     public int getIdUser() { return idUser; }
+
+    public void setIdBarber(int idBarber) { this.idBarber = idBarber; }
+
+    public void setIdUser(int idUser) { this.idUser = idUser; }
 
     public String getNameUser() { return nameUser; }
 
@@ -71,10 +74,23 @@ public class RequestAppointmentsBean implements GenericBean{
 
     public LocalDate getDate() { return date; }
 
+    public void setDate(LocalDate date) throws InvalidDateException,EmptyInputException {
+        if (date == null) {
+            trigger.throwEmptyInputException("date");
+        } else if (date.isBefore(LocalDate.now())) {
+            trigger.throwInvalidDateException("date");
+        } else {
+            this.date = date;
+        }
+    }
+
     public String getDescription() { return description; }
 
     public String getAddressBarber() { return addressBarber; }
 
+    public void setState(StatoRichieste state) { this.state = state; }
+
+    public void setOrario(String orario) { this.orario = orario; }
 
 
     public String getService() { return service; }
@@ -87,26 +103,13 @@ public class RequestAppointmentsBean implements GenericBean{
 
     public void setIdAppointement(int idAppointement){ this.idAppointement=idAppointement; }
 
-    public void setIdBarber(int idBarber) { this.idBarber = idBarber; }
-
-    public void setIdUser(int idUser) { this.idUser = idUser; }
 
     public void setNameUser(String nameUser){
         this.nameUser = nameUser;
     }
 
     public void setNameBarber(String nameBarber) { this.nameBarber = nameBarber; }
-
-
-    public void setDate(LocalDate date) throws InvalidDateException,EmptyInputException {
-        if (date == null) {
-            trigger.throwEmptyInputException("date");
-        } else if (date.isBefore(LocalDate.now())) {
-            trigger.throwInvalidDateException("date");
-        } else {
-            this.date = date;
-        }
-    }
+    
 
     public void setDescription(String description) { this.description = description; }
 
@@ -119,7 +122,5 @@ public class RequestAppointmentsBean implements GenericBean{
 
     }
 
-    public void setState(StatoRichieste state) { this.state = state; }
 
-    public void setOrario(String orario) { this.orario = orario; }
 }
