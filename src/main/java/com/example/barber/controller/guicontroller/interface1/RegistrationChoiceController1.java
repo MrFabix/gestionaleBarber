@@ -11,7 +11,7 @@ public class RegistrationChoiceController1 {
     @FXML
     private void onSingInUser(ActionEvent event) {
       try {
-          sp.replaceScene(event, "/signInUser1.fxml");
+          sp.replaceScene(event, "/view/interface1/signInUser1.fxml");
       }catch(SystemException e){
           ErrorDialog.getInstance().handleException(e);
       }
@@ -19,7 +19,7 @@ public class RegistrationChoiceController1 {
     @FXML
     private void onSignInBarber(ActionEvent event) {
         try {
-            sp.replaceScene(event, "/signInBarber1.fxml");
+            sp.replaceScene(event, "/view/interface1/signInBarber1.fxml");
         }catch(SystemException e){
             ErrorDialog.getInstance().handleException(e);
         }
@@ -27,7 +27,7 @@ public class RegistrationChoiceController1 {
     @FXML
     private void backToWelcomePage(ActionEvent event) {
         try {
-            sp.replaceScene(event, "/welcomePage1.fxml");
+            sp.replaceScene(event, "/view/interface1/welcomePage1.fxml");
         }catch (SystemException e){
             ErrorDialog.getInstance().handleException(e);
         }

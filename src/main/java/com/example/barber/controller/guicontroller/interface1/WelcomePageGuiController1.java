@@ -18,7 +18,7 @@ public class WelcomePageGuiController1 {
     @FXML
     private void goToRegistrationChoice(ActionEvent event) throws IOException {
         try{
-            sp.replaceScene(event, "/registrationChoice1.fxml");
+            sp.replaceScene(event, "/view/interface1/registrationChoice1.fxml");
         }catch(SystemException e){
             ErrorDialog.getInstance().handleException(e);
         }
@@ -40,7 +40,7 @@ public class WelcomePageGuiController1 {
     @FXML
     private void goToLogin(ActionEvent event) throws IOException {
         try{
-            sp.replaceScene(event, "/Login.fxml");
+            sp.replaceScene(event, "/view/interface1/Login.fxml");
         }catch(SystemException e){
             ErrorDialog.getInstance().handleException(e);
         }

@@ -32,17 +32,17 @@ public class SignInUserGuiController2 {
     @FXML
     private PasswordField passwordField;
     @FXML
-    private TextField telephone;
+    private TextField phoneField;
     @FXML
-    private TextField name;
+    private TextField firstNameField;
     @FXML
-    private TextField surname;
+    private TextField lastNameField;
     @FXML
-    private ComboBox<String> genderField;
+    private ComboBox<String> genderCombo;
 
     @FXML
     public void initialize() {
-        genderField.getItems().addAll("Male", "Female");
+        genderCombo.getItems().addAll("Male", "Female");
     }
 
     @FXML
@@ -66,12 +66,13 @@ public class SignInUserGuiController2 {
             credentialsBean.setType(Role.CLIENTE);
 
             //Carichiamo lo UserBean con le informazioni del cliente
-            userBean.setName(name.getText());
-            userBean.setSurname(surname.getText());
-            userBean.setGender(genderField.getValue());
+            userBean.setName(firstNameField.getText());
+            userBean.setSurname(lastNameField.getText());
+            userBean.setGender(genderCombo.getValue());
             userBean.setEmail(emailField.getText());
             userBean.setUsername(usernameField.getText());
-            userBean.setPhone(telephone.getText());
+            userBean.setPhone(phoneField.getText());
+
 
             appController = new SignInAppController();
 

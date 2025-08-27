@@ -39,7 +39,7 @@ public class SignInBarberGuiController1 {
     @FXML
     private void backToWelcomePage(ActionEvent event){
         try {
-            sp.replaceScene(event, "/welcomePage1.fxml");
+            sp.replaceScene(event, "/view/interface1/welcomePage1.fxml");
         } catch (SystemException e) {
             ErrorDialog.getInstance().handleException(e);
         }
@@ -70,7 +70,7 @@ public class SignInBarberGuiController1 {
 
             //Passiamo tutto al controller che si occupa di gestire l'inserimento dela barbiere e delle sue credenziali
             appController.registerBarber(barberBean, credentialsBean);
-            sp.replaceScene(event, "/welcomePage1.fxml");
+            sp.replaceScene(event, "/view/interface1/welcomePage1.fxml");
 
 
         } catch (EmptyInputException | EmailNotValidException | PasswordNotCompliantException | SystemException |

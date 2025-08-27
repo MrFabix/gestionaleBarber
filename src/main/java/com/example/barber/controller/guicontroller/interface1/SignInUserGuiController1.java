@@ -49,7 +49,7 @@ public class SignInUserGuiController1 {
     @FXML
     private void backToWelcomePage(ActionEvent event){
         try{
-            sp.replaceScene(event, "/welcomePage1.fxml");
+            sp.replaceScene(event, "/view/interface1/welcomePage1.fxml");
         }catch(SystemException e){
             ErrorDialog.getInstance().handleException(e);
         }
@@ -78,7 +78,7 @@ public class SignInUserGuiController1 {
 
             //Spediamo tutto al controller dello user che poi si interfaccia con il livello sottostante ancora
             appController.registerUser(userBean, credentialsBean);
-            sp.replaceScene(event, "/welcomePage1.fxml");
+            sp.replaceScene(event, "/view/interface1/welcomePage1.fxml");
 
         }catch( EmptyInputException | SystemException | UsernameAlreadyTakenException | EmailNotValidException  | PasswordNotCompliantException e) {
             ErrorDialog.getInstance().handleException(e);

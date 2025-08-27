@@ -8,28 +8,61 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface1.SignInUserGuiController2">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface2.SignInUserGuiController2">
    <children>
-      <TextField id="name" fx:id="name" layoutX="36.0" layoutY="66.0" prefHeight="36.0" prefWidth="156.0" promptText="Name" />
-      <TextField id="surname" fx:id="surname" layoutX="36.0" layoutY="116.0" prefHeight="36.0" prefWidth="156.0" promptText="Surname" />
-      <TextField id="emailField" fx:id="emailField" layoutX="36.0" layoutY="165.0" prefHeight="36.0" prefWidth="156.0" promptText="Email" />
-      <TextField id="telephone" fx:id="telephone" layoutX="36.0" layoutY="216.0" prefHeight="36.0" prefWidth="156.0" promptText="Tel" />
-      <ComboBox id="gender" fx:id="genderField" layoutX="38.0" layoutY="259.0" prefHeight="16.0" prefWidth="131.0" promptText="Gender" visibleRowCount="3" />
-      <TextField id="surnameField" fx:id="usernameField" layoutX="291.0" layoutY="66.0" prefHeight="36.0" prefWidth="156.0" promptText="Username" />
-      <PasswordField id="passwordField" fx:id="passwordField" layoutX="291.0" layoutY="116.0" prefHeight="36.0" prefWidth="156.0" promptText="Password" />
-      <PasswordField id="confirmPasswordField" fx:id="confirmPasswordField" layoutX="291.0" layoutY="165.0" prefHeight="36.0" prefWidth="156.0" promptText="Confirm Password" />
-      <Button fx:id="registrationButton" layoutX="444.0" layoutY="330.0" mnemonicParsing="false" onAction="#signInUser" prefHeight="25.0" prefWidth="75.0" text="Registrati" />
-      <Button fx:id="backToLogin" layoutX="423.0" layoutY="296.0" mnemonicParsing="false" onAction="#backToWelcomePage" prefHeight="25.0" prefWidth="96.0" text="Torna indietro" />
-      <Text layoutX="25.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dati Personali" wrappingWidth="177.31818389892578">
-         <font>
-            <Font size="25.0" />
-         </font>
+      <!-- Titoli -->
+      <Text layoutX="25.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0"
+            text="Dati personali" wrappingWidth="220"
+            style="-fx-fill: white;">
+         <font><Font size="25.0"/></font>
       </Text>
-      <Text layoutX="285.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Credenziali" wrappingWidth="354.11817169189453">
-         <font>
-            <Font size="25.0" />
-         </font>
+
+      <Text layoutX="285.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0"
+            text="Credenziali d’accesso" wrappingWidth="260"
+            style="-fx-fill: black;">
+         <font><Font size="25.0"/></font>
       </Text>
-      <Text layoutX="38.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ti stai registrando come user!" wrappingWidth="168.53673934936523" />
+
+      <!-- Colonna sinistra: dati personali -->
+      <TextField fx:id="firstNameField" layoutX="36.0" layoutY="66.0"
+                 prefHeight="44.0" prefWidth="220.0" promptText="Nome"
+                 style="-fx-background-color: #374151; -fx-text-fill: white; -fx-prompt-text-fill: #9CA3AF; -fx-background-radius: 10;"/>
+      <TextField fx:id="lastNameField" layoutX="36.0" layoutY="118.0"
+                 prefHeight="44.0" prefWidth="220.0" promptText="Cognome"
+                 style="-fx-background-color: #374151; -fx-text-fill: white; -fx-prompt-text-fill: #9CA3AF; -fx-background-radius: 10;"/>
+      <TextField fx:id="emailField" layoutX="36.0" layoutY="170.0"
+                 prefHeight="44.0" prefWidth="220.0" promptText="Email"
+                 style="-fx-background-color: #374151; -fx-text-fill: white; -fx-prompt-text-fill: #9CA3AF; -fx-background-radius: 10;"/>
+      <TextField fx:id="phoneField" layoutX="36.0" layoutY="222.0"
+                 prefHeight="44.0" prefWidth="220.0" promptText="Telefono"
+                 style="-fx-background-color: #374151; -fx-text-fill: white; -fx-prompt-text-fill: #9CA3AF; -fx-background-radius: 10;"/>
+      <ComboBox fx:id="genderCombo" layoutX="36.0" layoutY="274.0"
+                prefHeight="44.0" prefWidth="220.0" promptText="Genere" visibleRowCount="3"
+                style="-fx-background-color: #374151; -fx-text-fill: white; -fx-background-radius: 10;"/>
+
+      <!-- Colonna destra: credenziali -->
+      <TextField fx:id="usernameField" layoutX="291.0" layoutY="66.0"
+                 prefHeight="44.0" prefWidth="220.0" promptText="Username"
+                 style="-fx-background-color: #374151; -fx-text-fill: white; -fx-prompt-text-fill: #9CA3AF; -fx-background-radius: 10;"/>
+      <PasswordField fx:id="passwordField" layoutX="291.0" layoutY="118.0"
+                     prefHeight="44.0" prefWidth="220.0" promptText="Password"
+                     style="-fx-background-color: #374151; -fx-text-fill: white; -fx-prompt-text-fill: #9CA3AF; -fx-background-radius: 10;"/>
+      <PasswordField fx:id="confirmPasswordField" layoutX="291.0" layoutY="170.0"
+                     prefHeight="44.0" prefWidth="220.0" promptText="Conferma password"
+                     style="-fx-background-color: #374151; -fx-text-fill: white; -fx-prompt-text-fill: #9CA3AF; -fx-background-radius: 10;"/>
+
+      <Text layoutX="36.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0"
+            text="Registrazione come utente standard."
+            style="-fx-fill: #9CA3AF;"/>
+
+      <Button fx:id="registerButton" layoutX="436.0" layoutY="330.0"
+              text="Completa registrazione" onAction="#signInUser"
+              prefHeight="48.0" prefWidth="220.0"
+              style="-fx-background-color: #10b981; -fx-text-fill: white; -fx-background-radius: 999; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+      <Button fx:id="backButton" layoutX="291.0" layoutY="330.0"
+              text="Torna indietro" onAction="#backToWelcomePage"
+              prefHeight="48.0" prefWidth="130.0"
+              style="-fx-background-color: #e5e7eb; -fx-text-fill: #111827; -fx-background-radius: 999; -fx-font-size: 13px;"/>
+
    </children>
 </Pane>
