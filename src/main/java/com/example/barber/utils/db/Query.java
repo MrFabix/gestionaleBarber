@@ -38,36 +38,7 @@ public class Query {
         }
     }
 
-    public RequestAppointmentsModel searchAppointmentsById(int id)throws SystemException{
-        String query = "SELECT * FROM appointments WHERE idBarber = ?";
-        try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
-            preparedStatement.setInt(1, id);
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                RequestAppointmentsModel ram = new RequestAppointmentsModel();
-                ram.setAppId(rs.getInt("idAppointments"));
-                ram.setIdUser(rs.getInt("idUtente"));
-                ram.setIdBarber(rs.getInt("idbarber"));
-                Date sqlDate = rs.getDate("data");
-                ram.setDate(sqlDate.toLocalDate());
-                ram.setNameUser(rs.getString("name_user"));
-                ram.setNameBarber(rs.getString("name_barber"));
-                ram.setDescription(rs.getString("description"));
-                ram.setAddressBarber(rs.getString("address_barber"));
-                ram.setService(rs.getString("service"));
-                ram.setOrario(rs.getString("orario"));
-                ram.setPhone(rs.getString(PHONE));
-                StatoRichieste stato = StatoRichieste.fromString(rs.getString("state"));
-                ram.setState(stato);
 
-            }
-        } catch (SQLException e) {
-            SystemException exception = new SystemException();
-            ErrorDialog.getInstance().handleException(e);
-            throw exception;
-        }
-        return new RequestAppointmentsModel();
-    }
 
 
     //Restituzione Lista appuntamenti pendenti
@@ -95,22 +66,22 @@ public class Query {
             preparedStatement.setInt(1, id);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                RequestAppointmentsModel ram = new RequestAppointmentsModel();
-                ram.setAppId(rs.getInt("idAppointments"));
-                ram.setIdUser(rs.getInt("idUtente"));
-                ram.setIdBarber(rs.getInt("idbarber"));
+                RequestAppointmentsModel rAppModel = new RequestAppointmentsModel();
+                rAppModel.setAppId(rs.getInt("idAppointments"));
+                rAppModel.setIdUser(rs.getInt("idUtente"));
+                rAppModel.setIdBarber(rs.getInt("idbarber"));
                 Date sqlDate = rs.getDate("data");
-                ram.setDate(sqlDate.toLocalDate());
-                ram.setNameUser(rs.getString("name_user"));
-                ram.setNameBarber(rs.getString("name_barber"));
-                ram.setDescription(rs.getString("description"));
-                ram.setAddressBarber(rs.getString("address_barber"));
-                ram.setService(rs.getString("service"));
-                ram.setOrario(rs.getString("orario"));
-                ram.setPhone(rs.getString(PHONE));
+                rAppModel.setDate(sqlDate.toLocalDate());
+                rAppModel.setNameUser(rs.getString("name_user"));
+                rAppModel.setNameBarber(rs.getString("name_barber"));
+                rAppModel.setDescription(rs.getString("description"));
+                rAppModel.setAddressBarber(rs.getString("address_barber"));
+                rAppModel.setService(rs.getString("service"));
+                rAppModel.setOrario(rs.getString("orario"));
+                rAppModel.setPhone(rs.getString(PHONE));
                 StatoRichieste stato = StatoRichieste.fromString(rs.getString("state"));
-                ram.setState(stato);
-                listRequestAppModel.add(ram);
+                rAppModel.setState(stato);
+                listRequestAppModel.add(rAppModel);
 
             }
         } catch (SQLException e) {
@@ -496,5 +467,37 @@ public class Query {
             exception.initCause(e);
             throw exception;
         }
+    }
+
+
+    public RequestAppointmentsModel searchAppointmentsById(int id)throws SystemException{
+        String query = "SELECT * FROM appointments WHERE idBarber = ?";
+        try (PreparedStatement pStmt = MySqlConnection.getInstance().connect().prepareStatement(query)) {
+            pStmt.setInt(1, id);
+            ResultSet rs = pStmt.executeQuery();
+            while (rs.next()) {
+                RequestAppointmentsModel ram = new RequestAppointmentsModel();
+                ram.setAppId(rs.getInt("idAppointments"));
+                ram.setIdUser(rs.getInt("idUtente"));
+                ram.setIdBarber(rs.getInt("idbarber"));
+                Date sqlDate = rs.getDate("data");
+                ram.setDate(sqlDate.toLocalDate());
+                ram.setNameUser(rs.getString("name_user"));
+                ram.setNameBarber(rs.getString("name_barber"));
+                ram.setDescription(rs.getString("description"));
+                ram.setAddressBarber(rs.getString("address_barber"));
+                ram.setService(rs.getString("service"));
+                ram.setOrario(rs.getString("orario"));
+                ram.setPhone(rs.getString(PHONE));
+                StatoRichieste stato = StatoRichieste.fromString(rs.getString("state"));
+                ram.setState(stato);
+
+            }
+        } catch (SQLException e) {
+            SystemException exception = new SystemException();
+            ErrorDialog.getInstance().handleException(e);
+            throw exception;
+        }
+        return new RequestAppointmentsModel();
     }
 }
