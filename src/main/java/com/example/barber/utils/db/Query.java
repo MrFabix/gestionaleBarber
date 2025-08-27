@@ -28,21 +28,13 @@ public class Query {
             preparedStatement.setInt(1, barberModel.getId());
             preparedStatement.setString(2, barberModel.getOrarioInizio());
             preparedStatement.setString(3, barberModel.getOrarioFine());
-
-
-            int rowsAffected = preparedStatement.executeUpdate();
-            if (rowsAffected == 0) {
-                System.out.println("Il numero di righe inserite è 0: c'è un errore");
-            } else {
-                System.out.println("Orari di lavoro inseriti correttamente");
-            }
-
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             SystemException exception = new SystemException();
             exception.initCause(e);
             throw exception;
         } catch (SystemException e) {
-            throw new RuntimeException(e);
+            throw new IllegalArgumentException(e);
         }
     }
     public void deleteService(ServiceModel serviceModel) throws SystemException {
@@ -60,7 +52,7 @@ public class Query {
                 exception.initCause(e);
                 throw exception;
             } catch (SystemException e) {
-                throw new RuntimeException(e);
+                throw new IllegalArgumentException(e);
             }
         }
 
@@ -79,15 +71,13 @@ public class Query {
             exception.initCause(e);
             throw exception;
         } catch (SystemException e) {
-            throw new RuntimeException(e);
+            throw new IllegalArgumentException(e);
         }
     }
 
 
     public void insertBarber(BarberModel barberModel) throws SystemException {
-        //TODO implementare il controllo se l'username esiste già
         String query = "INSERT INTO barber (username, name, address, city, phone, email) VALUES (?,?,?,?,?,?)";
-        System.out.println("Funziona l'inserimento");
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
             //Impostiamo i parametri della query
             preparedStatement.setString(1, barberModel.getUsername());
@@ -104,7 +94,7 @@ public class Query {
             exception.initCause(e);
             throw exception;
         } catch (SystemException e) {
-            throw new RuntimeException(e);
+            throw new IllegalArgumentException(e);
         }
 
 
@@ -112,7 +102,6 @@ public class Query {
 
 
     public void insertUser(UserModel userModel) throws SystemException {
-        System.out.print("stai inserendo lo user sei dentro il metodo");
         String query = "INSERT INTO user (name, surname, gender, email, username, phone) VALUES (?,?,?,?,?,?)";
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
 
@@ -124,17 +113,10 @@ public class Query {
             preparedStatement.setString(4, userModel.getEmail());
             preparedStatement.setString(5, userModel.getUsername());
             preparedStatement.setString(6, userModel.getPhone());
-            int rowsAffected = preparedStatement.executeUpdate();
+            preparedStatement.executeUpdate();
 
-            if (rowsAffected == 0) {
-                System.out.println("Il numero di righe inserite è 0 c'è un errore");
-            } else {
-
-                System.out.println("i dati sono inseriti ");
-            }
         } catch (SQLException e) {
 
-            System.out.println("Errore nella ricerca dell'utente nel database");
             // Stampa un messaggio di errore e lancia una SystemException
 
             SystemException exception = new SystemException();
@@ -142,7 +124,7 @@ public class Query {
             throw exception;
 
         } catch (SystemException e) {
-            throw new RuntimeException(e);
+            throw new IllegalArgumentException(e);
         }
 
     }
@@ -155,13 +137,7 @@ public class Query {
             preparedStatement.setString(1, credentialsModel.getUsername());
             preparedStatement.setString(2, credentialsModel.getPassword());
             preparedStatement.setString(3, credentialsModel.getType().getRoleId());
-            int rowsAffected = preparedStatement.executeUpdate();
-            if (rowsAffected == 0) {
-                System.out.println("Il numero di righe inserite è 0 c'è un errore");
-            } else {
-
-                System.out.println("i dati sono inseriti ");
-            }
+            preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
             // Stampa un messaggio di errore e lancia una SystemException
@@ -169,13 +145,12 @@ public class Query {
             exception.initCause(e);
             throw exception;
         } catch (SystemException e) {
-            throw new RuntimeException(e);
+            throw new IllegalArgumentException(e);
         }
     }
 
 
     public boolean searchUserInLogged(CredentialsModel credentialsModel) throws SystemException {
-        System.out.println("Stai cercando l'utente nel database");
         String query = "SELECT * FROM credentials WHERE username = ? AND password = ? AND type = ?";
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
             // Imposta i parametri della query
@@ -183,12 +158,9 @@ public class Query {
             preparedStatement.setString(2, credentialsModel.getPassword());
             preparedStatement.setString(3, credentialsModel.getType().getRoleId());
             //stampo il risultato della query
-            System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
             return rs.next();
         } catch (SQLException e) {
-            System.out.println("Errore nella ricerca dell'utente nel database");
-            // Stampa un messaggio di errore e lancia una SystemException
             SystemException exception = new SystemException();
             exception.initCause(e);
             throw exception;
@@ -196,9 +168,7 @@ public class Query {
     }
 
     public Role getRoleByUsername(String username, String password) throws SystemException {
-        System.out.println("Stai cercando l'utente nel database per restituire il ruolo");
         Role ruolo = null;
-        System.out.println("Sei qui");
         String query = "SELECT * FROM credentials WHERE username = ? AND password = ?";
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
             preparedStatement.setString(1, username);
@@ -206,8 +176,6 @@ public class Query {
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
                 ruolo = Role.fromString(rs.getString("type"));
-                System.out.println("Sei qui");
-                System.out.println("Il ruolo che hai trovato è+" + ruolo.getRoleId());
                 return ruolo;
 
             } else {
@@ -224,7 +192,6 @@ public class Query {
 
 
     public UserModel searchUserByUsername(String username) throws SystemException {
-        System.out.println("Stai cercando l'utente nel database");
         String query = "SELECT * FROM user WHERE username = ?";
         UserModel userModel = null;
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
@@ -250,7 +217,7 @@ public class Query {
         }
     }
 
-    public boolean checkUsernameAlreadyTaken(String username) throws SystemException {
+    public boolean checkUsernameAlreadyTaken(){
         return false;
     }
 
@@ -352,7 +319,6 @@ public class Query {
                 barberModel.setId(rs.getInt("id"));
 
             }
-            System.out.println("Sei nella query " + barberModel.toString());
             return barberModel;
         } catch (SQLException e) {
             SystemException exception = new SystemException();
