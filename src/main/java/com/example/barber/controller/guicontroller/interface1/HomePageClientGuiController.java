@@ -21,9 +21,6 @@ import java.util.ResourceBundle;
 
 public class HomePageClientGuiController implements Observer, Initializable {
 
-
-
-
     @FXML
     private ListView<Pane> barberListView;  // La ListView che mostrerà i barbieri
     @FXML
@@ -51,7 +48,7 @@ public class HomePageClientGuiController implements Observer, Initializable {
         if (ob instanceof BarberBean bBean) {
             try {
                 // Carica il layout del barbiere dal file FXML
-                pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource("/BarberItem.fxml")).openStream());
+                pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource("/view/interface1/BarberItem.fxml")).openStream());
                 // Ottieni il controller del layout caricato
                 BarberItemGuiController controller = fxmlLoader.getController();
                 // Imposta i dettagli del barbiere

@@ -44,17 +44,17 @@ public class NavbarGuiController implements Initializable {
     }
 
     private void setupCliente(VBox vBox) {
-        vBox.getChildren().add(createButton("HomePage Cliente","/HomePageClient.fxml"));
-        vBox.getChildren().add(createButton("Appuntamenti", "/HomePageClientAppointments.fxml"));
-        vBox.getChildren().add(createButton("Recensioni Effettuate","/HomePageClientAppointments.fxml"));
+        vBox.getChildren().add(createButton("HomePage Cliente","/view/interface1/HomePageClient.fxml"));
+        vBox.getChildren().add(createButton("Appuntamenti", "/view/interface1/HomePageClientAppointments.fxml"));
+        vBox.getChildren().add(createButton("Recensioni Effettuate","/view/interface1/HomePageClientAppointments.fxml"));
         vBox.getChildren().add(logOutButton("Logout"));
     }
 
     private void setupBarbiere(VBox vBox) {
-        vBox.getChildren().add(createButton("HomePage Barbiere","/HomePageBarber.fxml"));
-        vBox.getChildren().add(createButton("Gestione Appuntamenti","/HomePageBarberAppointments.fxml"));
-        vBox.getChildren().add(createButton("Recensioni Ricevute","/HomePageClientAppointments.fxml"));
-        vBox.getChildren().add(createButton("Modifica Negozio", "/ManageShop.fxml"));
+        vBox.getChildren().add(createButton("HomePage Barbiere","/view/interface1/HomePageBarber.fxml"));
+        vBox.getChildren().add(createButton("Gestione Appuntamenti","/view/interface1/HomePageBarberAppointments.fxml"));
+        vBox.getChildren().add(createButton("Recensioni Ricevute","/view/interface1/HomePageClientAppointments.fxml"));
+        vBox.getChildren().add(createButton("Modifica Negozio", "/view/interface1/ManageShop.fxml"));
         vBox.getChildren().add(logOutButton("Logout"));
     }
 
@@ -84,7 +84,7 @@ public class NavbarGuiController implements Initializable {
             try{
                 Session.getInstance().deleteSession();
                 MySqlConnection.getInstance().closeConnection();
-                switchPage.replaceScene(e, "/welcomePage1.fxml");
+                switchPage.replaceScene(e, "/view/interface1/welcomePage1.fxml");
             }catch (SystemException | SQLException ex) {
                 ErrorDialog.getInstance().handleException(ex);
             }

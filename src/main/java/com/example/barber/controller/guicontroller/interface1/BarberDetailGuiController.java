@@ -81,7 +81,7 @@ public class BarberDetailGuiController {
     // Metodo per tornare alla lista dei barbieri
     public void backToBarberList(ActionEvent event) {
         try {
-            switchPage.replaceScene(event, "/homePageClient.fxml");
+            switchPage.replaceScene(event, "/view/interface1/homePageClient.fxml");
         } catch (SystemException e) {
             ErrorDialog.getInstance().handleException(e);
         }
@@ -104,7 +104,7 @@ public class BarberDetailGuiController {
         System.out.println("Quanto vale il preformerbarberlist?"+preFormBarberBean.getServiceList().getFirst());
 
         try{
-            switchPageAndSet.switchAndSetBookingForm(event, "/BookingForm.fxml", preFormBarberBean);
+            switchPageAndSet.switchAndSetBookingForm(event, "/view/interface1/BookingForm.fxml", preFormBarberBean);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

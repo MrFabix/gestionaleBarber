@@ -61,7 +61,7 @@ public class AppointmentsItemBarberGuiController {
             checkRequestAppController.setStateAppointments(rBean, StatoRichieste.RIFIUTATA);
             rBean.setState(StatoRichieste.RIFIUTATA);
             checkRequestAppController.addAppointmentsToList(rBean);
-            switchPage.replaceScene(event, "/HomePageBarberAppointments.fxml");
+            switchPage.replaceScene(event, "/view/interface1/HomePageBarberAppointments.fxml");
         }catch (Exception e){
             ErrorDialog.getInstance().handleException(e);
         }
@@ -74,7 +74,7 @@ public class AppointmentsItemBarberGuiController {
             checkRequestAppController.setStateAppointments(rBean, StatoRichieste.ACCETTATA);
             rBean.setState(StatoRichieste.ACCETTATA);
             checkRequestAppController.addAppointmentsToList(rBean);
-            switchPage.replaceScene(event, "/HomePageBarberAppointments.fxml");
+            switchPage.replaceScene(event, "/view/interface1/HomePageBarberAppointments.fxml");
         }catch (Exception e){
             ErrorDialog.getInstance().handleException(e);
         }
@@ -87,7 +87,7 @@ public class AppointmentsItemBarberGuiController {
             checkRequestAppController.setStateAppointments(rBean, StatoRichieste.TERMINATA);
             rBean.setState(StatoRichieste.ACCETTATA);
             checkRequestAppController.addAppointmentsToList(rBean);
-            switchPage.replaceScene(event, "/HomePageBarber.fxml");
+            switchPage.replaceScene(event, "/view/interface1/HomePageBarber.fxml");
         }catch (Exception e){
             ErrorDialog.getInstance().handleException(e);
         }

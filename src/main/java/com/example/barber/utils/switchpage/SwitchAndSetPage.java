@@ -1,4 +1,5 @@
 package com.example.barber.utils.switchpage;
+import com.example.barber.utils.switchpage.SwitchPage;
 
 
 import com.example.barber.utils.bean.PreFormBarberBean;

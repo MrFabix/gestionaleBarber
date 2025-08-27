@@ -1,4 +1,4 @@
-package com.example.barber.controller.guicontroller.interface1.item;
+package com.example.barber.controller.guicontroller.interface2.item2;
 
 import com.example.barber.utils.bean.BarberBean;
 import com.example.barber.utils.bean.IdBean;
@@ -9,7 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-public class BarberItemGuiController {
+public class BarberItemGuiController2 {
 
     @FXML
     private Label barberNameLabel;
@@ -40,7 +40,7 @@ public class BarberItemGuiController {
         //creo il bean per passare l'id
         IdBean idBean = new IdBean(id);
         //cambio pagina passando l'id del barbiere
-        sp.switchPageId("/view/interface1/BarberDetail.fxml", event, idBean);
+        sp.switchPageId("/view/Interface2/BarberDetail.fxml", event, idBean);
     }
 
 

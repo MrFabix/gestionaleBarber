@@ -50,7 +50,7 @@ public class LoginGuiController2 {
             //chiama qui il login controller che manda la query e cerca che ruolo ha quell'utente nel database
             controller.login(credentialsBean);
             if (credentialsBean.getType().getRoleId().equals("CLIENTE")) {
-                sp.replaceScene(event, "/view/interface2/homePageClient.fxml");
+                sp.replaceScene(event, "/view/interface2/homePageClient2.fxml");
             } else if (credentialsBean.getType().getRoleId().equals("BARBIERE")) {
                 sp.replaceScene(event, "/homePageBarber.fxml");
             } else if(credentialsBean.getType().getRoleId().equals("MODERATORE")){

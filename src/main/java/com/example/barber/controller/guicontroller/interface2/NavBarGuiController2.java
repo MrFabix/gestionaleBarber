@@ -42,7 +42,7 @@ public class NavBarGuiController2 implements Initializable {
             hBox.setPadding(new Insets(8, 12, 8, 12));
 
             GraphicNavBar graphicNavBar = new GraphicNavBar();
-            graphicNavBar.setGraphicNAvbar(hBox, Session.getInstance().getCredentials().getUsername());
+            graphicNavBar.setGraphicNAvbar(navAnchor, hBox, Session.getInstance().getCredentials().getUsername());
 
             switch (Session.getInstance().getCredentials().getType().getRoleId()) {
                 case "CLIENTE" -> setupCliente(hBox);
@@ -59,24 +59,22 @@ public class NavBarGuiController2 implements Initializable {
         }
 
         private void setupCliente(HBox hBox) {
-            hBox.getChildren().add(createButton("HomePage Cliente", "/HomePageClient.fxml"));
-            hBox.getChildren().add(createButton("Appuntamenti", "/HomePageClientAppointments.fxml"));
-            hBox.getChildren().add(createButton("Recensioni Effettuate", "/HomePageClientAppointments.fxml"));
+            hBox.getChildren().add(createButton("HomePage Cliente", "/view/interface2/HomePageClient2.fxml"));
+            hBox.getChildren().add(createButton("Appuntamenti", "/view/interface2/HomePageClientAppointments2.fxml"));
+            hBox.getChildren().add(createButton("Recensioni Effettuate", "/view/interface2/HomePageClientAppointments2.fxml"));
             hBox.getChildren().add(logOutButton("Logout"));
         }
 
         private void setupBarbiere(HBox hBox) {
-            hBox.getChildren().add(createButton("HomePage Barbiere", "/HomePageBarber.fxml"));
-            hBox.getChildren().add(createButton("Gestione Appuntamenti", "/HomePageBarberAppointments.fxml"));
-            hBox.getChildren().add(createButton("Recensioni Ricevute", "/HomePageClientAppointments.fxml"));
-            hBox.getChildren().add(createButton("Modifica Negozio", "/ManageShop.fxml"));
+            hBox.getChildren().add(createButton("HomePage Barbiere", "/view/interface2/HomePageBarber2.fxml"));
+            hBox.getChildren().add(createButton("Gestione Appuntamenti", "/view/interface2/HomePageBarberAppointments2.fxml"));
+            hBox.getChildren().add(createButton("Recensioni Ricevute", "/view/interface2/HomePageClientAppointments2.fxml"));
+            hBox.getChildren().add(createButton("Modifica Negozio", "/view/interface2/ManageShop2.fxml"));
             hBox.getChildren().add(logOutButton("Logout"));
         }
 
         private MFXButton createButton(String name, String fxml) {
             MFXButton button = new MFXButton(name);
-            // Per una navbar orizzontale di solito si controlla l’altezza,
-            // non per forza la larghezza fissa:
             button.setPrefHeight(44.0);
             button.setMinWidth(120.0);
             button.setOnAction(e -> {
@@ -98,7 +96,7 @@ public class NavBarGuiController2 implements Initializable {
                 try {
                     Session.getInstance().deleteSession();
                     MySqlConnection.getInstance().closeConnection();
-                    switchPage.replaceScene(e, "/welcomePage1.fxml");
+                    switchPage.replaceScene(e, "/view/interface2/welcomePage2.fxml");
                 } catch (SystemException | SQLException ex) {
                     ErrorDialog.getInstance().handleException(ex);
                 }

@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 public class PageManageUserAppointmentsGuiController implements Observer, Initializable {
     private RequestAppointmentsBean requestAppointmentsBean;
     private CheckRequestAppController controller = new CheckRequestAppController();
-    private String APPOINTMENTS_ITEM_FXML = "/AppointmentsItemUser.fxml";
+    private String APPOINTMENTS_ITEM_FXML = "/view/interface1/AppointmentsItemUser.fxml";
 
 
     @FXML

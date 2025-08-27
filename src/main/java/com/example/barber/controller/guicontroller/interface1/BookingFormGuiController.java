@@ -87,7 +87,7 @@ public class BookingFormGuiController{
             requestAppointmentsBean.setService(serviceComboBox.getValue());
             requestAppointmentsBean.setState(StatoRichieste.PENDENTE);
             requestAppointmentsBean.setOrario(orario.getText());
-            switchAndSetPage.switchAndSetHomePageClient(event, "/HomePageClientAppointments.fxml", requestAppointmentsBean);
+            switchAndSetPage.switchAndSetHomePageClient(event, "/view/interface1/HomePageClientAppointments.fxml", requestAppointmentsBean);
         }catch(SystemException | InvalidDateException | EmptyInputException e ){
             ErrorDialog.getInstance().handleException(e);
         }
@@ -99,7 +99,7 @@ public class BookingFormGuiController{
         IdBean idBean = new IdBean();
         idBean.setId(preFormBarberBean.getIdBarber());
         try {
-            switchPage.switchPageId( "/BarberDetail.fxml",event,idBean);
+            switchPage.switchPageId( "/view/interface1/BarberDetail.fxml",event,idBean);
         } catch (SystemException e) {
             ErrorDialog.getInstance().handleException(e);
         }

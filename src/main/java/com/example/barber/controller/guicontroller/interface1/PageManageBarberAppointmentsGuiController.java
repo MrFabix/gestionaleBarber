@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 public class PageManageBarberAppointmentsGuiController implements Observer, Initializable {
 
     private CheckRequestAppController controller = new CheckRequestAppController();
-    private static final String APPOINTMENTS_ITEM_BARBER_FXML = "/AppointmentsItemBarber.fxml";
+    private static final String APPOINTMENTS_ITEM_BARBER_FXML = "/view/interface1/AppointmentsItemBarber.fxml";
 
     @FXML
     private ListView<Pane> listViewPendingAppointments;

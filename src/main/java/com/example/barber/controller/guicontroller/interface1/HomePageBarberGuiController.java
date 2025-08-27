@@ -26,7 +26,7 @@ public class HomePageBarberGuiController implements Observer, Initializable {
     private ListView<Pane> listTerminateAppointments;
     private CheckRequestAppController controller = new CheckRequestAppController();
 
-    private static final String APPOINTMENTS_ITEM_BARBER_FXML = "/AppointmentsItemBarber.fxml";
+    private static final String APPOINTMENTS_ITEM_BARBER_FXML = "/view/interface1/AppointmentsItemBarber.fxml";
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -52,7 +52,7 @@ public class SwitchPage {
         try {
             scene = new Scene(fxmlLoader.load());
             // Gestisci BarberDetailGuiController
-            if (fxml.equals("/BarberDetail.fxml")) {
+            if (fxml.equals("/view/interface1/BarberDetail.fxml")) {
                 BarberDetailGuiController controller = fxmlLoader.getController();
                 if (controller != null) {
                     controller.setBarberDetails(id); // Passa l'IdBean al controller

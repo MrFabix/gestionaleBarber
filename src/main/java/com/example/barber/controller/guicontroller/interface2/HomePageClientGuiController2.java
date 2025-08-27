@@ -2,7 +2,7 @@ package com.example.barber.controller.guicontroller.interface2;
 
 
 
-import com.example.barber.controller.guicontroller.interface1.item.BarberItemGuiController;
+import com.example.barber.controller.guicontroller.interface2.item2.BarberItemGuiController2;
 import com.example.barber.utils.bean.BarberBean;
 import com.example.barber.utils.engineering.ListBarberEngineering;
 import com.example.barber.utils.exception.ErrorDialog;
@@ -25,7 +25,7 @@ public class HomePageClientGuiController2 implements Observer, Initializable {
 
 
     @FXML
-    private ListView<Pane> barberListView;  // La ListView che mostrerà i barbieri
+    private ListView<Pane> listBarber;  // La ListView che mostrerà i barbieri
     @FXML
     private TextField searchBarber; // Barra di ricerca
 
@@ -42,22 +42,16 @@ public class HomePageClientGuiController2 implements Observer, Initializable {
     }
 
 
-
-
     @Override
     public void update(Object ob) {
         FXMLLoader fxmlLoader = new FXMLLoader();
         Pane pane;
         if (ob instanceof BarberBean bBean) {
             try {
-                // Carica il layout del barbiere dal file FXML
-                pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource("/BarberItem.fxml")).openStream());
-                // Ottieni il controller del layout caricato
-                BarberItemGuiController controller = fxmlLoader.getController();
-                // Imposta i dettagli del barbiere
+                pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource("/view/interface2/BarberItem2.fxml")).openStream());
+                BarberItemGuiController2 controller = fxmlLoader.getController();
                 controller.setBarberDetails(bBean);
-                // Aggiungi il pane alla ListView
-                this.barberListView.getItems().add(pane);
+                this.listBarber.getItems().add(pane);
             } catch (Exception e) {
                 ErrorDialog.getInstance().handleException(e);
             }
@@ -68,7 +62,7 @@ public class HomePageClientGuiController2 implements Observer, Initializable {
     @FXML
     private void search() {
         String query = searchBarber.getText().trim();
-        this.barberListView.getItems().clear(); // Pulisci la lista prima di riempirla di nuovo
+        this.listBarber.getItems().clear(); // Pulisci la lista prima di riempirla di nuovo
         if (query.isEmpty()) {
             initialize(null, null);
             return;
