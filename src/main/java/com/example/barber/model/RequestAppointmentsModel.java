@@ -6,42 +6,8 @@ import java.time.LocalDate;
 
 public class RequestAppointmentsModel {
 
-
-
-    protected int idAppointement;
-    protected int idBarber;
-    protected int idUser;
-    protected String nameUser;
-    protected String nameBarber;
-    protected LocalDate date;
-    protected String description;
-    protected String addressBarber;
-    protected String service;
-    protected String phone;
-    protected StatoRichieste state;
-    protected String orario;
-
-    public RequestAppointmentsModel(){
-
-    }
-
-    public RequestAppointmentsModel(RequestAppointmentsBean requestAppointmentsBean){
-        this.idAppointement = requestAppointmentsBean.getIdAppointement();
-        this.idBarber = requestAppointmentsBean.getIdBarber();
-        this.idUser = requestAppointmentsBean.getIdUser();
-        this.date = requestAppointmentsBean.getDate();
-        this.nameUser = requestAppointmentsBean.getNameUser();
-        this.addressBarber = requestAppointmentsBean.getAddressBarber();
-        this.nameBarber = requestAppointmentsBean.getNameBarber();
-        this.description = requestAppointmentsBean.getDescription();
-        this.service = requestAppointmentsBean.getService();
-        this.phone = requestAppointmentsBean.getPhoneUser();
-        this.state= requestAppointmentsBean.getState();
-        this.orario = requestAppointmentsBean.getOrario();
-    }
-
     //Getter
-    public int getIdAppointement() { return idAppointement; }
+    public int getAppId() { return appId; }
 
     public int getIdBarber() { return idBarber; }
 
@@ -73,7 +39,7 @@ public class RequestAppointmentsModel {
     }
 
     //Setter
-    public void setIdAppointement(int idAppointement) { this.idAppointement = idAppointement; }
+    public void setAppId(int appId) { this.appId = appId; }
 
     public void setIdBarber(int idBarber) { this.idBarber = idBarber; }
 
@@ -102,4 +68,37 @@ public class RequestAppointmentsModel {
     public void setOrario(String orario) {
         this.orario = orario;
     }
+    protected int appId;
+    protected int idBarber;
+    protected int idUser;
+    protected String nameUser;
+    protected String nameBarber;
+    protected LocalDate date;
+    protected String description;
+    protected String addressBarber;
+    protected String service;
+    protected String phone;
+    protected StatoRichieste state;
+    protected String orario;
+
+    public RequestAppointmentsModel(){
+    }
+    public RequestAppointmentsModel(RequestAppointmentsBean requestAppointmentsBean){
+        this.appId = requestAppointmentsBean.getIdAppointement();
+        this.idBarber = requestAppointmentsBean.getIdBarber();
+        this.idUser = requestAppointmentsBean.getIdUser();
+        this.date = requestAppointmentsBean.getDate();
+        this.nameUser = requestAppointmentsBean.getNameUser();
+        this.addressBarber = requestAppointmentsBean.getAddressBarber();
+        this.nameBarber = requestAppointmentsBean.getNameBarber();
+        this.description = requestAppointmentsBean.getDescription();
+        this.service = requestAppointmentsBean.getService();
+        this.phone = requestAppointmentsBean.getPhoneUser();
+        this.state= requestAppointmentsBean.getState();
+        this.orario = requestAppointmentsBean.getOrario();
+    }
+
+
+
+
 }

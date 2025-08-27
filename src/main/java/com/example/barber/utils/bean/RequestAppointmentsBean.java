@@ -44,7 +44,7 @@ public class RequestAppointmentsBean implements GenericBean{
     }
 
     public RequestAppointmentsBean(RequestAppointmentsModel requestAppointmentsModel) {
-        this.idAppointement = requestAppointmentsModel.getIdAppointement();
+        this.idAppointement = requestAppointmentsModel.getAppId();
         this.idBarber = requestAppointmentsModel.getIdBarber();
         this.idUser = requestAppointmentsModel.getIdUser();
         this.date = requestAppointmentsModel.getDate();

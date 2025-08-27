@@ -428,7 +428,7 @@ public class Query {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 RequestAppointmentsModel ram = new RequestAppointmentsModel();
-                ram.setIdAppointement(rs.getInt("idAppointments"));
+                ram.setAppId(rs.getInt("idAppointments"));
                 ram.setIdUser(rs.getInt("idUtente"));
                 ram.setIdBarber(rs.getInt("idbarber"));
                 Date sqlDate = rs.getDate("data");
