@@ -14,7 +14,6 @@ public class RegistrationChoiceController2 {
           switchP.replaceScene(event, "/view/interface2/signInUser2.fxml");
       }catch(SystemException e){
           ErrorDialog.getInstance().handleException(e);
-          e.printStackTrace();
       }
     }
 

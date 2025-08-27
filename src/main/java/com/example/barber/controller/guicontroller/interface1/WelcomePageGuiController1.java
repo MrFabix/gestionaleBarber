@@ -32,7 +32,6 @@ public class WelcomePageGuiController1 {
             sp.replaceScene(event, "/view/interface2/WelcomePage2.fxml");
         } catch (SystemException e) {
             ErrorDialog.getInstance().handleException(e);
-            e.printStackTrace();
         }
     }
 
