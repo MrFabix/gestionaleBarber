@@ -16,14 +16,10 @@ public class BarberAppController {
     }
 
 
-    public BarberBean getBarberDetails(IdBean id) {
+    public BarberBean getBarberDetails(IdBean id) throws SystemException {
         BarberDAO barberDAO = new BarberDAO();
-        try {
-            return new BarberBean(barberDAO.getBarberById(id.getId())); //devo passare l'id del barbiere con un Bean
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+        return new BarberBean(barberDAO.getBarberById(id.getId())); //devo passare l'id del barbiere con un Bean
+
     }
 
     public void insertOrarioBarber(BarberBean barber) throws SystemException {

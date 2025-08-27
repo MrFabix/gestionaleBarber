@@ -45,13 +45,18 @@ public class BarberDetailGuiController {
     private SwitchAndSetPage switchPageAndSet = new SwitchAndSetPage();
     private List<ServiceBean> serviceBeanList = new ArrayList<>();
 
-    public void setBarberDetails(IdBean id) {
+    public void setBarberDetails(IdBean id) throws SystemException {
         // Chiamare l'AppController per ottenere i dettagli
+        BarberBean barberBean = null;
         BarberAppController barberAppController = new BarberAppController();
         ServiceAppController serviceAppController = new ServiceAppController();
 
         // Ottieni i dettagli del barbiere
-        BarberBean barberBean = barberAppController.getBarberDetails(id);
+        try{
+            barberBean = barberAppController.getBarberDetails(id);
+        }catch (SystemException e){
+            ErrorDialog.getInstance().handleException(e);
+        }
         if (barberBean != null) {
             barberName.setText(barberBean.getName());
             barberAddress.setText(barberBean.getAddress());
