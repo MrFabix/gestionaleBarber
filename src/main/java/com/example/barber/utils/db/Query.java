@@ -431,7 +431,7 @@ public class Query {
             ps.executeUpdate();
         } catch (SQLException | SystemException e) {
             SystemException exception = new SystemException();
-            e.printStackTrace();
+            ErrorDialog.getInstance().handleException(e);
             exception.initCause(e);
             throw exception;
         }
