@@ -4,6 +4,7 @@ import com.example.barber.controller.appcontroller.CheckRequestAppController;
 import com.example.barber.controller.guicontroller.interface1.item.AppointmentsItemBarberGuiController;
 import com.example.barber.utils.Session;
 import com.example.barber.utils.bean.RequestAppointmentsBean;
+import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.utils.observer.Observer;
 import javafx.fxml.FXML;
@@ -19,7 +20,7 @@ import java.util.ResourceBundle;
 public class PageManageBarberAppointmentsGuiController implements Observer, Initializable {
 
     private CheckRequestAppController controller = new CheckRequestAppController();
-    private String AppointmentsItemFxml = "/AppointmentsItemBarber.fxml";
+    private static final String APPOINTMENTS_ITEM_BARBER_FXML = "/AppointmentsItemBarber.fxml";
 
     @FXML
     private ListView<Pane> listViewPendingAppointments;
@@ -33,7 +34,7 @@ public class PageManageBarberAppointmentsGuiController implements Observer, Init
         try{
             controller.manageRequestAppointments(this, Session.getInstance().getBarber().getId(), Session.getInstance().getCredentials().getType().getRoleId());
         }catch (SystemException e ){
-            e.printStackTrace();
+            ErrorDialog.getInstance().handleException(e);
         }
 
     }
@@ -44,18 +45,18 @@ public class PageManageBarberAppointmentsGuiController implements Observer, Init
         Pane pane = null;
         try{
             if(Objects.equals(rBean.getState().getId(), "PENDENTE")){
-                pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource(AppointmentsItemFxml).openStream()));
+                pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource(APPOINTMENTS_ITEM_BARBER_FXML).openStream()));
                 itemController = fxmlLoader.getController();
                 itemController.setAll(rBean, controller);
                 this.listViewPendingAppointments.getItems().add(pane);
             }else if(Objects.equals(rBean.getState().getId(), "RIFIUTATA")){
-                pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource(AppointmentsItemFxml).openStream()));
+                pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource(APPOINTMENTS_ITEM_BARBER_FXML).openStream()));
                 itemController = fxmlLoader.getController();
                 itemController.setVisibilityButton();
                 itemController.setAll(rBean,controller);
                 this.listViewRefiutedDeclined.getItems().add(pane);
             } else if (Objects.equals(rBean.getState().getId(), "ACCETTATA")) {
-                pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource(AppointmentsItemFxml).openStream()));
+                pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource(APPOINTMENTS_ITEM_BARBER_FXML).openStream()));
                 itemController = fxmlLoader.getController();
                 itemController.setAll(rBean,controller);
                 itemController.setVisibilityButton();
@@ -63,7 +64,7 @@ public class PageManageBarberAppointmentsGuiController implements Observer, Init
             }
         }catch (Exception e){
             //DA mette le systemexception
-            e.printStackTrace();
+            ErrorDialog.getInstance().handleException(e);
         }
     }
 

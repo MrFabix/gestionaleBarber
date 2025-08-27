@@ -4,6 +4,7 @@ import com.example.barber.controller.appcontroller.CheckRequestAppController;
 import com.example.barber.controller.guicontroller.interface1.item.AppointmentsItemUserGuiController;
 import com.example.barber.utils.Session;
 import com.example.barber.utils.bean.RequestAppointmentsBean;
+import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.utils.observer.Observer;
 import javafx.fxml.FXML;
@@ -34,7 +35,7 @@ public class PageManageUserAppointmentsGuiController implements Observer, Initia
         try{
             controller.manageRequestAppointments(this, Session.getInstance().getUser().getId(), Session.getInstance().getCredentials().getType().getRoleId());
         }catch (SystemException e ){
-            e.printStackTrace();
+            ErrorDialog.getInstance().handleException(e);
         }
 
     }
@@ -64,7 +65,7 @@ public class PageManageUserAppointmentsGuiController implements Observer, Initia
             }
         }catch (Exception e){
             //DA mette le systemexception
-            e.printStackTrace();
+            ErrorDialog.getInstance().handleException(e);
         }
     }
 

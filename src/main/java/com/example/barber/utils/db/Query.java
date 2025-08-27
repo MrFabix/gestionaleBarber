@@ -2,6 +2,7 @@ package com.example.barber.utils.db;
 
 
 import com.example.barber.model.*;
+import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.utils.ruoli.Role;
 import com.example.barber.utils.statorichiesta.StatoRichieste;
@@ -409,9 +410,6 @@ public class Query {
     }
 
     public void insertAppointments(RequestAppointmentsModel requestAppointmentsModel) throws SystemException {
-        System.out.println("Hai quasi inserito nel databse");
-        System.out.println("Nome del barbiere: " + requestAppointmentsModel.getNameBarber());
-        System.out.println("Phone del barbiere " + requestAppointmentsModel.getPhone());
         String query = "INSERT INTO appointments (" +
                 "idbarber, idutente, data, name_user, name_barber, description, address_barber, " +
                 "service, state, orario, phone) " +
@@ -442,7 +440,10 @@ public class Query {
     //Restituzione Lista appuntamenti pendenti
     public List<RequestAppointmentsModel> searchAllAppointmentsByUser(int id, String role) throws SystemException {
 
-        final String query;
+        if (id <= 0) throw new IllegalArgumentException("id non valido");
+        if (role == null) throw new IllegalArgumentException("role nullo");
+
+        String query = "";
 
         switch (role) {
             case "BARBIERE" -> query = "SELECT appointments.idAppointments ,appointments.idbarber, appointments.idutente, appointments.data, " +
@@ -456,8 +457,11 @@ public class Query {
                     "appointments.address_barber, appointments.service, appointments.state, " +
                     "appointments.orario, appointments.phone " +
                     "FROM appointments WHERE idUtente = ?";
+            default -> query = "";
 
         }
+
+
         List<RequestAppointmentsModel> listRequestAppModel = new ArrayList<>();
 
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
@@ -484,7 +488,7 @@ public class Query {
             }
         } catch (SQLException e) {
             SystemException exception = new SystemException();
-            exception.initCause(e);
+            ErrorDialog.getInstance().handleException(e);
             throw exception;
         }
         return listRequestAppModel;

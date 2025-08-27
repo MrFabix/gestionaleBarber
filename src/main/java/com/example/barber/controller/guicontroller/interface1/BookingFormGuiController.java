@@ -90,7 +90,6 @@ public class BookingFormGuiController{
             switchAndSetPage.switchAndSetHomePageClient(event, "/HomePageClientAppointments.fxml", requestAppointmentsBean);
         }catch(SystemException | InvalidDateException | EmptyInputException e ){
             ErrorDialog.getInstance().handleException(e);
-            e.printStackTrace();
         }
         bookingAppController.sendAppointments(requestAppointmentsBean);
     }

@@ -45,7 +45,7 @@ public class BarberDetailGuiController {
     private SwitchAndSetPage switchPageAndSet = new SwitchAndSetPage();
     private List<ServiceBean> serviceBeanList = new ArrayList<>();
 
-    public void setBarberDetails(IdBean id) throws SystemException {
+    public void setBarberDetails(IdBean id){
         // Chiamare l'AppController per ottenere i dettagli
         BarberBean barberBean = null;
         BarberAppController barberAppController = new BarberAppController();

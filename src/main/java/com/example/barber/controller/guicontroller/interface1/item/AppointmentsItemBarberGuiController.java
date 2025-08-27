@@ -2,6 +2,7 @@ package com.example.barber.controller.guicontroller.interface1.item;
 
 import com.example.barber.controller.appcontroller.CheckRequestAppController;
 import com.example.barber.utils.bean.RequestAppointmentsBean;
+import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.statorichiesta.StatoRichieste;
 import com.example.barber.utils.switchpage.SwitchPage;
 import javafx.event.ActionEvent;
@@ -62,7 +63,7 @@ public class AppointmentsItemBarberGuiController {
             checkRequestAppController.addAppointmentsToList(rBean);
             switchPage.replaceScene(event, "/HomePageBarberAppointments.fxml");
         }catch (Exception e){
-            e.printStackTrace();
+            ErrorDialog.getInstance().handleException(e);
         }
 
     }
@@ -75,7 +76,7 @@ public class AppointmentsItemBarberGuiController {
             checkRequestAppController.addAppointmentsToList(rBean);
             switchPage.replaceScene(event, "/HomePageBarberAppointments.fxml");
         }catch (Exception e){
-            e.printStackTrace();
+            ErrorDialog.getInstance().handleException(e);
         }
 
     }
@@ -88,7 +89,7 @@ public class AppointmentsItemBarberGuiController {
             checkRequestAppController.addAppointmentsToList(rBean);
             switchPage.replaceScene(event, "/HomePageBarber.fxml");
         }catch (Exception e){
-            e.printStackTrace();
+            ErrorDialog.getInstance().handleException(e);
         }
 
     }

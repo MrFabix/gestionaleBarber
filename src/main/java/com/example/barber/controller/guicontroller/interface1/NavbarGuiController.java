@@ -1,5 +1,6 @@
 package com.example.barber.controller.guicontroller.interface1;
 import com.example.barber.controller.appcontroller.NavBarAppController;
+import com.example.barber.utils.exception.ErrorDialog;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,7 +22,7 @@ public class NavbarGuiController implements Initializable {
            NavBarAppController controller = new NavBarAppController();
            controller.initNavBar(navAnchor);
        }catch (Exception e){
-           e.printStackTrace();
+           ErrorDialog.getInstance().handleException(e);
        }
     }
 

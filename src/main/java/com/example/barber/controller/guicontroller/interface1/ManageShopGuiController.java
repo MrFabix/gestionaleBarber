@@ -6,6 +6,7 @@ import com.example.barber.utils.Session;
 import com.example.barber.utils.bean.BarberBean;
 import com.example.barber.utils.bean.IdBean;
 import com.example.barber.utils.bean.ServiceBean;
+import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.myexception.SystemException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -85,7 +86,7 @@ public class ManageShopGuiController implements Initializable {
         try{
             controller.insertService(serviceBean);
         } catch (SystemException e) {
-            e.printStackTrace();
+            ErrorDialog.getInstance().handleException(e);
         }
 
 
@@ -112,7 +113,7 @@ public class ManageShopGuiController implements Initializable {
         try{
             controller.deleteService(serviceBean);
         } catch (SystemException e) {
-            e.printStackTrace();
+            ErrorDialog.getInstance().handleException(e);
         }
     }
 
@@ -125,7 +126,7 @@ public class ManageShopGuiController implements Initializable {
         try{
             barberAppController.insertOrarioBarber(barberBean);
         }catch (SystemException ex){
-            ex.printStackTrace();
+            ErrorDialog.getInstance().handleException(ex);
         }
 
 
