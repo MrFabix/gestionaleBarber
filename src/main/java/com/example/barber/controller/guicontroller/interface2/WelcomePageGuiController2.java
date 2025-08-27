@@ -22,7 +22,7 @@ public class WelcomePageGuiController2 {
         @FXML
         public void goToRegistrationChoice(ActionEvent event) throws IOException {
             try{
-                sp.replaceScene(event, "/registrationChoice.fxml");
+                sp.replaceScene(event, "/view/interface2/registrationChoice2.fxml");
             }catch(SystemException e){
                 ErrorDialog.getInstance().handleException(e);
             }
@@ -31,7 +31,7 @@ public class WelcomePageGuiController2 {
         @FXML
         public void switchInterface(ActionEvent event) throws IOException {
             try {
-                switchPage.replaceScene(event, "/WelcomePage1.fxml");
+                switchPage.replaceScene(event, "/view/interface1/WelcomePage1.fxml");
             } catch (SystemException e) {
                 ErrorDialog.getInstance().handleException(e);
             }

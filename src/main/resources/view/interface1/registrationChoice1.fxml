@@ -5,7 +5,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface1.RegistrationChoiceController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface1.RegistrationChoiceController1">
    <children>
       <Button fx:id="userChoice" layoutX="265.0" layoutY="139.0" mnemonicParsing="false" onAction="#onSingInUser" prefHeight="25.0" prefWidth="51.0" text="User" />
       <Button fx:id="barberChoice" layoutX="265.0" layoutY="200.0" mnemonicParsing="false" onAction="#onSignInBarber" text="Barber" />

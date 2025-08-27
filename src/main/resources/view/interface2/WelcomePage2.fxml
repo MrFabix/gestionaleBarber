@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.barber.controller.guicontroller.interface2.WelcomePageGuiController2"
+            style="-fx-background-color: linear-gradient(to bottom right, #1f2937, #111827);">
+    <children>
+        <Text layoutX="123.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              text="Welcome!" textAlignment="CENTER" wrappingWidth="330.20556640625"
+              style="-fx-fill: white;">
+            <font>
+                <Font size="42.0"/>
+            </font>
+        </Text>
+        <Button fx:id="signIn" layoutX="340.0" layoutY="150.0" mnemonicParsing="false"
+                text="Sign In" onAction="#goToRegistrationChoice"
+                prefHeight="50.0" prefWidth="160.0"
+                style="-fx-background-color: #10b981; -fx-text-fill: white; -fx-background-radius: 999; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+
+        <Button fx:id="login" layoutX="100.0" layoutY="150.0" mnemonicParsing="false"
+                text="Login" onAction="#goToLogin"
+                prefHeight="50.0" prefWidth="160.0"
+                style="-fx-background-color: #6366f1; -fx-text-fill: white; -fx-background-radius: 999; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+
+        <Button fx:id="switchInterfaceBtn" layoutX="230.0" layoutY="250.0"
+                text="SwitchInterface" mnemonicParsing="false"
+                prefHeight="44.0" prefWidth="160.0"
+                onAction="#switchInterface"
+                style="-fx-background-color: #e5e7eb; -fx-text-fill: #111827; -fx-background-radius: 999; -fx-font-size: 13px;"/>
+    </children>
+</AnchorPane>

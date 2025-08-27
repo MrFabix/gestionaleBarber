@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface1.SignInBarberGuiController1">
+   <children>
+      <TextField id="barberShopName" fx:id="barberShopField" layoutX="40.0" layoutY="58.0" promptText="Barbershop name" />
+      <TextField id="address" fx:id="addressField" layoutX="40.0" layoutY="98.0" promptText="Address" />
+      <TextField id="city" fx:id="cityField" layoutX="40.0" layoutY="144.0" promptText="city" />
+      <TextField id="phone" fx:id="phoneField" layoutX="40.0" layoutY="183.0" promptText="Phone" />
+      <TextField id="email" fx:id="emailField" layoutX="40.0" layoutY="222.0" promptText="Email" />
+      <TextField id="username" fx:id="usernameField" layoutX="366.0" layoutY="58.0" promptText="Username" />
+      <PasswordField id="password" fx:id="passwordField" layoutX="366.0" layoutY="98.0" promptText="Password" />
+      <PasswordField id="confirmPassword" fx:id="confirmPasswordField" layoutX="366.0" layoutY="131.0" promptText="Confirm Password" />
+      <Button layoutX="416.0" layoutY="292.0" mnemonicParsing="false" onAction="#signInBarber"  text="Registrati " />
+      <Button layoutX="415.0" layoutY="248.0" mnemonicParsing="false" onAction="#backToWelcomePage" text="Torna indietro" />
+      <Text layoutX="40.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Crea un Account come barbiere" wrappingWidth="221.01995849609375" />
+   </children>
+</AnchorPane>
