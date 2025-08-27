@@ -11,16 +11,11 @@ import java.io.IOException;
 
 public class WelcomePageGuiController2 {
 
-        @FXML
-        private Button signInButton;
-        @FXML
-        private Button signIn;
-
-        private SwitchPage switchPage = new SwitchPage();
+        private SwitchPage sPage = new SwitchPage();
         private com.example.barber.utils.switchpage.SwitchPage sp = new com.example.barber.utils.switchpage.SwitchPage();
 
         @FXML
-        public void goToRegistrationChoice(ActionEvent event) throws IOException {
+        public void choiceRegistration(ActionEvent event) throws IOException {
             try{
                 sp.replaceScene(event, "/view/interface2/registrationChoice2.fxml");
             }catch(SystemException e){
@@ -29,16 +24,7 @@ public class WelcomePageGuiController2 {
 
         }
         @FXML
-        public void switchInterface(ActionEvent event) throws IOException {
-            try {
-                switchPage.replaceScene(event, "/view/interface1/WelcomePage1.fxml");
-            } catch (SystemException e) {
-                ErrorDialog.getInstance().handleException(e);
-            }
-        }
-
-        @FXML
-        public void goToLogin(ActionEvent event) throws IOException {
+        public void Login(ActionEvent event) throws IOException {
             try{
                 sp.replaceScene(event, "/Login.fxml");
             }catch(SystemException e){
@@ -46,5 +32,15 @@ public class WelcomePageGuiController2 {
             }
 
         }
+        @FXML
+        public void changeInterface(ActionEvent event) throws IOException {
+            try {
+                sPage.replaceScene(event, "/view/interface1/WelcomePage1.fxml");
+            } catch (SystemException e) {
+                ErrorDialog.getInstance().handleException(e);
+            }
+        }
+
+
 }
 
