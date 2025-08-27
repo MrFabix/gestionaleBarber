@@ -1,4 +1,4 @@
-package com.example.barber.controller.guicontroller.interface1;
+package com.example.barber.controller.guicontroller.interface2;
 
 import com.example.barber.controller.appcontroller.LoginAppController;
 import com.example.barber.utils.bean.CredentialsBean;
@@ -10,20 +10,33 @@ import com.example.barber.utils.exception.myexception.WrongCredentialsException;
 import com.example.barber.utils.switchpage.SwitchPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 
-public class LoginGuiController {
+public class LoginGuiController2 {
 
 
 
     @FXML
-    private TextField usernameField;
+    private TextField username;
     @FXML
-    private PasswordField passwordField;
+    private PasswordField pass;
 
 
     private SwitchPage sp = new SwitchPage();
+
+    @FXML
+    private void goBack(ActionEvent event)   {
+        try{
+            sp.replaceScene(event, "/view/interface2/welcomePage2.fxml");
+        }catch(SystemException e){
+            ErrorDialog.getInstance().handleException(e);
+        }
+    }
+
+
+
     @FXML
     private void onloginButton(ActionEvent event) {
         LoginAppController controller;
@@ -31,30 +44,23 @@ public class LoginGuiController {
             // Inizializza il controller e tenta il login
             controller = new LoginAppController();
             CredentialsBean credentialsBean = new CredentialsBean();
-            credentialsBean.setUsername(usernameField.getText());
-            credentialsBean.setPassword(passwordField.getText());
-            //Ancora non so che ruolo avrò dipende come mi sono registrato
+            credentialsBean.setUsername(username.getText());
+            credentialsBean.setPassword(pass.getText());
+            //Ancora non so che ruolo avrò, dipende come mi sono registrato
             //chiama qui il login controller che manda la query e cerca che ruolo ha quell'utente nel database
             controller.login(credentialsBean);
             if (credentialsBean.getType().getRoleId().equals("CLIENTE")) {
-                sp.replaceScene(event, "/view/interface1/homePageClient.fxml");
+                sp.replaceScene(event, "/view/interface2/homePageClient.fxml");
             } else if (credentialsBean.getType().getRoleId().equals("BARBIERE")) {
-                sp.replaceScene(event, "/view/interface1/homePageBarber.fxml");
+                sp.replaceScene(event, "/homePageBarber.fxml");
             } else if(credentialsBean.getType().getRoleId().equals("MODERATORE")){
-                sp.replaceScene(event, "/view/interface1/homepageModerator.fxml");
+                sp.replaceScene(event, "/homepageModerator.fxml");
             }
         } catch (SystemException | WrongCredentialsException | EmptyInputException | PasswordNotCompliantException e) {
             // Gestisce altri tipi di eccezioni
             ErrorDialog.getInstance().handleException(e);
         }
     }
-    @FXML
-    private void backToWelcomePage(ActionEvent event)   {
-        try{
-            sp.replaceScene(event, "/view/interface1/welcomePage1.fxml");
-        }catch(SystemException e){
-            ErrorDialog.getInstance().handleException(e);
-        }
-    }
+
 }
 

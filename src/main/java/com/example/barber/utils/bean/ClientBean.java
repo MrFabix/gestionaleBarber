@@ -2,7 +2,7 @@ package com.example.barber.utils.bean;
 
 import com.example.barber.model.ClientModel;
 
-public class UserBean extends ProfileBean{
+public class ClientBean extends ProfileBean{
 
 
 
@@ -11,9 +11,9 @@ public class UserBean extends ProfileBean{
 
 
 
-    public UserBean(){}
+    public ClientBean(){}
 
-    public UserBean(ClientModel clientModel) {
+    public ClientBean(ClientModel clientModel) {
         this.name = clientModel.getName();
         this.surname = clientModel.getSurname();
         this.gender = clientModel.getGender();
@@ -23,14 +23,14 @@ public class UserBean extends ProfileBean{
         this.phone = clientModel.getPhone();
     }
 
-    public UserBean(UserBean userBean) {
-        this.name = userBean.getName();
-        this.surname = userBean.getSurname();
-        this.gender = userBean.getGender();
-        this.id = userBean.getId();
-        this.email = userBean.getEmail();
-        this.username = userBean.getUsername();
-        this.phone = userBean.getPhone();
+    public ClientBean(ClientBean clientBean) {
+        this.name = clientBean.getName();
+        this.surname = clientBean.getSurname();
+        this.gender = clientBean.getGender();
+        this.id = clientBean.getId();
+        this.email = clientBean.getEmail();
+        this.username = clientBean.getUsername();
+        this.phone = clientBean.getPhone();
 
     }
 
@@ -52,7 +52,7 @@ public class UserBean extends ProfileBean{
     //toString
     @Override
     public String toString() {
-        return "UserBean{" +
+        return "ClientBean{" +
                 "surname='" + surname + '\'' +
                 ", gender='" + gender + '\'' +
                 ", name='" + name + '\'' +

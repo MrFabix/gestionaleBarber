@@ -1,6 +1,6 @@
 package com.example.barber.model;
 
-import com.example.barber.utils.bean.UserBean;
+import com.example.barber.utils.bean.ClientBean;
 
 
 public class ClientModel extends ProfileModel {
@@ -11,7 +11,7 @@ public class ClientModel extends ProfileModel {
         super();
     }
 
-    public ClientModel(UserBean userbean){
+    public ClientModel(ClientBean userbean){
         super(userbean.getId(), userbean.getUsername(), userbean.getEmail(), userbean.getImg(), userbean.getName(), userbean.getPhone());
 
         this.surname = userbean.getSurname();

@@ -14,7 +14,7 @@ public class Session {
 
     private static Session session;
     private CredentialsBean credentialsBean;
-    private UserBean userBean;
+    private ClientBean clientBean;
     private ModeratorBean moderatorBean;
     private BarberBean barberBean;
 
@@ -24,8 +24,8 @@ public class Session {
         }
         return session;
     }
-    public UserBean getUser() {
-        return userBean;
+    public ClientBean getUser() {
+        return clientBean;
     }
 
     public BarberBean getBarber() {
@@ -43,8 +43,8 @@ public class Session {
         }
     }
     public void setUser(ClientModel clientModel) {
-        if (this.userBean == null) {
-            userBean = new UserBean(clientModel);
+        if (this.clientBean == null) {
+            clientBean = new ClientBean(clientModel);
         }
     }
 
@@ -62,7 +62,7 @@ public class Session {
 
     public void deleteSession() {
         //barberBean = null;
-        userBean = null;
+        clientBean = null;
     }
 
 

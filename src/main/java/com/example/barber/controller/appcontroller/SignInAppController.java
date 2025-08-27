@@ -4,18 +4,17 @@ import com.example.barber.model.BarberModel;
 import com.example.barber.model.CredentialsModel;
 import com.example.barber.model.ClientModel;
 import com.example.barber.utils.bean.BarberBean;
+import com.example.barber.utils.bean.ClientBean;
 import com.example.barber.utils.bean.CredentialsBean;
-import com.example.barber.utils.bean.UserBean;
-import com.example.barber.utils.dao.fileSystem.ClientDAOCsv;
 import com.example.barber.utils.dao.sql.BarberDAO;
 import com.example.barber.utils.dao.sql.ClientDAOSql;
 import com.example.barber.utils.exception.myexception.SystemException;
 
 public class SignInAppController {
 
-    public void registerUser(UserBean userBean, CredentialsBean credentialsBean) throws SystemException {
+    public void registerUser(ClientBean clientBean, CredentialsBean credentialsBean) throws SystemException {
        CredentialsModel credentialsModel = new CredentialsModel(credentialsBean);
-       ClientModel clientModel = new ClientModel(userBean);
+       ClientModel clientModel = new ClientModel(clientBean);
        ClientDAOSql userDAOSql = new ClientDAOSql();
        userDAOSql.addUser(credentialsModel, clientModel);
     }

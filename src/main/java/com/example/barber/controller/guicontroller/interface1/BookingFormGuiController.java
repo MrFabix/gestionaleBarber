@@ -22,7 +22,7 @@ import java.util.List;
 
 public class BookingFormGuiController{
 
-    private UserBean userBean = new UserBean();
+    private ClientBean clientBean = new ClientBean();
     private PreFormBarberBean preFormBarberBean = new PreFormBarberBean();
 
 
@@ -51,10 +51,10 @@ public class BookingFormGuiController{
 
     public void setAll(PreFormBarberBean bean){
             List<String> serviceList;
-            userBean = Session.getInstance().getUser();
-            nameField.setText(userBean.getName());
-            phoneField.setText(userBean.getPhone());
-            emailField.setText(userBean.getEmail());
+            clientBean = Session.getInstance().getUser();
+            nameField.setText(clientBean.getName());
+            phoneField.setText(clientBean.getPhone());
+            emailField.setText(clientBean.getEmail());
             this.preFormBarberBean.setIdBarber(bean.getIdBarber());
             this.preFormBarberBean.setBarberName(bean.getBarberName());
             this.preFormBarberBean.setBarberAddress(bean.getBarberAddress());
@@ -76,11 +76,11 @@ public class BookingFormGuiController{
         //Setto l'appointmentsBean
 
         try{
-            requestAppointmentsBean.setIdUser(userBean.getId());
+            requestAppointmentsBean.setIdUser(clientBean.getId());
             requestAppointmentsBean.setIdBarber(preFormBarberBean.getIdBarber());
             requestAppointmentsBean.setNameBarber(preFormBarberBean.getBarberName());
             requestAppointmentsBean.setPhoneUser(phoneField.getText());
-            requestAppointmentsBean.setNameUser(userBean.getName());
+            requestAppointmentsBean.setNameUser(clientBean.getName());
             requestAppointmentsBean.setDate(appointmentDatePicker.getValue());
             requestAppointmentsBean.setDescription(notesField.getText());
             requestAppointmentsBean.setAddressBarber(preFormBarberBean.getBarberAddress());

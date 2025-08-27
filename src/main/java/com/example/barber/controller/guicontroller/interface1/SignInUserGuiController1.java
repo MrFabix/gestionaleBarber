@@ -3,7 +3,7 @@ package com.example.barber.controller.guicontroller.interface1;
 
 import com.example.barber.controller.appcontroller.SignInAppController;
 import com.example.barber.utils.bean.CredentialsBean;
-import com.example.barber.utils.bean.UserBean;
+import com.example.barber.utils.bean.ClientBean;
 import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.myexception.*;
 import com.example.barber.utils.ruoli.Role;
@@ -18,8 +18,8 @@ import javafx.scene.control.TextField;
 
 public class SignInUserGuiController1 {
 
-    //Dichiaro uno UserBean che prende tutti i details di clienti(Name, surname, e-mail, telephone, gender)
-    UserBean userBean = new UserBean();
+    //Dichiaro uno ClientBean che prende tutti i details di clienti(Name, surname, e-mail, telephone, gender)
+    ClientBean clientBean = new ClientBean();
 
 
 
@@ -66,18 +66,18 @@ public class SignInUserGuiController1 {
             credentialsBean.setPassword(passwordField.getText());
             credentialsBean.setType(Role.CLIENTE);
 
-            //Carichiamo lo UserBean con le informazioni del cliente
-            userBean.setName(name.getText());
-            userBean.setSurname(surname.getText());
-            userBean.setGender(genderField.getValue());
-            userBean.setEmail(emailField.getText());
-            userBean.setUsername(usernameField.getText());
-            userBean.setPhone(telephone.getText());
+            //Carichiamo lo ClientBean con le informazioni del cliente
+            clientBean.setName(name.getText());
+            clientBean.setSurname(surname.getText());
+            clientBean.setGender(genderField.getValue());
+            clientBean.setEmail(emailField.getText());
+            clientBean.setUsername(usernameField.getText());
+            clientBean.setPhone(telephone.getText());
 
             appController = new SignInAppController();
 
             //Spediamo tutto al controller dello user che poi si interfaccia con il livello sottostante ancora
-            appController.registerUser(userBean, credentialsBean);
+            appController.registerUser(clientBean, credentialsBean);
             sp.replaceScene(event, "/view/interface1/welcomePage1.fxml");
 
         }catch( EmptyInputException | SystemException | UsernameAlreadyTakenException | EmailNotValidException  | PasswordNotCompliantException e) {

@@ -26,7 +26,7 @@ public class WelcomePageGuiController2 {
         @FXML
         public void Login(ActionEvent event) throws IOException {
             try{
-                sp.replaceScene(event, "/Login.fxml");
+                sp.replaceScene(event, "/view/interface2/Login2.fxml");
             }catch(SystemException e){
                 ErrorDialog.getInstance().handleException(e);
             }
