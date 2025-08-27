@@ -6,6 +6,7 @@ module com.example.barber {
     requires MaterialFX;
     requires javafx.fxml;
     requires jdk.dynalink;
+    requires com.opencsv;
 
 
     opens com.example.barber to javafx.fxml;

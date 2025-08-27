@@ -38,8 +38,40 @@ public class Query {
         }
     }
 
+    public RequestAppointmentsModel searchAppointmentsById(int id)throws SystemException{
+        String query = "SELECT * FROM appointments WHERE idBarber = ?";
+        try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
+            preparedStatement.setInt(1, id);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                RequestAppointmentsModel ram = new RequestAppointmentsModel();
+                ram.setAppId(rs.getInt("idAppointments"));
+                ram.setIdUser(rs.getInt("idUtente"));
+                ram.setIdBarber(rs.getInt("idbarber"));
+                Date sqlDate = rs.getDate("data");
+                ram.setDate(sqlDate.toLocalDate());
+                ram.setNameUser(rs.getString("name_user"));
+                ram.setNameBarber(rs.getString("name_barber"));
+                ram.setDescription(rs.getString("description"));
+                ram.setAddressBarber(rs.getString("address_barber"));
+                ram.setService(rs.getString("service"));
+                ram.setOrario(rs.getString("orario"));
+                ram.setPhone(rs.getString(PHONE));
+                StatoRichieste stato = StatoRichieste.fromString(rs.getString("state"));
+                ram.setState(stato);
+
+            }
+        } catch (SQLException e) {
+            SystemException exception = new SystemException();
+            ErrorDialog.getInstance().handleException(e);
+            throw exception;
+        }
+        return new RequestAppointmentsModel();
+    }
+
+
     //Restituzione Lista appuntamenti pendenti
-    public List<RequestAppointmentsModel> searchAllAppointmentsByUser(int id, String role) throws SystemException {
+    public List<RequestAppointmentsModel> searchAllAppointmentsById(int id, String role) throws SystemException {
         String query = switch (role) {
             case "BARBIERE" -> query = "SELECT appointments.idAppointments ,appointments.idbarber, appointments.idutente, appointments.data, " +
                     "appointments.name_user, appointments.name_barber, appointments.description, " +
@@ -172,18 +204,18 @@ public class Query {
     }
 
 
-    public void insertUser(UserModel userModel) throws SystemException {
+    public void insertUser(ClientModel clientModel) throws SystemException {
         String query = "INSERT INTO user (name, surname, gender, email, username, phone) VALUES (?,?,?,?,?,?)";
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
 
             //Imposta i parametri della query
-            preparedStatement.setString(1, userModel.getName());
-            preparedStatement.setString(2, userModel.getSurname());
+            preparedStatement.setString(1, clientModel.getName());
+            preparedStatement.setString(2, clientModel.getSurname());
 
-            preparedStatement.setString(3, userModel.getGender());
-            preparedStatement.setString(4, userModel.getEmail());
-            preparedStatement.setString(5, userModel.getUsername());
-            preparedStatement.setString(6, userModel.getPhone());
+            preparedStatement.setString(3, clientModel.getGender());
+            preparedStatement.setString(4, clientModel.getEmail());
+            preparedStatement.setString(5, clientModel.getUsername());
+            preparedStatement.setString(6, clientModel.getPhone());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -262,23 +294,23 @@ public class Query {
     }
 
 
-    public UserModel searchUserByUsername(String username) throws SystemException {
+    public ClientModel searchUserByUsername(String username) throws SystemException {
         String query = "SELECT * FROM user WHERE username = ?";
-        UserModel userModel = null;
+        ClientModel clientModel = null;
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
             preparedStatement.setString(1, username);
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
-                userModel = new UserModel();
-                userModel.setId(rs.getInt("id"));
-                userModel.setName(rs.getString("name"));
-                userModel.setSurname(rs.getString("surname"));
-                userModel.setGender(rs.getString("gender"));
-                userModel.setEmail(rs.getString(EMAIL));
-                userModel.setUsername(rs.getString(USERNAME));
-                userModel.setPhone(rs.getString(PHONE));
+                clientModel = new ClientModel();
+                clientModel.setId(rs.getInt("id"));
+                clientModel.setName(rs.getString("name"));
+                clientModel.setSurname(rs.getString("surname"));
+                clientModel.setGender(rs.getString("gender"));
+                clientModel.setEmail(rs.getString(EMAIL));
+                clientModel.setUsername(rs.getString(USERNAME));
+                clientModel.setPhone(rs.getString(PHONE));
             }
-            return userModel;
+            return clientModel;
 
         } catch (SQLException e) {
 

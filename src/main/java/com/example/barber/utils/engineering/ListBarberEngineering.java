@@ -2,7 +2,7 @@ package com.example.barber.utils.engineering;
 
 import com.example.barber.model.BarberModel;
 import com.example.barber.utils.bean.BarberBean;
-import com.example.barber.utils.dao.BarberDAO;
+import com.example.barber.utils.dao.sql.BarberDAO;
 import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.utils.observer.GenericBeanList;
 import com.example.barber.utils.observer.Observer;

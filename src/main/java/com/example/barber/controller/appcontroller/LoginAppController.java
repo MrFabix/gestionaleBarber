@@ -3,15 +3,15 @@ package com.example.barber.controller.appcontroller;
 import com.example.barber.model.BarberModel;
 import com.example.barber.model.CredentialsModel;
 import com.example.barber.model.ModeratorModel;
-import com.example.barber.model.UserModel;
+import com.example.barber.model.ClientModel;
 import com.example.barber.utils.bean.CredentialsBean;
-import com.example.barber.utils.dao.BarberDAO;
-import com.example.barber.utils.dao.ModeratorDAO;
-import com.example.barber.utils.dao.UserDAO;
+import com.example.barber.utils.dao.sql.BarberDAO;
+import com.example.barber.utils.dao.sql.ModeratorDAO;
+import com.example.barber.utils.dao.sql.ClientDAOSql;
 import com.example.barber.utils.exception.Trigger;
 import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.utils.exception.myexception.WrongCredentialsException;
-import com.example.barber.utils.dao.LoginDAO;
+import com.example.barber.utils.dao.sql.LoginDAO;
 import com.example.barber.utils.Session;
 
 public class LoginAppController {
@@ -29,11 +29,11 @@ public class LoginAppController {
             Session.getInstance().deleteSession();
         }else if (credentialsModel.getType().getRoleId().equals("CLIENTE")) {
             System.out.println("SEI DENTRO LOGINAPPCONTROLLER DEL CLIENTE PRIMA DI USERMODEL");
-            UserModel userModel = null;
-            UserDAO userDAO = new UserDAO();
-            userModel = userDAO.getUserByUsername(credentialsBean.getUsername());
+            ClientModel clientModel = null;
+            ClientDAOSql userDAOSql = new ClientDAOSql();
+            clientModel = userDAOSql.getUserByUsername(credentialsBean.getUsername());
             Session.getInstance().setCredentials(credentialsModel);
-            Session.getInstance().setUser(userModel);
+            Session.getInstance().setUser(clientModel);
         } else if (credentialsModel.getType().getRoleId().equals("BARBIERE")) {
             BarberModel barberModel = null;
             BarberDAO barberDAO = new BarberDAO();

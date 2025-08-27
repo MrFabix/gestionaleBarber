@@ -1,4 +1,4 @@
-package com.example.barber.utils.dao;
+package com.example.barber.utils.dao.sql;
 
 import com.example.barber.model.BarberModel;
 import com.example.barber.model.CredentialsModel;

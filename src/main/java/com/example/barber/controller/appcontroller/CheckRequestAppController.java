@@ -1,9 +1,8 @@
 package com.example.barber.controller.appcontroller;
 
-import com.example.barber.controller.guicontroller.interface1.PageManageBarberAppointmentsGuiController;
 import com.example.barber.model.RequestAppointmentsModel;
 import com.example.barber.utils.bean.RequestAppointmentsBean;
-import com.example.barber.utils.dao.RequestAppointmentsDAO;
+import com.example.barber.utils.dao.sql.RequestAppointmentsDAO;
 import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.utils.observer.ManageRequestBeanList;
 import com.example.barber.utils.observer.Observer;

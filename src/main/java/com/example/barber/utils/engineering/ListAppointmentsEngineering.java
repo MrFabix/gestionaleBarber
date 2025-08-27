@@ -2,9 +2,8 @@ package com.example.barber.utils.engineering;
 
 import com.example.barber.model.RequestAppointmentsModel;
 import com.example.barber.utils.bean.RequestAppointmentsBean;
-import com.example.barber.utils.dao.RequestAppointmentsDAO;
+import com.example.barber.utils.dao.sql.RequestAppointmentsDAO;
 import com.example.barber.utils.exception.myexception.SystemException;
-import com.example.barber.utils.statorichiesta.StatoRichieste;
 
 import java.util.ArrayList;
 import java.util.List;

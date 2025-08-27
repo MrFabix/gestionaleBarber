@@ -1,0 +1,10 @@
+id,name,surname,gender,email,username,phone
+1,fabio,priorelli,male,fmaxprr@gmail.com,pluto,3891347893
+2,"Alessandro ",Gentili,Male,rockenrolla71@gmail.com,Pippo,389145828439
+3,pippo,pluto,Male,pippo@gmail.com,pippo,3908210348902
+4,pippo,pluto,Male,paperino@gmail.com,pippone,39840293
+5,Alessandro,Gentili,Male,pippo@gmail.com,Vesuvio80,2392929192
+6,Alessandro,Gentili,Male,rockenrolla71@gmail.com,ForzaRoma1927,3891347893
+,"cliente1",,,"cliente1@gmail.com","cliente1","cliente1@gmail.com",,,,,,,,,,,,,
+,"cliente2",,"Female","cliente2@gmail.com","cliente2","3891347893",,,,,,,,,,,,,
+,"cliente3",,"Female","cliente3@gmail.com","cliente3","3891347893",,,,,,,,,,,,,

@@ -109,7 +109,7 @@ public class RequestAppointmentsBean implements GenericBean{
     }
 
     public void setNameBarber(String nameBarber) { this.nameBarber = nameBarber; }
-    
+
 
     public void setDescription(String description) { this.description = description; }
 

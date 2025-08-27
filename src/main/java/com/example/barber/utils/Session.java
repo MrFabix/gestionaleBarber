@@ -3,11 +3,9 @@ package com.example.barber.utils;
 import com.example.barber.model.CredentialsModel;
 import com.example.barber.model.ModeratorModel;
 import com.example.barber.model.BarberModel;
-import com.example.barber.model.UserModel;
+import com.example.barber.model.ClientModel;
 import com.example.barber.utils.bean.BarberBean;
 import com.example.barber.utils.bean.*;
-import com.example.barber.utils.exception.myexception.PasswordNotCompliantException;
-import com.example.barber.utils.ruoli.Role;
 
 public class Session {
 
@@ -44,9 +42,9 @@ public class Session {
             throw new RuntimeException(e);
         }
     }
-    public void setUser(UserModel userModel) {
+    public void setUser(ClientModel clientModel) {
         if (this.userBean == null) {
-            userBean = new UserBean(userModel);
+            userBean = new UserBean(clientModel);
         }
     }
 

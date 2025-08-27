@@ -1,4 +1,4 @@
-package com.example.barber.utils.dao;
+package com.example.barber.utils.dao.sql;
 
 import com.example.barber.utils.db.Query;
 import com.example.barber.utils.exception.myexception.SystemException;

@@ -1,6 +1,6 @@
 package com.example.barber.utils.bean;
 
-import com.example.barber.model.UserModel;
+import com.example.barber.model.ClientModel;
 
 public class UserBean extends ProfileBean{
 
@@ -13,14 +13,14 @@ public class UserBean extends ProfileBean{
 
     public UserBean(){}
 
-    public UserBean(UserModel userModel) {
-        this.name = userModel.getName();
-        this.surname = userModel.getSurname();
-        this.gender = userModel.getGender();
-        this.id = userModel.getId();
-        this.email = userModel.getEmail();
-        this.username = userModel.getUsername();
-        this.phone = userModel.getPhone();
+    public UserBean(ClientModel clientModel) {
+        this.name = clientModel.getName();
+        this.surname = clientModel.getSurname();
+        this.gender = clientModel.getGender();
+        this.id = clientModel.getId();
+        this.email = clientModel.getEmail();
+        this.username = clientModel.getUsername();
+        this.phone = clientModel.getPhone();
     }
 
     public UserBean(UserBean userBean) {

@@ -2,22 +2,25 @@ package com.example.barber.controller.appcontroller;
 
 import com.example.barber.model.BarberModel;
 import com.example.barber.model.CredentialsModel;
-import com.example.barber.model.UserModel;
+import com.example.barber.model.ClientModel;
 import com.example.barber.utils.bean.BarberBean;
 import com.example.barber.utils.bean.CredentialsBean;
 import com.example.barber.utils.bean.UserBean;
-import com.example.barber.utils.dao.BarberDAO;
-import com.example.barber.utils.dao.UserDAO;
+import com.example.barber.utils.dao.fileSystem.ClientDAOCsv;
+import com.example.barber.utils.dao.sql.BarberDAO;
+import com.example.barber.utils.dao.sql.ClientDAOSql;
 import com.example.barber.utils.exception.myexception.SystemException;
 
 public class SignInAppController {
 
     public void registerUser(UserBean userBean, CredentialsBean credentialsBean) throws SystemException {
        CredentialsModel credentialsModel = new CredentialsModel(credentialsBean);
-       UserModel userModel = new UserModel(userBean);
-       UserDAO userDAO = new UserDAO();
-       userDAO.addUser(credentialsModel, userModel);
+       ClientModel clientModel = new ClientModel(userBean);
+       ClientDAOSql userDAOSql = new ClientDAOSql();
+       userDAOSql.addUser(credentialsModel, clientModel);
     }
+
+
 
     public void registerBarber(BarberBean barberBean, CredentialsBean credentialsBean) throws SystemException {
         System.out.println("Stai dentro il register barber");

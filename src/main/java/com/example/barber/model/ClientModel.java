@@ -3,21 +3,20 @@ package com.example.barber.model;
 import com.example.barber.utils.bean.UserBean;
 
 
-public class UserModel extends ProfileModel {
+public class ClientModel extends ProfileModel {
     private String surname;
     private String gender;
 
-    public UserModel(){
+    public ClientModel(){
         super();
     }
 
-    public UserModel(UserBean userbean){
+    public ClientModel(UserBean userbean){
         super(userbean.getId(), userbean.getUsername(), userbean.getEmail(), userbean.getImg(), userbean.getName(), userbean.getPhone());
 
         this.surname = userbean.getSurname();
         this.gender = userbean.getGender();
         this.name = userbean.getName();
-        //TODO manca immagine del profilo da vedere se farla, manca nel bean, nel guiController e qui :)
     }
 
 
@@ -25,12 +24,10 @@ public class UserModel extends ProfileModel {
     public void setSurname(String surname) { this.surname = surname; }
     public void setGender(String gender) {this.gender=gender; }
 
-    //TODO public void setImgProfile(FILE imgProf) {this.imgProf = imgProf;}
-    //Getter
+
 
 
     public String getSurname() { return surname;}
     public String getGender() { return gender; }
-    //TODO FILE getImgProfile(){ return imgProf; }
 
     }

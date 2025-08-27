@@ -1,11 +1,9 @@
 package com.example.barber.controller.appcontroller;
 
 import com.example.barber.model.ServiceModel;
-import com.example.barber.utils.bean.BarberBean;
 import com.example.barber.utils.bean.ServiceBean;
 import com.example.barber.utils.bean.IdBean;
-import com.example.barber.utils.dao.BarberDAO;
-import com.example.barber.utils.dao.ServiceDAO;
+import com.example.barber.utils.dao.sql.ServiceDAO;
 import com.example.barber.utils.exception.myexception.SystemException;
 
 import java.util.ArrayList;
