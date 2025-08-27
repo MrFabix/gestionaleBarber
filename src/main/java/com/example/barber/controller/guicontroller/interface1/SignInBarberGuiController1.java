@@ -13,7 +13,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 
-public class SignInBarberController {
+public class SignInBarberGuiController1 {
     BarberBean barberBean = new BarberBean();
     CredentialsBean credentialsBean = new CredentialsBean();
 
@@ -39,7 +39,7 @@ public class SignInBarberController {
     @FXML
     private void backToWelcomePage(ActionEvent event){
         try {
-            sp.replaceScene(event, "/welcomePage.fxml");
+            sp.replaceScene(event, "/welcomePage1.fxml");
         } catch (SystemException e) {
             ErrorDialog.getInstance().handleException(e);
         }
@@ -70,7 +70,7 @@ public class SignInBarberController {
 
             //Passiamo tutto al controller che si occupa di gestire l'inserimento dela barbiere e delle sue credenziali
             appController.registerBarber(barberBean, credentialsBean);
-            sp.replaceScene(event, "/welcomePage.fxml");
+            sp.replaceScene(event, "/welcomePage1.fxml");
 
 
         } catch (EmptyInputException | EmailNotValidException | PasswordNotCompliantException | SystemException |

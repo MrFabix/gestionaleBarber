@@ -16,7 +16,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 
-public class SignInUserController {
+public class SignInUserGuiController1 {
 
     //Dichiaro uno UserBean che prende tutti i details di clienti(Name, surname, e-mail, telephone, gender)
     UserBean userBean = new UserBean();
@@ -49,7 +49,7 @@ public class SignInUserController {
     @FXML
     private void backToWelcomePage(ActionEvent event){
         try{
-            sp.replaceScene(event, "/welcomePage.fxml");
+            sp.replaceScene(event, "/welcomePage1.fxml");
         }catch(SystemException e){
             ErrorDialog.getInstance().handleException(e);
         }
@@ -78,7 +78,7 @@ public class SignInUserController {
 
             //Spediamo tutto al controller dello user che poi si interfaccia con il livello sottostante ancora
             appController.registerUser(userBean, credentialsBean);
-            sp.replaceScene(event, "/welcomePage.fxml");
+            sp.replaceScene(event, "/welcomePage1.fxml");
 
         }catch( EmptyInputException | SystemException | UsernameAlreadyTakenException | EmailNotValidException  | PasswordNotCompliantException e) {
             ErrorDialog.getInstance().handleException(e);

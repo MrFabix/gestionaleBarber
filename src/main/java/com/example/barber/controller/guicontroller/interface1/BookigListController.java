@@ -6,7 +6,6 @@ import com.example.barber.utils.observer.GenericBeanList;
 import com.example.barber.utils.observer.Observer;
 import javafx.fxml.Initializable;
 
-import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 

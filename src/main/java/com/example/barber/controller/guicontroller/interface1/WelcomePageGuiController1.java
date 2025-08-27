@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
 
 import java.io.IOException;
 
-public class WelcomePageController {
+public class WelcomePageGuiController1 {
     @FXML
     private Button signInButton;
 
@@ -24,6 +24,18 @@ public class WelcomePageController {
         }
 
     }
+
+
+    @FXML
+    public void switchInterface(ActionEvent event) throws IOException {
+        try {
+            sp.replaceScene(event, "/WelcomePage2.fxml");
+        } catch (SystemException e) {
+            ErrorDialog.getInstance().handleException(e);
+        }
+    }
+
+
     @FXML
     private void goToLogin(ActionEvent event) throws IOException {
         try{

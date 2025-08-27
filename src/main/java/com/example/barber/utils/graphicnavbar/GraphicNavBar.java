@@ -16,6 +16,13 @@ public class GraphicNavBar {
         vBox.getChildren().add(pane);
     }
 
+    public void setGraphicNAvbar(HBox vBox, String userName){
+        StackPane pane = createPane(userName);
+        vBox.setSpacing(15);
+        vBox.setAlignment( Pos.TOP_CENTER);
+        vBox.getChildren().add(pane);
+    }
+
 
     private StackPane createPane(String userName){
         Label label1 = new Label();

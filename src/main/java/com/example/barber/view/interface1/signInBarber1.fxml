@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface1.SignInBarberController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface1.SignInBarberGuiController1">
    <children>
       <TextField id="barberShopName" fx:id="barberShopField" layoutX="40.0" layoutY="58.0" promptText="Barbershop name" />
       <TextField id="address" fx:id="addressField" layoutX="40.0" layoutY="98.0" promptText="Address" />

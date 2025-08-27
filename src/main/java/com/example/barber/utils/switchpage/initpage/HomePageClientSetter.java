@@ -1,6 +1,5 @@
 package com.example.barber.utils.switchpage.initpage;
 
-import com.example.barber.controller.appcontroller.BookingAppController;
 import com.example.barber.controller.guicontroller.interface1.PageManageUserAppointmentsGuiController;
 import com.example.barber.utils.bean.RequestAppointmentsBean;
 

@@ -51,7 +51,7 @@ public class LoginGuiController {
     @FXML
     private void backToWelcomePage(ActionEvent event)   {
         try{
-            sp.replaceScene(event, "/welcomePage.fxml");
+            sp.replaceScene(event, "/welcomePage1.fxml");
         }catch(SystemException e){
             ErrorDialog.getInstance().handleException(e);
         }
