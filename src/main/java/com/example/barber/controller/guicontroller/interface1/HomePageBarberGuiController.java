@@ -18,7 +18,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class HomePageBarberGuiController implements Observer, Initializable {
+public class    HomePageBarberGuiController implements Observer, Initializable {
 
     @FXML
     private ListView<Pane> listNextAppointemtns;

@@ -7,7 +7,6 @@ import com.example.barber.utils.exception.Trigger;
 public class BarberBean extends ProfileBean {
     protected String orarioInizio;
     protected String orarioFine;
-    protected String barberShopName;
     protected String address;
     protected String city;
     protected String description;

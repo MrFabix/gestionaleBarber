@@ -28,7 +28,8 @@ public class BarberItemGuiController2 {
         //creo il bean per passare l'id
         IdBean idBean = new IdBean(id);
         //cambio pagina passando l'id del barbiere
-        sp.switchPageId("/view/Interface2/BarberDetail.fxml", event, idBean);
+        sp.switchPageId("/view/Interface2/BarberDetail2.fxml", event, idBean);
+
     }
 
 
@@ -38,7 +39,6 @@ public class BarberItemGuiController2 {
         barberNameLabel.setText(bean.getName());
         barberCityLabel.setText(bean.getCity());
         barberAddressLabel.setText(bean.getAddress());
-        // Usa setUserData per associare l'ID al pulsante
         barberButton.setUserData(bean.getId());
     }
 

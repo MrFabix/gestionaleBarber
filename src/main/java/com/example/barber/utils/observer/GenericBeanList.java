@@ -13,7 +13,6 @@ import java.util.ArrayList;
     public GenericBeanList(Observer observer) {
         super(observer);
         beans = new ArrayList<>();
-
     }
 
     public void addBarbersToList(List<BarberBean> listBean) {

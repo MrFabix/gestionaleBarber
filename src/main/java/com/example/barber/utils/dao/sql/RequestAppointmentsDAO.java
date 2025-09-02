@@ -13,7 +13,6 @@ public class RequestAppointmentsDAO {
     }
 
 
-
     public void addAppointments(RequestAppointmentsModel requestAppointmentsModel) throws SystemException {
         query.insertAppointments(requestAppointmentsModel);
     }

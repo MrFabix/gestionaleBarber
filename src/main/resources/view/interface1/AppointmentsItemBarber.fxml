@@ -9,14 +9,14 @@
 
 <AnchorPane style="-fx-background-color: yellow;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface1.item.AppointmentsItemBarberGuiController">
    <children>
-      <Label fx:id="labelNameClient" layoutX="14.0" layoutY="24.0" text="Name">
+      <Label fx:id="labelName" layoutX="14.0" layoutY="24.0" text="Name">
          <font>
             <Font name="Arial Bold" size="28.0" />
          </font>
       </Label>
-      <Label fx:id="orario" layoutX="205.0" layoutY="30.0" text="Orario" />
-      <Label fx:id="servizio" layoutX="128.0" layoutY="5.0" text="Servizio" />
-      <Label fx:id="stato" layoutX="230.0" layoutY="3.0" prefHeight="18.0" prefWidth="104.0" text="Stato">
+      <Label fx:id="labelOrario" layoutX="205.0" layoutY="30.0" text="Orario" />
+      <Label fx:id="labelServizio" layoutX="128.0" layoutY="5.0" text="Servizio" />
+      <Label fx:id="labelStato" layoutX="230.0" layoutY="3.0" prefHeight="18.0" prefWidth="104.0" text="Stato">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>

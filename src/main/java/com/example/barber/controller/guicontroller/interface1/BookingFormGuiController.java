@@ -1,6 +1,7 @@
 package com.example.barber.controller.guicontroller.interface1;
 
-import com.example.barber.controller.appcontroller.BookingAppController;
+
+import com.example.barber.controller.appcontroller.CheckRequestAppController;
 import com.example.barber.utils.Session;
 import com.example.barber.utils.bean.*;
 import com.example.barber.utils.exception.ErrorDialog;
@@ -70,7 +71,7 @@ public class BookingFormGuiController{
     // Handle the form submission
     @FXML
     private void handleBooking(ActionEvent event) throws InvalidDateException, EmptyInputException{
-        BookingAppController bookingAppController = new BookingAppController();
+        CheckRequestAppController checkRequestAppController = new CheckRequestAppController();
         RequestAppointmentsBean requestAppointmentsBean = new RequestAppointmentsBean();
 
         //Setto l'appointmentsBean
@@ -91,7 +92,7 @@ public class BookingFormGuiController{
         }catch(SystemException | InvalidDateException | EmptyInputException e ){
             ErrorDialog.getInstance().handleException(e);
         }
-        bookingAppController.sendAppointments(requestAppointmentsBean);
+        checkRequestAppController.sendAppointments(requestAppointmentsBean);
     }
 
     @FXML

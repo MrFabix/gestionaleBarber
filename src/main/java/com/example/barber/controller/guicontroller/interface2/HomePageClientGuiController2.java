@@ -2,6 +2,7 @@ package com.example.barber.controller.guicontroller.interface2;
 
 
 
+import com.example.barber.controller.appcontroller.BarberAppController;
 import com.example.barber.controller.guicontroller.interface2.item2.BarberItemGuiController2;
 import com.example.barber.utils.bean.BarberBean;
 import com.example.barber.utils.engineering.ListBarberEngineering;
@@ -31,11 +32,10 @@ public class HomePageClientGuiController2 implements Observer, Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ListBarberEngineering listBarber;
+        System.out.println("Sei dentro l'initialize di HomePageClient2");
+        BarberAppController barberAppController = new BarberAppController();
         try {
-            listBarber = new ListBarberEngineering();
-            GenericBeanList list = new GenericBeanList(this);
-            list.addBarbersToList(listBarber.getAllBarber());
+            barberAppController.addToList(this);
         } catch (Exception e) {
             ErrorDialog.getInstance().handleException(e);
         }
@@ -43,17 +43,12 @@ public class HomePageClientGuiController2 implements Observer, Initializable {
 
     //funzione per il filtraggio dei barbieri
     @FXML
-    private void search() {
+    private void search2() {
         String query = searchBarber.getText().trim();
         this.listBarber.getItems().clear(); // Pulisci la lista prima di riempirla di nuovo
-        if (query.isEmpty()) {
-            initialize(null, null);
-            return;
-        }
+        BarberAppController barberAppController = new BarberAppController();
         try {
-            ListBarberEngineering listBarber = new ListBarberEngineering();
-            GenericBeanList list = new GenericBeanList(this);
-            list.addBarbersToList(listBarber.getBarberByName(query));
+            barberAppController.search(this, query);
         } catch (Exception e) {
             ErrorDialog.getInstance().handleException(e);
         }
@@ -61,6 +56,8 @@ public class HomePageClientGuiController2 implements Observer, Initializable {
 
     @Override
     public void update(Object ob) {
+        System.out.println(">> Loaded BarberItemGuiController2");
+
         FXMLLoader fxmlLoader = new FXMLLoader();
         Pane pane;
         if (ob instanceof BarberBean bBean) {

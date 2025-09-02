@@ -6,29 +6,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 
-public class AppointmentsItemUserGuiController {
+public class AppointmentsItemUserGuiController extends AppointemntsItemGuiController{
 
     @FXML
-    private Label labelNameBarber;
-    @FXML
-    private Label indirizzo;
-    @FXML
-    private Label orario;
-    @FXML
-    private Label servizio;
-    @FXML
-    private Label stato;
-    @FXML
-    private Label labelData;
+    private Label labelIndirizzo;
 
 
 
     public void setAll(RequestAppointmentsBean rBean){
-        this.labelNameBarber.setText(rBean.getNameBarber());
-        this.indirizzo.setText(rBean.getAddressBarber());
-        this.orario.setText(rBean.getOrario());
-        this.stato.setText(rBean.getState().getId());
-        this.servizio.setText(rBean.getService());
-        this.labelData.setText(rBean.getDate().toString());
+        labelIndirizzo.setText(rBean.getAddressBarber());
+        super.bind(rBean.getNameUser(), rBean.getDate().toString(), rBean.getOrario(), rBean.getService(), rBean.getState().getId());
     }
 }

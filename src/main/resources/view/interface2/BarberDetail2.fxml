@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Orientation?>
+
+<?import java.lang.String?>
+<AnchorPane prefHeight="600.0" prefWidth="800.0"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.barber.controller.guicontroller.interface2.BarberDetailGuiController2"
+            style="-fx-background-color: #a7f3d0; -fx-padding: 12;">
+
+    <children>
+        <BorderPane AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+                    AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+                    style="-fx-background-color: rgba(255,255,255,0.35); -fx-background-radius: 14; -fx-padding: 14;">
+
+            <!-- Header: foto a sinistra, info a destra -->
+            <top>
+                <HBox spacing="16" style="-fx-padding: 4 0 12 0;">
+                    <!-- Immagine in alto a sinistra -->
+                    <ImageView fx:id="barberImage" fitHeight="160.0" fitWidth="220.0" preserveRatio="true"
+                               style="-fx-background-radius: 12; -fx-border-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10,0,0,2);">
+                        <image>
+                            <Image url="barber.jpg"/>
+                        </image>
+                    </ImageView>
+
+                    <!-- Dati barbiere a destra dell'immagine -->
+                    <VBox spacing="6" style="-fx-padding: 4;">
+                        <Label fx:id="barberName" text="Nome"
+                               style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+                        <Label fx:id="barberAddress" text="Indirizzo"
+                               style="-fx-font-size: 14px;"/>
+                        <Label fx:id="barberPhone" text="Telefono"
+                               style="-fx-font-size: 14px;"/>
+                        <Label fx:id="barberHours" text="Orari"
+                               style="-fx-font-size: 14px;"/>
+                    </VBox>
+                </HBox>
+            </top>
+
+            <center>
+                <VBox spacing="12">
+                    <TextArea fx:id="description" editable="false" wrapText="true"
+                              prefHeight="110.0"
+                              style="-fx-background-radius: 10; -fx-padding: 10; -fx-control-inner-background: rgba(255,255,255,0.8);">
+                        Giovanni Rossi è un barbiere con oltre 10 anni di esperienza. Specializzato in tagli moderni e tradizionali.
+                    </TextArea>
+                    <VBox spacing="6">
+                        <Label text="Servizi Offerti:" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                        <ListView fx:id="servicesList" prefHeight="150.0" orientation="VERTICAL"
+                                  style="-fx-background-radius: 10; -fx-control-inner-background: rgba(255,255,255,0.8);"/>
+                    </VBox>
+                    <VBox spacing="6">
+                        <Label text="Recensioni:" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                        <ListView fx:id="reviewsList" prefHeight="150.0" orientation="VERTICAL"
+                                  style="-fx-background-radius: 10; -fx-control-inner-background: rgba(255,255,255,0.8);">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="⭐️⭐️⭐️⭐️⭐️ Ottimo servizio!"/>
+                                    <String fx:value="⭐️⭐️⭐️⭐️ Buon taglio, personale gentile."/>
+                                    <String fx:value="⭐️⭐️⭐️⭐️⭐️ Il migliore a Milano!"/>
+                                </FXCollections>
+                            </items>
+                        </ListView>
+                    </VBox>
+                </VBox>
+            </center>
+            <bottom>
+                <HBox spacing="10" style="-fx-padding: 12 0 0 0;" alignment="CENTER_RIGHT">
+                    <Button fx:id="backButton" text="Indietro" onAction="#backToBarberList" style="-fx-background-color: rgba(16,185,129,0.2); -fx-text-fill: #064e3b; -fx-font-size: 14px; -fx-background-radius: 10; -fx-padding: 8 16;"/>
+
+                    <Button fx:id="bookButton" text="Prenota Ora" onAction="#bookAppointment" style="-fx-background-color: #10b981; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-padding: 8 16;"/>
+                </HBox>
+            </bottom>
+        </BorderPane>
+    </children>
+</AnchorPane>

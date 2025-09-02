@@ -8,27 +8,17 @@ import com.example.barber.utils.switchpage.SwitchPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 
 
-public class AppointmentsItemBarberGuiController {
+
+public class AppointmentsItemBarberGuiController extends AppointemntsItemGuiController{
 
     private CheckRequestAppController checkRequestAppController;
-
     private RequestAppointmentsBean rBean;
-
     private SwitchPage switchPage = new SwitchPage();
 
-    @FXML
-    private Label labelNameClient;
-    @FXML
-    private Label labelData;
-    @FXML
-    private Label orario;
-    @FXML
-    private Label servizio;
-    @FXML
-    private Label stato;
+
+
     @FXML
     private Button acceptButton;
     @FXML
@@ -36,14 +26,14 @@ public class AppointmentsItemBarberGuiController {
     @FXML
     private Button terminateAppointments;
 
+
+
+
+
     public void setAll(RequestAppointmentsBean rBean, CheckRequestAppController checkRequestAppController){
         this.checkRequestAppController = checkRequestAppController;
         this.rBean = rBean;
-        this.labelNameClient.setText(rBean.getNameUser());
-        this.orario.setText(rBean.getOrario());
-        this.stato.setText(rBean.getState().getId());
-        this.servizio.setText(rBean.getService());
-        this.labelData.setText(rBean.getDate().toString());
+        super.bind(rBean.getNameUser(), rBean.getDate().toString(), rBean.getOrario(), rBean.getService(), rBean.getState().getId());
     }
 
     public void setVisibilityButton(){

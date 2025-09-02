@@ -17,6 +17,7 @@ public abstract class Subject {
     protected Subject(List<Observer> list) {
         this.observers = list;
     }
+
     public void attach(Observer obs) {
         this.observers.add(obs);
     }

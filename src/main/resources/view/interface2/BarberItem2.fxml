@@ -1,41 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 
-<?import io.github.palexdev.materialfx.controls.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<HBox prefWidth="320.0" spacing="12"
+      xmlns="http://javafx.com/javafx/17.0.2-ea"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.barber.controller.guicontroller.interface2.item2.BarberItemGuiController2"
+      style="-fx-background-color: #a7f3d0; /* verdino */
+             -fx-background-radius: 12;
+             -fx-border-radius: 12;
+             -fx-border-color: black;
+             -fx-border-width: 2;
+             -fx-padding: 10;">
 
-<HBox spacing="16"
-      xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface2.item2.BarberItemGuiController2"
-      style="-fx-background-color: linear-gradient(to right, #1f2937, #111827);
-      -fx-background-radius: 12; -fx-border-radius: 12;
-      -fx-border-color: #374151; -fx-border-width: 1.2;
-      fx-padding: 12;">
 
-    <children>
-        <VBox spacing="4">
-            <children>
-                <Label fx:id="barberNameLabel"
-                       text="Nome del Barbiere"
-                       style="-fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold;"/>
-                <HBox spacing="8">
-                    <children>
-                        <Label fx:id="barberAddressLabel"
-                               text="Via del Barbiere"
-                               style="-fx-text-fill: #d1d5db; -fx-font-size: 12px;"/>
-                        <Label text="•" style="-fx-text-fill: #9ca3af; -fx-font-size: 12px;"/>
-                        <Label fx:id="barberCityLabel"
-                               text="Città del Barbiere"
-                               style="-fx-text-fill: #d1d5db; -fx-font-size: 12px;"/>
-                    </children>
-                </HBox>
-            </children>
-        </VBox>
-        <Region HBox.hgrow="ALWAYS"/>
-        <MFXButton fx:id="barberButton"
-                   text="Dettagli"
-                   onAction="#showBarberDetails"
-                   prefHeight="36.0" prefWidth="120.0"
-                   style="-fx-background-color: #6366f1; -fx-text-fill: white;
-                          -fx-background-radius: 999; -fx-font-size: 13px; -fx-font-weight: bold;"/>
-    </children>
+    <MFXButton fx:id="barberButton"
+               prefHeight="28.0" prefWidth="120.0"
+               text="Dettaglio"
+               style="-fx-background-radius: 8;"
+               onAction="#showBarberDetails"/>
+
+    <VBox spacing="6">
+        <Label fx:id="barberNameLabel"
+               text="Nome del Barbiere"
+               style="-fx-background-radius: 6; -fx-padding: 4;"/>
+        <Label fx:id="barberAddressLabel"
+               text="Via del Barbiere"
+               style="-fx-background-radius: 6; -fx-padding: 4;"/>
+        <Label fx:id="barberCityLabel"
+               prefWidth="160.0"
+               text="Città del Barbiere"
+               style="-fx-background-radius: 6; -fx-padding: 4;"/>
+    </VBox>
 </HBox>
