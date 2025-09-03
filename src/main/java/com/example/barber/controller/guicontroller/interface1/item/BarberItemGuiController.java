@@ -2,6 +2,7 @@ package com.example.barber.controller.guicontroller.interface1.item;
 
 import com.example.barber.utils.bean.BarberBean;
 import com.example.barber.utils.bean.IdBean;
+import com.example.barber.utils.bean.interfaccia1.BarberBean1;
 import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.utils.switchpage.SwitchPage;
 import javafx.event.ActionEvent;
@@ -24,7 +25,7 @@ public class BarberItemGuiController {
     private SwitchPage sp = new SwitchPage();
 
     // Metodo per impostare i dettagli del barbiere
-    public void setBarberDetails(BarberBean bean) {
+    public void setBarberDetails(BarberBean1 bean) {
         barberNameLabel.setText(bean.getName());
         barberCityLabel.setText(bean.getCity());
         barberAddressLabel.setText(bean.getAddress());

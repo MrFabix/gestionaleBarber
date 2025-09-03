@@ -13,37 +13,36 @@
 <?import javafx.scene.layout.RowConstraints?>
 
 <AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface1.BookingFormGuiController">
-<!--INCLUDO IL NAVBAR-->
+
 <GridPane fx:id="bookingForm" alignment="CENTER" hgap="10" prefHeight="600.0" prefWidth="900.0" vgap="10" AnchorPane.topAnchor="0.0" xmlns:fx="http://javafx.com/fxml">
     <!-- Title -->
     <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Booking Form" GridPane.columnIndex="2" GridPane.rowIndex="3" />
 
-    <!-- Customer Name -->
+
     <Label text="Full Name:" GridPane.columnIndex="2" GridPane.rowIndex="4" />
     <TextField fx:id="nameField" prefHeight="26.0" prefWidth="370.0" promptText="Enter your name" GridPane.columnIndex="3" GridPane.rowIndex="4" />
       <Label text="Email" GridPane.columnIndex="2" GridPane.rowIndex="5" />
       <TextField id="usernameField" fx:id="emailField" cache="true" prefHeight="36.0" prefWidth="156.0" promptText="Email" GridPane.columnIndex="3" GridPane.rowIndex="5" />
 
-    <!-- Phone Number -->
+
     <Label text="Phone Number:" GridPane.columnIndex="2" GridPane.rowIndex="6" />
     <TextField fx:id="phoneField" promptText="Enter your phone number" GridPane.columnIndex="3" GridPane.rowIndex="6" />
 
-    <!-- Date of Appointment -->
+
     <Label text="Date of Appointment:" GridPane.columnIndex="2" GridPane.rowIndex="7" />
     <DatePicker fx:id="appointmentDatePicker" prefHeight="26.0" prefWidth="293.0" GridPane.columnIndex="3" GridPane.rowIndex="7" />
 
-    <!-- Service Selection -->
     <Label text="Service:" GridPane.columnIndex="2" GridPane.rowIndex="10" />
     <ComboBox fx:id="serviceComboBox" prefHeight="26.0" prefWidth="281.0" GridPane.columnIndex="3" GridPane.rowIndex="10">
         <items>
         </items>
     </ComboBox>
 
-    <!-- Notes -->
+
     <Label text="Notes:" GridPane.columnIndex="2" GridPane.rowIndex="11" />
     <TextField fx:id="notesField" prefHeight="66.0" prefWidth="278.0" promptText="Any additional notes" GridPane.columnIndex="3" GridPane.rowIndex="11" />
 
-    <!-- Submit Button -->
+
     <Button fx:id="bookButton" onAction="#handleBooking" prefHeight="26.0" prefWidth="198.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Book Appointment" GridPane.columnIndex="3" GridPane.rowIndex="12" />
       <Button fx:id="goBackButton" onAction="#goBack" mnemonicParsing="false"  prefHeight="26.0" prefWidth="126.0" text="Back To barber" GridPane.columnIndex="2" GridPane.rowIndex="12" />
       <Label text="Orario" GridPane.columnIndex="2" GridPane.rowIndex="8" />

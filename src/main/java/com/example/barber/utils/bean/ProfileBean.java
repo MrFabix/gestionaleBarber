@@ -12,9 +12,6 @@ public class ProfileBean implements GenericBean {
     private final Trigger trigger = new Trigger();
 
 
-
-
-
     protected String name; //Nome dell utente oppure nome del BarberShop
     protected int id ;
     protected String email;
@@ -26,14 +23,6 @@ public class ProfileBean implements GenericBean {
 
     }
 
-    protected ProfileBean(int id, String username, String email,  File profileImg, String name, String phone){
-        this.id = id;
-        this.username = username;
-        this.email = email;
-        this.phone = phone;
-        this.img = profileImg;
-        this.name = name;
-    }
 
     //Getter
     public int getId() {return id;}

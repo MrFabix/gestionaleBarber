@@ -3,10 +3,7 @@ package com.example.barber.controller.guicontroller.interface2;
 import com.example.barber.controller.appcontroller.LoginAppController;
 import com.example.barber.utils.bean.CredentialsBean;
 import com.example.barber.utils.exception.ErrorDialog;
-import com.example.barber.utils.exception.myexception.EmptyInputException;
-import com.example.barber.utils.exception.myexception.PasswordNotCompliantException;
-import com.example.barber.utils.exception.myexception.SystemException;
-import com.example.barber.utils.exception.myexception.WrongCredentialsException;
+import com.example.barber.utils.exception.myexception.*;
 import com.example.barber.utils.switchpage.SwitchPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -56,7 +53,7 @@ public class LoginGuiController2 {
             } else if(credentialsBean.getType().getRoleId().equals("MODERATORE")){
                 sp.replaceScene(event, "/homepageModerator.fxml");
             }
-        } catch (SystemException | WrongCredentialsException | EmptyInputException | PasswordNotCompliantException e) {
+        } catch (SystemException | WrongCredentialsException | EmptyInputException | UsernameAlreadyTakenException | EmailNotValidException | PasswordNotCompliantException e) {
             // Gestisce altri tipi di eccezioni
             ErrorDialog.getInstance().handleException(e);
         }

@@ -5,26 +5,30 @@ import com.example.barber.utils.bean.BarberBean;
 import com.example.barber.utils.bean.IdBean;
 import com.example.barber.utils.dao.sql.BarberDAO;
 import com.example.barber.utils.engineering.ListBarberEngineering;
-import com.example.barber.utils.exception.Trigger;
+import com.example.barber.utils.exception.myexception.EmailNotValidException;
+import com.example.barber.utils.exception.myexception.EmptyInputException;
 import com.example.barber.utils.exception.myexception.SystemException;
+import com.example.barber.utils.exception.myexception.UsernameAlreadyTakenException;
 import com.example.barber.utils.observer.GenericBeanList;
 import com.example.barber.utils.observer.Observer;
-import com.example.barber.utils.switchpage.SwitchPage;
-
-import java.util.ArrayList;
+import com.example.barber.utils.setterandgetter.SetterClass;
 import java.util.List;
 
 public class BarberAppController {
 
+    private SetterClass setterClass = new SetterClass();
     public BarberAppController() {
         // Costruttore
     }
 
 
-    public BarberBean getBarberDetails(IdBean id) throws SystemException {
+    public BarberBean getBarberDetails(IdBean id) throws SystemException, EmptyInputException, EmailNotValidException, UsernameAlreadyTakenException {
         BarberDAO barberDAO = new BarberDAO();
-        return new BarberBean(barberDAO.getBarberById(id.getId())); //devo passare l'id del barbiere con un Bean
-
+        BarberModel barberModel = null;
+        barberModel = barberDAO.getBarberById(id.getId());
+        BarberBean barberBean = new BarberBean();
+        setterClass.setBarberBeanFromModel(barberBean,barberModel);
+        return barberBean;
     }
 
     public void insertOrarioBarber(BarberBean barber) throws SystemException {
@@ -32,20 +36,18 @@ public class BarberAppController {
         barberModel.setId(barber.getId());
         barberModel.setOrarioInizio(barber.getOrarioInizio());
         barberModel.setOrarioFine(barber.getOrarioFine());
-
         BarberDAO barberDAO = new BarberDAO();
         barberDAO.insertOrarioBarbiere(barberModel);
     }
 
-    public void addToList(Observer ob) throws SystemException {
-        ListBarberEngineering  listBarber = new ListBarberEngineering();
-        List<BarberBean> list = new ArrayList<BarberBean>();
+    public void addToList(Observer ob) throws SystemException, EmptyInputException, UsernameAlreadyTakenException, EmailNotValidException {
+        ListBarberEngineering listBarber = new ListBarberEngineering();
         listBarber.getAllBarber();
         GenericBeanList list1 = new GenericBeanList(ob);
         list1.addBarbersToList(listBarber.getAllBarber());
     }
 
-    public void search(Observer ob, String search) throws SystemException {
+    public void search(Observer ob, String search) throws SystemException, EmptyInputException, UsernameAlreadyTakenException, EmailNotValidException {
         ListBarberEngineering listBarber = new ListBarberEngineering();
         GenericBeanList list = new GenericBeanList(ob);
         list.addBarbersToList(listBarber.getBarberByName(search));

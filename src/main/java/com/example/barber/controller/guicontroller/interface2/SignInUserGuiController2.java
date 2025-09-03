@@ -2,8 +2,8 @@ package com.example.barber.controller.guicontroller.interface2;
 
 
 import com.example.barber.controller.appcontroller.SignInAppController;
-import com.example.barber.utils.bean.ClientBean;
 import com.example.barber.utils.bean.CredentialsBean;
+import com.example.barber.utils.bean.interfaccia1.ClientBean1;
 import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.myexception.*;
 import com.example.barber.utils.ruoli.Role;
@@ -15,11 +15,7 @@ import javafx.scene.control.*;
 
 public class SignInUserGuiController2 {
 
-    //Dichiaro uno ClientBean che prende tutti i details di clienti(Name, surname, e-mail, telephone, gender)
-    ClientBean clientBean = new ClientBean();
-
-
-
+    ClientBean1 clientBean1 = new ClientBean1();
 
     private SwitchPage sp = new SwitchPage();
 
@@ -35,10 +31,9 @@ public class SignInUserGuiController2 {
     private TextField firstNameField;
     @FXML
     private TextField lastNameField;
-    @FXML
-    private RadioButton femaleRadio;
 
-    @FXML RadioButton maleRadio;
+    @FXML
+    RadioButton maleRadio;
 
     @FXML
     private void signInUser(ActionEvent event){
@@ -50,19 +45,20 @@ public class SignInUserGuiController2 {
             credentialsBean.setUsername(usernameField.getText());
             credentialsBean.setPassword(passwordField.getText());
             credentialsBean.setType(Role.CLIENTE);
-            clientBean.setName(firstNameField.getText());
-            clientBean.setSurname(lastNameField.getText());
+
+            clientBean1.setName(firstNameField.getText());
+            clientBean1.setSurname(lastNameField.getText());
             if(maleRadio.isSelected()){
                 gender = "male";
             }else{
                 gender = "female";
             }
-            clientBean.setGender(gender);
-            clientBean.setEmail(emailField.getText());
-            clientBean.setUsername(usernameField.getText());
-            clientBean.setPhone(phoneField.getText());
+            clientBean1.setGender(gender);
+            clientBean1.setEmail(emailField.getText());
+            clientBean1.setUsername(usernameField.getText());
+            clientBean1.setPhone(phoneField.getText());
             appController = new SignInAppController();
-            appController.registerUser(clientBean, credentialsBean);
+            appController.registerUser(clientBean1, credentialsBean);
             sp.replaceScene(event, "/view/interface2/welcomePage2.fxml");
 
         }catch( EmptyInputException | SystemException | UsernameAlreadyTakenException | EmailNotValidException  | PasswordNotCompliantException e) {
@@ -74,7 +70,7 @@ public class SignInUserGuiController2 {
     @FXML
     private void backToWelcomePage(ActionEvent event){
         try{
-            sp.replaceScene(event, "/welcomePage1.fxml");
+            sp.replaceScene(event, "/view/interface2/registrationChoice2.fxml");
         }catch(SystemException e){
             ErrorDialog.getInstance().handleException(e);
         }

@@ -11,13 +11,6 @@ public class ClientModel extends ProfileModel {
         super();
     }
 
-    public ClientModel(ClientBean userbean){
-        super(userbean.getId(), userbean.getUsername(), userbean.getEmail(), userbean.getImg(), userbean.getName(), userbean.getPhone());
-
-        this.surname = userbean.getSurname();
-        this.gender = userbean.getGender();
-        this.name = userbean.getName();
-    }
 
 
     //Setter

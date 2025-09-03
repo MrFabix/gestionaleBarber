@@ -16,16 +16,6 @@ public class BarberModel extends ProfileModel {
         super();
     }
 
-    // Costruttore che copia i dati da un BarberBean
-    public BarberModel(BarberBean barberBean) {
-        super(barberBean.getId(), barberBean.getUsername(), barberBean.getEmail(), barberBean.getImg(), barberBean.getName(), barberBean.getPhone());
-        this.city = barberBean.getCity();
-        this.address = barberBean.getAddress();
-        this.description = barberBean.getDescription();
-        this.services = barberBean.getServices();
-        this.reviews = barberBean.getReviews();
-    }
-
     // Getter
     public String getCity() {
         return city;

@@ -24,6 +24,7 @@ public class NavbarGuiController implements Initializable {
     SwitchPage switchPage = new SwitchPage();
 
     public void initialize(URL location, ResourceBundle resources) {
+        System.out.println("Il ruolo dell'utente è "+ Session.getInstance().getCredentials().getType());
        try {
            initNavBar(navAnchor);
        }catch (Exception e){

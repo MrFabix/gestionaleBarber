@@ -6,17 +6,19 @@ import com.example.barber.model.BarberModel;
 import com.example.barber.model.ClientModel;
 import com.example.barber.utils.bean.BarberBean;
 import com.example.barber.utils.bean.*;
+import com.example.barber.utils.exception.myexception.*;
+import com.example.barber.utils.setterandgetter.SetterClass;
 
 public class Session {
 
 
 
-
+    private SetterClass setterClass = new SetterClass();
     private static Session session;
     private CredentialsBean credentialsBean;
-    private ClientBean clientBean;
-    private ModeratorBean moderatorBean;
-    private BarberBean barberBean;
+    private ClientBean clientBean = new ClientBean();
+    private ModeratorBean moderatorBean = new ModeratorBean();
+    private BarberBean barberBean = new BarberBean();
 
     public static Session getInstance(){
         if (session == null){
@@ -35,23 +37,25 @@ public class Session {
         return credentialsBean;
     }
 
-    public void setCredentials(CredentialsModel credentialsModel) {
-        try{
-            credentialsBean = new CredentialsBean(credentialsModel);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+    public void setCredentials(CredentialsModel credentialsModel) throws EmptyInputException, PasswordNotCompliantException{
+        if(this.credentialsBean == null){
+            this.credentialsBean = new CredentialsBean();
         }
-    }
-    public void setUser(ClientModel clientModel) {
-        if (this.clientBean == null) {
-            clientBean = new ClientBean(clientModel);
-        }
+        setterClass.setCredentialsBeanFromCredentialsModel(this.credentialsBean, credentialsModel);
     }
 
-    public void setBarber(BarberModel barberModel) {
-        if (this.barberBean == null) {
-            barberBean = new BarberBean(barberModel);
+    public void setUser(ClientModel clientModel) throws EmptyInputException, UsernameAlreadyTakenException, EmailNotValidException, SystemException  {
+        if (this.clientBean == null) {
+            this.clientBean = new ClientBean();
         }
+        setterClass.setClientBeanFromModel(this.clientBean, clientModel);
+    }
+
+    public void setBarber(BarberModel barberModel) throws EmptyInputException, UsernameAlreadyTakenException, EmailNotValidException, SystemException{
+        if (this.barberBean == null) {
+            this.barberBean = new BarberBean();
+        }
+        setterClass.setBarberBeanFromModel(this.barberBean, barberModel);
     }
 
     public void setModerator(ModeratorModel moderatorModel) {
@@ -61,7 +65,6 @@ public class Session {
     }
 
     public void deleteSession() {
-        //barberBean = null;
         clientBean = null;
     }
 

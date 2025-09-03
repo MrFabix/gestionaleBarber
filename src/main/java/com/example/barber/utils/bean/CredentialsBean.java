@@ -14,16 +14,20 @@ public class CredentialsBean {
     public CredentialsBean() {
     }
 
-    public CredentialsBean(CredentialsModel credentialsModel) throws EmptyInputException, PasswordNotCompliantException {
-        setType(credentialsModel.getType());
-        setUsername(credentialsModel.getUsername());
-        setPassword(credentialsModel.getPassword());
-    }
 
     public CredentialsBean(String username, String password, Role type){
         this.username = username;
         this.password = password;
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "CredentialsBean{" +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", type=" + type +
+                '}';
     }
 
     protected String username;

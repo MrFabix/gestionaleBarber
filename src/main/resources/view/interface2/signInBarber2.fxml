@@ -4,20 +4,39 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface1.SignInBarberGuiController1">
+<AnchorPane prefHeight="521.0" prefWidth="782.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface2.SignInBarberGuiController2">
    <children>
-      <TextField id="barberShopName" fx:id="barberShopField" layoutX="40.0" layoutY="58.0" promptText="Barbershop name" />
-      <TextField id="address" fx:id="addressField" layoutX="40.0" layoutY="98.0" promptText="Address" />
-      <TextField id="city" fx:id="cityField" layoutX="40.0" layoutY="144.0" promptText="city" />
-      <TextField id="phone" fx:id="phoneField" layoutX="40.0" layoutY="183.0" promptText="Phone" />
-      <TextField id="email" fx:id="emailField" layoutX="40.0" layoutY="222.0" promptText="Email" />
-      <TextField id="username" fx:id="usernameField" layoutX="366.0" layoutY="58.0" promptText="Username" />
-      <PasswordField id="password" fx:id="passwordField" layoutX="366.0" layoutY="98.0" promptText="Password" />
-      <PasswordField id="confirmPassword" fx:id="confirmPasswordField" layoutX="366.0" layoutY="131.0" promptText="Confirm Password" />
-      <Button layoutX="416.0" layoutY="292.0" mnemonicParsing="false" onAction="#signInBarber"  text="Registrati " />
-      <Button layoutX="415.0" layoutY="248.0" mnemonicParsing="false" onAction="#backToWelcomePage" text="Torna indietro" />
-      <Text layoutX="40.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Crea un Account come barbiere" wrappingWidth="221.01995849609375" />
+      <Text layoutX="40.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: black;" text="Informazioni negozio" wrappingWidth="260">
+         <font><Font size="25.0" /></font>
+      </Text>
+
+      <Text layoutX="366.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: black;" text="Credenziali d’accesso" wrappingWidth="260">
+         <font><Font size="25.0" /></font>
+      </Text>
+      <TextField id="barberShopName" fx:id="barberShopField" layoutX="62.0" layoutY="75.0" promptText="Barbershop name" style="-fx-background-color: #374151; -fx-text-fill: white; -fx-prompt-text-fill: #9CA3AF; -fx-background-radius: 10;" />
+
+      <TextField fx:id="streetField" layoutX="62.0" layoutY="115.0" prefWidth="260" promptText="Via/Piazza + nome (es. Via Roma)" style="-fx-background-color: #374151; -fx-text-fill: white; -fx-prompt-text-fill: #9CA3AF; -fx-background-radius: 10;" />
+
+      <TextField fx:id="civicoField" layoutX="62.0" layoutY="148.0" prefWidth="80" promptText="Civico (es. 10/A)" style="-fx-background-color: #374151; -fx-text-fill: white; -fx-prompt-text-fill: #9CA3AF; -fx-background-radius: 10;" />
+
+      <TextField id="city" fx:id="cityField" layoutX="62.0" layoutY="192.0" promptText="city" style="-fx-background-color: #374151; -fx-text-fill: white; -fx-prompt-text-fill: #9CA3AF; -fx-background-radius: 10;" />
+
+      <TextField id="phone" fx:id="phoneField" layoutX="62.0" layoutY="231.0" promptText="Phone" style="-fx-background-color: #374151; -fx-text-fill: white; -fx-prompt-text-fill: #9CA3AF; -fx-background-radius: 10;" />
+
+      <TextField id="email" fx:id="emailField" layoutX="62.0" layoutY="278.0" promptText="Email" style="-fx-background-color: #374151; -fx-text-fill: white; -fx-prompt-text-fill: #9CA3AF; -fx-background-radius: 10;" />
+
+      <TextField id="username" fx:id="usernameField" layoutX="388.0" layoutY="75.0" promptText="Username" style="-fx-background-color: #374151; -fx-text-fill: white; -fx-prompt-text-fill: #9CA3AF; -fx-background-radius: 10;" />
+
+      <PasswordField id="password" fx:id="passwordField" layoutX="388.0" layoutY="115.0" promptText="Password" style="-fx-background-color: #374151; -fx-text-fill: white; -fx-prompt-text-fill: #9CA3AF; -fx-background-radius: 10;" />
+
+      <PasswordField id="confirmPassword" fx:id="confirmPasswordField" layoutX="388.0" layoutY="148.0" promptText="Confirm Password" style="-fx-background-color: #374151; -fx-text-fill: white; -fx-prompt-text-fill: #9CA3AF; -fx-background-radius: 10;" />
+
+      <Button layoutX="648.0" layoutY="456.0" mnemonicParsing="false" onAction="#signInBarber" style="-fx-background-color: #10b981; -fx-text-fill: white; -fx-background-radius: 999; -fx-font-size: 14px; -fx-font-weight: bold;" text="Registrati " />
+
+      <Button layoutX="647.0" layoutY="412.0" mnemonicParsing="false" onAction="#backToWelcomePage" style="-fx-background-color: #e5e7eb; -fx-text-fill: #111827; -fx-background-radius: 999; -fx-font-size: 13px;" text="Torna indietro" />
    </children>
+
 </AnchorPane>

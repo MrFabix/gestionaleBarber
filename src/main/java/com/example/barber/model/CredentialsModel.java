@@ -1,6 +1,5 @@
 package com.example.barber.model;
 
-import com.example.barber.utils.bean.CredentialsBean;
 import com.example.barber.utils.ruoli.Role;
 
 public class CredentialsModel {
@@ -10,11 +9,6 @@ public class CredentialsModel {
 
 
 
-    public CredentialsModel(CredentialsBean credentialsBean){
-        setUsername(credentialsBean.getUsername());
-        setPassword(credentialsBean.getPassword());
-        setType(credentialsBean.getType());
-    }
 
 
     public  void setPassword(String password){this.password =password; }

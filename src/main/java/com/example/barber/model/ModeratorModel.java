@@ -10,6 +10,7 @@ public class ModeratorModel extends ProfileModel {
 
     public ModeratorModel(BarberBean adminBean) {
         super(adminBean.getId(), adminBean.getUsername(), adminBean.getEmail(), adminBean.getImg(), adminBean.getName(), adminBean.getPhone());
+
     }
 
 

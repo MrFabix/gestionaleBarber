@@ -5,10 +5,12 @@ package com.example.barber.controller.guicontroller.interface1;
 import com.example.barber.controller.appcontroller.BarberAppController;
 import com.example.barber.controller.guicontroller.interface1.item.BarberItemGuiController;
 import com.example.barber.utils.bean.BarberBean;
+import com.example.barber.utils.bean.interfaccia1.BarberBean1;
 import com.example.barber.utils.engineering.ListBarberEngineering;
 import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.observer.GenericBeanList;
 import com.example.barber.utils.observer.Observer;
+import com.example.barber.utils.setterandgetter.SetterClass;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -46,14 +48,18 @@ public class HomePageClientGuiController implements Observer, Initializable {
         System.out.println(">> Loaded BarberItemGuiController");
         FXMLLoader fxmlLoader = new FXMLLoader();
         Pane pane;
+        SetterClass setterClass = new SetterClass();
+
         if (ob instanceof BarberBean bBean) {
             try {
+                BarberBean1 barberBean1 = new BarberBean1();
+                setterClass.setBarber((BarberBean)ob,barberBean1);
                 // Carica il layout del barbiere dal file FXML
                 pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource("/view/interface1/BarberItem.fxml")).openStream());
                 // Ottieni il controller del layout caricato
                 BarberItemGuiController controller = fxmlLoader.getController();
                 // Imposta i dettagli del barbiere
-                controller.setBarberDetails(bBean);
+                controller.setBarberDetails(barberBean1);
                 // Aggiungi il pane alla ListView
                 this.barberListView.getItems().add(pane);
             } catch (Exception e) {

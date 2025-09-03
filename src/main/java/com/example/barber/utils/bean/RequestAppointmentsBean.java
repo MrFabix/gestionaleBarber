@@ -10,8 +10,7 @@ import java.time.LocalDate;
 
 public class RequestAppointmentsBean implements GenericBean{
     private Trigger trigger = new Trigger();
-   protected int idAppointement;
-
+    protected int idAppointement;
     protected int idBarber;
     protected int idUser;
     protected String nameUser;

@@ -8,23 +8,30 @@ import com.example.barber.utils.bean.ClientBean;
 import com.example.barber.utils.bean.CredentialsBean;
 import com.example.barber.utils.dao.sql.BarberDAO;
 import com.example.barber.utils.dao.sql.ClientDAOSql;
-import com.example.barber.utils.exception.myexception.SystemException;
+import com.example.barber.utils.exception.myexception.*;
+import com.example.barber.utils.setterandgetter.SetterClass;
 
 public class SignInAppController {
 
-    public void registerUser(ClientBean clientBean, CredentialsBean credentialsBean) throws SystemException {
-       CredentialsModel credentialsModel = new CredentialsModel(credentialsBean);
-       ClientModel clientModel = new ClientModel(clientBean);
-       ClientDAOSql userDAOSql = new ClientDAOSql();
-       userDAOSql.addUser(credentialsModel, clientModel);
+    private SetterClass setterClass = new SetterClass();
+
+
+    public void registerUser(ClientBean clientBean, CredentialsBean credentialsBean) throws SystemException, PasswordNotCompliantException, EmailNotValidException, EmptyInputException, UsernameAlreadyTakenException {
+        CredentialsModel credentialsModel = new CredentialsModel();
+        setterClass.setCredentialsModelFromCredentialsBean(credentialsModel, credentialsBean);
+        ClientModel clientModel = new ClientModel();
+        setterClass.setClientModelFromClientBean(clientBean,clientModel);
+        ClientDAOSql userDAOSql = new ClientDAOSql();
+        userDAOSql.addUser(credentialsModel, clientModel);
     }
 
 
 
-    public void registerBarber(BarberBean barberBean, CredentialsBean credentialsBean) throws SystemException {
-        System.out.println("Stai dentro il register barber");
-        CredentialsModel credentialsModel = new CredentialsModel(credentialsBean);
-        BarberModel barberModel = new BarberModel(barberBean);
+    public void registerBarber(BarberBean barberBean, CredentialsBean credentialsBean) throws SystemException, PasswordNotCompliantException, EmailNotValidException, EmptyInputException, UsernameAlreadyTakenException{
+        CredentialsModel credentialsModel = new CredentialsModel();
+        setterClass.setCredentialsModelFromCredentialsBean(credentialsModel, credentialsBean);
+        BarberModel barberModel = new BarberModel();
+        setterClass.setBarberModelFromBarberBean(barberModel, barberBean);
         BarberDAO barberDAO = new BarberDAO();
         barberDAO.addBarber(credentialsModel, barberModel);
     }

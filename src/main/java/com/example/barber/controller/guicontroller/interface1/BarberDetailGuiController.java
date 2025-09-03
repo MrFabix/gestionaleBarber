@@ -6,9 +6,13 @@ import com.example.barber.utils.bean.PreFormBarberBean;
 import com.example.barber.utils.bean.BarberBean;
 import com.example.barber.utils.bean.IdBean;
 import com.example.barber.utils.bean.ServiceBean;
+import com.example.barber.utils.bean.interfaccia1.BarberBean1;
 import com.example.barber.utils.exception.ErrorDialog;
+import com.example.barber.utils.exception.myexception.EmailNotValidException;
 import com.example.barber.utils.exception.myexception.EmptyInputException;
 import com.example.barber.utils.exception.myexception.SystemException;
+import com.example.barber.utils.exception.myexception.UsernameAlreadyTakenException;
+import com.example.barber.utils.setterandgetter.SetterClass;
 import com.example.barber.utils.switchpage.SwitchAndSetPage;
 import com.example.barber.utils.switchpage.SwitchPage;
 import javafx.event.ActionEvent;
@@ -44,9 +48,11 @@ public class BarberDetailGuiController {
     private SwitchPage switchPage = new SwitchPage();
     private SwitchAndSetPage switchPageAndSet = new SwitchAndSetPage();
     private List<ServiceBean> serviceBeanList = new ArrayList<>();
+    private SetterClass setterClass = new SetterClass();
 
     public void setBarberDetails(IdBean id){
         // Chiamare l'AppController per ottenere i dettagli
+        BarberBean1 barberBean1 = new BarberBean1();
         BarberBean barberBean = null;
         BarberAppController barberAppController = new BarberAppController();
         ServiceAppController serviceAppController = new ServiceAppController();
@@ -54,15 +60,18 @@ public class BarberDetailGuiController {
         // Ottieni i dettagli del barbiere
         try{
             barberBean = barberAppController.getBarberDetails(id);
-        }catch (SystemException e){
+            //Qui va sostituito
+            setterClass.setBarber(barberBean, barberBean1);
+
+        }catch (SystemException | UsernameAlreadyTakenException | EmptyInputException | EmailNotValidException e){
             ErrorDialog.getInstance().handleException(e);
         }
-        if (barberBean != null) {
-            barberName.setText(barberBean.getName());
-            barberAddress.setText(barberBean.getAddress());
-            barberPhone.setText(barberBean.getPhone());
-            description.setText(barberBean.getDescription());
-            bookButton.setUserData(barberBean.getId());
+        if (barberBean1 != null) {
+            barberName.setText(barberBean1.getName());
+            barberAddress.setText(barberBean1.getAddress());
+            barberPhone.setText(barberBean1.getPhone());
+            description.setText(barberBean1.getDescription());
+            bookButton.setUserData(barberBean1.getId());
             serviceBeanList = serviceAppController.getServiceBarber(id);
             for(ServiceBean s : serviceBeanList){
                 servicesList.getItems().add(s.getNome_servizio());
@@ -90,7 +99,7 @@ public class BarberDetailGuiController {
 
 
     // Metodo per prenotare un appuntamento
-    public void bookAppointment(ActionEvent event) throws EmptyInputException{
+    public void bookAppointment(ActionEvent event){
         List<String> appList = new ArrayList<>();
         PreFormBarberBean preFormBarberBean = new PreFormBarberBean();
         preFormBarberBean.setIdBarber((int)bookButton.getUserData());
@@ -101,12 +110,10 @@ public class BarberDetailGuiController {
         }
         preFormBarberBean.setServiceList(appList);
 
-        System.out.println("Quanto vale il preformerbarberlist?"+preFormBarberBean.getServiceList().getFirst());
-
         try{
-            switchPageAndSet.switchAndSetBookingForm(event, "/view/interface1/BookingForm.fxml", preFormBarberBean);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+            switchPageAndSet.switchAndSetBookingForm(event, "/view/interface1/BookingForm1.fxml", preFormBarberBean);
+        } catch (SystemException e) {
+            ErrorDialog.getInstance().handleException(e);
         }
     }
 }
