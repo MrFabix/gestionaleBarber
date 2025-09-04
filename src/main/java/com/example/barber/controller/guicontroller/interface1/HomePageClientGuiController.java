@@ -29,6 +29,9 @@ public class HomePageClientGuiController implements Observer, Initializable {
     @FXML
     private TextField searchBarber; // Barra di ricerca
 
+    private BarberBean1 barberBean1 = new BarberBean1();
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("Sei dentro l'initialize di HomePageClient2");
@@ -52,7 +55,6 @@ public class HomePageClientGuiController implements Observer, Initializable {
 
         if (ob instanceof BarberBean bBean) {
             try {
-                BarberBean1 barberBean1 = new BarberBean1();
                 setterClass.setBarber((BarberBean)ob,barberBean1);
                 // Carica il layout del barbiere dal file FXML
                 pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource("/view/interface1/BarberItem.fxml")).openStream());

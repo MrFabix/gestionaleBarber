@@ -30,8 +30,9 @@ public class ListBarberEngineering {
         BarberDAO barberDAO = new BarberDAO();
         list = barberDAO.getAllBarber();
         listBean = new ArrayList<>();
-        BarberBean barberBean = new BarberBean();
+
         for(BarberModel barberModel : list){
+            BarberBean barberBean = new BarberBean();
             setterClass.setBarberBeanFromModel(barberBean, barberModel);
             listBean.add(barberBean);
         }
