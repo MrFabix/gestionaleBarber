@@ -44,8 +44,8 @@ public class ListBarberEngineering {
         BarberDAO barberDAO = new BarberDAO();
         list = barberDAO.searchBarber(name);
         listBean = new ArrayList<>();
-        BarberBean bean = new BarberBean();
         for(BarberModel barberModel : list){
+            BarberBean bean = new BarberBean();
             setterClass.setBarberBeanFromModel(bean, barberModel);
             listBean.add(bean);
         }

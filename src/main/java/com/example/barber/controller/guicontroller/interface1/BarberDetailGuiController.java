@@ -109,7 +109,6 @@ public class BarberDetailGuiController {
             appList.add(s);
         }
         preFormBarberBean.setServiceList(appList);
-
         try{
             switchPageAndSet.switchAndSetBookingForm(event, "/view/interface1/BookingForm1.fxml", preFormBarberBean);
         } catch (SystemException e) {

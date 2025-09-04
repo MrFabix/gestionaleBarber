@@ -6,11 +6,11 @@ import com.example.barber.model.CredentialsModel;
 import com.example.barber.utils.bean.BarberBean;
 import com.example.barber.utils.bean.ClientBean;
 import com.example.barber.utils.bean.CredentialsBean;
-import com.example.barber.utils.bean.interfaccia1.BarberBean1;
 import com.example.barber.utils.exception.myexception.*;
 
 public class SetterClass{
-    public void setBarber(BarberBean barberBean, BarberBean1 barberBean1) throws EmptyInputException, UsernameAlreadyTakenException, EmailNotValidException, SystemException {
+
+    public void setBarber(BarberBean barberBean, BarberBean barberBean1) throws EmptyInputException, UsernameAlreadyTakenException, EmailNotValidException, SystemException {
         barberBean1.setId(barberBean.getId());
         barberBean1.setName(barberBean.getName());
         barberBean1.setEmail(barberBean.getEmail());

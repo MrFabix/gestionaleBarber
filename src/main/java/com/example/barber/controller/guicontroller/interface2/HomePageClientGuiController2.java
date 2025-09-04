@@ -5,10 +5,10 @@ package com.example.barber.controller.guicontroller.interface2;
 import com.example.barber.controller.appcontroller.BarberAppController;
 import com.example.barber.controller.guicontroller.interface2.item2.BarberItemGuiController2;
 import com.example.barber.utils.bean.BarberBean;
-import com.example.barber.utils.engineering.ListBarberEngineering;
+import com.example.barber.utils.bean.interfaccia2.BarberBean2;
 import com.example.barber.utils.exception.ErrorDialog;
-import com.example.barber.utils.observer.GenericBeanList;
 import com.example.barber.utils.observer.Observer;
+import com.example.barber.utils.setterandgetter.SetterClass;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,12 +23,13 @@ import java.util.ResourceBundle;
 public class HomePageClientGuiController2 implements Observer, Initializable {
 
 
-
+    private BarberBean2 barberBean2 = new BarberBean2();
 
     @FXML
     private ListView<Pane> listBarber;  // La ListView che mostrerà i barbieri
     @FXML
     private TextField searchBarber; // Barra di ricerca
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -56,15 +57,15 @@ public class HomePageClientGuiController2 implements Observer, Initializable {
 
     @Override
     public void update(Object ob) {
-        System.out.println(">> Loaded BarberItemGuiController2");
-
+        SetterClass setterClass = new SetterClass();
         FXMLLoader fxmlLoader = new FXMLLoader();
         Pane pane;
         if (ob instanceof BarberBean bBean) {
             try {
+                setterClass.setBarber((BarberBean)ob,barberBean2);
                 pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource("/view/interface2/BarberItem2.fxml")).openStream());
                 BarberItemGuiController2 controller = fxmlLoader.getController();
-                controller.setBarberDetails(bBean);
+                controller.setBarberDetails(barberBean2);
                 this.listBarber.getItems().add(pane);
             } catch (Exception e) {
                 ErrorDialog.getInstance().handleException(e);
