@@ -4,6 +4,7 @@ package com.example.barber.controller.guicontroller.interface1;
 import com.example.barber.controller.appcontroller.CheckRequestAppController;
 import com.example.barber.utils.Session;
 import com.example.barber.utils.bean.*;
+import com.example.barber.utils.bean.interfaccia1.ClientBean1;
 import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.myexception.EmptyInputException;
 import com.example.barber.utils.exception.myexception.InvalidDateException;
@@ -21,9 +22,9 @@ import javafx.scene.control.TextField;
 import java.util.List;
 
 
-public class BookingFormGuiController{
+public class BookingFormGuiController1 {
 
-    private ClientBean clientBean = new ClientBean();
+    private ClientBean clientBean = new ClientBean1();
     private PreFormBarberBean preFormBarberBean = new PreFormBarberBean();
 
 
@@ -53,6 +54,7 @@ public class BookingFormGuiController{
     public void setAll(PreFormBarberBean bean){
             List<String> serviceList;
             clientBean = Session.getInstance().getUser();
+
             nameField.setText(clientBean.getName());
             phoneField.setText(clientBean.getPhone());
             emailField.setText(clientBean.getEmail());
@@ -88,7 +90,7 @@ public class BookingFormGuiController{
             requestAppointmentsBean.setService(serviceComboBox.getValue());
             requestAppointmentsBean.setState(StatoRichieste.PENDENTE);
             requestAppointmentsBean.setOrario(orario.getText());
-            switchAndSetPage.switchAndSetHomePageClient(event, "/view/interface1/HomePageClientAppointments.fxml", requestAppointmentsBean);
+            switchAndSetPage.switchAndSetHomePageClient(event, "/view/interface1/HomePageClientAppointments1.fxml", requestAppointmentsBean);
         }catch(SystemException | InvalidDateException | EmptyInputException e ){
             ErrorDialog.getInstance().handleException(e);
         }

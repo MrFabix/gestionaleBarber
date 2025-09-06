@@ -32,7 +32,6 @@ public class LoginAppController {
             ClientModel clientModel = null;
             ClientDAOSql userDAOSql = new ClientDAOSql();
             clientModel = userDAOSql.getUserByUsername(credentialsBean.getUsername());
-            System.out.println("dopo user dao  "+ credentialsBean.getUsername());
             Session.getInstance().setCredentials(credentialsModel);
             Session.getInstance().setUser(clientModel);
         } else if (credentialsModel.getType().getRoleId().equals("BARBIERE")) {

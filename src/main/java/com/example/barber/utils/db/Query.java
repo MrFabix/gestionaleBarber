@@ -450,13 +450,13 @@ public class Query {
         try (PreparedStatement ps = MySqlConnection.getInstance().connect().prepareStatement(query)) {
             ps.setInt(1, requestAppointmentsModel.getIdBarber());
             ps.setInt(2, requestAppointmentsModel.getIdUser());
-            ps.setDate(3, java.sql.Date.valueOf(requestAppointmentsModel.getDate())); // LocalDate → java.sql.Date
+            ps.setDate(3, java.sql.Date.valueOf(requestAppointmentsModel.getDate()));
             ps.setString(4, requestAppointmentsModel.getNameUser());
             ps.setString(5, requestAppointmentsModel.getNameBarber());
             ps.setString(6, requestAppointmentsModel.getDescription());
             ps.setString(7, requestAppointmentsModel.getAddressBarber());
             ps.setString(8, requestAppointmentsModel.getService());
-            ps.setString(9, requestAppointmentsModel.getState().name()); // enum → stringa
+            ps.setString(9, requestAppointmentsModel.getState().getId());
             ps.setString(10, requestAppointmentsModel.getOrario());
             ps.setString(11, requestAppointmentsModel.getPhone());
 

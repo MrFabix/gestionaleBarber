@@ -90,7 +90,7 @@ public class BarberDetailGuiController {
     // Metodo per tornare alla lista dei barbieri
     public void backToBarberList(ActionEvent event) {
         try {
-            switchPage.replaceScene(event, "/view/interface1/homePageClient.fxml");
+            switchPage.replaceScene(event, "/view/interface1/homePageClient1.fxml");
         } catch (SystemException e) {
             ErrorDialog.getInstance().handleException(e);
         }

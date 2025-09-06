@@ -39,7 +39,7 @@ public class WelcomePageGuiController1 {
     @FXML
     private void goToLogin(ActionEvent event) throws IOException {
         try{
-            sp.replaceScene(event, "/view/interface1/Login.fxml");
+            sp.replaceScene(event, "/view/interface1/Login1.fxml");
         }catch(SystemException e){
             ErrorDialog.getInstance().handleException(e);
         }

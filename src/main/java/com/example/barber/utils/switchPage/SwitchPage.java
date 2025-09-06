@@ -2,6 +2,7 @@ package com.example.barber.utils.switchpage;
 
 import com.example.barber.Main;
 import com.example.barber.controller.guicontroller.interface1.BarberDetailGuiController;
+import com.example.barber.controller.guicontroller.interface2.BarberDetailGuiController2;
 import com.example.barber.utils.bean.IdBean;
 import com.example.barber.utils.exception.myexception.SystemException;
 import javafx.event.ActionEvent;
@@ -55,7 +56,12 @@ public class SwitchPage {
             if (fxml.equals("/view/interface1/BarberDetail.fxml")) {
                 BarberDetailGuiController controller = fxmlLoader.getController();
                 if (controller != null) {
-                    controller.setBarberDetails(id); // Passa l'IdBean al controller
+                    controller.setBarberDetails(id);
+                }
+            }else if(fxml.equals("/view/interface2/BarberDetail2.fxml")) {
+                BarberDetailGuiController2 controller = fxmlLoader.getController();
+                if (controller != null) {
+                    controller.setBarberDetails(id);
                 }
             }
         } catch (IOException e) {

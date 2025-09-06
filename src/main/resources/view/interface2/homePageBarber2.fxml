@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.barber.controller.guicontroller.interface2.HomePageBarberGuiController2">
+
+    <!-- Navbar orizzontale in alto -->
+    <fx:include fx:id="navigationBar"
+                source="navbar2.fxml"
+                AnchorPane.topAnchor="0.0"
+                AnchorPane.leftAnchor="0.0"
+                AnchorPane.rightAnchor="0.0"/>
+
+    <!-- Contenuto -->
+    <AnchorPane AnchorPane.topAnchor="80.0"
+                AnchorPane.leftAnchor="0.0"
+                AnchorPane.rightAnchor="0.0"
+                AnchorPane.bottomAnchor="0.0">
+        <children>
+
+            <!-- Sfondo verdino -->
+            <Rectangle layoutX="0.0" layoutY="0.0"
+                       width="900.0" height="520.0"
+                       mouseTransparent="true" strokeWidth="0"
+                       fill="linear-gradient(to bottom, #10b981, #0ea5a4, #059669)"/>
+
+            <!-- Prossimi Appuntamenti -->
+            <Label layoutX="46.0" layoutY="14.0"
+                   text="Prossimi Appuntamenti" textFill="white"
+                   style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+
+            <ListView fx:id="listNextAppointemtns"
+                      layoutX="46.0" layoutY="50.0"
+                      prefHeight="210.0" prefWidth="808.0"
+                      AnchorPane.leftAnchor="46.0"
+                      AnchorPane.rightAnchor="46.0"
+                      AnchorPane.topAnchor="50.0"
+                      style="-fx-background-color: #0b1220; -fx-control-inner-background: #0b1220; -fx-background-insets: 0; -fx-border-color: #374151; -fx-border-width: 2;">
+                <effect><DropShadow/></effect>
+            </ListView>
+
+            <!-- Appuntamenti Terminati -->
+            <Label layoutX="46.0" layoutY="280.0"
+                   text="Appuntamenti Terminati" textFill="white"
+                   style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+
+            <ListView fx:id="listTerminateAppointments"
+                      layoutX="46.0" layoutY="316.0"
+                      prefHeight="170.0" prefWidth="808.0"
+                      AnchorPane.leftAnchor="46.0"
+                      AnchorPane.rightAnchor="46.0"
+                      AnchorPane.bottomAnchor="32.0"
+                      style="-fx-background-color: #0b1220; -fx-control-inner-background: #0b1220; -fx-background-insets: 0; -fx-border-color: #374151; -fx-border-width: 2;">
+                <effect><DropShadow/></effect>
+            </ListView>
+
+        </children>
+    </AnchorPane>
+</AnchorPane>

@@ -49,7 +49,7 @@ public class LoginGuiController2 {
             if (credentialsBean.getType().getRoleId().equals("CLIENTE")) {
                 sp.replaceScene(event, "/view/interface2/homePageClient2.fxml");
             } else if (credentialsBean.getType().getRoleId().equals("BARBIERE")) {
-                sp.replaceScene(event, "/homePageBarber.fxml");
+                sp.replaceScene(event, "/view/interface2/homePageBarber2.fxml");
             } else if(credentialsBean.getType().getRoleId().equals("MODERATORE")){
                 sp.replaceScene(event, "/homepageModerator.fxml");
             }

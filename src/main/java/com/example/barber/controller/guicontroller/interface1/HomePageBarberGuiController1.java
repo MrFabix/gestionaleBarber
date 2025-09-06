@@ -1,10 +1,11 @@
 package com.example.barber.controller.guicontroller.interface1;
 
 import com.example.barber.controller.appcontroller.CheckRequestAppController;
-import com.example.barber.controller.guicontroller.interface1.item.AppointmentsItemBarberGuiController;
+import com.example.barber.controller.guicontroller.interface1.item.AppointmentsItemBarberGuiController1;
 import com.example.barber.utils.Session;
 import com.example.barber.utils.bean.RequestAppointmentsBean;
 import com.example.barber.utils.exception.ErrorDialog;
+import com.example.barber.utils.exception.myexception.EmptyInputException;
 import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.utils.observer.Observer;
 import javafx.fxml.FXML;
@@ -18,7 +19,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class    HomePageBarberGuiController implements Observer, Initializable {
+public class HomePageBarberGuiController1 implements Observer, Initializable {
 
     @FXML
     private ListView<Pane> listNextAppointemtns;
@@ -26,13 +27,13 @@ public class    HomePageBarberGuiController implements Observer, Initializable {
     private ListView<Pane> listTerminateAppointments;
     private CheckRequestAppController controller = new CheckRequestAppController();
 
-    private static final String APPOINTMENTS_ITEM_BARBER_FXML = "/view/interface1/AppointmentsItemBarber.fxml";
+    private static final String APPOINTMENTS_ITEM_BARBER_FXML = "/view/interface1/AppointmentsItemBarber1.fxml";
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try{
             controller.manageRequestAppointments(this, Session.getInstance().getBarber().getId(), Session.getInstance().getCredentials().getType().getRoleId());
-        }catch (SystemException e ){
+        }catch (SystemException | EmptyInputException e){
             ErrorDialog.getInstance().handleException(e);
         }
 
@@ -46,7 +47,7 @@ public class    HomePageBarberGuiController implements Observer, Initializable {
     }
 
     private void moveRequest(RequestAppointmentsBean rBean){
-        AppointmentsItemBarberGuiController itemController;
+        AppointmentsItemBarberGuiController1 itemController;
         FXMLLoader fxmlLoader = new FXMLLoader();
         Pane pane = null;
         try {

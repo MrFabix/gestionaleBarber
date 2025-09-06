@@ -1,6 +1,5 @@
 package com.example.barber.controller.guicontroller.interface2.item2;
 
-import com.example.barber.utils.bean.BarberBean;
 import com.example.barber.utils.bean.IdBean;
 import com.example.barber.utils.bean.interfaccia2.BarberBean2;
 import com.example.barber.utils.exception.myexception.SystemException;
@@ -19,18 +18,15 @@ public class BarberItemGuiController2 {
     @FXML
     private Label barberAddressLabel;
     @FXML
-    private Button barberButton;
+    private Button buttonBarber;
     private SwitchPage sp = new SwitchPage();
 
     @FXML
     private void showBarberDetails(ActionEvent event) throws SystemException {
-        //Recupera l'ID dal pulsante tramite getUserData
-        int id = (int) barberButton.getUserData();
-        //creo il bean per passare l'id
+        int id = (int) buttonBarber.getUserData();
         IdBean idBean = new IdBean(id);
-        //cambio pagina passando l'id del barbiere
-        sp.switchPageId("/view/Interface2/BarberDetail2.fxml", event, idBean);
-
+        System.out.println("Stai chiamando il dettaglio del barbiere");
+        sp.switchPageId("/view/interface2/BarberDetail2.fxml", event, idBean);
     }
 
 
@@ -40,7 +36,7 @@ public class BarberItemGuiController2 {
         barberNameLabel.setText(bean.getName());
         barberCityLabel.setText(bean.getCity());
         barberAddressLabel.setText(bean.getAddress());
-        barberButton.setUserData(bean.getId());
+        buttonBarber.setUserData(bean.getId());
     }
 
 

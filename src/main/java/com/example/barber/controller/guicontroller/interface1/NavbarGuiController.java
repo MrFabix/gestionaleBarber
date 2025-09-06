@@ -46,15 +46,15 @@ public class NavbarGuiController implements Initializable {
 
     private void setupCliente(VBox vBox) {
         vBox.getChildren().add(createButton("HomePage Cliente","/view/interface1/HomePageClient.fxml"));
-        vBox.getChildren().add(createButton("Appuntamenti", "/view/interface1/HomePageClientAppointments.fxml"));
-        vBox.getChildren().add(createButton("Recensioni Effettuate","/view/interface1/HomePageClientAppointments.fxml"));
+        vBox.getChildren().add(createButton("Appuntamenti", "/view/interface1/HomePageClientAppointments1.fxml"));
+        vBox.getChildren().add(createButton("Recensioni Effettuate", "/view/interface1/HomePageClientAppointments1.fxml"));
         vBox.getChildren().add(logOutButton("Logout"));
     }
 
     private void setupBarbiere(VBox vBox) {
-        vBox.getChildren().add(createButton("HomePage Barbiere","/view/interface1/HomePageBarber.fxml"));
-        vBox.getChildren().add(createButton("Gestione Appuntamenti","/view/interface1/HomePageBarberAppointments.fxml"));
-        vBox.getChildren().add(createButton("Recensioni Ricevute","/view/interface1/HomePageClientAppointments.fxml"));
+        vBox.getChildren().add(createButton("HomePage Barbiere","/view/interface1/HomePageBarber1.fxml"));
+        vBox.getChildren().add(createButton("Gestione Appuntamenti", "/view/interface1/HomePageBarberAppointments1.fxml"));
+        vBox.getChildren().add(createButton("Recensioni Ricevute", "/view/interface1/HomePageClientAppointments1.fxml"));
         vBox.getChildren().add(createButton("Modifica Negozio", "/view/interface1/ManageShop.fxml"));
         vBox.getChildren().add(logOutButton("Logout"));
     }

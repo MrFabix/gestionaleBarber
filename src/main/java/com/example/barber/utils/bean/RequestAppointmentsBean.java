@@ -1,6 +1,5 @@
 package com.example.barber.utils.bean;
 
-import com.example.barber.model.RequestAppointmentsModel;
 import com.example.barber.utils.exception.Trigger;
 import com.example.barber.utils.exception.myexception.EmptyInputException;
 import com.example.barber.utils.exception.myexception.InvalidDateException;
@@ -9,6 +8,7 @@ import com.example.barber.utils.statorichiesta.StatoRichieste;
 import java.time.LocalDate;
 
 public class RequestAppointmentsBean implements GenericBean{
+
     private Trigger trigger = new Trigger();
     protected int idAppointement;
     protected int idBarber;
@@ -23,39 +23,6 @@ public class RequestAppointmentsBean implements GenericBean{
     protected StatoRichieste state;
     protected String orario;
 
-    public RequestAppointmentsBean() {
-        //Ignore
-    }
-
-    public RequestAppointmentsBean(RequestAppointmentsBean requestAppointmentsBean) {
-        this.idAppointement = requestAppointmentsBean.getIdAppointement();
-        this.idBarber = requestAppointmentsBean.getIdBarber();
-        this.idUser = requestAppointmentsBean.getIdUser();
-        this.date = requestAppointmentsBean.getDate();
-        this.nameUser = requestAppointmentsBean.getNameUser();
-        this.addressBarber = requestAppointmentsBean.getAddressBarber();
-        this.nameBarber = requestAppointmentsBean.getNameBarber();
-        this.description = requestAppointmentsBean.getDescription();
-        this.service = requestAppointmentsBean.getService();
-        this.phoneUser = requestAppointmentsBean.getPhoneUser();
-        this.state = requestAppointmentsBean.getState();
-        this.orario = requestAppointmentsBean.getOrario();
-    }
-
-    public RequestAppointmentsBean(RequestAppointmentsModel requestAppointmentsModel) {
-        this.idAppointement = requestAppointmentsModel.getAppId();
-        this.idBarber = requestAppointmentsModel.getIdBarber();
-        this.idUser = requestAppointmentsModel.getIdUser();
-        this.date = requestAppointmentsModel.getDate();
-        this.nameUser = requestAppointmentsModel.getNameUser();
-        this.addressBarber = requestAppointmentsModel.getAddressBarber();
-        this.nameBarber = requestAppointmentsModel.getNameBarber();
-        this.description = requestAppointmentsModel.getDescription();
-        this.service = requestAppointmentsModel.getService();
-        this.orario = requestAppointmentsModel.getOrario();
-        this.state = requestAppointmentsModel.getState();
-        this.orario = requestAppointmentsModel.getOrario();
-    }
 
    public int getIdAppointement() { return idAppointement; }
 
@@ -82,6 +49,9 @@ public class RequestAppointmentsBean implements GenericBean{
             this.date = date;
         }
     }
+
+
+    public void setDateRaw(LocalDate date) { this.date = date; }
 
     public String getDescription() { return description; }
 

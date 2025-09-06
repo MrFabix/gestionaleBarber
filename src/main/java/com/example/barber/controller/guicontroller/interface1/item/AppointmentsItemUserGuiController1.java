@@ -2,11 +2,10 @@ package com.example.barber.controller.guicontroller.interface1.item;
 
 import com.example.barber.utils.bean.RequestAppointmentsBean;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 
-public class AppointmentsItemUserGuiController extends AppointemntsItemGuiController{
+public class AppointmentsItemUserGuiController1 extends AppointemntsItemGuiController{
 
     @FXML
     private Label labelIndirizzo;

@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class HomePageClientGuiController implements Observer, Initializable {
+public class HomePageClientGuiController1 implements Observer, Initializable {
 
     @FXML
     private ListView<Pane> barberListView;  // La ListView che mostrerà i barbieri

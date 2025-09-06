@@ -11,7 +11,7 @@ import javafx.scene.control.Button;
 
 
 
-public class AppointmentsItemBarberGuiController extends AppointemntsItemGuiController{
+public class AppointmentsItemBarberGuiController1 extends AppointemntsItemGuiController{
 
     private CheckRequestAppController checkRequestAppController;
     private RequestAppointmentsBean rBean;
@@ -51,7 +51,7 @@ public class AppointmentsItemBarberGuiController extends AppointemntsItemGuiCont
             checkRequestAppController.setStateAppointments(rBean, StatoRichieste.RIFIUTATA);
             rBean.setState(StatoRichieste.RIFIUTATA);
             checkRequestAppController.addAppointmentsToList(rBean);
-            switchPage.replaceScene(event, "/view/interface1/HomePageBarberAppointments.fxml");
+            switchPage.replaceScene(event, "/view/interface1/HomePageBarberAppointments1.fxml");
         }catch (Exception e){
             ErrorDialog.getInstance().handleException(e);
         }
@@ -64,7 +64,7 @@ public class AppointmentsItemBarberGuiController extends AppointemntsItemGuiCont
             checkRequestAppController.setStateAppointments(rBean, StatoRichieste.ACCETTATA);
             rBean.setState(StatoRichieste.ACCETTATA);
             checkRequestAppController.addAppointmentsToList(rBean);
-            switchPage.replaceScene(event, "/view/interface1/HomePageBarberAppointments.fxml");
+            switchPage.replaceScene(event, "/view/interface1/HomePageBarberAppointments1.fxml");
         }catch (Exception e){
             ErrorDialog.getInstance().handleException(e);
         }
@@ -77,7 +77,7 @@ public class AppointmentsItemBarberGuiController extends AppointemntsItemGuiCont
             checkRequestAppController.setStateAppointments(rBean, StatoRichieste.TERMINATA);
             rBean.setState(StatoRichieste.ACCETTATA);
             checkRequestAppController.addAppointmentsToList(rBean);
-            switchPage.replaceScene(event, "/view/interface1/HomePageBarber.fxml");
+            switchPage.replaceScene(event, "/view/interface1/HomePageBarber1.fxml");
         }catch (Exception e){
             ErrorDialog.getInstance().handleException(e);
         }

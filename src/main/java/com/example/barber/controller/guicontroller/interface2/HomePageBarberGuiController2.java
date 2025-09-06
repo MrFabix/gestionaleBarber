@@ -1,0 +1,73 @@
+package com.example.barber.controller.guicontroller.interface2;
+
+import com.example.barber.controller.appcontroller.CheckRequestAppController;
+import com.example.barber.controller.guicontroller.interface1.item.AppointmentsItemBarberGuiController1;
+import com.example.barber.utils.Session;
+import com.example.barber.utils.bean.RequestAppointmentsBean;
+import com.example.barber.utils.exception.ErrorDialog;
+import com.example.barber.utils.exception.myexception.EmptyInputException;
+import com.example.barber.utils.exception.myexception.SystemException;
+import com.example.barber.utils.observer.Observer;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.Pane;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.Objects;
+import java.util.ResourceBundle;
+
+public class HomePageBarberGuiController2 implements Observer, Initializable {
+
+    @FXML
+    private ListView<Pane> listNextAppointemtns;
+    @FXML
+    private ListView<Pane> listTerminateAppointments;
+    private CheckRequestAppController controller = new CheckRequestAppController();
+
+    private static final String APPOINTMENTS_ITEM_BARBER_FXML = "/view/interface2/AppointmentsItemBarber2.fxml";
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try{
+            controller.manageRequestAppointments(this, Session.getInstance().getBarber().getId(), Session.getInstance().getCredentials().getType().getRoleId());
+        }catch (SystemException | EmptyInputException e){
+            ErrorDialog.getInstance().handleException(e);
+        }
+
+    }
+
+    @Override
+    public void update(Object ob) {
+        if(ob instanceof RequestAppointmentsBean rBean){
+            moveRequest(rBean);
+        }
+    }
+
+    private void moveRequest(RequestAppointmentsBean rBean){
+        AppointmentsItemBarberGuiController1 itemController;
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        Pane pane = null;
+        try {
+            if (Objects.equals(rBean.getState().getId(), "ACCETTATA")) {
+                pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource(APPOINTMENTS_ITEM_BARBER_FXML).openStream()));
+                itemController = fxmlLoader.getController();
+                itemController.setAll(rBean, controller);
+                itemController.setVisibilityTer(true);
+                itemController.setVisibilityButton();
+                this.listNextAppointemtns.getItems().add(pane);
+            } else if (Objects.equals(rBean.getState().getId(), "TERMINATA")) {
+                pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource(APPOINTMENTS_ITEM_BARBER_FXML).openStream()));
+                itemController = fxmlLoader.getController();
+                itemController.setVisibilityButton();
+                itemController.setAll(rBean, controller);
+                itemController.setVisibilityTer(false);
+                this.listTerminateAppointments.getItems().add(pane);
+            }
+        }catch (IOException e){
+            ErrorDialog.getInstance().handleException(e);
+        }
+    }
+}

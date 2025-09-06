@@ -10,7 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 
-public class LoginGuiController {
+public class LoginGuiController1 {
 
 
 
@@ -32,12 +32,11 @@ public class LoginGuiController {
                 credentialsBean.setPassword(passwordField.getText());
                 //Ancora non so che ruolo avrò dipende come mi sono registrato
                 //chiama qui il login controller che manda la query e cerca che ruolo ha quell'utente nel database
-                System.out.println("CredentialBean"+credentialsBean.toString());
                 controller.login(credentialsBean);
                 if (credentialsBean.getType().getRoleId().equals("CLIENTE")) {
-                    sp.replaceScene(event, "/view/interface1/homePageClient.fxml");
+                    sp.replaceScene(event, "/view/interface1/homePageClient1.fxml");
                 } else if (credentialsBean.getType().getRoleId().equals("BARBIERE")) {
-                    sp.replaceScene(event, "/view/interface1/homePageBarber.fxml");
+                    sp.replaceScene(event, "/view/interface1/HomePageBarber1.fxml");
                 } else if (credentialsBean.getType().getRoleId().equals("MODERATORE")) {
                     sp.replaceScene(event, "/view/interface1/homepageModerator.fxml");
                 }

@@ -16,7 +16,7 @@
              -fx-padding: 10;">
 
 
-    <MFXButton fx:id="barberButton"
+    <MFXButton fx:id="buttonBarber"
                prefHeight="28.0" prefWidth="120.0"
                text="Dettaglio"
                style="-fx-background-radius: 8;"
