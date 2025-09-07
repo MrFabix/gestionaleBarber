@@ -47,59 +47,6 @@ public class ManageShopGuiController2 implements Initializable {
 
     private IdBean idBean = new IdBean(Session.getInstance().getBarber().getId());
     private ServiceAppController controller = new ServiceAppController();
-
-
-    @FXML
-    public void upgradeOrarioLavoro(ActionEvent e){
-        BarberAppController barberAppController = new BarberAppController();
-
-        barberBean.setId(Session.getInstance().getBarber().getId());
-        try{
-            barberBean.setInizio(inizioOrario.getText());
-            barberBean.setFine(fineOrario.getText());
-            barberAppController.insertOrarioBarber(barberBean);
-        }catch (SystemException | IllegalArgumentException |UsernameAlreadyTakenException | EmailNotValidException | EmptyInputException ex){
-            ErrorDialog.getInstance().handleException(ex);
-        }
-        new Alert(Alert.AlertType.WARNING, "Orario modificato!").showAndWait();
-    }
-
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-       List<ServiceBean> serviceBeanList;
-       serviceBeanList = controller.getServiceBarber(idBean);
-       if(serviceBeanList == null){
-           listService.getChildren().clear();
-       }else {
-           for (ServiceBean s : serviceBeanList) {
-               String prezzo = String.format(java.util.Locale.US, "%.2f", s.getPrezzo());
-               buildItemVbox(s.getNome_servizio(), prezzo);
-           }
-       }
-    }
-
-    private void deleteService(HBox row, ServiceAppController controller, ServiceBean serviceBean){
-        listService.getChildren().remove(row);
-        try{
-            controller.deleteService(serviceBean);
-        } catch (SystemException e) {
-            ErrorDialog.getInstance().handleException(e);
-        }
-    }
-
-
-    private void buildItemVbox(String name, String price){
-        HBox row = new HBox(8);
-        Label bullet = new Label("•");
-        Label lblName = new Label(name);
-        Label prezzo = new Label(price);
-        Button remove = new Button("X");
-        remove.setOnAction(e -> deleteService(row, controller, serviceBean));
-        row.getChildren().addAll(bullet, lblName, prezzo, remove);
-        listService.getChildren().add(row);
-    }
-
     @FXML
     private void addServiceInVbox() {
 
@@ -145,6 +92,59 @@ public class ManageShopGuiController2 implements Initializable {
     }
 
 
+    @FXML
+    public void upgradeOrarioLavoro(ActionEvent e){
+        BarberAppController barberAppController = new BarberAppController();
+
+        barberBean.setId(Session.getInstance().getBarber().getId());
+        try{
+            barberBean.setInizio(inizioOrario.getText());
+            barberBean.setFine(fineOrario.getText());
+            barberAppController.insertOrarioBarber(barberBean);
+        }catch (SystemException | IllegalArgumentException |UsernameAlreadyTakenException | EmailNotValidException | EmptyInputException ex){
+            ErrorDialog.getInstance().handleException(ex);
+        }
+        new Alert(Alert.AlertType.WARNING, "Orario modificato!").showAndWait();
+    }
+
+
+
+
+    private void deleteService(HBox row, ServiceAppController controller, ServiceBean serviceBean){
+        listService.getChildren().remove(row);
+        try{
+            controller.deleteService(serviceBean);
+        } catch (SystemException e) {
+            ErrorDialog.getInstance().handleException(e);
+        }
+    }
+
+
+    private void buildItemVbox(String name, String price){
+        HBox row = new HBox(8);
+        Label bullet = new Label("•");
+        Label lblName = new Label(name);
+        Label prezzo = new Label(price);
+        Button remove = new Button("X");
+        remove.setOnAction(e -> deleteService(row, controller, serviceBean));
+        row.getChildren().addAll(bullet, lblName, prezzo, remove);
+        listService.getChildren().add(row);
+    }
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        List<ServiceBean> serviceBeanList;
+        serviceBeanList = controller.getServiceBarber(idBean);
+        if(serviceBeanList == null){
+            listService.getChildren().clear();
+        }else {
+            for (ServiceBean s : serviceBeanList) {
+                String prezzo = String.format(java.util.Locale.US, "%.2f", s.getPrezzo());
+                buildItemVbox(s.getNome_servizio(), prezzo);
+            }
+        }
+    }
 
 
 }

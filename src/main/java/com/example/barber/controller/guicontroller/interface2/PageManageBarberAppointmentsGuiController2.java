@@ -34,6 +34,14 @@ public class PageManageBarberAppointmentsGuiController2 implements Observer, Ini
 
     private StatoRichieste state = StatoRichieste.PENDENTE;
 
+    @FXML
+    public void showPending(ActionEvent event){
+        state = StatoRichieste.PENDENTE;
+        listViewAppointments.getItems().clear();
+        reload();
+
+
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -55,14 +63,6 @@ public class PageManageBarberAppointmentsGuiController2 implements Observer, Ini
 
 
 
-    @FXML
-    public void showPending(ActionEvent event){
-        state = StatoRichieste.PENDENTE;
-        listViewAppointments.getItems().clear();
-        reload();
-
-
-    }
 
     @FXML
     public void showDeclined(){
@@ -71,20 +71,7 @@ public class PageManageBarberAppointmentsGuiController2 implements Observer, Ini
         reload();
     }
 
-    @FXML
-    public void showAccepted(){
-        state = StatoRichieste.ACCETTATA;
-        listViewAppointments.getItems().clear();
-        reload();
-    }
 
-
-    @FXML
-    public void showTerminate(){
-        state = StatoRichieste.TERMINATA;
-        listViewAppointments.getItems().clear();
-        reload();
-    }
 
 
 
@@ -104,6 +91,21 @@ public class PageManageBarberAppointmentsGuiController2 implements Observer, Ini
             }
 
         }
+    }
+
+    @FXML
+    public void showAccepted(){
+        state = StatoRichieste.ACCETTATA;
+        listViewAppointments.getItems().clear();
+        reload();
+    }
+
+
+    @FXML
+    public void showTerminate(){
+        state = StatoRichieste.TERMINATA;
+        listViewAppointments.getItems().clear();
+        reload();
     }
 
     private boolean matchState(RequestAppointmentsBean rBean){

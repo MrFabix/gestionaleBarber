@@ -33,22 +33,6 @@ public class BarberDetailGuiController2 {
     private List<ServiceBean> serviceBeanList = new ArrayList<>();
     private SwitchAndSetPage switchPageAndSet = new SwitchAndSetPage();
 
-    @FXML
-    private ListView<String> servicesList;
-    @FXML
-    private ListView<String> reviewsList;
-    @FXML
-    private Button bookButton;
-    @FXML
-    private Label barberName;
-    @FXML
-    private Label barberAddress;
-    @FXML
-    private Label barberPhone;
-    @FXML
-    private Label barberHours;
-    @FXML
-    private TextArea description;
 
     @FXML
     public void bookAppointment(ActionEvent event){
@@ -70,14 +54,21 @@ public class BarberDetailGuiController2 {
 
 
     @FXML
-    public void backToBarberList(ActionEvent event){
-        try {
-            sp.replaceScene(event, "/view/interface2/homePageClient2.fxml");
-        } catch (SystemException e) {
-            ErrorDialog.getInstance().handleException(e);
-        }
-    }
-
+    private ListView<String> servicesList;
+    @FXML
+    private ListView<String> reviewsList;
+    @FXML
+    private Button bookButton;
+    @FXML
+    private Label barberName;
+    @FXML
+    private Label barberAddress;
+    @FXML
+    private Label barberPhone;
+    @FXML
+    private Label barberHours;
+    @FXML
+    private TextArea description;
 
     public void setBarberDetails(IdBean id){
         BarberBean2 barberBean2 = new BarberBean2();
@@ -111,6 +102,19 @@ public class BarberDetailGuiController2 {
             servicesList.getItems().add("Non disponibile");
         }
     }
+
+
+    @FXML
+    public void backToBarberList(ActionEvent event){
+        try {
+            sp.replaceScene(event, "/view/interface2/homePageClient2.fxml");
+        } catch (SystemException e) {
+            ErrorDialog.getInstance().handleException(e);
+        }
+    }
+
+
+
 
 
 
