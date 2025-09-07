@@ -19,8 +19,8 @@ public class SetterClass{
         barberBean1.setPhone(barberBean.getPhone());
         barberBean1.setUsername(barberBean.getUsername());
         barberBean1.setAddress(barberBean.getAddress());
-        barberBean1.setOrarioInizio(barberBean.getOrarioInizio());
-        barberBean1.setOrarioFine(barberBean.getOrarioFine());
+        //barberBean1.setOrarioInizio(barberBean.getOrarioInizio());
+        //barberBean1.setOrarioFine(barberBean.getOrarioFine());
         barberBean1.setCity(barberBean.getCity());
         barberBean1.setDescription(barberBean.getDescription());
         barberBean1.setServices(barberBean.getServices());
@@ -34,8 +34,8 @@ public class SetterClass{
         barberBean.setUsername(barberModel.getUsername());
         barberBean.setAddress(barberModel.getAddress());
         barberBean.setOrarioInizio(barberModel.getOrarioInizio());
-        barberBean.setOrarioFine(barberModel.getOrarioFine());
-        barberBean.setCity(barberModel.getCity());
+       // barberBean.setOrarioFine(barberModel.getOrarioFine());
+       // barberBean.setCity(barberModel.getCity());
         barberBean.setDescription(barberModel.getDescription());
         barberBean.setServices(barberModel.getServices());
     }

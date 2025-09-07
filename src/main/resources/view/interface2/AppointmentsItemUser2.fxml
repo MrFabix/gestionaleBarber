@@ -36,7 +36,7 @@
 
 
          <Line stroke="#e5e7eb" strokeWidth="1.0"/>
-         
+
          <HBox spacing="20" alignment="CENTER_LEFT">
             <Label fx:id="labelIndirizzo" text="Indirizzo" style="-fx-text-fill: black;"/>
             <Label fx:id="labelServizio"  text="Servizio"  style="-fx-text-fill: black;"/>

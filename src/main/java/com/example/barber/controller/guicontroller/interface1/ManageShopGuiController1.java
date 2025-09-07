@@ -6,8 +6,13 @@ import com.example.barber.utils.Session;
 import com.example.barber.utils.bean.BarberBean;
 import com.example.barber.utils.bean.IdBean;
 import com.example.barber.utils.bean.ServiceBean;
+import com.example.barber.utils.bean.interfaccia1.BarberBean1;
 import com.example.barber.utils.exception.ErrorDialog;
+import com.example.barber.utils.exception.myexception.EmailNotValidException;
+import com.example.barber.utils.exception.myexception.EmptyInputException;
 import com.example.barber.utils.exception.myexception.SystemException;
+import com.example.barber.utils.exception.myexception.UsernameAlreadyTakenException;
+import com.example.barber.utils.setterandgetter.SetterClass;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,14 +21,15 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
+import java.net.UnknownServiceException;
 import java.util.List;
 import java.util.ResourceBundle;
 
 
-public class ManageShopGuiController implements Initializable {
+public class ManageShopGuiController1 implements Initializable {
 
     private ServiceBean serviceBean = new ServiceBean();
-    private BarberBean barberBean = new BarberBean();
+    private BarberBean1 barberBean = new BarberBean1();
 
     private IdBean idBean = new IdBean(Session.getInstance().getBarber().getId());
     private ServiceAppController controller = new ServiceAppController();
@@ -120,15 +126,17 @@ public class ManageShopGuiController implements Initializable {
     @FXML
     public void upgradeOrarioLavoro(ActionEvent e){
         BarberAppController barberAppController = new BarberAppController();
-        barberBean.setOrarioInizio(inizioOrario.getText());
-        barberBean.setOrarioFine(fineOrario.getText());
+
         barberBean.setId(Session.getInstance().getBarber().getId());
         try{
+            barberBean.setInizio(inizioOrario.getText());
+            barberBean.setFine(fineOrario.getText());
             barberAppController.insertOrarioBarber(barberBean);
-        }catch (SystemException ex){
+        }catch (SystemException | EmailNotValidException | IllegalArgumentException |EmptyInputException | UsernameAlreadyTakenException ex){
             ErrorDialog.getInstance().handleException(ex);
         }
 
+        new Alert(Alert.AlertType.WARNING, "Modificato Orario").showAndWait();
 
     }
 }

@@ -20,15 +20,18 @@ public class Query {
 
 
 
-    public void insertOrarioDB(BarberModel barberModel) throws SystemException {
-        String query = "INSERT INTO working_hours (id_barber, orarioInizio, orarioFine) VALUES (?,?,?)";
+    public void updateOrarioDB(BarberModel barberModel) throws SystemException {
+        String query = "UPDATE barber SET orarioInizio = ?, orarioFine = ? WHERE id = ?";
+
         try (PreparedStatement preparedStatement =
                      MySqlConnection.getInstance().connect().prepareStatement(query)) {
 
-            preparedStatement.setInt(1, barberModel.getId());
-            preparedStatement.setString(2, barberModel.getOrarioInizio());
-            preparedStatement.setString(3, barberModel.getOrarioFine());
+            preparedStatement.setString(1, barberModel.getOrarioInizio());
+            preparedStatement.setString(2, barberModel.getOrarioFine());
+            preparedStatement.setInt(3, barberModel.getId()); // condizione per trovare la riga giusta
+
             preparedStatement.executeUpdate();
+
         } catch (SQLException e) {
             SystemException exception = new SystemException();
             exception.initCause(e);

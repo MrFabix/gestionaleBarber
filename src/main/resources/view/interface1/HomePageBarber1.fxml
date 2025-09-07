@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface1.HomePageBarberGuiController1">
-    <fx:include source="navbar.fxml" />
+    <fx:include source="navbar1.fxml" />
       <Label layoutX="235.0" layoutY="100.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Prossimi Appuntamenti" />
       <ListView fx:id="listNextAppointemtns" layoutX="255.0" layoutY="127.0" prefHeight="142.0" prefWidth="615.0" />
       <Label layoutX="235.0" layoutY="300.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Appuntamenti Terminati " />

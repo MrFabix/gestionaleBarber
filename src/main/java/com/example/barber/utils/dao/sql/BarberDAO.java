@@ -33,8 +33,8 @@ public class BarberDAO {
         return query.searchBarberById(id);
     }
 
-    public void insertOrarioBarbiere(BarberModel barberModel) throws SystemException{
-        query.insertOrarioDB(barberModel);
+    public void updateOrarioDB(BarberModel barberModel) throws SystemException{
+        query.updateOrarioDB(barberModel);
     }
 
 

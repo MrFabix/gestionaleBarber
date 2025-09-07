@@ -1,6 +1,7 @@
 package com.example.barber.controller.appcontroller;
 
 import com.example.barber.model.BarberModel;
+import com.example.barber.utils.Session;
 import com.example.barber.utils.bean.BarberBean;
 import com.example.barber.utils.bean.IdBean;
 import com.example.barber.utils.dao.sql.BarberDAO;
@@ -31,13 +32,11 @@ public class BarberAppController {
         return barberBean;
     }
 
-    public void insertOrarioBarber(BarberBean barber) throws SystemException {
+    public void insertOrarioBarber(BarberBean barber) throws SystemException, EmailNotValidException, UsernameAlreadyTakenException, EmptyInputException{
         BarberModel barberModel = new BarberModel();
-        barberModel.setId(barber.getId());
-        barberModel.setOrarioInizio(barber.getOrarioInizio());
-        barberModel.setOrarioFine(barber.getOrarioFine());
+        setterClass.setBarberModelFromBarberBean(barberModel,barber);
         BarberDAO barberDAO = new BarberDAO();
-        barberDAO.insertOrarioBarbiere(barberModel);
+        barberDAO.updateOrarioDB(barberModel);
     }
 
     public void addToList(Observer ob) throws SystemException, EmptyInputException, UsernameAlreadyTakenException, EmailNotValidException {

@@ -2,12 +2,15 @@ package com.example.barber.controller.guicontroller.interface2;
 
 import com.example.barber.controller.appcontroller.CheckRequestAppController;
 import com.example.barber.controller.guicontroller.interface1.item.AppointmentsItemBarberGuiController1;
+import com.example.barber.controller.guicontroller.interface2.item2.AppointmentsItemBarberGuiControllerSecondInterface;
 import com.example.barber.utils.Session;
 import com.example.barber.utils.bean.RequestAppointmentsBean;
+import com.example.barber.utils.bean.interfaccia2.RequestAppointmentsBean2;
 import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.myexception.EmptyInputException;
 import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.utils.observer.Observer;
+import com.example.barber.utils.setterandgetter.SetterClass;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -26,6 +29,7 @@ public class HomePageBarberGuiController2 implements Observer, Initializable {
     @FXML
     private ListView<Pane> listTerminateAppointments;
     private CheckRequestAppController controller = new CheckRequestAppController();
+    private SetterClass setterClass = new SetterClass();
 
     private static final String APPOINTMENTS_ITEM_BARBER_FXML = "/view/interface2/AppointmentsItemBarber2.fxml";
 
@@ -42,12 +46,20 @@ public class HomePageBarberGuiController2 implements Observer, Initializable {
     @Override
     public void update(Object ob) {
         if(ob instanceof RequestAppointmentsBean rBean){
-            moveRequest(rBean);
+
+            RequestAppointmentsBean2 requestAppointmentsBean1 = new RequestAppointmentsBean2();
+            try{
+                setterClass.setRequestApp(requestAppointmentsBean1,(RequestAppointmentsBean)ob );
+                moveRequest(requestAppointmentsBean1);
+            }catch (EmptyInputException e ){
+                ErrorDialog.getInstance().handleException(e);
+            }
+
         }
     }
 
-    private void moveRequest(RequestAppointmentsBean rBean){
-        AppointmentsItemBarberGuiController1 itemController;
+    private void moveRequest(RequestAppointmentsBean2 rBean){
+        AppointmentsItemBarberGuiControllerSecondInterface itemController;
         FXMLLoader fxmlLoader = new FXMLLoader();
         Pane pane = null;
         try {
@@ -55,15 +67,13 @@ public class HomePageBarberGuiController2 implements Observer, Initializable {
                 pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource(APPOINTMENTS_ITEM_BARBER_FXML).openStream()));
                 itemController = fxmlLoader.getController();
                 itemController.setAll(rBean, controller);
-                itemController.setVisibilityTer(true);
-                itemController.setVisibilityButton();
+                itemController.setVisibilityBotton(rBean.getState());
                 this.listNextAppointemtns.getItems().add(pane);
             } else if (Objects.equals(rBean.getState().getId(), "TERMINATA")) {
                 pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource(APPOINTMENTS_ITEM_BARBER_FXML).openStream()));
                 itemController = fxmlLoader.getController();
-                itemController.setVisibilityButton();
                 itemController.setAll(rBean, controller);
-                itemController.setVisibilityTer(false);
+                itemController.setVisibilityBotton(rBean.getState());
                 this.listTerminateAppointments.getItems().add(pane);
             }
         }catch (IOException e){

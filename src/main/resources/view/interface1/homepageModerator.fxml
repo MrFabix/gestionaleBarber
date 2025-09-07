@@ -8,7 +8,7 @@
             fx:controller="com.example.barber.controller.guicontroller.interface1.HomePageModeratorGuiController">
 
     <!-- Includi il menu di navigazione -->
-    <fx:include fx:id="navigationBar" source="navbar.fxml" />
+    <fx:include fx:id="navigationBar" source="navbar1.fxml" />
 
     <!-- Campo di ricerca per filtrare i messaggi segnalati -->
     <TextField fx:id="searchReportedMessage" layoutX="258.0" layoutY="38.0"

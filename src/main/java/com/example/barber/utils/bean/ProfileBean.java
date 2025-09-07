@@ -60,6 +60,7 @@ public class ProfileBean implements GenericBean {
         else
             throw new EmailNotValidException(email);
     }
+
     public void setImg(File img) throws EmptyInputException {
         if (img == null) {
             trigger.throwEmptyInputException("Image");

@@ -17,7 +17,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 
-public class NavbarGuiController implements Initializable {
+public class NavbarGuiController1 implements Initializable {
 
     @FXML
     private AnchorPane navAnchor;
@@ -55,7 +55,7 @@ public class NavbarGuiController implements Initializable {
         vBox.getChildren().add(createButton("HomePage Barbiere","/view/interface1/HomePageBarber1.fxml"));
         vBox.getChildren().add(createButton("Gestione Appuntamenti", "/view/interface1/HomePageBarberAppointments1.fxml"));
         vBox.getChildren().add(createButton("Recensioni Ricevute", "/view/interface1/HomePageClientAppointments1.fxml"));
-        vBox.getChildren().add(createButton("Modifica Negozio", "/view/interface1/ManageShop.fxml"));
+        vBox.getChildren().add(createButton("Modifica Negozio", "/view/interface1/ManageShop1.fxml"));
         vBox.getChildren().add(logOutButton("Logout"));
     }
 

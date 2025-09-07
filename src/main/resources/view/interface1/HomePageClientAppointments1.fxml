@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface1.PageManageUserAppointmentsGuiController1">
-    <fx:include fx:id="navigationBar" source="navbar.fxml" />
+    <fx:include fx:id="navigationBar" source="navbar1.fxml" />
    <AnchorPane layoutX="233.0" prefHeight="600.0" prefWidth="666.0">
       <children>
          <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-41.0" layoutY="230.0" prefHeight="31.0" prefWidth="255.0" text="Accepted" textFill="#00ff26" AnchorPane.leftAnchor="-41.0" AnchorPane.topAnchor="230.0">
