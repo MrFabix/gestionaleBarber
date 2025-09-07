@@ -33,6 +33,31 @@ public class HomePageBarberGuiController2 implements Observer, Initializable {
 
     private static final String APPOINTMENTS_ITEM_BARBER_FXML = "/view/interface2/AppointmentsItemBarber2.fxml";
 
+
+
+    private void moveRequest(RequestAppointmentsBean2 rBean){
+        AppointmentsItemBarberGuiControllerSecondInterface itemController;
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        Pane pane = null;
+        try {
+            if (Objects.equals(rBean.getState().getId(), "ACCETTATA")) {
+                pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource(APPOINTMENTS_ITEM_BARBER_FXML).openStream()));
+                itemController = fxmlLoader.getController();
+                itemController.setAll(rBean, controller);
+                itemController.setVisibilityBotton(rBean.getState());
+                this.listNextAppointemtns.getItems().add(pane);
+            } else if (Objects.equals(rBean.getState().getId(), "TERMINATA")) {
+                pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource(APPOINTMENTS_ITEM_BARBER_FXML).openStream()));
+                itemController = fxmlLoader.getController();
+                itemController.setAll(rBean, controller);
+                itemController.setVisibilityBotton(rBean.getState());
+                this.listTerminateAppointments.getItems().add(pane);
+            }
+        }catch (IOException e){
+            ErrorDialog.getInstance().handleException(e);
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try{
@@ -55,29 +80,6 @@ public class HomePageBarberGuiController2 implements Observer, Initializable {
                 ErrorDialog.getInstance().handleException(e);
             }
 
-        }
-    }
-
-    private void moveRequest(RequestAppointmentsBean2 rBean){
-        AppointmentsItemBarberGuiControllerSecondInterface itemController;
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        Pane pane = null;
-        try {
-            if (Objects.equals(rBean.getState().getId(), "ACCETTATA")) {
-                pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource(APPOINTMENTS_ITEM_BARBER_FXML).openStream()));
-                itemController = fxmlLoader.getController();
-                itemController.setAll(rBean, controller);
-                itemController.setVisibilityBotton(rBean.getState());
-                this.listNextAppointemtns.getItems().add(pane);
-            } else if (Objects.equals(rBean.getState().getId(), "TERMINATA")) {
-                pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource(APPOINTMENTS_ITEM_BARBER_FXML).openStream()));
-                itemController = fxmlLoader.getController();
-                itemController.setAll(rBean, controller);
-                itemController.setVisibilityBotton(rBean.getState());
-                this.listTerminateAppointments.getItems().add(pane);
-            }
-        }catch (IOException e){
-            ErrorDialog.getInstance().handleException(e);
         }
     }
 }

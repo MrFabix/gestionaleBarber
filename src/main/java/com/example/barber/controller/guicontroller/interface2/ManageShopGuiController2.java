@@ -29,11 +29,7 @@ import java.util.ResourceBundle;
 
 public class ManageShopGuiController2 implements Initializable {
 
-    private ServiceBean serviceBean = new ServiceBean();
-    private BarberBean2 barberBean = new BarberBean2();
 
-    private IdBean idBean = new IdBean(Session.getInstance().getBarber().getId());
-    private ServiceAppController controller = new ServiceAppController();
 
     @FXML
     private TextField nomeServizio;
@@ -45,6 +41,29 @@ public class ManageShopGuiController2 implements Initializable {
     private TextField inizioOrario;
     @FXML
     private TextField fineOrario;
+
+    private ServiceBean serviceBean = new ServiceBean();
+    private BarberBean2 barberBean = new BarberBean2();
+
+    private IdBean idBean = new IdBean(Session.getInstance().getBarber().getId());
+    private ServiceAppController controller = new ServiceAppController();
+
+
+    @FXML
+    public void upgradeOrarioLavoro(ActionEvent e){
+        BarberAppController barberAppController = new BarberAppController();
+
+        barberBean.setId(Session.getInstance().getBarber().getId());
+        try{
+            barberBean.setInizio(inizioOrario.getText());
+            barberBean.setFine(fineOrario.getText());
+            barberAppController.insertOrarioBarber(barberBean);
+        }catch (SystemException | IllegalArgumentException |UsernameAlreadyTakenException | EmailNotValidException | EmptyInputException ex){
+            ErrorDialog.getInstance().handleException(ex);
+        }
+        new Alert(Alert.AlertType.WARNING, "Orario modificato!").showAndWait();
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -58,6 +77,27 @@ public class ManageShopGuiController2 implements Initializable {
                buildItemVbox(s.getNome_servizio(), prezzo);
            }
        }
+    }
+
+    private void deleteService(HBox row, ServiceAppController controller, ServiceBean serviceBean){
+        listService.getChildren().remove(row);
+        try{
+            controller.deleteService(serviceBean);
+        } catch (SystemException e) {
+            ErrorDialog.getInstance().handleException(e);
+        }
+    }
+
+
+    private void buildItemVbox(String name, String price){
+        HBox row = new HBox(8);
+        Label bullet = new Label("•");
+        Label lblName = new Label(name);
+        Label prezzo = new Label(price);
+        Button remove = new Button("X");
+        remove.setOnAction(e -> deleteService(row, controller, serviceBean));
+        row.getChildren().addAll(bullet, lblName, prezzo, remove);
+        listService.getChildren().add(row);
     }
 
     @FXML
@@ -104,40 +144,9 @@ public class ManageShopGuiController2 implements Initializable {
         nomeServizio.requestFocus();
     }
 
-    private void buildItemVbox(String name, String price){
-        HBox row = new HBox(8);
-        Label bullet = new Label("•");
-        Label lblName = new Label(name);
-        Label prezzo = new Label(price);
-        Button remove = new Button("X");
-        remove.setOnAction(e -> deleteService(row, controller, serviceBean));
-        row.getChildren().addAll(bullet, lblName, prezzo, remove);
-        listService.getChildren().add(row);
-    }
 
-    private void deleteService(HBox row, ServiceAppController controller, ServiceBean serviceBean){
-        listService.getChildren().remove(row);
-        try{
-            controller.deleteService(serviceBean);
-        } catch (SystemException e) {
-            ErrorDialog.getInstance().handleException(e);
-        }
-    }
 
-    @FXML
-    public void upgradeOrarioLavoro(ActionEvent e){
-        BarberAppController barberAppController = new BarberAppController();
 
-        barberBean.setId(Session.getInstance().getBarber().getId());
-        try{
-            barberBean.setInizio(inizioOrario.getText());
-            barberBean.setFine(fineOrario.getText());
-            barberAppController.insertOrarioBarber(barberBean);
-        }catch (SystemException | IllegalArgumentException |UsernameAlreadyTakenException | EmailNotValidException | EmptyInputException ex){
-            ErrorDialog.getInstance().handleException(ex);
-        }
-        new Alert(Alert.AlertType.WARNING, "Orario modificato!").showAndWait();
-    }
 }
 
 

@@ -51,6 +51,25 @@ public class BarberDetailGuiController2 {
     private TextArea description;
 
     @FXML
+    public void bookAppointment(ActionEvent event){
+        List<String> appList = new ArrayList<>();
+        PreFormBarberBean preFormBarberBean = new PreFormBarberBean();
+        preFormBarberBean.setIdBarber((int)bookButton.getUserData());
+        preFormBarberBean.setBarberName(barberName.getText());
+        preFormBarberBean.setBarberAddress(barberAddress.getText());
+        for(String s : servicesList.getItems()){
+            appList.add(s);
+        }
+        preFormBarberBean.setServiceList(appList);
+        try{
+            switchPageAndSet.switchAndSetBookingForm(event, "/view/interface2/BookingForm2.fxml", preFormBarberBean);
+        } catch (SystemException e) {
+            ErrorDialog.getInstance().handleException(e);
+        }
+    }
+
+
+    @FXML
     public void backToBarberList(ActionEvent event){
         try {
             sp.replaceScene(event, "/view/interface2/homePageClient2.fxml");
@@ -94,21 +113,5 @@ public class BarberDetailGuiController2 {
     }
 
 
-    @FXML
-    public void bookAppointment(ActionEvent event){
-        List<String> appList = new ArrayList<>();
-        PreFormBarberBean preFormBarberBean = new PreFormBarberBean();
-        preFormBarberBean.setIdBarber((int)bookButton.getUserData());
-        preFormBarberBean.setBarberName(barberName.getText());
-        preFormBarberBean.setBarberAddress(barberAddress.getText());
-        for(String s : servicesList.getItems()){
-            appList.add(s);
-        }
-        preFormBarberBean.setServiceList(appList);
-        try{
-            switchPageAndSet.switchAndSetBookingForm(event, "/view/interface2/BookingForm2.fxml", preFormBarberBean);
-        } catch (SystemException e) {
-            ErrorDialog.getInstance().handleException(e);
-        }
-    }
+
 }

@@ -34,6 +34,27 @@ public class PageManageBarberAppointmentsGuiController2 implements Observer, Ini
 
     private StatoRichieste state = StatoRichieste.PENDENTE;
 
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try{
+            controller.manageRequestAppointments(this, Session.getInstance().getBarber().getId(), Session.getInstance().getCredentials().getType().getRoleId());
+        }catch (SystemException | EmptyInputException e){
+            ErrorDialog.getInstance().handleException(e);
+        }
+
+    }
+
+    public void reload(){
+        try{
+            controller.manageRequestAppointments(this, Session.getInstance().getBarber().getId(), Session.getInstance().getCredentials().getType().getRoleId());
+        }catch (SystemException | EmptyInputException e ){
+            ErrorDialog.getInstance().handleException(e);
+        }
+    }
+
+
+
     @FXML
     public void showPending(ActionEvent event){
         state = StatoRichieste.PENDENTE;
@@ -64,25 +85,6 @@ public class PageManageBarberAppointmentsGuiController2 implements Observer, Ini
         listViewAppointments.getItems().clear();
         reload();
     }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        try{
-            controller.manageRequestAppointments(this, Session.getInstance().getBarber().getId(), Session.getInstance().getCredentials().getType().getRoleId());
-        }catch (SystemException | EmptyInputException e){
-            ErrorDialog.getInstance().handleException(e);
-        }
-
-    }
-
-    public void reload(){
-        try{
-            controller.manageRequestAppointments(this, Session.getInstance().getBarber().getId(), Session.getInstance().getCredentials().getType().getRoleId());
-        }catch (SystemException | EmptyInputException e ){
-            ErrorDialog.getInstance().handleException(e);
-        }
-    }
-
 
 
 

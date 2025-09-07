@@ -60,23 +60,6 @@ public class BookingFormGuiController2 {
     private SwitchPage switchPage = new SwitchPage();
 
 
-    public void setAll(PreFormBarberBean bean){
-            List<String> serviceList;
-            clientBean = Session.getInstance().getUser();
-            nameField.setText(clientBean.getName());
-            phoneField.setText(clientBean.getPhone());
-            emailField.setText(clientBean.getEmail());
-            this.preFormBarberBean.setIdBarber(bean.getIdBarber());
-            this.preFormBarberBean.setBarberName(bean.getBarberName());
-            this.preFormBarberBean.setBarberAddress(bean.getBarberAddress());
-            serviceList = bean.getServiceList();
-
-            for(String s : serviceList){
-                serviceComboBox.getItems().add(s);
-            }
-
-    }
-
 
     @FXML
     private void handleBooking(ActionEvent event) {
@@ -123,6 +106,23 @@ public class BookingFormGuiController2 {
         }
     }
 
+
+    public void setAll(PreFormBarberBean bean){
+        List<String> serviceList;
+        clientBean = Session.getInstance().getUser();
+        nameField.setText(clientBean.getName());
+        phoneField.setText(clientBean.getPhone());
+        emailField.setText(clientBean.getEmail());
+        this.preFormBarberBean.setIdBarber(bean.getIdBarber());
+        this.preFormBarberBean.setBarberName(bean.getBarberName());
+        this.preFormBarberBean.setBarberAddress(bean.getBarberAddress());
+        serviceList = bean.getServiceList();
+
+        for(String s : serviceList){
+            serviceComboBox.getItems().add(s);
+        }
+
+    }
 
 
 }

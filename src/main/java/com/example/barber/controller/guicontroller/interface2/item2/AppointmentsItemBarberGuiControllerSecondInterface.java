@@ -41,6 +41,46 @@ public class AppointmentsItemBarberGuiControllerSecondInterface{
     private Label labelStato;
 
 
+    @FXML
+    public void acceptApp(ActionEvent event){
+        try{
+            checkRequestAppController.setStateAppointments(rBean, StatoRichieste.ACCETTATA);
+            rBean.setState(StatoRichieste.ACCETTATA);
+            checkRequestAppController.addAppointmentsToList(rBean);
+            switchPage.replaceScene(event, "/view/interface2/HomePageBarberAppointments2.fxml");
+        }catch (Exception e){
+            ErrorDialog.getInstance().handleException(e);
+        }
+
+    }
+
+    @FXML
+    public void terminateApp(ActionEvent event){
+        try{
+            checkRequestAppController.setStateAppointments(rBean, StatoRichieste.TERMINATA);
+            rBean.setState(StatoRichieste.ACCETTATA);
+            checkRequestAppController.addAppointmentsToList(rBean);
+            switchPage.replaceScene(event, "/view/interface2/HomePageBarber2.fxml");
+        }catch (Exception e){
+            ErrorDialog.getInstance().handleException(e);
+        }
+
+    }
+
+
+    @FXML
+    public void refutedApp(ActionEvent event) {
+        try{
+            checkRequestAppController.setStateAppointments(rBean, StatoRichieste.RIFIUTATA);
+            rBean.setState(StatoRichieste.RIFIUTATA);
+            checkRequestAppController.addAppointmentsToList(rBean);
+            switchPage.replaceScene(event, "/view/interface2/HomePageBarberAppointments2.fxml");
+        }catch (Exception e){
+            ErrorDialog.getInstance().handleException(e);
+        }
+
+    }
+
 
 
     public void setAll(RequestAppointmentsBean2 requestAppointmentsBean2, CheckRequestAppController checkRequestAppController){
@@ -83,44 +123,6 @@ public class AppointmentsItemBarberGuiControllerSecondInterface{
         }
     }
 
-    @FXML
-    public void refutedApp(ActionEvent event) {
-        try{
-            checkRequestAppController.setStateAppointments(rBean, StatoRichieste.RIFIUTATA);
-            rBean.setState(StatoRichieste.RIFIUTATA);
-            checkRequestAppController.addAppointmentsToList(rBean);
-            switchPage.replaceScene(event, "/view/interface2/HomePageBarberAppointments2.fxml");
-        }catch (Exception e){
-            ErrorDialog.getInstance().handleException(e);
-        }
-
-    }
-
-    @FXML
-    public void acceptApp(ActionEvent event){
-        try{
-            checkRequestAppController.setStateAppointments(rBean, StatoRichieste.ACCETTATA);
-            rBean.setState(StatoRichieste.ACCETTATA);
-            checkRequestAppController.addAppointmentsToList(rBean);
-            switchPage.replaceScene(event, "/view/interface2/HomePageBarberAppointments2.fxml");
-        }catch (Exception e){
-            ErrorDialog.getInstance().handleException(e);
-        }
-
-    }
-
-    @FXML
-    public void terminateApp(ActionEvent event){
-        try{
-            checkRequestAppController.setStateAppointments(rBean, StatoRichieste.TERMINATA);
-            rBean.setState(StatoRichieste.ACCETTATA);
-            checkRequestAppController.addAppointmentsToList(rBean);
-            switchPage.replaceScene(event, "/view/interface2/HomePageBarber2.fxml");
-        }catch (Exception e){
-            ErrorDialog.getInstance().handleException(e);
-        }
-
-    }
 
 
 

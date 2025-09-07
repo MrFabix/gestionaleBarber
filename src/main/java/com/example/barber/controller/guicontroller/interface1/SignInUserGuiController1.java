@@ -20,10 +20,6 @@ public class SignInUserGuiController1 {
 
     //Dichiaro uno ClientBean che prende tutti i details di clienti(Name, surname, e-mail, telephone, gender)
     ClientBean clientBean = new ClientBean();
-
-
-
-
     private SwitchPage sp = new SwitchPage();
 
     @FXML
@@ -40,20 +36,6 @@ public class SignInUserGuiController1 {
     private TextField surname;
     @FXML
     private ComboBox<String> genderField;
-
-    @FXML
-    public void initialize() {
-        genderField.getItems().addAll("Male", "Female");
-    }
-
-    @FXML
-    private void backToWelcomePage(ActionEvent event){
-        try{
-            sp.replaceScene(event, "/view/interface1/welcomePage1.fxml");
-        }catch(SystemException e){
-            ErrorDialog.getInstance().handleException(e);
-        }
-    }
 
     @FXML
     private void signInUser(ActionEvent event){
@@ -84,4 +66,20 @@ public class SignInUserGuiController1 {
             ErrorDialog.getInstance().handleException(e);
         }
     }
+
+    @FXML
+    public void initialize() {
+        genderField.getItems().addAll("Male", "Female");
+    }
+
+    @FXML
+    private void backToWelcomePage(ActionEvent event){
+        try{
+            sp.replaceScene(event, "/view/interface1/welcomePage1.fxml");
+        }catch(SystemException e){
+            ErrorDialog.getInstance().handleException(e);
+        }
+    }
+
+
 }

@@ -45,6 +45,18 @@ public class ManageShopGuiController1 implements Initializable {
     @FXML
     private TextField fineOrario;
 
+    private void buildItemVbox(String name, String price){
+        HBox row = new HBox(8);
+        Label bullet = new Label("•");
+        Label lblName = new Label(name);
+        Label prezzo = new Label(price);
+        Button remove = new Button("X");
+        remove.setOnAction(e -> deleteService(row, controller, serviceBean));
+        row.getChildren().addAll(bullet, lblName, prezzo, remove);
+        listService.getChildren().add(row);
+    }
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
        List<ServiceBean> serviceBeanList;
@@ -103,16 +115,7 @@ public class ManageShopGuiController1 implements Initializable {
         nomeServizio.requestFocus();
     }
 
-    private void buildItemVbox(String name, String price){
-        HBox row = new HBox(8);
-        Label bullet = new Label("•");
-        Label lblName = new Label(name);
-        Label prezzo = new Label(price);
-        Button remove = new Button("X");
-        remove.setOnAction(e -> deleteService(row, controller, serviceBean));
-        row.getChildren().addAll(bullet, lblName, prezzo, remove);
-        listService.getChildren().add(row);
-    }
+
 
     private void deleteService(HBox row, ServiceAppController controller, ServiceBean serviceBean){
         listService.getChildren().remove(row);
