@@ -2,7 +2,6 @@ package com.example.barber.utils.bean;
 
 import com.example.barber.utils.exception.Trigger;
 import com.example.barber.utils.exception.myexception.EmptyInputException;
-import com.example.barber.utils.exception.myexception.PasswordNotCompliantException;
 import com.example.barber.utils.ruoli.Role;
 
 public class CredentialsBean {
@@ -54,7 +53,7 @@ public class CredentialsBean {
         }
     }
 
-    public void setPassword(String password) throws EmptyInputException, PasswordNotCompliantException{
+    public void setPassword(String password) throws EmptyInputException{
        if (password.equals("")) {
             trigger.throwEmptyInputException("Password");
         }else {
