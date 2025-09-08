@@ -23,16 +23,15 @@ import java.util.ResourceBundle;
 public class HomePageClientGuiController1 implements Observer, Initializable {
 
     @FXML
-    private ListView<Pane> barberListView;  // La ListView che mostrerà i barbieri
+    private ListView<Pane> barberListView;
     @FXML
-    private TextField searchBarber; // Barra di ricerca
+    private TextField searchBarber;
 
     private BarberBean1 barberBean1 = new BarberBean1();
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("Sei dentro l'initialize di HomePageClient2");
         BarberAppController barberAppController = new BarberAppController();
         try {
             barberAppController.addToList(this);
@@ -46,21 +45,16 @@ public class HomePageClientGuiController1 implements Observer, Initializable {
 
     @Override
     public void update(Object ob) {
-        System.out.println(">> Loaded BarberItemGuiController");
         FXMLLoader fxmlLoader = new FXMLLoader();
         Pane pane;
         SetterClass setterClass = new SetterClass();
 
-        if (ob instanceof BarberBean bBean) {
+        if (ob instanceof BarberBean bean) {
             try {
                 setterClass.setBarber((BarberBean)ob,barberBean1);
-                // Carica il layout del barbiere dal file FXML
                 pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource("/view/interface1/BarberItem.fxml")).openStream());
-                // Ottieni il controller del layout caricato
                 BarberItemGuiController controller = fxmlLoader.getController();
-                // Imposta i dettagli del barbiere
                 controller.setBarberDetails(barberBean1);
-                // Aggiungi il pane alla ListView
                 this.barberListView.getItems().add(pane);
             } catch (Exception e) {
                 ErrorDialog.getInstance().handleException(e);

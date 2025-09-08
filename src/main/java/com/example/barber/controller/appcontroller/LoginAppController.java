@@ -8,7 +8,6 @@ import com.example.barber.utils.bean.CredentialsBean;
 import com.example.barber.utils.dao.sql.BarberDAO;
 import com.example.barber.utils.dao.sql.ModeratorDAO;
 import com.example.barber.utils.dao.sql.ClientDAOSql;
-import com.example.barber.utils.exception.Trigger;
 import com.example.barber.utils.exception.myexception.*;
 import com.example.barber.utils.dao.sql.LoginDAO;
 import com.example.barber.utils.Session;
@@ -28,7 +27,6 @@ public class LoginAppController {
         if(credentialsModel.getType() == null){
             throw new WrongCredentialsException();
         }else if (credentialsModel.getType().getRoleId().equals("CLIENTE")) {
-            System.out.println("SEI DENTRO LOGINAPPCONTROLLER DEL CLIENTE PRIMA DI USERMODEL");
             ClientModel clientModel = null;
             ClientDAOSql userDAOSql = new ClientDAOSql();
             clientModel = userDAOSql.getUserByUsername(credentialsBean.getUsername());

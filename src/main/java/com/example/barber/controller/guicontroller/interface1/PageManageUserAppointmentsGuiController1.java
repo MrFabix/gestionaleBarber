@@ -43,25 +43,25 @@ public class PageManageUserAppointmentsGuiController1 implements Observer, Initi
     }
 
     private void handleRequest(RequestAppointmentsBean rBean){
-        AppointmentsItemUserGuiController1 controller;
+        AppointmentsItemUserGuiController1 itemController;
         FXMLLoader fxmlLoader = new FXMLLoader();
         Pane pane = null;
         try{
             if(Objects.equals(rBean.getState().getId(), "PENDENTE")){
                 pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource(APPOINTMENTS_ITEM_FXML).openStream()));
-                controller = fxmlLoader.getController();
-                controller.setAll(rBean);
+                itemController = fxmlLoader.getController();
+                itemController.setAll(rBean);
                 this.listViewPendingAppointments.getItems().add(pane);
             }else if(Objects.equals(rBean.getState().getId(), "RIFIUTATA")){
                 pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource(APPOINTMENTS_ITEM_FXML).openStream()));
-                controller = fxmlLoader.getController();
-                controller.setAll(rBean);
+                itemController = fxmlLoader.getController();
+                itemController.setAll(rBean);
                 this.listViewRefiutedDeclined.getItems().add(pane);
                 //SETTA IL PANE RIFIUTATA
             } else if (Objects.equals(rBean.getState().getId(), "ACCETTATA") || Objects.equals(rBean.getState().getId(), "TERMINATA")) {
                 pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource(APPOINTMENTS_ITEM_FXML).openStream()));
-                controller = fxmlLoader.getController();
-                controller.setAll(rBean);
+                itemController = fxmlLoader.getController();
+                itemController.setAll(rBean);
                 this.listViewAcceptedAppointments.getItems().add(pane);
                 //SETTA IL PANE ACCETATA
             }

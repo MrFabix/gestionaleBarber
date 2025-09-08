@@ -26,12 +26,6 @@ public class AppointmentsItemUserGuiControllerSecondInterface{
 
 
     public void setAll(RequestAppointmentsBean2 rBean){
-        System.out.println("Sei dentro il sett all del item cotntrolle"+rBean.getIdAppointement());
-        System.out.println("Sei dentro il sett all del item cotntrolle"+rBean.getNameBarber());
-        System.out.printf("Item -> barber=%s, addr=%s, serv=%s, data=%s, ora=%s, stato=%s%n",
-                rBean.getNameBarber(), rBean.getAddressBarber(), rBean.getService(),
-                rBean.getDate(), rBean.getOrario(), rBean.getState());
-
         labelName.setText(rBean.getNameBarber());
         labelIndirizzo.setText(rBean.getAddressBarber());
         labelServizio.setText(rBean.getService());
