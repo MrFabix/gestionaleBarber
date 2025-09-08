@@ -95,7 +95,7 @@ public class ManageShopGuiController2 implements Initializable {
             barberBean.setInizio(inizioOrario.getText());
             barberBean.setFine(fineOrario.getText());
             barberAppController.insertOrarioBarber(barberBean);
-        }catch (SystemException | IllegalArgumentException |UsernameAlreadyTakenException | EmailNotValidException | EmptyInputException ex){
+        }catch (SystemException | IllegalArgumentException ex){
             ErrorDialog.getInstance().handleException(ex);
         }
         new Alert(Alert.AlertType.WARNING, "Orario modificato!").showAndWait();
@@ -127,18 +127,18 @@ public class ManageShopGuiController2 implements Initializable {
 
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        List<ServiceBean> serviceBeanList;
-        serviceBeanList = controller.getServiceBarber(idBean);
-        if(serviceBeanList == null){
+    public void initialize(URL location, ResourceBundle resources) {
+        List<ServiceBean> servizi = controller.getServiceBarber(idBean);
+        if (servizi == null || servizi.isEmpty()) {
             listService.getChildren().clear();
-        }else {
-            for (ServiceBean s : serviceBeanList) {
-                String prezzo = String.format(java.util.Locale.US, "%.2f", s.getPrezzo());
-                buildItemVbox(s.getNomeServizio(), prezzo);
-            }
+            return;
+        }
+        for (ServiceBean servizio : servizi) {
+            String prezzoFormattato = String.format(java.util.Locale.US, "%.2f", servizio.getPrezzo());
+            buildItemVbox(servizio.getNomeServizio(), prezzoFormattato);
         }
     }
+
 
 
 }

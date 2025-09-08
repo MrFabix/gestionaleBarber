@@ -29,6 +29,23 @@ public class BookingFormGuiController2 {
     private PreFormBarberBean preFormBarberBean = new PreFormBarberBean();
 
 
+    public void setAll(PreFormBarberBean bean){
+        List<String> serviceList;
+        clientBean = Session.getInstance().getUser();
+        nameField.setText(clientBean.getName());
+        phoneField.setText(clientBean.getPhone());
+        emailField.setText(clientBean.getEmail());
+        this.preFormBarberBean.setIdBarber(bean.getIdBarber());
+        this.preFormBarberBean.setBarberName(bean.getBarberName());
+        this.preFormBarberBean.setBarberAddress(bean.getBarberAddress());
+        serviceList = bean.getServiceList();
+
+        for(String s : serviceList){
+            serviceComboBox.getItems().add(s);
+        }
+
+    }
+
     @FXML
     private TextField nameField;
     @FXML
@@ -94,22 +111,6 @@ public class BookingFormGuiController2 {
     }
 
 
-    public void setAll(PreFormBarberBean bean){
-        List<String> serviceList;
-        clientBean = Session.getInstance().getUser();
-        nameField.setText(clientBean.getName());
-        phoneField.setText(clientBean.getPhone());
-        emailField.setText(clientBean.getEmail());
-        this.preFormBarberBean.setIdBarber(bean.getIdBarber());
-        this.preFormBarberBean.setBarberName(bean.getBarberName());
-        this.preFormBarberBean.setBarberAddress(bean.getBarberAddress());
-        serviceList = bean.getServiceList();
-
-        for(String s : serviceList){
-            serviceComboBox.getItems().add(s);
-        }
-
-    }
 
 
 }
