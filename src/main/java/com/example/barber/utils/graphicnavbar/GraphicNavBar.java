@@ -7,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
-import static javafx.scene.paint.Color.web;
 
 public class GraphicNavBar {
 
@@ -27,14 +26,14 @@ public class GraphicNavBar {
     }
 
 
-    private StackPane createPane(String userName, Color Color) {
+    private StackPane createPane(String userName, Color color) {
         Label label1 = new Label();
         StackPane pane = new StackPane();
         label1.setText("Benvenuto "+ userName);
 
         pane.setPrefWidth(207.0);
         pane.setPrefHeight(74.0);
-        pane.setBackground(new Background(new BackgroundFill(Color, CornerRadii.EMPTY, Insets.EMPTY)));
+        pane.setBackground(new Background(new BackgroundFill(color, CornerRadii.EMPTY, Insets.EMPTY)));
         StackPane.setAlignment(label1, Pos.CENTER);
         pane.getChildren().add(label1);
         return pane;

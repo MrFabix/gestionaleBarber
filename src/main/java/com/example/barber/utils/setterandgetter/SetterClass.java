@@ -45,7 +45,7 @@ public class SetterClass{
 
     }
 
-    public void setCredentialsBeanFromCredentialsModel(CredentialsBean credentialsBean, CredentialsModel credentialsModel) throws EmptyInputException, PasswordNotCompliantException {
+    public void setCredentialsBeanFromCredentialsModel(CredentialsBean credentialsBean, CredentialsModel credentialsModel) throws EmptyInputException {
         credentialsBean.setUsername(credentialsModel.getUsername());
         credentialsBean.setPassword(credentialsModel.getPassword());
         credentialsBean.setType(credentialsModel.getType());
@@ -82,7 +82,7 @@ public class SetterClass{
 
     }
 
-    public void setRequestApp(RequestAppointmentsBean rBean, RequestAppointmentsBean requestAppointmentsBean1) throws EmptyInputException{
+    public void setRequestApp(RequestAppointmentsBean rBean, RequestAppointmentsBean requestAppointmentsBean1){
         rBean.setIdAppointement(requestAppointmentsBean1.getIdAppointement());
         rBean.setIdBarber(requestAppointmentsBean1.getIdBarber());
         rBean.setIdUser(requestAppointmentsBean1.getIdUser());

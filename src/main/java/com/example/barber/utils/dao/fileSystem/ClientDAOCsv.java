@@ -1,10 +1,10 @@
-package com.example.barber.utils.dao.fileSystem;
+package com.example.barber.utils.dao.filesystem;
 
 import com.example.barber.model.CredentialsModel;
 import com.example.barber.model.ClientModel;
 import com.example.barber.utils.dao.ClientDao;
-import com.example.barber.utils.dao.fileSystem.fileCsv.AttributiCliente;
-import com.example.barber.utils.dao.fileSystem.fileCsv.AttributiCredentials;
+import com.example.barber.utils.dao.filesystem.filecsv.AttributiCliente;
+import com.example.barber.utils.dao.filesystem.filecsv.AttributiCredentials;
 import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.myexception.SystemException;
 import com.opencsv.CSVReader;

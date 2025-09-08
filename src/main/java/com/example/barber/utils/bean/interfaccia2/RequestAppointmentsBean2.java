@@ -12,11 +12,11 @@ public class RequestAppointmentsBean2 extends RequestAppointmentsBean {
 
 
 
-    public void setDate(String DD, String MM, String YY) throws EmptyInputException{
+    public void setDate(String dayInsert, String monthInsert, String yearsInsert) throws EmptyInputException{
         // 1) null/blank
-        String dStr = Objects.requireNonNull(DD, "Giorno nullo").trim();
-        String mStr = Objects.requireNonNull(MM, "Mese nullo").trim();
-        String yStr = Objects.requireNonNull(YY, "Anno nullo").trim();
+        String dStr = Objects.requireNonNull(dayInsert, "Giorno nullo").trim();
+        String mStr = Objects.requireNonNull(monthInsert, "Mese nullo").trim();
+        String yStr = Objects.requireNonNull(yearsInsert, "Anno nullo").trim();
         if (dStr.isEmpty() || mStr.isEmpty() || yStr.isEmpty()) {
             throw new IllegalArgumentException("Giorno, mese e anno sono obbligatori.");
         }

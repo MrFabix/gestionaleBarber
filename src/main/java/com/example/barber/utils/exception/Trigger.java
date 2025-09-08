@@ -4,7 +4,6 @@ import java.sql.SQLException;
 
 import com.example.barber.utils.exception.myexception.*;
 
-import javax.naming.Name;
 
 public class Trigger {
     public void throwDBConnectionFailedException(SQLException e) throws DBConnectionFailedException {

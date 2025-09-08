@@ -14,7 +14,7 @@ public class ListAppointmentsEngineering {
 
     private SetterClass setterClass = new SetterClass();
 
-    public List<RequestAppointmentsBean> getAllAppointments(int id, String role) throws SystemException, EmptyInputException{
+    public List<RequestAppointmentsBean> getAllAppointments(int id, String role) throws SystemException{
         List<RequestAppointmentsModel> list = null;
         List<RequestAppointmentsBean> listBean = new ArrayList<>();
         RequestAppointmentsDAO requestAppointmentsDAO = new RequestAppointmentsDAO();

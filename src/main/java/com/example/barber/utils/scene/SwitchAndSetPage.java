@@ -20,9 +20,9 @@ public class SwitchAndSetPage{
             FXMLLoader loader = new FXMLLoader(SwitchAndSetPage.class.getResource(fxml));
             Parent root = loader.load();
             BookingFormPageSetter bookingFormPageSetter = new BookingFormPageSetter();
-            if(loader.getController() instanceof BookingFormGuiController1 bookingFormGuiController1){
+            if(loader.getController() instanceof BookingFormGuiController1 ){
                 bookingFormPageSetter.setter1(barberBean, loader.getController());
-            }else if(loader.getController() instanceof BookingFormGuiController2 bookingFormGuiController2){
+            }else if(loader.getController() instanceof BookingFormGuiController2 ){
                 bookingFormPageSetter.setter2(barberBean, loader.getController());
             }
             SwitchPage.showStage(event,root);
@@ -44,9 +44,9 @@ public class SwitchAndSetPage{
             FXMLLoader loader = new FXMLLoader(SwitchAndSetPage.class.getResource(fxml));
             Parent root = loader.load();
             HomePageClientSetter homePageClientSetter = new HomePageClientSetter();
-            if(loader.getController() instanceof BookingFormGuiController1 bookingFormGuiController1){
+            if(loader.getController() instanceof BookingFormGuiController1){
                 homePageClientSetter.setter1(requestAppointmentsBean, loader.getController());
-            }else if(loader.getController() instanceof BookingFormGuiController2 bookingFormGuiController2){
+            }else if(loader.getController() instanceof BookingFormGuiController2){
                 homePageClientSetter.setter2(requestAppointmentsBean, loader.getController());
             }
             SwitchPage.showStage(event,root);
