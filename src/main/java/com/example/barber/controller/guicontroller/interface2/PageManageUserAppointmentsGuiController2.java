@@ -6,7 +6,6 @@ import com.example.barber.utils.Session;
 import com.example.barber.utils.bean.RequestAppointmentsBean;
 import com.example.barber.utils.bean.interfaccia2.RequestAppointmentsBean2;
 import com.example.barber.utils.exception.ErrorDialog;
-import com.example.barber.utils.exception.myexception.EmptyInputException;
 import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.utils.observer.Observer;
 import com.example.barber.utils.setterandgetter.SetterClass;
@@ -84,7 +83,7 @@ public class PageManageUserAppointmentsGuiController2 implements Observer {
 
 
 
-    public void setAll(RequestAppointmentsBean rBean) throws EmptyInputException {
+    public void setAll(RequestAppointmentsBean rBean){
         setterClass.setRequestApp(this.requestAppointmentsBean2, rBean);
         controller.addAppointmentsToList(requestAppointmentsBean2);
     }

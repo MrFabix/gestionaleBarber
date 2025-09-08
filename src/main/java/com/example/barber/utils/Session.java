@@ -37,7 +37,7 @@ public class Session {
         return credentialsBean;
     }
 
-    public void setCredentials(CredentialsModel credentialsModel) throws EmptyInputException, PasswordNotCompliantException{
+    public void setCredentials(CredentialsModel credentialsModel) throws EmptyInputException{
         if(this.credentialsBean == null){
             this.credentialsBean = new CredentialsBean();
         }
