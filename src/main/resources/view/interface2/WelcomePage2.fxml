@@ -24,7 +24,7 @@
                 style="-fx-background-color: #10b981; -fx-text-fill: white; -fx-background-radius: 999; -fx-font-size: 14px; -fx-font-weight: bold;"/>
 
         <Button fx:id="login" layoutX="100.0" layoutY="150.0" mnemonicParsing="false"
-                text="Login" onAction="#Login"
+                text="Login" onAction="#login2"
                 prefHeight="50.0" prefWidth="160.0"
                 style="-fx-background-color: #6366f1; -fx-text-fill: white; -fx-background-radius: 999; -fx-font-size: 14px; -fx-font-weight: bold;"/>
 

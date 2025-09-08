@@ -4,7 +4,6 @@ import com.example.barber.model.RequestAppointmentsModel;
 import com.example.barber.utils.bean.RequestAppointmentsBean;
 import com.example.barber.utils.dao.sql.RequestAppointmentsDAO;
 import com.example.barber.utils.exception.ErrorDialog;
-import com.example.barber.utils.exception.myexception.EmptyInputException;
 import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.utils.observer.ManageRequestBeanList;
 import com.example.barber.utils.observer.Observer;
@@ -32,7 +31,7 @@ public class CheckRequestAppController {
     }
 
 
-    public void manageRequestAppointments(Observer observer, int id, String role) throws SystemException, EmptyInputException {
+    public void manageRequestAppointments(Observer observer, int id, String role) throws SystemException{
         manageRequestBeanList = new ManageRequestBeanList(observer);
         manageRequestBeanList.addRequestsToList(searchRequestById(id, role));
     }

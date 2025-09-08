@@ -74,7 +74,7 @@ public class BarberDetailGuiController {
             bookButton.setUserData(barberBean1.getId());
             serviceBeanList = serviceAppController.getServiceBarber(id);
             for(ServiceBean s : serviceBeanList){
-                servicesList.getItems().add(s.getNome_servizio());
+                servicesList.getItems().add(s.getNomeServizio());
             }
         } else {
             // Gestisci il caso in cui i dettagli non sono disponibili, magari non tutti i campi sono stati compilati

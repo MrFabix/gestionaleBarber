@@ -1,13 +1,7 @@
 package com.example.barber.utils.setterandgetter;
 
-import com.example.barber.model.BarberModel;
-import com.example.barber.model.ClientModel;
-import com.example.barber.model.CredentialsModel;
-import com.example.barber.model.RequestAppointmentsModel;
-import com.example.barber.utils.bean.BarberBean;
-import com.example.barber.utils.bean.ClientBean;
-import com.example.barber.utils.bean.CredentialsBean;
-import com.example.barber.utils.bean.RequestAppointmentsBean;
+import com.example.barber.model.*;
+import com.example.barber.utils.bean.*;
 import com.example.barber.utils.exception.myexception.*;
 
 public class SetterClass{
@@ -131,5 +125,11 @@ public class SetterClass{
         model.setState(bean.getState());
         model.setOrario(bean.getOrario());
         model.setNameBarber(bean.getNameBarber());
+    }
+
+    public void setServiceBeanFromModel(ServiceBean serviceBean, ServiceModel model){
+        serviceBean.setIdBarber(model.getIdBarber());
+        serviceBean.setNomeServizio(model.getNomeServizio());
+        serviceBean.setPrezzo(model.getPrezzo());
     }
 }

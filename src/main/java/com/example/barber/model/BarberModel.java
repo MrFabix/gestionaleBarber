@@ -1,6 +1,5 @@
 package com.example.barber.model;
 
-import com.example.barber.utils.bean.BarberBean;
 
 public class BarberModel extends ProfileModel {
     private String city;

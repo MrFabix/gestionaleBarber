@@ -1,8 +1,5 @@
 package com.example.barber.model;
 
-import com.example.barber.utils.bean.ClientBean;
-
-
 public class ClientModel extends ProfileModel {
     private String surname;
     private String gender;

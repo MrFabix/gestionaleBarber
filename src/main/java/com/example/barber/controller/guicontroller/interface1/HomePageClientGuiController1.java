@@ -49,9 +49,9 @@ public class HomePageClientGuiController1 implements Observer, Initializable {
         Pane pane;
         SetterClass setterClass = new SetterClass();
 
-        if (ob instanceof BarberBean) {
+        if (ob instanceof BarberBean bean) {
             try {
-                setterClass.setBarber((BarberBean)ob,barberBean1);
+                setterClass.setBarber(bean,barberBean1);
                 pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource("/view/interface1/BarberItem.fxml")).openStream());
                 BarberItemGuiController controller = fxmlLoader.getController();
                 controller.setBarberDetails(barberBean1);

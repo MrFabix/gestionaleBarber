@@ -24,7 +24,7 @@ import java.util.Objects;
 
 public class PageManageUserAppointmentsGuiController2 implements Observer {
     private CheckRequestAppController controller = new CheckRequestAppController();
-    private String APPOINTMENTS_ITEM_FXML = "/view/interface2/AppointmentsItemUser2.fxml";
+    private String appointmentsItemFxml = "/view/interface2/AppointmentsItemUser2.fxml";
     private SetterClass setterClass = new SetterClass();
     RequestAppointmentsBean2 requestAppointmentsBean2 = new RequestAppointmentsBean2();
 
@@ -45,7 +45,7 @@ public class PageManageUserAppointmentsGuiController2 implements Observer {
     public void reload(){
         try{
             controller.manageRequestAppointments(this, Session.getInstance().getUser().getId(), Session.getInstance().getCredentials().getType().getRoleId());
-        }catch (SystemException | EmptyInputException e ){
+        }catch (SystemException e ){
             ErrorDialog.getInstance().handleException(e);
         }
     }
@@ -128,7 +128,7 @@ public class PageManageUserAppointmentsGuiController2 implements Observer {
         AppointmentsItemUserGuiControllerSecondInterface itemController;
         Pane pane = null;
         FXMLLoader fxmlLoader = new FXMLLoader();
-        pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource(APPOINTMENTS_ITEM_FXML).openStream()));
+        pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource(appointmentsItemFxml).openStream()));
         itemController = fxmlLoader.getController();
         itemController.setAll(rBean);
 

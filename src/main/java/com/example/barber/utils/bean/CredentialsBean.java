@@ -1,10 +1,8 @@
 package com.example.barber.utils.bean;
 
-import com.example.barber.model.CredentialsModel;
 import com.example.barber.utils.exception.Trigger;
 import com.example.barber.utils.exception.myexception.EmptyInputException;
 import com.example.barber.utils.exception.myexception.PasswordNotCompliantException;
-import com.example.barber.utils.exception.myexception.PasswordNotEquals;
 import com.example.barber.utils.ruoli.Role;
 
 public class CredentialsBean {

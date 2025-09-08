@@ -65,7 +65,7 @@ public class ManageShopGuiController1 implements Initializable {
        }else {
            for (ServiceBean s : serviceBeanList) {
                String prezzo = String.format(java.util.Locale.US, "%.2f", s.getPrezzo());
-               buildItemVbox(s.getNome_servizio(), prezzo);
+               buildItemVbox(s.getNomeServizio(), prezzo);
            }
        }
     }
@@ -73,8 +73,8 @@ public class ManageShopGuiController1 implements Initializable {
     @FXML
     private void addServiceInVbox() {
 
-        serviceBean.setId_barber(Session.getInstance().getBarber().getId());
-        serviceBean.setNome_servizio(nomeServizio.getText());
+        serviceBean.setIdBarber(Session.getInstance().getBarber().getId());
+        serviceBean.setNomeServizio(nomeServizio.getText());
         String price = costo.getText();
 
         double d = Double.parseDouble(price.trim().replace(',', '.'));

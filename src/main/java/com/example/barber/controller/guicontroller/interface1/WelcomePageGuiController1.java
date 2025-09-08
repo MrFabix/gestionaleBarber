@@ -16,7 +16,7 @@ public class WelcomePageGuiController1 {
     private SwitchPage sp = new SwitchPage();
 
     @FXML
-    private void goToRegistrationChoice(ActionEvent event) throws IOException {
+    private void goToRegistrationChoice(ActionEvent event) {
         try{
             sp.replaceScene(event, "/view/interface1/registrationChoice1.fxml");
         }catch(SystemException e){
@@ -27,7 +27,7 @@ public class WelcomePageGuiController1 {
 
 
     @FXML
-    public void switchInterface(ActionEvent event) throws IOException {
+    public void switchInterface(ActionEvent event)  {
         try {
             sp.replaceScene(event, "/view/interface2/WelcomePage2.fxml");
         } catch (SystemException e) {
@@ -37,7 +37,7 @@ public class WelcomePageGuiController1 {
 
 
     @FXML
-    private void goToLogin(ActionEvent event) throws IOException {
+    private void goToLogin(ActionEvent event) {
         try{
             sp.replaceScene(event, "/view/interface1/Login1.fxml");
         }catch(SystemException e){

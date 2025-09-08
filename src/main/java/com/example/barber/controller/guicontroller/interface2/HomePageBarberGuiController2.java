@@ -1,7 +1,6 @@
 package com.example.barber.controller.guicontroller.interface2;
 
 import com.example.barber.controller.appcontroller.CheckRequestAppController;
-import com.example.barber.controller.guicontroller.interface1.item.AppointmentsItemBarberGuiController1;
 import com.example.barber.controller.guicontroller.interface2.item2.AppointmentsItemBarberGuiControllerSecondInterface;
 import com.example.barber.utils.Session;
 import com.example.barber.utils.bean.RequestAppointmentsBean;
@@ -62,7 +61,7 @@ public class HomePageBarberGuiController2 implements Observer, Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try{
             controller.manageRequestAppointments(this, Session.getInstance().getBarber().getId(), Session.getInstance().getCredentials().getType().getRoleId());
-        }catch (SystemException | EmptyInputException e){
+        }catch (SystemException e){
             ErrorDialog.getInstance().handleException(e);
         }
 
@@ -74,7 +73,7 @@ public class HomePageBarberGuiController2 implements Observer, Initializable {
 
             RequestAppointmentsBean2 requestAppointmentsBean1 = new RequestAppointmentsBean2();
             try{
-                setterClass.setRequestApp(requestAppointmentsBean1,(RequestAppointmentsBean)ob );
+                setterClass.setRequestApp(requestAppointmentsBean1,rBean );
                 moveRequest(requestAppointmentsBean1);
             }catch (EmptyInputException e ){
                 ErrorDialog.getInstance().handleException(e);

@@ -1,27 +1,27 @@
 package com.example.barber.model;
 
 public class ServiceModel {
-    private int id_barber;
-    private String nome_servizio;
+    private int idBarber;
+    private String nomeServizio;
     private double prezzo;
 
 
 
 
-    public String getNome_servizio() {
-        return nome_servizio;
+    public String getNomeServizio() {
+        return nomeServizio;
     }
 
-    public void setNome_servizio(String nome_servizio) {
-        this.nome_servizio = nome_servizio;
+    public void setNomeServizio(String nomeServizio) {
+        this.nomeServizio = nomeServizio;
     }
 
-    public int getId_barber() {
-        return id_barber;
+    public int getIdBarber() {
+        return idBarber;
     }
 
-    public void setId_barber(int id_barber) {
-        this.id_barber = id_barber;
+    public void setIdBarber(int idBar) {
+        this.idBarber = idBar;
     }
 
     public double getPrezzo() {

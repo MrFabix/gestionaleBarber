@@ -5,11 +5,15 @@ import com.example.barber.utils.bean.ServiceBean;
 import com.example.barber.utils.bean.IdBean;
 import com.example.barber.utils.dao.sql.ServiceDAO;
 import com.example.barber.utils.exception.myexception.SystemException;
+import com.example.barber.utils.setterandgetter.SetterClass;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceAppController {
+
+    private SetterClass setter = new SetterClass();
+
     public ServiceAppController() {
         //Costruttore
     }
@@ -23,7 +27,9 @@ public class ServiceAppController {
            serviceModels = serviceDao.getServiceById(id.getId()); //devo passare l'id del barbiere con un Bean
 
            for(ServiceModel serviceModel : serviceModels){
-                serviceBean.add(new ServiceBean(serviceModel));
+               ServiceBean serviceBean1 = new ServiceBean();
+               setter.setServiceBeanFromModel(serviceBean1, serviceModel);
+                serviceBean.add(serviceBean1);
             }
        } catch (Exception e) {
             throw new IllegalArgumentException(e);
@@ -35,8 +41,8 @@ public class ServiceAppController {
     public void insertService(ServiceBean serviceBean) throws SystemException {
         ServiceModel serviceModel = new ServiceModel();
         serviceModel.setPrezzo(serviceBean.getPrezzo());
-        serviceModel.setId_barber(serviceBean.getId_barber());
-        serviceModel.setNome_servizio(serviceBean.getNome_servizio());
+        serviceModel.setIdBarber(serviceBean.getIdBarber());
+        serviceModel.setNomeServizio(serviceBean.getNomeServizio());
         ServiceDAO serviceDAO = new ServiceDAO();
         serviceDAO.insertService(serviceModel);
     }
@@ -44,8 +50,8 @@ public class ServiceAppController {
     public void deleteService(ServiceBean serviceBean) throws SystemException {
         ServiceModel serviceModel = new ServiceModel();
         serviceModel.setPrezzo(serviceBean.getPrezzo());
-        serviceModel.setId_barber(serviceBean.getId_barber());
-        serviceModel.setNome_servizio(serviceBean.getNome_servizio());
+        serviceModel.setIdBarber(serviceBean.getIdBarber());
+        serviceModel.setNomeServizio(serviceBean.getNomeServizio());
         ServiceDAO serviceDAO = new ServiceDAO();
         serviceDAO.deleteService(serviceModel);
     }

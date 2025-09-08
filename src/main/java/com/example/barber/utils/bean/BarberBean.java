@@ -89,7 +89,7 @@ public class BarberBean extends ProfileBean {
                 ", hours='" + orarioFine + '\'' +
                  "phone"+ phone + '\'' +
                 ", description='" + description + '\'' +
-                ", services=" + (services != null ? String.join(", ", services.getNome_servizio()) : "No services available") +
+                ", services=" + (services != null ? String.join(", ", services.getNomeServizio()) : "No services available") +
                 ", reviews=" + (reviews != null ? String.join(", ", reviews) : "No reviews available") +
                 '}';
     }

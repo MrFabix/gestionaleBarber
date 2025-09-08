@@ -113,8 +113,8 @@ public class Query {
     public void deleteService(ServiceModel serviceModel) throws SystemException {
             String query = "DELETE FROM service WHERE id_barber = ? AND servizi = ? AND prezzo = ?";
             try (PreparedStatement prpstmt = MySqlConnection.getInstance().connect().prepareStatement(query)) {
-                prpstmt.setInt(1, serviceModel.getId_barber());
-                prpstmt.setString(2, serviceModel.getNome_servizio());
+                prpstmt.setInt(1, serviceModel.getIdBarber());
+                prpstmt.setString(2, serviceModel.getNomeServizio());
                 prpstmt.setDouble(3, serviceModel.getPrezzo());
                 prpstmt.executeUpdate();
             } catch (SQLException e) {
@@ -130,8 +130,8 @@ public class Query {
     public void insertService(ServiceModel serviceModel) throws SystemException{
         String query = "INSERT INTO service (id_barber, servizi, prezzo) VALUES (?,?,?)";
         try (PreparedStatement ps = MySqlConnection.getInstance().connect().prepareStatement(query)) {
-            ps.setInt(1, serviceModel.getId_barber());
-            ps.setString(2, serviceModel.getNome_servizio());
+            ps.setInt(1, serviceModel.getIdBarber());
+            ps.setString(2, serviceModel.getNomeServizio());
             ps.setDouble(3, serviceModel.getPrezzo());
 
             ps.executeUpdate();
@@ -391,8 +391,8 @@ public class Query {
 
             while (rs.next()) {
                 ServiceModel serviceModel = new ServiceModel();
-                serviceModel.setId_barber(rs.getInt("id_barber"));
-                serviceModel.setNome_servizio(rs.getString("servizi"));
+                serviceModel.setIdBarber(rs.getInt("id_barber"));
+                serviceModel.setNomeServizio(rs.getString("servizi"));
                 serviceModel.setPrezzo(rs.getInt("prezzo"));
                 serviceModels.add(serviceModel);
             }

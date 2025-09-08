@@ -1,43 +1,22 @@
 package com.example.barber.utils.bean;
 
-import com.example.barber.model.ServiceModel;
-
-import java.util.List;
 
 public class ServiceBean {
-    protected int id_barber;
-    protected String nome_servizio;
+    protected int idBarber;
+    protected String nomeServizio;
     protected double prezzo;
 
 
     public ServiceBean(){
-
+        //Costruttore
     }
 
-    public ServiceBean(int id_barber, String nome_servizio, double prezzo) {
-        this.id_barber = id_barber;
-        this.nome_servizio = nome_servizio;
-        this.prezzo = prezzo;
+    public int getIdBarber() {
+        return idBarber;
     }
 
-    public ServiceBean(ServiceBean serviceBean) {
-        this.id_barber = serviceBean.getId_barber();
-        this.nome_servizio = serviceBean.getNome_servizio();
-        this.prezzo = serviceBean.getPrezzo();
-    }
-
-    public ServiceBean(ServiceModel serviceModel) {
-        this.id_barber = serviceModel.getId_barber();
-        this.nome_servizio = serviceModel.getNome_servizio();
-        this.prezzo = serviceModel.getPrezzo();
-    }
-
-    public int getId_barber() {
-        return id_barber;
-    }
-
-    public void setId_barber(int id_barber) {
-        this.id_barber = id_barber;
+    public void setIdBarber(int idBarber) {
+        this.idBarber = idBarber;
     }
 
     public double getPrezzo() {
@@ -48,12 +27,12 @@ public class ServiceBean {
         this.prezzo = prezzo;
     }
 
-    public String getNome_servizio() {
-        return nome_servizio;
+    public String getNomeServizio() {
+        return nomeServizio;
     }
 
-    public void setNome_servizio(String nome_servizio) {
-        this.nome_servizio = nome_servizio;
+    public void setNomeServizio(String nomeServizio1) {
+        this.nomeServizio = nomeServizio1;
     }
 
 

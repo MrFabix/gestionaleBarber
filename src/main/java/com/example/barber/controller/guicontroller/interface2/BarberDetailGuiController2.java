@@ -91,7 +91,7 @@ public class BarberDetailGuiController2 {
             bookButton.setUserData(barberBean2.getId());
             serviceBeanList = serviceAppController.getServiceBarber(id);
             for(ServiceBean s : serviceBeanList){
-                servicesList.getItems().add(s.getNome_servizio());
+                servicesList.getItems().add(s.getNomeServizio());
             }
         }else{
             throw new IllegalArgumentException("Errore nel caricamento dei dati");

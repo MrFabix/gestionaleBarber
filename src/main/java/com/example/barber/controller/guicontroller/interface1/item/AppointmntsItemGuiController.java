@@ -17,9 +17,9 @@ abstract class AppointemntsItemGuiController {
     @FXML
     protected Label labelStato;
 
-    protected void bind(String name, String Data, String orario, String servizio, String stato) {
+    protected void bind(String name, String data, String orario, String servizio, String stato) {
         labelName.setText(name);
-        labelData.setText(Data);
+        labelData.setText(data);
         labelOrario.setText(orario);
         labelServizio.setText(servizio);
         labelStato.setText(stato);
