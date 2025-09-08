@@ -3,7 +3,6 @@ package com.example.barber.controller.guicontroller.interface2;
 import com.example.barber.controller.appcontroller.BarberAppController;
 import com.example.barber.controller.appcontroller.ServiceAppController;
 import com.example.barber.utils.Session;
-import com.example.barber.utils.bean.BarberBean;
 import com.example.barber.utils.bean.IdBean;
 import com.example.barber.utils.bean.ServiceBean;
 import com.example.barber.utils.bean.interfaccia2.BarberBean2;
@@ -48,42 +47,37 @@ public class ManageShopGuiController2 implements Initializable {
     private IdBean idBean = new IdBean(Session.getInstance().getBarber().getId());
     private ServiceAppController controller = new ServiceAppController();
     @FXML
-    private void addServiceInVbox() {
+    private void aggiungiServizio() {
 
-        serviceBean.setId_barber(Session.getInstance().getBarber().getId());
-        serviceBean.setNome_servizio(nomeServizio.getText());
         String price = costo.getText();
+        double priceDouble = Double.parseDouble(price.trim().replace(',', '.'));
 
-        double d = Double.parseDouble(price.trim().replace(',', '.'));
-        serviceBean.setPrezzo(d);
+        serviceBean.setPrezzo(priceDouble);
         String name = nomeServizio.getText() == null ? "" : nomeServizio.getText().trim();
-
-
         if (name.isEmpty()) {
             new Alert(Alert.AlertType.WARNING, "Inserisci il nome del servizio.").showAndWait();
             return;
         }
-        if (d == 0.0) {
+        if (priceDouble == 0.0) {
             new Alert(Alert.AlertType.WARNING, "Inserisci il prezzo del servizio.").showAndWait();
             return;
         }
-
         try {
-            if (d < 0) throw new NumberFormatException();
+            if (priceDouble < 0) throw new NumberFormatException();
         } catch (NumberFormatException ex) {
-            new Alert(Alert.AlertType.WARNING, "Prezzo non valido.").showAndWait();
+            new Alert(Alert.AlertType.WARNING, "Questo formato non va bene .").showAndWait();
             return;
         }
-
         buildItemVbox(name,price);
-        new Alert(Alert.AlertType.WARNING, "Aggiunto un serivzio").showAndWait();
+        new Alert(Alert.AlertType.WARNING, "Servizio aggiunto!").showAndWait();
         try{
             controller.insertService(serviceBean);
         } catch (SystemException e) {
             ErrorDialog.getInstance().handleException(e);
         }
 
-
+        serviceBean.setId_barber(Session.getInstance().getBarber().getId());
+        serviceBean.setNome_servizio(nomeServizio.getText());
 
         // pulizia campi
         nomeServizio.clear();
@@ -121,10 +115,10 @@ public class ManageShopGuiController2 implements Initializable {
 
 
     private void buildItemVbox(String name, String price){
-        HBox row = new HBox(8);
         Label bullet = new Label("•");
         Label lblName = new Label(name);
         Label prezzo = new Label(price);
+        HBox row = new HBox(8);
         Button remove = new Button("X");
         remove.setOnAction(e -> deleteService(row, controller, serviceBean));
         row.getChildren().addAll(bullet, lblName, prezzo, remove);

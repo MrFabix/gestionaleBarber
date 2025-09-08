@@ -80,7 +80,7 @@
                 <HBox spacing="10" style="-fx-padding: 12 0 0 0;" alignment="CENTER_RIGHT">
                     <Button fx:id="backButton" text="Indietro" onAction="#backToBarberList" style="-fx-background-color: rgba(16,185,129,0.2); -fx-text-fill: #064e3b; -fx-font-size: 14px; -fx-background-radius: 10; -fx-padding: 8 16;"/>
 
-                    <Button fx:id="bookButton" text="Prenota Ora" onAction="#bookAppointment" style="-fx-background-color: #10b981; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-padding: 8 16;"/>
+                    <Button fx:id="bookButton" text="Prenota Ora" onAction="#book" style="-fx-background-color: #10b981; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-padding: 8 16;"/>
                 </HBox>
             </bottom>
         </BorderPane>

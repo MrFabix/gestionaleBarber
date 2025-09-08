@@ -35,18 +35,18 @@ public class BarberDetailGuiController2 {
 
 
     @FXML
-    public void bookAppointment(ActionEvent event){
+    public void book(ActionEvent event){
         List<String> appList = new ArrayList<>();
-        PreFormBarberBean preFormBarberBean = new PreFormBarberBean();
-        preFormBarberBean.setIdBarber((int)bookButton.getUserData());
-        preFormBarberBean.setBarberName(barberName.getText());
-        preFormBarberBean.setBarberAddress(barberAddress.getText());
+        PreFormBarberBean preFB = new PreFormBarberBean();
+        preFB.setIdBarber((int)bookButton.getUserData());
+        preFB.setBarberName(barberName.getText());
+        preFB.setBarberAddress(barberAddress.getText());
         for(String s : servicesList.getItems()){
             appList.add(s);
         }
-        preFormBarberBean.setServiceList(appList);
+        preFB.setServiceList(appList);
         try{
-            switchPageAndSet.switchAndSetBookingForm(event, "/view/interface2/BookingForm2.fxml", preFormBarberBean);
+            switchPageAndSet.switchAndSetBookingForm(event, "/view/interface2/BookingForm2.fxml", preFB);
         } catch (SystemException e) {
             ErrorDialog.getInstance().handleException(e);
         }
@@ -94,12 +94,7 @@ public class BarberDetailGuiController2 {
                 servicesList.getItems().add(s.getNome_servizio());
             }
         }else{
-            barberName.setText("Non disponibile");
-            barberAddress.setText("Non disponibile");
-            barberPhone.setText("Non disponibile");
-            barberHours.setText("Non disponibile");
-            description.setText("Non disponibile");
-            servicesList.getItems().add("Non disponibile");
+            throw new IllegalArgumentException("Errore nel caricamento dei dati");
         }
     }
 

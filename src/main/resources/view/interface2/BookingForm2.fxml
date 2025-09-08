@@ -69,7 +69,7 @@
             </ComboBox>
 
             <Label text="Notes:" GridPane.columnIndex="2" GridPane.rowIndex="11"/>
-            <TextField fx:id="notesField" prefHeight="66.0" prefWidth="278.0"
+            <TextField fx:id="notes" prefHeight="66.0" prefWidth="278.0"
                        promptText="Any additional notes"
                        style="-fx-background-color: #374151; -fx-text-fill: white; -fx-prompt-text-fill: #9CA3AF; -fx-background-radius: 10;"
                        GridPane.columnIndex="3" GridPane.rowIndex="11"/>

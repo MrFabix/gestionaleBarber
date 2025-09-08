@@ -6,7 +6,6 @@ import com.example.barber.utils.Session;
 import com.example.barber.utils.bean.ClientBean;
 import com.example.barber.utils.bean.IdBean;
 import com.example.barber.utils.bean.PreFormBarberBean;
-import com.example.barber.utils.bean.RequestAppointmentsBean;
 import com.example.barber.utils.bean.interfaccia2.ClientBean2;
 import com.example.barber.utils.bean.interfaccia2.RequestAppointmentsBean2;
 import com.example.barber.utils.exception.ErrorDialog;
@@ -18,9 +17,7 @@ import com.example.barber.utils.switchpage.SwitchAndSetPage;
 import com.example.barber.utils.switchpage.SwitchPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
 import java.util.List;
@@ -48,13 +45,10 @@ public class BookingFormGuiController2 {
     @FXML
     private TextField orario;
     @FXML
-    private TextField notesField;
+    private TextField notes;
     @FXML
     private TextField emailField;
-    @FXML
-    private Button bookButton;
-    @FXML
-    private Button goBackButton;
+
 
     private SwitchAndSetPage switchAndSetPage = new SwitchAndSetPage();
     private SwitchPage switchPage = new SwitchPage();
@@ -64,32 +58,25 @@ public class BookingFormGuiController2 {
     @FXML
     private void handleBooking(ActionEvent event) {
         CheckRequestAppController checkRequestAppController = new CheckRequestAppController();
-        RequestAppointmentsBean2 requestAppointmentsBean = new RequestAppointmentsBean2();
-
-
+        RequestAppointmentsBean2 rAppBean = new RequestAppointmentsBean2();
         try{
-            requestAppointmentsBean.setIdUser(clientBean.getId());
-            requestAppointmentsBean.setIdBarber(preFormBarberBean.getIdBarber());
-            requestAppointmentsBean.setNameBarber(preFormBarberBean.getBarberName());
-            requestAppointmentsBean.setPhoneUser(phoneField.getText());
-            requestAppointmentsBean.setNameUser(clientBean.getName());
-            try {
-                requestAppointmentsBean.setDate(dayField.getText(), monthField.getText(), yearField.getText());
-            }catch(IllegalArgumentException | EmptyInputException | InvalidDateException e){
-                ErrorDialog.getInstance().handleException(e);
-            }
-            System.out.println("la data è "+ requestAppointmentsBean.getDate());
-            requestAppointmentsBean.setAddressBarber(preFormBarberBean.getBarberAddress());
-            requestAppointmentsBean.setService(serviceComboBox.getValue());
-            requestAppointmentsBean.setState(StatoRichieste.PENDENTE);
-            requestAppointmentsBean.setOrario(orario.getText());
-            requestAppointmentsBean.setDescription(notesField.getText());
-        }catch( InvalidDateException e ){
+            rAppBean.setIdUser(clientBean.getId());
+            rAppBean.setIdBarber(preFormBarberBean.getIdBarber());
+            rAppBean.setNameBarber(preFormBarberBean.getBarberName());
+            rAppBean.setPhoneUser(phoneField.getText());
+            rAppBean.setNameUser(clientBean.getName());
+            rAppBean.setDate(dayField.getText(), monthField.getText(), yearField.getText());
+            rAppBean.setAddressBarber(preFormBarberBean.getBarberAddress());
+            rAppBean.setService(serviceComboBox.getValue());
+            rAppBean.setState(StatoRichieste.PENDENTE);
+            rAppBean.setOrario(orario.getText());
+            rAppBean.setDescription(notes.getText());
+        }catch( IllegalArgumentException | EmptyInputException | InvalidDateException e ){
             ErrorDialog.getInstance().handleException(e);
         }
-        checkRequestAppController.sendAppointments(requestAppointmentsBean);
+        checkRequestAppController.sendAppointments(rAppBean);
         try{
-            switchAndSetPage.switchAndSetHomePageClient(event, "/view/interface2/HomePageClientAppointments2.fxml", requestAppointmentsBean);
+            switchAndSetPage.switchAndSetHomePageClient(event, "/view/interface2/HomePageClientAppointments2.fxml", rAppBean);
         }catch (SystemException | EmptyInputException e){
             ErrorDialog.getInstance().handleException(e);
         }
