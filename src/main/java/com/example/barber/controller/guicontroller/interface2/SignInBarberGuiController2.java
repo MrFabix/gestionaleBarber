@@ -24,16 +24,38 @@ public class SignInBarberGuiController2 {
     @FXML
     private TextField civicoField;
     @FXML
-    private TextField cityField;
+    private TextField citta;
     @FXML
-    private TextField phoneField;
+    private TextField telefono;
     @FXML
     private TextField emailField;
     @FXML
-    private PasswordField passwordField;
+    private PasswordField psw;
     @FXML
-    private TextField usernameField;
+    private TextField username;
 
+    @FXML
+    private void signInBarber(ActionEvent event) {
+        SignInAppController appController;
+        try {
+            credentialsBean = new CredentialsBean();
+            appController = new SignInAppController();
+            credentialsBean.setUsername(username.getText());
+            credentialsBean.setPassword(psw.getText());
+            credentialsBean.setType(Role.BARBER);
+            barberBean2.setName(barberShopField.getText());
+            barberBean2.setPhone(telefono.getText());
+            barberBean2.setCity(citta.getText());
+            barberBean2.setAddress(streetField.getText(), civicoField.getText());
+            barberBean2.setEmail(emailField.getText());
+            barberBean2.setUsername(username.getText());
+            appController.registerBarber(barberBean2, credentialsBean);
+            sp.replaceScene(event, "/view/interface2/welcomePage2.fxml");
+        } catch (EmptyInputException | EmailNotValidException | PasswordNotCompliantException | SystemException |
+                 UsernameAlreadyTakenException e) {
+            ErrorDialog.getInstance().handleException(e);
+        }
+    }
 
 
     private SwitchPage sp = new SwitchPage();
@@ -47,37 +69,5 @@ public class SignInBarberGuiController2 {
         }
     }
 
-    @FXML
-    private void signInBarber(ActionEvent event) {
-        SignInAppController appController;
-        try {
-            credentialsBean = new CredentialsBean();
-            appController = new SignInAppController();
 
-            //Credenziali
-            credentialsBean.setUsername(usernameField.getText());
-            credentialsBean.setPassword(passwordField.getText());
-            credentialsBean.setType(Role.BARBER);
-
-
-            //Carichiamo il barberBean
-            barberBean2.setName(barberShopField.getText());
-            barberBean2.setPhone(phoneField.getText());
-            barberBean2.setCity(cityField.getText());
-            barberBean2.setAddress(streetField.getText(), civicoField.getText());
-            barberBean2.setEmail(emailField.getText());
-            barberBean2.setUsername(usernameField.getText());
-            System.out.println("Mandiamo bean ");
-
-
-            //Passiamo tutto al controller che si occupa di gestire l'inserimento dela barbiere e delle sue credenziali
-            appController.registerBarber(barberBean2, credentialsBean);
-            sp.replaceScene(event, "/view/interface2/welcomePage2.fxml");
-
-
-        } catch (EmptyInputException | EmailNotValidException | PasswordNotCompliantException | SystemException |
-                 UsernameAlreadyTakenException e) {
-            ErrorDialog.getInstance().handleException(e);
-        }
-    }
 }
