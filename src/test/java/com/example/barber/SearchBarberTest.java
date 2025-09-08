@@ -29,7 +29,7 @@ class SearchBarberTest {
     }
 
     @Test
-    public void testSearchBarberFail() throws SystemException {
+    void testSearchBarberFail() throws SystemException {
 
         Query query = new Query();
         BarberModel model = query.searchBarberById(2);
