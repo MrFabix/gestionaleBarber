@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DBConnectionTest {
+class DBConnectionTest {
     /*
     Testiamo l'avvenuta connessione, se il test ha successo la connessione è stabilita, altimenti è fallita
 
@@ -15,7 +15,7 @@ public class DBConnectionTest {
 
 
         @Test
-        public void testSearchEvent() throws SystemException {
+        void testSearchEvent() throws SystemException {
 
             int value = 0;
 

@@ -10,7 +10,7 @@ public class HomePageClientSetter {
         pageManageUserAppointmentsGuiController1.setAll(requestAppointmentsBean);
     }
 
-    public void setter2(RequestAppointmentsBean requestAppointmentsBean, PageManageUserAppointmentsGuiController2 pageManageUserAppointmentsGuiController2) throws EmptyInputException {
+    public void setter2(RequestAppointmentsBean requestAppointmentsBean, PageManageUserAppointmentsGuiController2 pageManageUserAppointmentsGuiController2){
         pageManageUserAppointmentsGuiController2.setAll(requestAppointmentsBean);
     }
 }

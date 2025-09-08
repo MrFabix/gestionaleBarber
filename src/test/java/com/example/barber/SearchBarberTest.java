@@ -14,10 +14,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SearchBarberTest {
+class SearchBarberTest {
 
     @Test
-    public void testSerachBarber() throws SystemException {
+    void testSerachBarber() throws SystemException {
 
 
         Query query = new Query();
