@@ -117,7 +117,7 @@ public class PageManageUserAppointmentsGuiController2 implements Observer {
             try{
                 setterClass.setRequestApp(requestAppointmentsBean1,(RequestAppointmentsBean)ob );
                 loadPane(requestAppointmentsBean1);
-            }catch (EmptyInputException | IOException e ){
+            }catch (IOException e ){
                 ErrorDialog.getInstance().handleException(e);
             }
 
