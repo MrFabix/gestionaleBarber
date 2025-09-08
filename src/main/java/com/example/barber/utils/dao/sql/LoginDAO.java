@@ -10,7 +10,6 @@ public class LoginDAO {
     Query query = new Query();
 
     public Role getRole(CredentialsModel credentialsModel) throws SystemException {
-        System.out.println("Restituisci Il ruolo di quell'utente");
         return query.getRoleByUsername(credentialsModel.getUsername(), credentialsModel.getPassword());
     }
 }

@@ -220,26 +220,10 @@ public class Query {
     }
 
 
-    public boolean searchUserInLogged(CredentialsModel credentialsModel) throws SystemException {
-        String query = "SELECT * FROM credentials WHERE username = ? AND password = ? AND type = ?";
-        try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
-            // Imposta i parametri della query
-            preparedStatement.setString(1, credentialsModel.getUsername());
-            preparedStatement.setString(2, credentialsModel.getPassword());
-            preparedStatement.setString(3, credentialsModel.getType().getRoleId());
-            //stampo il risultato della query
-            ResultSet rs = preparedStatement.executeQuery();
-            return rs.next();
-        } catch (SQLException e) {
-            SystemException exception = new SystemException();
-            exception.initCause(e);
-            throw exception;
-        }
-    }
 
     public Role getRoleByUsername(String username, String password) throws SystemException {
         Role ruolo = null;
-        String query = "SELECT * FROM credentials WHERE username = ? AND password = ?";
+        String query = "SELECT type FROM credentials WHERE username = ? AND password = ?";
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
@@ -262,7 +246,7 @@ public class Query {
 
 
     public ClientModel searchUserByUsername(String username) throws SystemException {
-        String query = "SELECT * FROM user WHERE username = ?";
+        String query = "SELECT id, name, surname, gender, email, username, phone FROM user WHERE username = ?";
         ClientModel clientModel = null;
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
             preparedStatement.setString(1, username);
@@ -292,7 +276,7 @@ public class Query {
     }
 
     public BarberModel searchBarberByUsername(String username) throws SystemException {
-        String query = "SELECT * FROM barber WHERE username = ?";
+        String query = "SELECT id, username, name, address, city, phone, email  FROM barber WHERE username = ?";
         BarberModel barberModel = null;
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
             preparedStatement.setString(1, username);
@@ -321,7 +305,7 @@ public class Query {
 
     public List<BarberModel> searchAllBarber() throws SystemException {
         List<BarberModel> list = null;
-        String query = "SELECT * FROM barber";
+        String query = "SELECT id, username, name, address, city, phone, email  FROM barber";
         list = new ArrayList<>();
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
             ResultSet rs = preparedStatement.executeQuery();
@@ -347,7 +331,7 @@ public class Query {
 
     public List<BarberModel> searchBarberbyName(String name) throws SystemException {
         List<BarberModel> list = null;
-        String query = "SELECT * FROM barber WHERE name LIKE ?";
+        String query = "SELECT id, username, name, address, city, phone, email FROM barber WHERE name LIKE ?";
         list = new ArrayList<>();
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
             preparedStatement.setString(1, name + "%");
@@ -374,7 +358,7 @@ public class Query {
     //query per prendere i dettagli di un barbiere tramite l'id
 
     public BarberModel searchBarberById(int id) throws SystemException {
-        String query = "SELECT * FROM barber WHERE id = ?";
+        String query = "SELECT id, username, name, address, city, phone, email FROM barber WHERE id = ?";
         BarberModel barberModel = new BarberModel();
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
             preparedStatement.setInt(1, id);
@@ -399,7 +383,7 @@ public class Query {
     }
 
     public List<ServiceModel> serviceByIdBarber(int id) throws SystemException {
-        String query = "SELECT * FROM service WHERE id_barber = ?";
+        String query = "SELECT id_barber, servizi, prezzo FROM service WHERE id_barber = ?";
         List<ServiceModel> serviceModels = new ArrayList<>();
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
             preparedStatement.setInt(1, id);
@@ -474,7 +458,7 @@ public class Query {
 
 
     public RequestAppointmentsModel searchAppointmentsById(int id)throws SystemException{
-        String query = "SELECT * FROM appointments WHERE idBarber = ?";
+        String query = "SELECT idAppointments, idbarber, idutente, data, name_user, name_barber, description, address_barber, state ,service, orario, phone  FROM appointments WHERE idBarber = ?";
         try (PreparedStatement pStmt = MySqlConnection.getInstance().connect().prepareStatement(query)) {
             pStmt.setInt(1, id);
             ResultSet rs = pStmt.executeQuery();

@@ -9,7 +9,6 @@ import java.util.List;
 public class ServiceDAO {
     Query query = new Query();
     public List<ServiceModel> getServiceById(int id) throws SystemException {
-        System.out.println("Sei nel getServiceById");
         return query.serviceByIdBarber(id);
     }
 

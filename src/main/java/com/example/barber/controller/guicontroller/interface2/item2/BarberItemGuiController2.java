@@ -25,7 +25,6 @@ public class BarberItemGuiController2 {
     private void showBarberDetails(ActionEvent event) throws SystemException {
         int id = (int) buttonBarber.getUserData();
         IdBean idBean = new IdBean(id);
-        System.out.println("Stai chiamando il dettaglio del barbiere");
         sp.switchPageId("/view/interface2/BarberDetail2.fxml", event, idBean);
     }
 

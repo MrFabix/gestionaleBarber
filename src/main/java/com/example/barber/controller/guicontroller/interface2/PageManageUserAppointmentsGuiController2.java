@@ -86,7 +86,6 @@ public class PageManageUserAppointmentsGuiController2 implements Observer {
 
     public void setAll(RequestAppointmentsBean rBean) throws EmptyInputException {
         setterClass.setRequestApp(this.requestAppointmentsBean2, rBean);
-        System.out.println("Sei nel settAll"+ requestAppointmentsBean2.getIdAppointement());
         controller.addAppointmentsToList(requestAppointmentsBean2);
     }
 
@@ -126,12 +125,12 @@ public class PageManageUserAppointmentsGuiController2 implements Observer {
     }
 
     private void loadPane(RequestAppointmentsBean2 rBean) throws IOException {
-        AppointmentsItemUserGuiControllerSecondInterface controller;
+        AppointmentsItemUserGuiControllerSecondInterface itemController;
         Pane pane = null;
         FXMLLoader fxmlLoader = new FXMLLoader();
         pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource(APPOINTMENTS_ITEM_FXML).openStream()));
-        controller = fxmlLoader.getController();
-        controller.setAll(rBean);
+        itemController = fxmlLoader.getController();
+        itemController.setAll(rBean);
 
 
         this.listViewAppointments.getItems().add(pane);

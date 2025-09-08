@@ -41,13 +41,11 @@ public class MySqlConnection {
                 if (inputStream == null) {
                     throw new FileNotFoundException("File config.properties non trovato nel percorso: " + resourceName);
                 }
-                System.out.println("inputStream: " + inputStream);
                 Properties props = new Properties();
                 props.load(inputStream);
                 pass = props.getProperty("PASS");
                 user = props.getProperty("USER");
                 dbUrl = props.getProperty("DB_URL");
-                System.out.println("DBURL: " + dbUrl);
                 driverClassName = props.getProperty("DRIVER_CLASS_NAME");
                 Class.forName(driverClassName);
                 DriverManager.setLoginTimeout(5);
