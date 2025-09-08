@@ -1,4 +1,4 @@
-package com.example.barber.utils.switchPage;
+package com.example.barber.utils.switchpage;
 
 import com.example.barber.Main;
 import com.example.barber.controller.guicontroller.interface1.BarberDetailGuiController;
