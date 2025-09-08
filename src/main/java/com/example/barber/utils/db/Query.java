@@ -277,23 +277,21 @@ public class Query {
 
     public BarberModel searchBarberByUsername(String username) throws SystemException {
         String query = "SELECT id, username, name, address, city, phone, email  FROM barber WHERE username = ?";
-        BarberModel barberModel = null;
-        try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
-            preparedStatement.setString(1, username);
-            ResultSet rs = preparedStatement.executeQuery();
+        BarberModel barMod = null;
+        try (PreparedStatement prepState = MySqlConnection.getInstance().connect().prepareStatement(query)) {
+            prepState.setString(1, username);
+            ResultSet rs = prepState.executeQuery();
             if (rs.next()) {
-                barberModel = new BarberModel();
-                barberModel.setUsername(rs.getString(USERNAME));
-                barberModel.setName(rs.getString("name"));
-                barberModel.setAddress(rs.getString(ADDRESS));
-                barberModel.setCity(rs.getString("city"));
-                barberModel.setPhone(rs.getString(PHONE));
-                barberModel.setEmail(rs.getString(EMAIL));
-                barberModel.setId(rs.getInt("id"));
+                barMod = new BarberModel();
+                barMod.setUsername(rs.getString(USERNAME));
+                barMod.setName(rs.getString("name"));
+                barMod.setAddress(rs.getString(ADDRESS));
+                barMod.setCity(rs.getString("city"));
+                barMod.setPhone(rs.getString(PHONE));
+                barMod.setEmail(rs.getString(EMAIL));
+                barMod.setId(rs.getInt("id"));
             }
-            return barberModel;
-
-
+            return barMod;
         } catch (SQLException e) {
             SystemException exception = new SystemException();
             exception.initCause(e);
@@ -359,21 +357,21 @@ public class Query {
 
     public BarberModel searchBarberById(int id) throws SystemException {
         String query = "SELECT id, username, name, address, city, phone, email FROM barber WHERE id = ?";
-        BarberModel barberModel = new BarberModel();
+        BarberModel modelBarber = new BarberModel();
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
             preparedStatement.setInt(1, id);
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
-                barberModel.setUsername(rs.getString(USERNAME));
-                barberModel.setName(rs.getString("name"));
-                barberModel.setAddress(rs.getString(ADDRESS));
-                barberModel.setCity(rs.getString("city"));
-                barberModel.setPhone(rs.getString(PHONE));
-                barberModel.setEmail(rs.getString(EMAIL));
-                barberModel.setId(rs.getInt("id"));
+                modelBarber.setUsername(rs.getString(USERNAME));
+                modelBarber.setName(rs.getString("name"));
+                modelBarber.setAddress(rs.getString(ADDRESS));
+                modelBarber.setCity(rs.getString("city"));
+                modelBarber.setPhone(rs.getString(PHONE));
+                modelBarber.setEmail(rs.getString(EMAIL));
+                modelBarber.setId(rs.getInt("id"));
 
             }
-            return barberModel;
+            return modelBarber;
         } catch (SQLException e) {
             SystemException exception = new SystemException();
             exception.initCause(e);
@@ -384,7 +382,7 @@ public class Query {
 
     public List<ServiceModel> serviceByIdBarber(int id) throws SystemException {
         String query = "SELECT id_barber, servizi, prezzo FROM service WHERE id_barber = ?";
-        List<ServiceModel> serviceModels = new ArrayList<>();
+        List<ServiceModel> servModel = new ArrayList<>();
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
             preparedStatement.setInt(1, id);
             ResultSet rs = preparedStatement.executeQuery();
@@ -394,9 +392,9 @@ public class Query {
                 serviceModel.setIdBarber(rs.getInt("id_barber"));
                 serviceModel.setNomeServizio(rs.getString("servizi"));
                 serviceModel.setPrezzo(rs.getInt("prezzo"));
-                serviceModels.add(serviceModel);
+                servModel.add(serviceModel);
             }
-            return serviceModels;
+            return servModel;
         } catch (SQLException e) {
             SystemException exception = new SystemException();
             exception.initCause(e);
