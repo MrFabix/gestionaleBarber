@@ -4,7 +4,7 @@ import com.example.barber.controller.appcontroller.CheckRequestAppController;
 import com.example.barber.utils.bean.RequestAppointmentsBean;
 import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.statorichiesta.StatoRichieste;
-import com.example.barber.utils.switchpage.SwitchPage;
+import com.example.barber.utils.scene.SwitchPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

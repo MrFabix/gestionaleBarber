@@ -1,4 +1,4 @@
-package com.example.barber.utils.switchpage;
+package com.example.barber.utils.scene;
 
 
 import com.example.barber.Main;
@@ -55,7 +55,7 @@ public class SwitchPage {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = null;
 
-        
+
         try {
             scene = new Scene(fxmlLoader.load());
             // Gestisci BarberDetailGuiController

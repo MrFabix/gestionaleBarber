@@ -1,4 +1,4 @@
-package com.example.barber.utils.switchpage;
+package com.example.barber.utils.scene;
 import com.example.barber.controller.guicontroller.interface1.BookingFormGuiController1;
 
 
@@ -7,8 +7,8 @@ import com.example.barber.utils.bean.PreFormBarberBean;
 import com.example.barber.utils.bean.RequestAppointmentsBean;
 import com.example.barber.utils.exception.myexception.EmptyInputException;
 import com.example.barber.utils.exception.myexception.SystemException;
-import com.example.barber.utils.switchpage.initpage.BookingFormPageSetter;
-import com.example.barber.utils.switchpage.initpage.HomePageClientSetter;
+import com.example.barber.utils.scene.initpage.BookingFormPageSetter;
+import com.example.barber.utils.scene.initpage.HomePageClientSetter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
