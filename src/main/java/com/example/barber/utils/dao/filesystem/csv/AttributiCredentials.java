@@ -1,4 +1,4 @@
-package com.example.barber.utils.dao.filesystem.filecsv;
+package com.example.barber.utils.dao.filesystem.csv;
 
 public class AttributiCredentials {
     private AttributiCredentials(){
