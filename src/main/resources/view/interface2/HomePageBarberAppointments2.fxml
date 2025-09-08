@@ -30,19 +30,19 @@
                 <children>
                     <Button fx:id="btnPending"
                             text="Appuntamenti Pendenti"
-                            onAction="#showPending"
+                            onAction="#pendent"
                             style="-fx-background-color: #10b981; -fx-text-fill: white; -fx-background-radius: 999; -fx-font-size: 13px; -fx-font-weight: bold;"/>
                     <Button fx:id="btnDeclined"
                             text="Appuntamenti Rifiutati"
-                            onAction="#showDeclined"
+                            onAction="#refuted"
                             style="-fx-background-color: #10b981; -fx-text-fill: white; -fx-background-radius: 999; -fx-font-size: 13px; -fx-font-weight: bold;"/>
                     <Button fx:id="btnAccepted"
                             text="Appuntamenti Accettati"
-                            onAction="#showAccepted"
+                            onAction="#accept"
                             style="-fx-background-color: #10b981; -fx-text-fill: white; -fx-background-radius: 999; -fx-font-size: 13px; -fx-font-weight: bold;"/>
                     <Button fx:id="btnTerminated"
                             text="Appuntamenti Terminati"
-                            onAction="#showTerminate"
+                            onAction="#terminate"
                             style="-fx-background-color: #10b981; -fx-text-fill: white; -fx-background-radius: 999; -fx-font-size: 13px; -fx-font-weight: bold;"/>
                 </children>
             </HBox>

@@ -35,7 +35,7 @@ public class PageManageBarberAppointmentsGuiController2 implements Observer, Ini
     private StatoRichieste state = StatoRichieste.PENDENTE;
 
     @FXML
-    public void showPending(ActionEvent event){
+    public void pendent(ActionEvent event){
         state = StatoRichieste.PENDENTE;
         listViewAppointments.getItems().clear();
         reload();
@@ -65,7 +65,7 @@ public class PageManageBarberAppointmentsGuiController2 implements Observer, Ini
 
 
     @FXML
-    public void showDeclined(){
+    public void refuted(){
         state = StatoRichieste.RIFIUTATA;
         listViewAppointments.getItems().clear();
         reload();
@@ -94,19 +94,14 @@ public class PageManageBarberAppointmentsGuiController2 implements Observer, Ini
     }
 
     @FXML
-    public void showAccepted(){
+    public void accept(){
         state = StatoRichieste.ACCETTATA;
         listViewAppointments.getItems().clear();
         reload();
     }
 
 
-    @FXML
-    public void showTerminate(){
-        state = StatoRichieste.TERMINATA;
-        listViewAppointments.getItems().clear();
-        reload();
-    }
+
 
     private boolean matchState(RequestAppointmentsBean rBean){
         String s = rBean.getState().getId();
@@ -123,6 +118,13 @@ public class PageManageBarberAppointmentsGuiController2 implements Observer, Ini
             default:
                 return true;
         }
+    }
+
+    @FXML
+    public void terminate(){
+        state = StatoRichieste.TERMINATA;
+        listViewAppointments.getItems().clear();
+        reload();
     }
 
     private void loadPane(RequestAppointmentsBean2 rBean) throws IOException {
