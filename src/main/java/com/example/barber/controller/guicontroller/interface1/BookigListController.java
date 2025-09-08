@@ -9,9 +9,11 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/*
 public class BookigListController implements Initializable, Observer {
 
 
+    /*
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -19,7 +21,6 @@ public class BookigListController implements Initializable, Observer {
         try {
             listBarber = new ListBarberEngineering();
             GenericBeanList list = new GenericBeanList(this);
-           // list.addBookingToList(listBarber.getAllBarber());
         } catch (Exception e) {
             ErrorDialog.getInstance().handleException(e);
         }
@@ -27,6 +28,10 @@ public class BookigListController implements Initializable, Observer {
 
     @Override
     public void update(Object ob) {
-
+        //Update lista barbieri
     }
+
+
+
 }
+*/

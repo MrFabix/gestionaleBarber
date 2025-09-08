@@ -1,4 +1,4 @@
-package com.example.barber.utils.switchpage;
+package com.example.barber.utils.switchPage;
 
 import com.example.barber.Main;
 import com.example.barber.controller.guicontroller.interface1.BarberDetailGuiController;
@@ -19,6 +19,10 @@ public class SwitchPage {
 
 
     public void replaceScene(ActionEvent event, String fxml) throws SystemException {
+
+        if(fxml.equals("not location set")){
+            throw new IllegalArgumentException("non hai settato volontariamente il path per spostarti");
+        }
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = null;

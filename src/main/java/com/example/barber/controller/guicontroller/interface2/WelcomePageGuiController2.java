@@ -1,18 +1,17 @@
 package com.example.barber.controller.guicontroller.interface2;
 
-import com.example.barber.utils.switchpage.SwitchPage;
+import com.example.barber.utils.switchPage.SwitchPage;
 import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.myexception.SystemException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 
 import java.io.IOException;
 
 public class WelcomePageGuiController2 {
 
         private SwitchPage sPage = new SwitchPage();
-        private com.example.barber.utils.switchpage.SwitchPage sp = new com.example.barber.utils.switchpage.SwitchPage();
+        private com.example.barber.utils.switchPage.SwitchPage sp = new com.example.barber.utils.switchPage.SwitchPage();
 
         @FXML
         public void choiceRegistration(ActionEvent event) throws IOException {

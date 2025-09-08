@@ -8,11 +8,9 @@ public class HomePageModeratorGuiController {
     @FXML
     private ListView<String>  reportedCommentsListView;
 
-
-
     @FXML
     private void initialize() {
-
+        //Not implements
 
     }
 

@@ -11,6 +11,7 @@ import java.util.List;
 
 public class ServiceAppController {
     public ServiceAppController() {
+        //Costruttore
     }
 
     public List<ServiceBean> getServiceBarber(IdBean id){
@@ -20,18 +21,12 @@ public class ServiceAppController {
 
        try {
            serviceModels = serviceDao.getServiceById(id.getId()); //devo passare l'id del barbiere con un Bean
-           if (serviceModels != null && !serviceModels.isEmpty()) {
-               System.out.println("Lista piena: " + serviceModels.size() + " elementi");
-           } else {
-               System.out.println("Lista vuota");
-           }
 
            for(ServiceModel serviceModel : serviceModels){
                 serviceBean.add(new ServiceBean(serviceModel));
             }
        } catch (Exception e) {
-            System.out.println("Errore nel prendere i dettagli del barbiere: " + e.getMessage());
-            return null;
+            throw new IllegalArgumentException(e);
         }
        return serviceBean;
     }

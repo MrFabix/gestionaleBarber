@@ -9,7 +9,9 @@ public class ClientBean extends ProfileBean{
     protected String gender;
 
 
-    public ClientBean(){}
+    public ClientBean(){
+        //Costruttore
+    }
 
     //Getter
     public String getSurname() { return surname; }

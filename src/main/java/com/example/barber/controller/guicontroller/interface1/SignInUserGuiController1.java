@@ -7,7 +7,7 @@ import com.example.barber.utils.bean.ClientBean;
 import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.myexception.*;
 import com.example.barber.utils.ruoli.Role;
-import com.example.barber.utils.switchpage.SwitchPage;
+import com.example.barber.utils.switchPage.SwitchPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 

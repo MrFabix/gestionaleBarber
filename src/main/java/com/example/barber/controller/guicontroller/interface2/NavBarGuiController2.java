@@ -7,7 +7,7 @@ import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.utils.graphicnavbar.GraphicNavBar;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.fxml.FXML;
-import com.example.barber.utils.switchpage.SwitchPage;
+import com.example.barber.utils.switchPage.SwitchPage;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -79,14 +79,14 @@ public class NavBarGuiController2 implements Initializable {
         private void setupCliente(HBox hBox) {
             hBox.getChildren().add(createButton("HomePage Cliente", "/view/interface2/HomePageClient2.fxml"));
             hBox.getChildren().add(createButton("Appuntamenti", "/view/interface2/HomePageClientAppointments2.fxml"));
-            hBox.getChildren().add(createButton("Recensioni Effettuate", "/view/interface2/HomePageClientAppointments2.fxml"));
+            hBox.getChildren().add(createButton("Recensioni Effettuate", "not location set"));
             hBox.getChildren().add(logOutButton("Logout"));
         }
 
         private void setupBarbiere(HBox hBox) {
             hBox.getChildren().add(createButton("HomePage Barbiere", "/view/interface2/HomePageBarber2.fxml"));
             hBox.getChildren().add(createButton("Gestione Appuntamenti", "/view/interface2/HomePageBarberAppointments2.fxml"));
-            hBox.getChildren().add(createButton("Recensioni Ricevute", "/view/interface2/HomePageClientAppointments2.fxml"));
+            hBox.getChildren().add(createButton("Recensioni Ricevute", "not location set"));
             hBox.getChildren().add(createButton("Modifica Negozio", "/view/interface2/ManageShop2.fxml"));
             hBox.getChildren().add(logOutButton("Logout"));
         }

@@ -3,7 +3,7 @@ package com.example.barber.controller.guicontroller.interface2.item2;
 import com.example.barber.utils.bean.IdBean;
 import com.example.barber.utils.bean.interfaccia2.BarberBean2;
 import com.example.barber.utils.exception.myexception.SystemException;
-import com.example.barber.utils.switchpage.SwitchPage;
+import com.example.barber.utils.switchPage.SwitchPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
