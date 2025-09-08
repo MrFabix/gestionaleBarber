@@ -16,7 +16,7 @@ public class SignInAppController {
     private SetterClass setterClass = new SetterClass();
 
 
-    public void registerUser(ClientBean clientBean, CredentialsBean credentialsBean) throws SystemException, PasswordNotCompliantException, EmailNotValidException, EmptyInputException, UsernameAlreadyTakenException {
+    public void registerUser(ClientBean clientBean, CredentialsBean credentialsBean) throws SystemException {
         CredentialsModel credentialsModel = new CredentialsModel();
         setterClass.setCredentialsModelFromCredentialsBean(credentialsModel, credentialsBean);
         ClientModel clientModel = new ClientModel();
@@ -27,7 +27,7 @@ public class SignInAppController {
 
 
 
-    public void registerBarber(BarberBean barberBean, CredentialsBean credentialsBean) throws SystemException, PasswordNotCompliantException, EmailNotValidException, EmptyInputException, UsernameAlreadyTakenException{
+    public void registerBarber(BarberBean barberBean, CredentialsBean credentialsBean) throws SystemException{
         CredentialsModel credentialsModel = new CredentialsModel();
         setterClass.setCredentialsModelFromCredentialsBean(credentialsModel, credentialsBean);
         BarberModel barberModel = new BarberModel();

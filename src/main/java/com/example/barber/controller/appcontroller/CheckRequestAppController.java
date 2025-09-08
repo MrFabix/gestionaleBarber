@@ -47,7 +47,7 @@ public class CheckRequestAppController {
     }
 
     //tutte le richieste che ha mandato un utente
-    private List<RequestAppointmentsBean> searchRequestById(int id, String role) throws SystemException, EmptyInputException {
+    private List<RequestAppointmentsBean> searchRequestById(int id, String role) throws SystemException {
         RequestAppointmentsDAO requestAppointmentsDAO = new RequestAppointmentsDAO();
         List<RequestAppointmentsModel> list = requestAppointmentsDAO.getAllRequestAppointments(id, role);
         List<RequestAppointmentsBean> listBean = new ArrayList<>();
