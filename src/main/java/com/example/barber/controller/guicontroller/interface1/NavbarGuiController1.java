@@ -4,7 +4,7 @@ import com.example.barber.utils.db.MySqlConnection;
 import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.utils.graphicnavbar.GraphicNavBar;
-import com.example.barber.utils.switchpage.SwitchPage;
+import com.example.barber.utils.scene.SwitchPage;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
