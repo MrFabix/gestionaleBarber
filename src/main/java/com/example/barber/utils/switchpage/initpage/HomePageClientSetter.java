@@ -1,4 +1,4 @@
-package com.example.barber.utils.switchPage.initpage;
+package com.example.barber.utils.switchpage.initpage;
 
 import com.example.barber.controller.guicontroller.interface1.PageManageUserAppointmentsGuiController1;
 import com.example.barber.controller.guicontroller.interface2.PageManageUserAppointmentsGuiController2;

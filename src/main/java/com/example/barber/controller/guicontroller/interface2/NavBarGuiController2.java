@@ -7,7 +7,7 @@ import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.utils.graphicnavbar.GraphicNavBar;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.fxml.FXML;
-import com.example.barber.utils.switchPage.SwitchPage;
+import com.example.barber.utils.switchpage.SwitchPage;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
