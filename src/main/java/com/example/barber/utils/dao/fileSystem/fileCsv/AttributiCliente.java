@@ -1,5 +1,7 @@
 package com.example.barber.utils.dao.filesystem.filecsv;
 
+
+
 public class AttributiCliente {
     private AttributiCliente(){}
     public static final int INDEX_ID = 0;
