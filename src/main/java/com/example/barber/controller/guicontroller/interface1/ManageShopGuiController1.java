@@ -3,7 +3,6 @@ package com.example.barber.controller.guicontroller.interface1;
 import com.example.barber.controller.appcontroller.BarberAppController;
 import com.example.barber.controller.appcontroller.ServiceAppController;
 import com.example.barber.utils.Session;
-import com.example.barber.utils.bean.BarberBean;
 import com.example.barber.utils.bean.IdBean;
 import com.example.barber.utils.bean.ServiceBean;
 import com.example.barber.utils.bean.interfaccia1.BarberBean1;
@@ -12,7 +11,6 @@ import com.example.barber.utils.exception.myexception.EmailNotValidException;
 import com.example.barber.utils.exception.myexception.EmptyInputException;
 import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.utils.exception.myexception.UsernameAlreadyTakenException;
-import com.example.barber.utils.setterandgetter.SetterClass;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,18 +19,14 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
-import java.net.UnknownServiceException;
+
 import java.util.List;
 import java.util.ResourceBundle;
 
 
 public class ManageShopGuiController1 implements Initializable {
 
-    private ServiceBean serviceBean = new ServiceBean();
-    private BarberBean1 barberBean = new BarberBean1();
 
-    private IdBean idBean = new IdBean(Session.getInstance().getBarber().getId());
-    private ServiceAppController controller = new ServiceAppController();
 
     @FXML
     private TextField nomeServizio;
@@ -56,6 +50,11 @@ public class ManageShopGuiController1 implements Initializable {
         listService.getChildren().add(row);
     }
 
+    private ServiceBean serviceBean = new ServiceBean();
+    private BarberBean1 barberBean = new BarberBean1();
+
+    private IdBean idBean = new IdBean(Session.getInstance().getBarber().getId());
+    private ServiceAppController controller = new ServiceAppController();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

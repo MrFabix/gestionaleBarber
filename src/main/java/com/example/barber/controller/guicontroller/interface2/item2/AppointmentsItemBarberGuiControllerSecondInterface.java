@@ -42,7 +42,7 @@ public class AppointmentsItemBarberGuiControllerSecondInterface{
 
 
     @FXML
-    public void acceptApp(ActionEvent event){
+    public void accept(ActionEvent event){
         try{
             checkRequestAppController.setStateAppointments(rBean, StatoRichieste.ACCETTATA);
             rBean.setState(StatoRichieste.ACCETTATA);
@@ -55,10 +55,10 @@ public class AppointmentsItemBarberGuiControllerSecondInterface{
     }
 
     @FXML
-    public void terminateApp(ActionEvent event){
+    public void terminate(ActionEvent event){
         try{
-            checkRequestAppController.setStateAppointments(rBean, StatoRichieste.TERMINATA);
             rBean.setState(StatoRichieste.ACCETTATA);
+            checkRequestAppController.setStateAppointments(rBean, StatoRichieste.TERMINATA);
             checkRequestAppController.addAppointmentsToList(rBean);
             switchPage.replaceScene(event, "/view/interface2/HomePageBarber2.fxml");
         }catch (Exception e){
@@ -69,7 +69,7 @@ public class AppointmentsItemBarberGuiControllerSecondInterface{
 
 
     @FXML
-    public void refutedApp(ActionEvent event) {
+    public void declinedApp(ActionEvent event) {
         try{
             checkRequestAppController.setStateAppointments(rBean, StatoRichieste.RIFIUTATA);
             rBean.setState(StatoRichieste.RIFIUTATA);
@@ -103,8 +103,7 @@ public class AppointmentsItemBarberGuiControllerSecondInterface{
                 refutedButton.setDisable(true);
                 terminateAppointments.setVisible(true);
                 break;
-            case RIFIUTATA:
-            case TERMINATA:
+            case TERMINATA , RIFIUTATA:
                 acceptButton.setVisible(false);
                 refutedButton.setVisible(false);
                 terminateAppointments.setVisible(false);

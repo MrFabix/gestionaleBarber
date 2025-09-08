@@ -50,17 +50,17 @@
 
          <!-- Bottoni -->
          <HBox spacing="8" alignment="CENTER_RIGHT">
-            <Button fx:id="acceptButton" text="Accetta " onAction="#acceptApp"
+            <Button fx:id="acceptButton" text="Accetta " onAction="#accept"
                     style="-fx-background-color: green; -fx-text-fill: black;">
                <font><Font size="14.0"/></font>
             </Button>
 
-            <Button fx:id="refutedButton" text="Rifiuta" onAction="#refutedApp"
+            <Button fx:id="refutedButton" text="Rifiuta" onAction="#declinedApp"
                     style="-fx-background-color: #dc0f3f; -fx-text-fill: black;">
                <font><Font size="14.0"/></font>
             </Button>
 
-            <Button fx:id="terminateAppointments" text="Completa" onAction="#terminateApp"
+            <Button fx:id="terminateAppointments" text="Completa" onAction="#terminate"
                     visible="false" style="-fx-background-color: white; -fx-text-fill: black;"/>
          </HBox>
       </HBox>
