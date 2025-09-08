@@ -65,8 +65,6 @@ public class SignInBarberGuiController1 {
             barberBean.setAddress(addressField.getText());
             barberBean.setEmail(emailField.getText());
             barberBean.setUsername(usernameField.getText());
-            System.out.println("Mandiamo bean ");
-
 
             //Passiamo tutto al controller che si occupa di gestire l'inserimento dela barbiere e delle sue credenziali
             appController.registerBarber(barberBean, credentialsBean);

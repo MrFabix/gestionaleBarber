@@ -33,7 +33,6 @@ public class HomePageClientGuiController2 implements Observer, Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("Sei dentro l'initialize di HomePageClient2");
         BarberAppController barberAppController = new BarberAppController();
         try {
             barberAppController.addToList(this);

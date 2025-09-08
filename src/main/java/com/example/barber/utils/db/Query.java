@@ -47,13 +47,13 @@ public class Query {
     //Restituzione Lista appuntamenti pendenti
     public List<RequestAppointmentsModel> searchAllAppointmentsById(int id, String role) throws SystemException {
         String query = switch (role) {
-            case "BARBIERE" -> query = "SELECT appointments.idAppointments ,appointments.idbarber, appointments.idutente, appointments.data, " +
+            case "BARBIERE" -> "SELECT appointments.idAppointments ,appointments.idbarber, appointments.idutente, appointments.data, " +
                     "appointments.name_user, appointments.name_barber, appointments.description, " +
                     "appointments.address_barber, appointments.service, appointments.state, " +
                     "appointments.orario, appointments.phone " +
                     "FROM appointments WHERE idBarber = ?";
 
-            case "CLIENTE" -> query = "SELECT appointments.idAppointments ,appointments.idbarber, appointments.idutente, appointments.data, " +
+            case "CLIENTE" -> "SELECT appointments.idAppointments ,appointments.idbarber, appointments.idutente, appointments.data, " +
                     "appointments.name_user, appointments.name_barber, appointments.description, " +
                     "appointments.address_barber, appointments.service, appointments.state, " +
                     "appointments.orario, appointments.phone " +
@@ -407,7 +407,7 @@ public class Query {
     //query per prendere i dettagli di un Moderator tramite Username
     public ModeratorModel searchModeratorByUsername(String username) throws SystemException {
 
-        String query = "SELECT * FROM moderator WHERE username = ?";
+        String query = "SELECT id, username, name, email, phone FROM moderator WHERE username = ?";
         ModeratorModel moderatorModel = null;
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
             preparedStatement.setString(1, username);
