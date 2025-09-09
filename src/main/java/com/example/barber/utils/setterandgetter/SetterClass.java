@@ -20,7 +20,7 @@ public class SetterClass{
         barberBean1.setServices(barberBean.getServices());
     }
 
-    public void setBarberBeanFromModel(BarberBean barberBean, BarberModel barberModel) throws EmptyInputException, EmailNotValidException, SystemException {
+    public void setBarberBeanFromModel(BarberBean barberBean, BarberModel barberModel) throws EmptyInputException, EmailNotValidException{
         barberBean.setId(barberModel.getId());
         barberBean.setName(barberModel.getName());
         barberBean.setEmail(barberModel.getEmail());
@@ -34,7 +34,7 @@ public class SetterClass{
         barberBean.setServices(barberModel.getServices());
     }
 
-    public void setClientBeanFromModel(ClientBean clientBean, ClientModel clientModel) throws EmptyInputException, EmailNotValidException, SystemException {
+    public void setClientBeanFromModel(ClientBean clientBean, ClientModel clientModel) throws EmptyInputException, EmailNotValidException{
         clientBean.setId(clientModel.getId());
         clientBean.setName(clientModel.getName());
         clientBean.setEmail(clientModel.getEmail());

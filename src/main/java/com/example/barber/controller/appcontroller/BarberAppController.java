@@ -46,7 +46,7 @@ public class BarberAppController {
         barberDao.updateOrarioDB(barberModel);
     }
 
-    public void addToList(Observer ob) throws SystemException, EmptyInputException, UsernameAlreadyTakenException, EmailNotValidException {
+    public void addToList(Observer ob) throws SystemException, EmptyInputException, EmailNotValidException {
         ListBarberEngineering listBarber = new ListBarberEngineering();
         List<BarberBean> listBean = listBarber.getAllBarber();
         GenericBeanList list1 = new GenericBeanList(ob);

@@ -20,7 +20,7 @@ public class ListBarberEngineering {
 
     private SetterClass setterClass = new SetterClass();
 
-    public void listBarber(Observer observer ) throws SystemException, EmptyInputException, UsernameAlreadyTakenException, EmailNotValidException{
+    public void listBarber(Observer observer ) throws SystemException, EmptyInputException, EmailNotValidException{
         GenericBeanList list = new GenericBeanList(observer);
         list.addBarbersToList(getAllBarber());
     }
@@ -43,7 +43,7 @@ public class ListBarberEngineering {
         }
         return listBean;
     }
-    public List<BarberBean> getBarberByName(String name) throws EmptyInputException, UsernameAlreadyTakenException, EmailNotValidException, SystemException {
+    public List<BarberBean> getBarberByName(String name) throws EmptyInputException, EmailNotValidException, SystemException {
         List<BarberModel> list = null;
         List<BarberBean> listBean = new ArrayList<>();
 
