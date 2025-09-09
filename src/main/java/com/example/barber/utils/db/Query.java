@@ -319,15 +319,15 @@ public class Query {
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                BarberModel barberModel = new BarberModel();
-                barberModel.setUsername(rs.getString(USERNAME));
-                barberModel.setName(rs.getString("name"));
-                barberModel.setAddress(rs.getString(ADDRESS));
-                barberModel.setCity(rs.getString("city"));
-                barberModel.setPhone(rs.getString(PHONE));
-                barberModel.setEmail(rs.getString(EMAIL));
-                barberModel.setId(rs.getInt("id"));
-                list.add(barberModel);
+                BarberModel bm = new BarberModel();
+                bm.setUsername(rs.getString(USERNAME));
+                bm.setName(rs.getString("name"));
+                bm.setAddress(rs.getString(ADDRESS));
+                bm.setCity(rs.getString("city"));
+                bm.setPhone(rs.getString(PHONE));
+                bm.setEmail(rs.getString(EMAIL));
+                bm.setId(rs.getInt("id"));
+                list.add(bm);
             }
         } catch (SQLException e) {
             SystemException exception = new SystemException();
@@ -346,15 +346,15 @@ public class Query {
             preparedStatement.setString(1, name + "%");
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                BarberModel barberModel = new BarberModel();
-                barberModel.setUsername(rs.getString(USERNAME));
-                barberModel.setName(rs.getString("name"));
-                barberModel.setAddress(rs.getString(ADDRESS));
-                barberModel.setCity(rs.getString("city"));
-                barberModel.setPhone(rs.getString(PHONE));
-                barberModel.setEmail(rs.getString(EMAIL));
-                barberModel.setId(rs.getInt("id"));
-                list.add(barberModel);
+                BarberModel barMod = new BarberModel();
+                barMod.setUsername(rs.getString(USERNAME));
+                barMod.setName(rs.getString("name"));
+                barMod.setAddress(rs.getString(ADDRESS));
+                barMod.setCity(rs.getString("city"));
+                barMod.setPhone(rs.getString(PHONE));
+                barMod.setEmail(rs.getString(EMAIL));
+                barMod.setId(rs.getInt("id"));
+                list.add(barMod);
             }
         } catch (SQLException e) {
             SystemException exception = new SystemException();
