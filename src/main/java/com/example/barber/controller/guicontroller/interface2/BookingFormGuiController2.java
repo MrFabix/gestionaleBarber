@@ -12,7 +12,7 @@ import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.myexception.EmptyInputException;
 import com.example.barber.utils.exception.myexception.InvalidDateException;
 import com.example.barber.utils.exception.myexception.SystemException;
-import com.example.barber.utils.statorichiesta.StatoRichieste;
+import com.example.barber.utils.enumeration.statorichieste.StatoRichieste;
 import com.example.barber.utils.scene.SwitchAndSetPage;
 import com.example.barber.utils.scene.SwitchPage;
 import javafx.event.ActionEvent;

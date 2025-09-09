@@ -5,7 +5,7 @@ import com.example.barber.utils.bean.CredentialsBean;
 import com.example.barber.utils.bean.interfaccia2.BarberBean2;
 import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.myexception.*;
-import com.example.barber.utils.ruoli.Role;
+import com.example.barber.utils.enumeration.ruoli.Role;
 import com.example.barber.utils.scene.SwitchPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -51,7 +51,7 @@ public class SignInBarberGuiController2 {
             barberBean2.setUsername(username.getText());
             appController.registerBarber(barberBean2, credentialsBean);
             sp.replaceScene(event, "/view/interface2/welcomePage2.fxml");
-        } catch (EmptyInputException | EmailNotValidException | PasswordNotCompliantException | SystemException |
+        } catch (EmptyInputException | EmailNotValidException  | SystemException |
                  UsernameAlreadyTakenException e) {
             ErrorDialog.getInstance().handleException(e);
         }

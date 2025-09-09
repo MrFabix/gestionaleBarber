@@ -6,7 +6,7 @@ import com.example.barber.utils.bean.CredentialsBean;
 import com.example.barber.utils.bean.ClientBean;
 import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.myexception.*;
-import com.example.barber.utils.ruoli.Role;
+import com.example.barber.utils.enumeration.ruoli.Role;
 import com.example.barber.utils.scene.SwitchPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -62,7 +62,7 @@ public class SignInUserGuiController1 {
             appController.registerUser(clientBean, credentialsBean);
             sp.replaceScene(event, "/view/interface1/welcomePage1.fxml");
 
-        }catch( EmptyInputException | SystemException | UsernameAlreadyTakenException | EmailNotValidException  | PasswordNotCompliantException e) {
+        }catch( EmptyInputException | SystemException | UsernameAlreadyTakenException | EmailNotValidException  e) {
             ErrorDialog.getInstance().handleException(e);
         }
     }

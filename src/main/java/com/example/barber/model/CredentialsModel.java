@@ -1,6 +1,6 @@
 package com.example.barber.model;
 
-import com.example.barber.utils.ruoli.Role;
+import com.example.barber.utils.enumeration.ruoli.Role;
 
 public class CredentialsModel {
     private String username;

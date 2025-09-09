@@ -6,9 +6,12 @@ import com.example.barber.model.ClientModel;
 import com.example.barber.utils.bean.BarberBean;
 import com.example.barber.utils.bean.ClientBean;
 import com.example.barber.utils.bean.CredentialsBean;
-import com.example.barber.utils.dao.sql.BarberDAO;
-import com.example.barber.utils.dao.sql.ClientDAOSql;
+import com.example.barber.utils.dao.ClientDao;
+import com.example.barber.utils.dao.sql.BarberDaoSql;
+import com.example.barber.utils.dao.sql.ClientDaoSql;
 import com.example.barber.utils.exception.myexception.*;
+import com.example.barber.utils.factory.daofactory.DaoFactory;
+import com.example.barber.utils.managermode.ModeManager;
 import com.example.barber.utils.setterandgetter.SetterClass;
 
 public class SignInAppController {
@@ -21,8 +24,13 @@ public class SignInAppController {
         setterClass.setCredentialsModelFromCredentialsBean(credentialsModel, credentialsBean);
         ClientModel clientModel = new ClientModel();
         setterClass.setClientModelFromClientBean(clientBean,clientModel);
-        ClientDAOSql userDAOSql = new ClientDAOSql();
-        userDAOSql.addUser(credentialsModel, clientModel);
+
+        DaoFactory daoFactory = DaoFactory.getFactory(ModeManager.get());
+        ClientDao clientDao = daoFactory.clientDao();
+        clientDao.addUser(credentialsModel, clientModel);
+
+        //ClientDaoSql userDAOSql = new ClientDaoSql();
+        //userDAOSql.addUser(credentialsModel, clientModel);
     }
 
 
@@ -32,8 +40,10 @@ public class SignInAppController {
         setterClass.setCredentialsModelFromCredentialsBean(credentialsModel, credentialsBean);
         BarberModel barberModel = new BarberModel();
         setterClass.setBarberModelFromBarberBean(barberModel, barberBean);
-        BarberDAO barberDAO = new BarberDAO();
-        barberDAO.addBarber(credentialsModel, barberModel);
+        BarberDaoSql barberDaoSql = new BarberDaoSql();
+        barberDaoSql.addBarber(credentialsModel, barberModel);
     }
+
+
 
 }

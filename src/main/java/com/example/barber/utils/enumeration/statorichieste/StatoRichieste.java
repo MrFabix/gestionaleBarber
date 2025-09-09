@@ -1,4 +1,4 @@
-package com.example.barber.utils.statorichiesta;
+package com.example.barber.utils.enumeration.statorichieste;
 
 public enum StatoRichieste {
         ACCETTATA("ACCETTATA"),

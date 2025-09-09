@@ -9,7 +9,7 @@ import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.utils.observer.Observer;
 import com.example.barber.utils.setterandgetter.SetterClass;
-import com.example.barber.utils.statorichiesta.StatoRichieste;
+import com.example.barber.utils.enumeration.statorichieste.StatoRichieste;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

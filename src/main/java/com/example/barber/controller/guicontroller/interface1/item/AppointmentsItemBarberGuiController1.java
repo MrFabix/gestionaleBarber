@@ -3,7 +3,7 @@ package com.example.barber.controller.guicontroller.interface1.item;
 import com.example.barber.controller.appcontroller.CheckRequestAppController;
 import com.example.barber.utils.bean.RequestAppointmentsBean;
 import com.example.barber.utils.exception.ErrorDialog;
-import com.example.barber.utils.statorichiesta.StatoRichieste;
+import com.example.barber.utils.enumeration.statorichieste.StatoRichieste;
 import com.example.barber.utils.scene.SwitchPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

@@ -3,7 +3,7 @@ import java.io.File;
 public abstract class   ProfileModel {
     /*
         Questo è il Model del profilo, cioè contiene le informazioni IN COMUNE per gli Users
-        e i Barber
+        e i BarberDao
      */
 
     protected int id ;

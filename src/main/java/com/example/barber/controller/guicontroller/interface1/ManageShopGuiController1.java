@@ -134,7 +134,7 @@ public class ManageShopGuiController1 implements Initializable {
             barberBean.setInizio(inizioOrario.getText());
             barberBean.setFine(fineOrario.getText());
             barberAppController.insertOrarioBarber(barberBean);
-        }catch (SystemException | EmailNotValidException | IllegalArgumentException |EmptyInputException | UsernameAlreadyTakenException ex){
+        }catch (SystemException  | IllegalArgumentException ex){
             ErrorDialog.getInstance().handleException(ex);
         }
 

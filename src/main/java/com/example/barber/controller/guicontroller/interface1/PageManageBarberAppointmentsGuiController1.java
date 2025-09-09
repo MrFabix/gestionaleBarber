@@ -35,7 +35,7 @@ public class PageManageBarberAppointmentsGuiController1 implements Observer, Ini
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try{
             controller.manageRequestAppointments(this, Session.getInstance().getBarber().getId(), Session.getInstance().getCredentials().getType().getRoleId());
-        }catch (SystemException | EmptyInputException e){
+        }catch (SystemException e){
             ErrorDialog.getInstance().handleException(e);
         }
 

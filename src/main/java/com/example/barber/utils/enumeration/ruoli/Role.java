@@ -1,4 +1,4 @@
-package com.example.barber.utils.ruoli;
+package com.example.barber.utils.enumeration.ruoli;
 
 public enum Role {
     CLIENTE("CLIENTE"),

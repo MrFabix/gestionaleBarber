@@ -2,7 +2,7 @@ package com.example.barber.utils.bean;
 
 import com.example.barber.utils.exception.Trigger;
 import com.example.barber.utils.exception.myexception.EmptyInputException;
-import com.example.barber.utils.ruoli.Role;
+import com.example.barber.utils.enumeration.ruoli.Role;
 
 public class CredentialsBean {
 

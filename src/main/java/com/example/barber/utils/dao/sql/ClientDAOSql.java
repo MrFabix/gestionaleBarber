@@ -6,7 +6,7 @@ import com.example.barber.utils.dao.ClientDao;
 import com.example.barber.utils.db.Query;
 import com.example.barber.utils.exception.myexception.SystemException;
 
-public class ClientDAOSql implements ClientDao {
+public class ClientDaoSql implements ClientDao {
     Query query = new Query();
     @Override
     public ClientModel getUserByUsername(String username) throws SystemException {

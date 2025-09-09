@@ -70,15 +70,9 @@ public class HomePageBarberGuiController2 implements Observer, Initializable {
     @Override
     public void update(Object ob) {
         if(ob instanceof RequestAppointmentsBean rBean){
-
             RequestAppointmentsBean2 requestAppointmentsBean1 = new RequestAppointmentsBean2();
-            try{
-                setterClass.setRequestApp(requestAppointmentsBean1,rBean );
-                moveRequest(requestAppointmentsBean1);
-            }catch (EmptyInputException e ){
-                ErrorDialog.getInstance().handleException(e);
-            }
-
+            setterClass.setRequestApp(requestAppointmentsBean1,rBean );
+            moveRequest(requestAppointmentsBean1);
         }
     }
 }

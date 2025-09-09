@@ -3,7 +3,7 @@ package com.example.barber.controller.appcontroller;
 import com.example.barber.model.ServiceModel;
 import com.example.barber.utils.bean.ServiceBean;
 import com.example.barber.utils.bean.IdBean;
-import com.example.barber.utils.dao.sql.ServiceDAO;
+import com.example.barber.utils.dao.sql.ServiceDaoSql;
 import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.utils.setterandgetter.SetterClass;
 
@@ -19,12 +19,12 @@ public class ServiceAppController {
     }
 
     public List<ServiceBean> getServiceBarber(IdBean id){
-        ServiceDAO serviceDao = new ServiceDAO();
+        ServiceDaoSql serviceDaoSql = new ServiceDaoSql();
         List<ServiceBean> serviceBean = new ArrayList<>();
         List<ServiceModel> serviceModels = new ArrayList<>();
 
        try {
-           serviceModels = serviceDao.getServiceById(id.getId()); //devo passare l'id del barbiere con un Bean
+           serviceModels = serviceDaoSql.getServiceById(id.getId()); //devo passare l'id del barbiere con un Bean
 
            for(ServiceModel serviceModel : serviceModels){
                ServiceBean serviceBean1 = new ServiceBean();
@@ -43,8 +43,8 @@ public class ServiceAppController {
         serviceModel.setPrezzo(serviceBean.getPrezzo());
         serviceModel.setIdBarber(serviceBean.getIdBarber());
         serviceModel.setNomeServizio(serviceBean.getNomeServizio());
-        ServiceDAO serviceDAO = new ServiceDAO();
-        serviceDAO.insertService(serviceModel);
+        ServiceDaoSql serviceDaoSql = new ServiceDaoSql();
+        serviceDaoSql.insertService(serviceModel);
     }
 
     public void deleteService(ServiceBean serviceBean) throws SystemException {
@@ -52,7 +52,7 @@ public class ServiceAppController {
         serviceModel.setPrezzo(serviceBean.getPrezzo());
         serviceModel.setIdBarber(serviceBean.getIdBarber());
         serviceModel.setNomeServizio(serviceBean.getNomeServizio());
-        ServiceDAO serviceDAO = new ServiceDAO();
-        serviceDAO.deleteService(serviceModel);
+        ServiceDaoSql serviceDaoSql = new ServiceDaoSql();
+        serviceDaoSql.deleteService(serviceModel);
     }
 }

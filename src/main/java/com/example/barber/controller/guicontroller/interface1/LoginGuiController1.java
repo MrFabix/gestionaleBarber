@@ -4,6 +4,8 @@ import com.example.barber.controller.appcontroller.LoginAppController;
 import com.example.barber.utils.bean.CredentialsBean;
 import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.myexception.*;
+import com.example.barber.utils.managermode.Mode;
+import com.example.barber.utils.managermode.ModeManager;
 import com.example.barber.utils.scene.SwitchPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -40,7 +42,7 @@ public class LoginGuiController1 {
                 } else if (credentialsBean.getType().getRoleId().equals("MODERATORE")) {
                     sp.replaceScene(event, "/view/interface1/homepageModerator.fxml");
                 }
-            }catch (WrongCredentialsException | PasswordNotCompliantException | SystemException | EmptyInputException | UsernameAlreadyTakenException | EmailNotValidException e ){
+            }catch (WrongCredentialsException | SystemException | EmptyInputException | UsernameAlreadyTakenException | EmailNotValidException e ){
                 ErrorDialog.getInstance().handleException(e);
             }
     }
@@ -52,5 +54,7 @@ public class LoginGuiController1 {
             ErrorDialog.getInstance().handleException(e);
         }
     }
+
+
 }
 

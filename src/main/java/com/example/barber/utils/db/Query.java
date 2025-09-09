@@ -4,8 +4,8 @@ package com.example.barber.utils.db;
 import com.example.barber.model.*;
 import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.myexception.SystemException;
-import com.example.barber.utils.ruoli.Role;
-import com.example.barber.utils.statorichiesta.StatoRichieste;
+import com.example.barber.utils.enumeration.ruoli.Role;
+import com.example.barber.utils.enumeration.statorichieste.StatoRichieste;
 
 import java.sql.*;
 import java.util.ArrayList;

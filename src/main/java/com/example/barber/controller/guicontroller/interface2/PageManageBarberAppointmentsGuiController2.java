@@ -9,7 +9,7 @@ import com.example.barber.utils.exception.myexception.EmptyInputException;
 import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.utils.observer.Observer;
 import com.example.barber.utils.setterandgetter.SetterClass;
-import com.example.barber.utils.statorichiesta.StatoRichieste;
+import com.example.barber.utils.enumeration.statorichieste.StatoRichieste;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,7 +47,7 @@ public class PageManageBarberAppointmentsGuiController2 implements Observer, Ini
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try{
             controller.manageRequestAppointments(this, Session.getInstance().getBarber().getId(), Session.getInstance().getCredentials().getType().getRoleId());
-        }catch (SystemException | EmptyInputException e){
+        }catch (SystemException e){
             ErrorDialog.getInstance().handleException(e);
         }
 
@@ -56,7 +56,7 @@ public class PageManageBarberAppointmentsGuiController2 implements Observer, Ini
     public void reload(){
         try{
             controller.manageRequestAppointments(this, Session.getInstance().getBarber().getId(), Session.getInstance().getCredentials().getType().getRoleId());
-        }catch (SystemException | EmptyInputException e ){
+        }catch (SystemException  e ){
             ErrorDialog.getInstance().handleException(e);
         }
     }
@@ -86,7 +86,7 @@ public class PageManageBarberAppointmentsGuiController2 implements Observer, Ini
             try{
                 setterClass.setRequestApp(requestAppointmentsBean1,(RequestAppointmentsBean)ob );
                 loadPane(requestAppointmentsBean1);
-            }catch (EmptyInputException | IOException e ){
+            }catch ( IOException e ){
                 ErrorDialog.getInstance().handleException(e);
             }
 

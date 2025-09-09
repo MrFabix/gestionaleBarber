@@ -2,11 +2,14 @@ package com.example.barber.utils.engineering;
 
 import com.example.barber.model.BarberModel;
 import com.example.barber.utils.bean.BarberBean;
-import com.example.barber.utils.dao.sql.BarberDAO;
+import com.example.barber.utils.dao.BarberDao;
+import com.example.barber.utils.dao.sql.BarberDaoSql;
 import com.example.barber.utils.exception.myexception.EmailNotValidException;
 import com.example.barber.utils.exception.myexception.EmptyInputException;
 import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.utils.exception.myexception.UsernameAlreadyTakenException;
+import com.example.barber.utils.factory.daofactory.DaoFactory;
+import com.example.barber.utils.managermode.ModeManager;
 import com.example.barber.utils.observer.GenericBeanList;
 import com.example.barber.utils.observer.Observer;
 import com.example.barber.utils.setterandgetter.SetterClass;
@@ -27,10 +30,13 @@ public class ListBarberEngineering {
 
         List<BarberModel> list = null;
         List<BarberBean> listBean = null;
-        BarberDAO barberDAO = new BarberDAO();
-        list = barberDAO.getAllBarber();
-        listBean = new ArrayList<>();
 
+
+        DaoFactory daoFactory = DaoFactory.getFactory(ModeManager.get());
+        BarberDao barberDao = daoFactory.barberDao();
+
+        list = barberDao.getAllBarber();
+        listBean = new ArrayList<>();
         for(BarberModel barberModel : list){
             BarberBean barberBean = new BarberBean();
             setterClass.setBarberBeanFromModel(barberBean, barberModel);
@@ -40,10 +46,11 @@ public class ListBarberEngineering {
     }
     public List<BarberBean> getBarberByName(String name) throws EmptyInputException, UsernameAlreadyTakenException, EmailNotValidException, SystemException {
         List<BarberModel> list = null;
-        List<BarberBean> listBean = null;
-        BarberDAO barberDAO = new BarberDAO();
-        list = barberDAO.searchBarber(name);
-        listBean = new ArrayList<>();
+        List<BarberBean> listBean = new ArrayList<>();
+
+        DaoFactory daoFactory = DaoFactory.getFactory(ModeManager.get());
+        BarberDao barberDao = daoFactory.barberDao();
+        list = barberDao.searchBarber(name);
         for(BarberModel barberModel : list){
             BarberBean bean = new BarberBean();
             setterClass.setBarberBeanFromModel(bean, barberModel);

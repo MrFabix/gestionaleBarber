@@ -2,9 +2,12 @@ package com.example.barber.controller.guicontroller.interface1;
 
 import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.myexception.SystemException;
+import com.example.barber.utils.managermode.Mode;
+import com.example.barber.utils.managermode.ModeManager;
 import com.example.barber.utils.scene.SwitchPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 
 import java.io.IOException;
@@ -45,4 +48,26 @@ public class WelcomePageGuiController1 {
         }
 
     }
+
+    @FXML
+    private void attivaDemo(ActionEvent event) {
+        ModeManager.set(Mode.DEMO);
+        Alert ok = new Alert(Alert.AlertType.INFORMATION);
+        ok.setTitle("Modalità");
+        ok.setHeaderText(null);
+        ok.setContentText("Modalità DEMO attivata");
+        ok.showAndWait();
+    }
+
+    @FXML
+    private void disattivaDemo(ActionEvent event) {
+        ModeManager.set(Mode.REAL);
+        Alert ok = new Alert(Alert.AlertType.INFORMATION);
+        ok.setTitle("Modalità");
+        ok.setHeaderText(null);
+        ok.setContentText("Modalità DEMO attivata");
+        ok.showAndWait();
+    }
+
+
 }

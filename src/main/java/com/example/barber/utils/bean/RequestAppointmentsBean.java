@@ -3,7 +3,7 @@ package com.example.barber.utils.bean;
 import com.example.barber.utils.exception.Trigger;
 import com.example.barber.utils.exception.myexception.EmptyInputException;
 import com.example.barber.utils.exception.myexception.InvalidDateException;
-import com.example.barber.utils.statorichiesta.StatoRichieste;
+import com.example.barber.utils.enumeration.statorichieste.StatoRichieste;
 
 import java.time.LocalDate;
 
