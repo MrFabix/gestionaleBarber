@@ -4,14 +4,12 @@ import com.example.barber.model.BarberModel;
 import com.example.barber.utils.bean.BarberBean;
 import com.example.barber.utils.bean.IdBean;
 import com.example.barber.utils.dao.BarberDao;
-import com.example.barber.utils.dao.sql.BarberDaoSql;
 import com.example.barber.utils.engineering.ListBarberEngineering;
 import com.example.barber.utils.exception.myexception.EmailNotValidException;
 import com.example.barber.utils.exception.myexception.EmptyInputException;
 import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.utils.exception.myexception.UsernameAlreadyTakenException;
 import com.example.barber.utils.factory.daofactory.DaoFactory;
-import com.example.barber.utils.managermode.Mode;
 import com.example.barber.utils.managermode.ModeManager;
 import com.example.barber.utils.observer.GenericBeanList;
 import com.example.barber.utils.observer.Observer;
@@ -26,7 +24,7 @@ public class BarberAppController {
     }
 
 
-    public BarberBean getBarberDetails(IdBean id) throws SystemException, EmptyInputException, EmailNotValidException, UsernameAlreadyTakenException {
+    public BarberBean getBarberDetails(IdBean id) throws SystemException, EmptyInputException, EmailNotValidException {
         BarberModel barberModel = null;
 
         DaoFactory daoFactory = DaoFactory.getFactory(ModeManager.get());

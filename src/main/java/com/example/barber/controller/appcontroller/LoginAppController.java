@@ -8,7 +8,6 @@ import com.example.barber.utils.bean.CredentialsBean;
 import com.example.barber.utils.dao.BarberDao;
 import com.example.barber.utils.dao.ClientDao;
 import com.example.barber.utils.dao.LoginDao;
-import com.example.barber.utils.dao.sql.BarberDaoSql;
 import com.example.barber.utils.dao.sql.ModeratorDAO;
 import com.example.barber.utils.exception.myexception.*;
 import com.example.barber.utils.Session;
