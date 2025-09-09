@@ -6,7 +6,7 @@ import com.example.barber.utils.exception.myexception.*;
 
 public class SetterClass{
 
-    public void setBarber(BarberBean barberBean, BarberBean barberBean1) throws EmptyInputException, EmailNotValidException, SystemException {
+    public void setBarber(BarberBean barberBean, BarberBean barberBean1) throws EmptyInputException, EmailNotValidException, SystemException{
         barberBean1.setId(barberBean.getId());
         barberBean1.setName(barberBean.getName());
         barberBean1.setEmail(barberBean.getEmail());

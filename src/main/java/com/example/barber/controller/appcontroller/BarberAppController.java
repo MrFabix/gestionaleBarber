@@ -53,7 +53,7 @@ public class BarberAppController {
         list1.addBarbersToList(listBean);
     }
 
-    public void search(Observer ob, String search) throws SystemException, EmptyInputException, UsernameAlreadyTakenException, EmailNotValidException {
+    public void search(Observer ob, String search) throws SystemException, EmptyInputException, EmailNotValidException {
         ListBarberEngineering listBarber = new ListBarberEngineering();
         GenericBeanList list = new GenericBeanList(ob);
         list.addBarbersToList(listBarber.getBarberByName(search));

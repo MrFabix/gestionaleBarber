@@ -11,7 +11,6 @@ import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.myexception.EmailNotValidException;
 import com.example.barber.utils.exception.myexception.EmptyInputException;
 import com.example.barber.utils.exception.myexception.SystemException;
-import com.example.barber.utils.exception.myexception.UsernameAlreadyTakenException;
 import com.example.barber.utils.setterandgetter.SetterClass;
 import com.example.barber.utils.scene.SwitchAndSetPage;
 import com.example.barber.utils.scene.SwitchPage;
@@ -47,7 +46,7 @@ public class BarberDetailGuiController {
 
     private SwitchPage switchPage = new SwitchPage();
     private SwitchAndSetPage switchPageAndSet = new SwitchAndSetPage();
-    private List<ServiceBean> serviceBeanList = new ArrayList<>();
+
     private SetterClass setterClass = new SetterClass();
 
     public void setBarberDetails(IdBean id){
@@ -56,6 +55,7 @@ public class BarberDetailGuiController {
         BarberBean barberBean = null;
         BarberAppController barberAppController = new BarberAppController();
         ServiceAppController serviceAppController = new ServiceAppController();
+        List<ServiceBean> serviceBeanList;
 
         // Ottieni i dettagli del barbiere
         try{
@@ -63,7 +63,7 @@ public class BarberDetailGuiController {
             //Qui va sostituito
             setterClass.setBarber(barberBean, barberBean1);
 
-        }catch (SystemException | UsernameAlreadyTakenException | EmptyInputException | EmailNotValidException e){
+        }catch (SystemException | EmptyInputException | EmailNotValidException e){
             ErrorDialog.getInstance().handleException(e);
         }
         if (barberBean1 != null) {

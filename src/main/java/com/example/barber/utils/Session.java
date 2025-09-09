@@ -49,14 +49,14 @@ public class Session {
         setterClass.setCredentialsBeanFromCredentialsModel(this.credentialsBean, credentialsModel);
     }
 
-    public void setUser(ClientModel clientModel) throws EmptyInputException, EmailNotValidException ,SystemException  {
+    public void setUser(ClientModel clientModel) throws EmptyInputException, EmailNotValidException{
         if (this.clientBean == null) {
             this.clientBean = new ClientBean();
         }
         setterClass.setClientBeanFromModel(this.clientBean, clientModel);
     }
 
-    public void setBarber(BarberModel barberModel) throws EmptyInputException, EmailNotValidException, SystemException{
+    public void setBarber(BarberModel barberModel) throws EmptyInputException, EmailNotValidException{
         if (this.barberBean == null) {
             this.barberBean = new BarberBean();
         }

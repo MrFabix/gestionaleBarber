@@ -6,7 +6,6 @@ import com.example.barber.utils.dao.BarberDao;
 import com.example.barber.utils.exception.myexception.EmailNotValidException;
 import com.example.barber.utils.exception.myexception.EmptyInputException;
 import com.example.barber.utils.exception.myexception.SystemException;
-import com.example.barber.utils.exception.myexception.UsernameAlreadyTakenException;
 import com.example.barber.utils.factory.daofactory.DaoFactory;
 import com.example.barber.utils.managermode.ModeManager;
 import com.example.barber.utils.observer.GenericBeanList;
@@ -20,7 +19,7 @@ public class ListBarberEngineering {
 
     private SetterClass setterClass = new SetterClass();
 
-    public void listBarber(Observer observer ) throws SystemException, EmptyInputException, EmailNotValidException{
+    public void listBarber(Observer observer) throws SystemException, EmptyInputException, EmailNotValidException{
         GenericBeanList list = new GenericBeanList(observer);
         list.addBarbersToList(getAllBarber());
     }

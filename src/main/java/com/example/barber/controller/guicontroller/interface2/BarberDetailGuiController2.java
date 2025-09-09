@@ -30,7 +30,7 @@ public class BarberDetailGuiController2 {
 
     private SwitchPage sp = new SwitchPage();
     private SetterClass setterClass = new SetterClass();
-    private List<ServiceBean> serviceBeanList = new ArrayList<>();
+
     private SwitchAndSetPage switchPageAndSet = new SwitchAndSetPage();
 
 
@@ -75,12 +75,13 @@ public class BarberDetailGuiController2 {
         BarberBean barberBean = null;
         BarberAppController barberAppController = new BarberAppController();
         ServiceAppController serviceAppController = new ServiceAppController();
+        List<ServiceBean> serviceBeanList;
         try{
             barberBean = barberAppController.getBarberDetails(id);
             //Qui va sostituito
             setterClass.setBarber(barberBean, barberBean2);
 
-        }catch (SystemException | UsernameAlreadyTakenException | EmptyInputException | EmailNotValidException e){
+        }catch (SystemException | EmptyInputException | EmailNotValidException e){
             ErrorDialog.getInstance().handleException(e);
         }
         if(barberBean2 != null) {
