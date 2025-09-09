@@ -25,17 +25,16 @@ public class BarberDaoDemo implements BarberDao {
         return MemoryDemo.getAllBarber();
     }
     @Override
-    public List<BarberModel> searchBarber(String name) throws SystemException{
+    public List<BarberModel> searchBarber(String name){
         return MemoryDemo.searchBarber(name);
     }
 
     @Override
     public BarberModel getBarberById(int id) throws SystemException{
-        System.out.println("getBarberById");
-        return null;
+        return MemoryDemo.searchBarberById(id);
     }
     @Override
     public void updateOrarioDB(BarberModel barberModel) throws SystemException{
-        System.out.println("updateOrarioDB");
+        MemoryDemo.updateOrario(barberModel);
     }
 }

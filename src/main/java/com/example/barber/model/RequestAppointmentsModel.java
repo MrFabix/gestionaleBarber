@@ -83,22 +83,8 @@ public class RequestAppointmentsModel {
     protected String orario;
 
     public RequestAppointmentsModel(){
-    }
-    public RequestAppointmentsModel(RequestAppointmentsBean requestAppointmentsBean){
-        this.appId = requestAppointmentsBean.getIdAppointement();
-        this.idBarber = requestAppointmentsBean.getIdBarber();
-        this.idUser = requestAppointmentsBean.getIdUser();
-        this.date = requestAppointmentsBean.getDate();
-        this.nameUser = requestAppointmentsBean.getNameUser();
-        this.addressBarber = requestAppointmentsBean.getAddressBarber();
-        this.nameBarber = requestAppointmentsBean.getNameBarber();
-        this.description = requestAppointmentsBean.getDescription();
-        this.service = requestAppointmentsBean.getService();
-        this.phone = requestAppointmentsBean.getPhoneUser();
-        this.state= requestAppointmentsBean.getState();
-        this.orario = requestAppointmentsBean.getOrario();
-    }
 
+    }
 
 
 

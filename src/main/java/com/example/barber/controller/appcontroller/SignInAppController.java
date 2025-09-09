@@ -6,6 +6,7 @@ import com.example.barber.model.ClientModel;
 import com.example.barber.utils.bean.BarberBean;
 import com.example.barber.utils.bean.ClientBean;
 import com.example.barber.utils.bean.CredentialsBean;
+import com.example.barber.utils.dao.BarberDao;
 import com.example.barber.utils.dao.ClientDao;
 import com.example.barber.utils.dao.sql.BarberDaoSql;
 import com.example.barber.utils.dao.sql.ClientDaoSql;
@@ -29,8 +30,7 @@ public class SignInAppController {
         ClientDao clientDao = daoFactory.clientDao();
         clientDao.addUser(credentialsModel, clientModel);
 
-        //ClientDaoSql userDAOSql = new ClientDaoSql();
-        //userDAOSql.addUser(credentialsModel, clientModel);
+
     }
 
 
@@ -40,8 +40,10 @@ public class SignInAppController {
         setterClass.setCredentialsModelFromCredentialsBean(credentialsModel, credentialsBean);
         BarberModel barberModel = new BarberModel();
         setterClass.setBarberModelFromBarberBean(barberModel, barberBean);
-        BarberDaoSql barberDaoSql = new BarberDaoSql();
-        barberDaoSql.addBarber(credentialsModel, barberModel);
+
+        DaoFactory daoFactory = DaoFactory.getFactory(ModeManager.get());
+        BarberDao barberDao = daoFactory.barberDao();
+        barberDao.addBarber(credentialsModel, barberModel);
     }
 
 

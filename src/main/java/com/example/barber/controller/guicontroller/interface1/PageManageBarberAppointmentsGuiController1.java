@@ -5,7 +5,6 @@ import com.example.barber.controller.guicontroller.interface1.item.AppointmentsI
 import com.example.barber.utils.Session;
 import com.example.barber.utils.bean.RequestAppointmentsBean;
 import com.example.barber.utils.exception.ErrorDialog;
-import com.example.barber.utils.exception.myexception.EmptyInputException;
 import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.utils.observer.Observer;
 import javafx.fxml.FXML;

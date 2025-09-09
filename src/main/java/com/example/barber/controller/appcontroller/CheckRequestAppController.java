@@ -2,9 +2,10 @@ package com.example.barber.controller.appcontroller;
 
 import com.example.barber.model.RequestAppointmentsModel;
 import com.example.barber.utils.bean.RequestAppointmentsBean;
-import com.example.barber.utils.dao.sql.RequestAppointmentsDaoSql;
-import com.example.barber.utils.exception.ErrorDialog;
+import com.example.barber.utils.dao.RequestAppointmentsDao;
 import com.example.barber.utils.exception.myexception.SystemException;
+import com.example.barber.utils.factory.daofactory.DaoFactory;
+import com.example.barber.utils.managermode.ModeManager;
 import com.example.barber.utils.observer.ManageRequestBeanList;
 import com.example.barber.utils.observer.Observer;
 import com.example.barber.utils.setterandgetter.SetterClass;
@@ -19,15 +20,13 @@ public class CheckRequestAppController {
     private ManageRequestBeanList manageRequestBeanList;
     private SetterClass setterClass = new SetterClass();
 
-    public void sendAppointments(RequestAppointmentsBean requestAppointmentsBean) {
+    public void sendAppointments(RequestAppointmentsBean requestAppointmentsBean) throws SystemException{
         RequestAppointmentsModel requestAppointmentsModel = new RequestAppointmentsModel();
         setterClass.setRequestModelFromBean(requestAppointmentsModel, requestAppointmentsBean);
-        RequestAppointmentsDaoSql requestAppointmentsDaoSql = new RequestAppointmentsDaoSql();
-        try{
-            requestAppointmentsDaoSql.addAppointments(requestAppointmentsModel);
-        }catch (SystemException e){
-            ErrorDialog.getInstance().handleException(e);
-        }
+
+        DaoFactory daoFactory = DaoFactory.getFactory(ModeManager.get());
+        RequestAppointmentsDao requestAppointments = daoFactory.requestAppointmentsDao();
+        requestAppointments.addAppointments(requestAppointmentsModel);
     }
 
 
@@ -47,8 +46,9 @@ public class CheckRequestAppController {
 
     //tutte le richieste che ha mandato un utente
     private List<RequestAppointmentsBean> searchRequestById(int id, String role) throws SystemException {
-        RequestAppointmentsDaoSql requestAppointmentsDaoSql = new RequestAppointmentsDaoSql();
-        List<RequestAppointmentsModel> list = requestAppointmentsDaoSql.getAllRequestAppointments(id, role);
+        DaoFactory daoFactory = DaoFactory.getFactory(ModeManager.get());
+        RequestAppointmentsDao requestAppointmentsDao = daoFactory.requestAppointmentsDao();
+        List<RequestAppointmentsModel> list = requestAppointmentsDao.getAllRequestAppointments(id, role);
         List<RequestAppointmentsBean> listBean = new ArrayList<>();
         for(RequestAppointmentsModel requestAppointmentsModel : list){
             RequestAppointmentsBean bean = new RequestAppointmentsBean();
@@ -61,8 +61,9 @@ public class CheckRequestAppController {
 
 
     private void updateStateAppointments(int id, StatoRichieste state) throws SystemException{
-        RequestAppointmentsDaoSql requestAppointmentsDaoSql = new RequestAppointmentsDaoSql();
-        requestAppointmentsDaoSql.updateStateByIdApp(id, state.getId());
+        DaoFactory daoFactory = DaoFactory.getFactory(ModeManager.get());
+        RequestAppointmentsDao requestAppointmentsDao = daoFactory.requestAppointmentsDao();
+        requestAppointmentsDao.updateStateByIdApp(id, state.getId());
     }
 
 }

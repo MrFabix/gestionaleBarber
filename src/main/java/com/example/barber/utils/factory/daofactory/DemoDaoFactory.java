@@ -4,15 +4,12 @@ import com.example.barber.utils.dao.*;
 import com.example.barber.utils.dao.demo.*;
 
 public class DemoDaoFactory extends DaoFactory{
-    private final BarberDao barberDaoDemo = new BarberDaoDemo();
-    private final ClientDao clientDaoDemo = new ClientDaoDemo();
-    private final LoginDao loginDaoDemo = new LoginDaoDemo();
-    private final RequestAppointments requestAppointmentsDaoDemo = new RequestAppointmentsDaoDemo();
-    private final Service serviceDaoDemo = new ServiceDaoDemo();
 
-    public BarberDao barberDao() { return barberDaoDemo; }
-    public ClientDao clientDao() { return clientDaoDemo; }
-    public LoginDao loginDao()  { return loginDaoDemo; }
-    public RequestAppointments requestAppointmentsDao() { return requestAppointmentsDaoDemo; }
-    public Service serviceDao(){ return serviceDaoDemo; }
+
+
+    public BarberDao barberDao() { return new BarberDaoDemo(); }
+    public ClientDao clientDao() { return new ClientDaoDemo(); }
+    public LoginDao loginDao()  { return new LoginDaoDemo(); }
+    public RequestAppointmentsDao requestAppointmentsDao() { return new RequestAppointmentsDaoDemo(); }
+    public ServiceDao serviceDao(){ return new ServiceDaoDemo(); }
 }

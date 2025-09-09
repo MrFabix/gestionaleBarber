@@ -5,7 +5,7 @@ import com.example.barber.utils.exception.myexception.SystemException;
 
 import java.util.List;
 
-public interface RequestAppointments {
+public interface RequestAppointmentsDao {
 
     List<RequestAppointmentsModel> getAllRequestAppointments(int id, String role) throws SystemException;
     void addAppointments(RequestAppointmentsModel requestAppointmentsModel) throws SystemException;

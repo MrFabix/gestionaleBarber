@@ -3,8 +3,11 @@ package com.example.barber.controller.appcontroller;
 import com.example.barber.model.ServiceModel;
 import com.example.barber.utils.bean.ServiceBean;
 import com.example.barber.utils.bean.IdBean;
+import com.example.barber.utils.dao.ServiceDao;
 import com.example.barber.utils.dao.sql.ServiceDaoSql;
 import com.example.barber.utils.exception.myexception.SystemException;
+import com.example.barber.utils.factory.daofactory.DaoFactory;
+import com.example.barber.utils.managermode.ModeManager;
 import com.example.barber.utils.setterandgetter.SetterClass;
 
 import java.util.ArrayList;
@@ -19,17 +22,20 @@ public class ServiceAppController {
     }
 
     public List<ServiceBean> getServiceBarber(IdBean id){
-        ServiceDaoSql serviceDaoSql = new ServiceDaoSql();
+
+        DaoFactory daoFactory = DaoFactory.getFactory(ModeManager.get());
+        ServiceDao serviceDao = daoFactory.serviceDao();
+
         List<ServiceBean> serviceBean = new ArrayList<>();
         List<ServiceModel> serviceModels = new ArrayList<>();
 
        try {
-           serviceModels = serviceDaoSql.getServiceById(id.getId()); //devo passare l'id del barbiere con un Bean
+           serviceModels = serviceDao.getServiceById(id.getId());
 
            for(ServiceModel serviceModel : serviceModels){
                ServiceBean serviceBean1 = new ServiceBean();
                setter.setServiceBeanFromModel(serviceBean1, serviceModel);
-                serviceBean.add(serviceBean1);
+               serviceBean.add(serviceBean1);
             }
        } catch (Exception e) {
             throw new IllegalArgumentException(e);
@@ -43,8 +49,9 @@ public class ServiceAppController {
         serviceModel.setPrezzo(serviceBean.getPrezzo());
         serviceModel.setIdBarber(serviceBean.getIdBarber());
         serviceModel.setNomeServizio(serviceBean.getNomeServizio());
-        ServiceDaoSql serviceDaoSql = new ServiceDaoSql();
-        serviceDaoSql.insertService(serviceModel);
+        DaoFactory daoFactory = DaoFactory.getFactory(ModeManager.get());
+        ServiceDao serviceDao = daoFactory.serviceDao();
+        serviceDao.insertService(serviceModel);
     }
 
     public void deleteService(ServiceBean serviceBean) throws SystemException {
@@ -52,7 +59,8 @@ public class ServiceAppController {
         serviceModel.setPrezzo(serviceBean.getPrezzo());
         serviceModel.setIdBarber(serviceBean.getIdBarber());
         serviceModel.setNomeServizio(serviceBean.getNomeServizio());
-        ServiceDaoSql serviceDaoSql = new ServiceDaoSql();
-        serviceDaoSql.deleteService(serviceModel);
+        DaoFactory daoFactory = DaoFactory.getFactory(ModeManager.get());
+        ServiceDao serviceDao = daoFactory.serviceDao();
+        serviceDao.deleteService(serviceModel);
     }
 }

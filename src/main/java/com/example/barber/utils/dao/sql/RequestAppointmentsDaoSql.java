@@ -1,14 +1,15 @@
 package com.example.barber.utils.dao.sql;
 
 import com.example.barber.model.RequestAppointmentsModel;
-import com.example.barber.utils.dao.RequestAppointments;
+import com.example.barber.utils.dao.RequestAppointmentsDao;
 import com.example.barber.utils.db.Query;
 import com.example.barber.utils.exception.myexception.SystemException;
 
 import java.util.List;
 
-public class RequestAppointmentsDaoSql implements RequestAppointments {
+public class RequestAppointmentsDaoSql implements RequestAppointmentsDao {
     Query query = new Query();
+
     @Override
     public List<RequestAppointmentsModel> getAllRequestAppointments(int id, String role) throws SystemException {
         return query.searchAllAppointmentsById(id, role);

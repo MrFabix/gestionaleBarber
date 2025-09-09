@@ -88,11 +88,13 @@ public class BookingFormGuiController2 {
             rAppBean.setState(StatoRichieste.PENDENTE);
             rAppBean.setOrario(orario.getText());
             rAppBean.setDescription(notes.getText());
+
         }catch( IllegalArgumentException | EmptyInputException | InvalidDateException e ){
             ErrorDialog.getInstance().handleException(e);
         }
-        checkRequestAppController.sendAppointments(rAppBean);
+
         try{
+            checkRequestAppController.sendAppointments(rAppBean);
             switchAndSetPage.switchAndSetHomePageClient(event, "/view/interface2/HomePageClientAppointments2.fxml", rAppBean);
         }catch (SystemException | EmptyInputException e){
             ErrorDialog.getInstance().handleException(e);

@@ -20,7 +20,12 @@ public class Session {
     private ModeratorBean moderatorBean = new ModeratorBean();
     private BarberBean barberBean = new BarberBean();
 
-    public static Session getInstance(){
+    private Session(){
+
+    }
+
+
+    public static synchronized Session getInstance(){
         if (session == null){
             session = new Session();
         }

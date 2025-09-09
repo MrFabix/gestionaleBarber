@@ -1,13 +1,13 @@
 package com.example.barber.utils.dao.sql;
 
 import com.example.barber.model.ServiceModel;
-import com.example.barber.utils.dao.Service;
+import com.example.barber.utils.dao.ServiceDao;
 import com.example.barber.utils.db.Query;
 import com.example.barber.utils.exception.myexception.SystemException;
 
 import java.util.List;
 
-public class ServiceDaoSql implements Service {
+public class ServiceDaoSql implements ServiceDao {
     Query query = new Query();
 
     @Override

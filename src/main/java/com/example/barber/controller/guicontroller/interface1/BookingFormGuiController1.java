@@ -90,11 +90,14 @@ public class BookingFormGuiController1 {
             requestAppointmentsBean.setService(serviceComboBox.getValue());
             requestAppointmentsBean.setState(StatoRichieste.PENDENTE);
             requestAppointmentsBean.setOrario(orario.getText());
+            //Switch dopo CheckRequestApp controller
+            checkRequestAppController.sendAppointments(requestAppointmentsBean);
+
             switchAndSetPage.switchAndSetHomePageClient(event, "/view/interface1/HomePageClientAppointments1.fxml", requestAppointmentsBean);
         }catch(SystemException | InvalidDateException | EmptyInputException e ){
             ErrorDialog.getInstance().handleException(e);
         }
-        checkRequestAppController.sendAppointments(requestAppointmentsBean);
+
     }
 
     @FXML

@@ -4,9 +4,9 @@ package com.example.barber.utils.bean;
 
 import java.util.List;
 
+//Potrei cambiare quest'ultimo in BarberBean
+
 public class PreFormBarberBean{
-
-
 
     private int idBarber;
     private String barberName;

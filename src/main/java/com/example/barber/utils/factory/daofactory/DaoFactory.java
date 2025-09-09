@@ -12,6 +12,6 @@ public abstract class DaoFactory {
     public abstract BarberDao barberDao();
     public abstract ClientDao clientDao();
     public abstract LoginDao loginDao();
-    public abstract RequestAppointments requestAppointmentsDao();
-    public abstract Service serviceDao();
+    public abstract RequestAppointmentsDao requestAppointmentsDao();
+    public abstract ServiceDao serviceDao();
 }

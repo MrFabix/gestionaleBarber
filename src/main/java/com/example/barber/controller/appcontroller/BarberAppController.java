@@ -29,9 +29,6 @@ public class BarberAppController {
     public BarberBean getBarberDetails(IdBean id) throws SystemException, EmptyInputException, EmailNotValidException, UsernameAlreadyTakenException {
         BarberModel barberModel = null;
 
-        //BarberDaoSql barberDaoSql = new BarberDaoSql();
-        //barberModel = barberDaoSql.getBarberById(id.getId());
-
         DaoFactory daoFactory = DaoFactory.getFactory(ModeManager.get());
         BarberDao barberDao = daoFactory.barberDao();
         barberModel = barberDao.getBarberById(id.getId());
@@ -45,9 +42,6 @@ public class BarberAppController {
         BarberModel barberModel = new BarberModel();
         setterClass.setBarberModelFromBarberBean(barberModel,barber);
 
-
-        //BarberDaoSql barberDaoSql = new BarberDaoSql();
-        //barberDaoSql.updateOrarioDB(barberModel);
 
         DaoFactory daoFactory = DaoFactory.getFactory(ModeManager.get());
         BarberDao barberDao = daoFactory.barberDao();
