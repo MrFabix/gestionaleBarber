@@ -12,7 +12,6 @@ import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.myexception.EmailNotValidException;
 import com.example.barber.utils.exception.myexception.EmptyInputException;
 import com.example.barber.utils.exception.myexception.SystemException;
-import com.example.barber.utils.exception.myexception.UsernameAlreadyTakenException;
 import com.example.barber.utils.setterandgetter.SetterClass;
 import com.example.barber.utils.scene.SwitchPage;
 import javafx.event.ActionEvent;

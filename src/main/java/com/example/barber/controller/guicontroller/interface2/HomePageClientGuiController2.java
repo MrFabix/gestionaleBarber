@@ -9,7 +9,6 @@ import com.example.barber.utils.bean.interfaccia2.BarberBean2;
 import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.myexception.EmailNotValidException;
 import com.example.barber.utils.exception.myexception.EmptyInputException;
-import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.utils.observer.Observer;
 import com.example.barber.utils.setterandgetter.SetterClass;
 import javafx.fxml.FXML;
@@ -70,7 +69,7 @@ public class HomePageClientGuiController2 implements Observer, Initializable {
                 BarberItemGuiController2 controller = fxmlLoader.getController();
                 controller.setBarberDetails(barberBean2);
                 this.listBarber.getItems().add(pane);
-            } catch (IOException | EmailNotValidException | EmptyInputException | SystemException e) {
+            } catch (IOException | EmailNotValidException | EmptyInputException e) {
                 ErrorDialog.getInstance().handleException(e);
             }
         }
