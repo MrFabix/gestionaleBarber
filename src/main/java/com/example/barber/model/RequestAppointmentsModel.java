@@ -1,5 +1,4 @@
 package com.example.barber.model;
-import com.example.barber.utils.bean.RequestAppointmentsBean;
 import com.example.barber.utils.enumeration.statorichieste.StatoRichieste;
 
 import java.time.LocalDate;
@@ -83,7 +82,7 @@ public class RequestAppointmentsModel {
     protected String orario;
 
     public RequestAppointmentsModel(){
-
+        //Costruttore
     }
 
 
