@@ -10,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 
-import java.io.IOException;
 
 public class WelcomePageGuiController1 {
     @FXML
@@ -65,7 +64,7 @@ public class WelcomePageGuiController1 {
         Alert ok = new Alert(Alert.AlertType.INFORMATION);
         ok.setTitle("Modalità");
         ok.setHeaderText(null);
-        ok.setContentText("Modalità DEMO attivata");
+        ok.setContentText("Modalità DEMO Disattivata");
         ok.showAndWait();
     }
 

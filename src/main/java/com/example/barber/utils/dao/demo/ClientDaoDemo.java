@@ -14,8 +14,7 @@ public class ClientDaoDemo implements ClientDao {
     }
     @Override
     public boolean checkUsername(String username) throws SystemException{
-        Boolean bool = true;
-        return bool;
+        return MemoryDemo.checkUsername(username);
     }
     @Override
     public void addUser(CredentialsModel credentialModel, ClientModel clientModel) throws SystemException {

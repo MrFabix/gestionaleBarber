@@ -4,6 +4,8 @@ import com.example.barber.utils.db.MySqlConnection;
 import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.utils.graphicnavbar.GraphicNavBar;
+import com.example.barber.utils.managermode.Mode;
+import com.example.barber.utils.managermode.ModeManager;
 import com.example.barber.utils.scene.SwitchPage;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.fxml.FXML;
@@ -83,7 +85,9 @@ public class NavbarGuiController1 implements Initializable {
         button.setOnAction(e ->{
             try{
                 Session.getInstance().deleteSession();
-                MySqlConnection.getInstance().closeConnection();
+                if(ModeManager.get() != Mode.DEMO){
+                    MySqlConnection.getInstance().closeConnection();
+                }
                 switchPage.replaceScene(e, "/view/interface1/welcomePage1.fxml");
             }catch (SystemException | SQLException ex) {
                 ErrorDialog.getInstance().handleException(ex);

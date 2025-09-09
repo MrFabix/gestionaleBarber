@@ -42,7 +42,7 @@ public class LoginGuiController1 {
                 } else if (credentialsBean.getType().getRoleId().equals("MODERATORE")) {
                     sp.replaceScene(event, "/view/interface1/homepageModerator.fxml");
                 }
-            }catch (WrongCredentialsException | SystemException | EmptyInputException | UsernameAlreadyTakenException | EmailNotValidException e ){
+            }catch (WrongCredentialsException | SystemException | EmptyInputException  | EmailNotValidException e ){
                 ErrorDialog.getInstance().handleException(e);
             }
     }

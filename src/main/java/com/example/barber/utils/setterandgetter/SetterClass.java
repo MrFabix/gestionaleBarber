@@ -6,12 +6,12 @@ import com.example.barber.utils.exception.myexception.*;
 
 public class SetterClass{
 
-    public void setBarber(BarberBean barberBean, BarberBean barberBean1) throws EmptyInputException, UsernameAlreadyTakenException, EmailNotValidException, SystemException {
+    public void setBarber(BarberBean barberBean, BarberBean barberBean1) throws EmptyInputException, EmailNotValidException, SystemException {
         barberBean1.setId(barberBean.getId());
         barberBean1.setName(barberBean.getName());
         barberBean1.setEmail(barberBean.getEmail());
         barberBean1.setPhone(barberBean.getPhone());
-        barberBean1.setUsername(barberBean.getUsername());
+        barberBean1.setUsernameLog(barberBean.getUsername());
         barberBean1.setAddress(barberBean.getAddress());
         barberBean1.setOrarioInizio(barberBean.getOrarioInizio());
         barberBean1.setOrarioFine(barberBean.getOrarioFine());
@@ -20,12 +20,12 @@ public class SetterClass{
         barberBean1.setServices(barberBean.getServices());
     }
 
-    public void setBarberBeanFromModel(BarberBean barberBean, BarberModel barberModel) throws EmptyInputException, UsernameAlreadyTakenException, EmailNotValidException, SystemException {
+    public void setBarberBeanFromModel(BarberBean barberBean, BarberModel barberModel) throws EmptyInputException, EmailNotValidException, SystemException {
         barberBean.setId(barberModel.getId());
         barberBean.setName(barberModel.getName());
         barberBean.setEmail(barberModel.getEmail());
         barberBean.setPhone(barberModel.getPhone());
-        barberBean.setUsername(barberModel.getUsername());
+        barberBean.setUsernameLog(barberModel.getUsername());
         barberBean.setAddress(barberModel.getAddress());
         barberBean.setOrarioInizio(barberModel.getOrarioInizio());
         barberBean.setOrarioFine(barberModel.getOrarioFine());
@@ -34,12 +34,12 @@ public class SetterClass{
         barberBean.setServices(barberModel.getServices());
     }
 
-    public void setClientBeanFromModel(ClientBean clientBean, ClientModel clientModel) throws EmptyInputException, UsernameAlreadyTakenException, EmailNotValidException, SystemException {
+    public void setClientBeanFromModel(ClientBean clientBean, ClientModel clientModel) throws EmptyInputException, EmailNotValidException, SystemException {
         clientBean.setId(clientModel.getId());
         clientBean.setName(clientModel.getName());
         clientBean.setEmail(clientModel.getEmail());
         clientBean.setPhone(clientModel.getPhone());
-        clientBean.setUsername(clientModel.getUsername());
+        clientBean.setUsernameLog(clientModel.getUsername());
         clientBean.setSurname(clientModel.getSurname());
         clientBean.setGender(clientModel.getGender());
 

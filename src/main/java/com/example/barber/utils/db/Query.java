@@ -23,8 +23,7 @@ public class Query {
     public void updateOrarioDB(BarberModel barberModel) throws SystemException {
         String query = "UPDATE barber SET orarioInizio = ?, orarioFine = ? WHERE id = ?";
 
-        try (PreparedStatement preparedStatement =
-                     MySqlConnection.getInstance().connect().prepareStatement(query)) {
+        try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
 
             preparedStatement.setString(1, barberModel.getOrarioInizio());
             preparedStatement.setString(2, barberModel.getOrarioFine());
@@ -271,7 +270,19 @@ public class Query {
         }
     }
 
-    public boolean checkUsernameAlreadyTaken(){
+    public boolean checkUsernameAlreadyTaken(String username) throws SystemException {
+        String query = "SELECT COUNT(*) > 0 AS exists FROM user WHERE username = ? ";
+        try (PreparedStatement prepState = MySqlConnection.getInstance().connect().prepareStatement(query)) {
+            prepState.setString(1, username);
+            ResultSet rs = prepState.executeQuery();
+            if(rs.next()){
+                return true;
+            }
+        }catch (SQLException e){
+            SystemException exception = new SystemException();
+            exception.initCause(e);
+            throw exception;
+        }
         return false;
     }
 

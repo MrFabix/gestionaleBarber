@@ -5,6 +5,15 @@ public class ServiceModel {
     private String nomeServizio;
     private double prezzo;
 
+    public ServiceModel(){
+
+    }
+
+    public ServiceModel(double prezzo, String nomeServizio, int idBarber) {
+        this.prezzo = prezzo;
+        this.nomeServizio = nomeServizio;
+        this.idBarber = idBarber;
+    }
 
 
 

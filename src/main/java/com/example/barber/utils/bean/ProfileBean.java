@@ -80,6 +80,15 @@ public class ProfileBean implements GenericBean {
         }
     }
 
+    public void setUsernameLog(String username) throws EmptyInputException, SystemException {
+        if(username.equals("")){
+            trigger.throwEmptyInputException("Username");
+
+        }else{
+            this.username = username;
+        }
+    }
+
 
     public void setPhone(String phone) throws EmptyInputException{
         if(phone == null || phone.equals("")) {

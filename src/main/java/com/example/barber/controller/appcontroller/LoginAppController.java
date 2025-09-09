@@ -20,7 +20,7 @@ public class LoginAppController {
 
     SetterClass setterClass = new SetterClass();
 
-    public void login(CredentialsBean credentialsBean) throws EmptyInputException, UsernameAlreadyTakenException, EmailNotValidException, SystemException, WrongCredentialsException{
+    public void login(CredentialsBean credentialsBean) throws EmptyInputException, EmailNotValidException, SystemException ,WrongCredentialsException{
         CredentialsModel credentialsModel = new CredentialsModel();
         setterClass.setCredentialsModelFromCredentialsBean(credentialsModel, credentialsBean);
 

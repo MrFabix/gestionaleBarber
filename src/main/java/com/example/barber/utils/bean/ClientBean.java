@@ -21,6 +21,7 @@ public class ClientBean extends ProfileBean{
 
 
 
+
     //Setter
     public void setSurname(String surname) { this.surname = surname; }
 

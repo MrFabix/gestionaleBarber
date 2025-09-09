@@ -10,10 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class MemoryDemo {
+
+
+
     protected static final List<CredentialsModel> CredentialsModelList = new ArrayList<>();
     protected static final List<ClientModel> ClientModelList = new ArrayList<>();
     protected static final List<BarberModel> BarberModelList = new ArrayList<>();
-    protected static final List<ServiceModel> ServiceModelList = new ArrayList<>();
+    protected static final List<ServiceModel> ServiceModelList = List.of(new ServiceModel(15.0, "Barba", 0));
     protected static final List<RequestAppointmentsModel> RequestAppointmentsModelList = new ArrayList<>();
     private static final String ERRORE_ID_NON_VALIDO = "Errore id non valido";
 
@@ -33,9 +36,9 @@ public final class MemoryDemo {
         BarberModelList.add(model);
     }
 
-    public static ClientModel getClient(String username) {
+    public static ClientModel getClient(String username) throws SystemException{
         if (username == null || username.isBlank()) {
-            throw new IllegalArgumentException("Username mancante");
+            throw new SystemException("Username mancante");
         }
         String u = username.trim();
 
@@ -44,7 +47,7 @@ public final class MemoryDemo {
                 return c;
             }
         }
-        throw new IllegalArgumentException("Utente non trovato: " + username);
+        throw new SystemException("Utente non trovato: " + username);
     }
 
 
@@ -104,7 +107,7 @@ public final class MemoryDemo {
     }
 
     public static List<ServiceModel> serviceByIdBarber(int id) throws SystemException {
-        if(id <= 0){
+        if(id < 0){
             throw new SystemException(ERRORE_ID_NON_VALIDO);
         }
         List<ServiceModel> list = new ArrayList<>();
@@ -135,7 +138,7 @@ public final class MemoryDemo {
     }
 
     public static List<RequestAppointmentsModel> searchAllAppointmentsById(int id, String role) throws SystemException {
-        if( id <= 0 || role ==  null){
+        if( id < 0 || role ==  null){
             throw new SystemException("Id non valido");
         }
 
@@ -165,7 +168,7 @@ public final class MemoryDemo {
     }
 
     public static void updateAppointmentById(int id, String newState) throws SystemException {
-        if(id <= 0 || newState == null){
+        if(id < 0 || newState == null){
             throw new SystemException(ERRORE_ID_NON_VALIDO);
         }
         for (RequestAppointmentsModel r : RequestAppointmentsModelList) {
@@ -177,7 +180,7 @@ public final class MemoryDemo {
     }
 
     public static BarberModel searchBarberById(int id) throws SystemException {
-        if(id <= 0){
+        if(id < 0){
             throw new SystemException(ERRORE_ID_NON_VALIDO);
         }
 
@@ -202,6 +205,19 @@ public final class MemoryDemo {
                 b.setOrarioInizio(barberModel.getOrarioInizio());
             }
         }
+    }
+
+    public static boolean checkUsername(String username) throws SystemException{
+        if (username == null || username.isBlank()) {
+            throw new SystemException("Username non valido (vuoto)");
+        }
+
+        for(ClientModel c : ClientModelList){
+            if(c.getUsername().equals(username)){
+                return true;
+            }
+        }
+        return false;
     }
 
 }

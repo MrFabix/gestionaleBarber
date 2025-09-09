@@ -14,7 +14,7 @@ public class ClientDaoSql implements ClientDao {
     }
     @Override
     public boolean checkUsername(String username) throws SystemException {
-        return query.checkUsernameAlreadyTaken();
+        return query.checkUsernameAlreadyTaken(username);
     }
     @Override
     public void addUser(CredentialsModel credentialModel, ClientModel clientModel) throws SystemException {

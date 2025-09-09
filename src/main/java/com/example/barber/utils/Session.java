@@ -49,14 +49,14 @@ public class Session {
         setterClass.setCredentialsBeanFromCredentialsModel(this.credentialsBean, credentialsModel);
     }
 
-    public void setUser(ClientModel clientModel) throws EmptyInputException, UsernameAlreadyTakenException, EmailNotValidException, SystemException  {
+    public void setUser(ClientModel clientModel) throws EmptyInputException, EmailNotValidException ,SystemException  {
         if (this.clientBean == null) {
             this.clientBean = new ClientBean();
         }
         setterClass.setClientBeanFromModel(this.clientBean, clientModel);
     }
 
-    public void setBarber(BarberModel barberModel) throws EmptyInputException, UsernameAlreadyTakenException, EmailNotValidException, SystemException{
+    public void setBarber(BarberModel barberModel) throws EmptyInputException, EmailNotValidException, SystemException{
         if (this.barberBean == null) {
             this.barberBean = new BarberBean();
         }
@@ -72,15 +72,6 @@ public class Session {
     public void deleteSession() {
         clientBean = null;
     }
-
-
-
-
-
-
-
-
-
 
 
 }
