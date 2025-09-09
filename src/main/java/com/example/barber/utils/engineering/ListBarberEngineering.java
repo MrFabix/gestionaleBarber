@@ -3,7 +3,6 @@ package com.example.barber.utils.engineering;
 import com.example.barber.model.BarberModel;
 import com.example.barber.utils.bean.BarberBean;
 import com.example.barber.utils.dao.BarberDao;
-import com.example.barber.utils.dao.sql.BarberDaoSql;
 import com.example.barber.utils.exception.myexception.EmailNotValidException;
 import com.example.barber.utils.exception.myexception.EmptyInputException;
 import com.example.barber.utils.exception.myexception.SystemException;
@@ -26,7 +25,7 @@ public class ListBarberEngineering {
         list.addBarbersToList(getAllBarber());
     }
 
-    public List<BarberBean> getAllBarber() throws SystemException, EmptyInputException, UsernameAlreadyTakenException, EmailNotValidException{
+    public List<BarberBean> getAllBarber() throws SystemException, EmptyInputException, EmailNotValidException{
 
         List<BarberModel> list = null;
         List<BarberBean> listBean = null;
