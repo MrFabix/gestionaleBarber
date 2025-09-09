@@ -438,10 +438,7 @@ public class Query {
     }
 
     public void insertAppointments(RequestAppointmentsModel requestAppointmentsModel) throws SystemException {
-        String query = "INSERT INTO appointments (" +
-                "idbarber, idutente, data, name_user, name_barber, description, address_barber, " +
-                "service, state, orario, phone) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO appointments (idbarber, idutente, data, name_user, name_barber, description, address_barber, service, state, orario, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement ps = MySqlConnection.getInstance().connect().prepareStatement(query)) {
             ps.setInt(1, requestAppointmentsModel.getIdBarber());
