@@ -12,7 +12,7 @@
             style="-fx-background-color: linear-gradient(to bottom right, #1f2937, #111827);">
     <children>
         <Text layoutX="123.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              text="Welcome!" textAlignment="CENTER" wrappingWidth="330.20556640625"
+              text="Cut and Book" textAlignment="CENTER" wrappingWidth="330.20556640625"
               style="-fx-fill: white;">
             <font>
                 <Font size="42.0"/>

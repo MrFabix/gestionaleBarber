@@ -86,7 +86,7 @@ public class AppointmentsItemBarberGuiControllerSecondInterface{
     public void setAll(RequestAppointmentsBean2 requestAppointmentsBean2, CheckRequestAppController checkRequestAppController){
         this.checkRequestAppController = checkRequestAppController;
         this.rBean = requestAppointmentsBean2;
-        labelName.setText(rBean.getNameBarber());
+        labelName.setText(rBean.getNameUser());
         labelServizio.setText(rBean.getService());
         labelOrario.setText(rBean.getOrario());
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ITALY);

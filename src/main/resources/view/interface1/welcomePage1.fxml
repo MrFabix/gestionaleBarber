@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface1.WelcomePageGuiController1">
    <children>
-      <Text layoutX="123.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome!" textAlignment="CENTER" wrappingWidth="330.20556640625">
+      <Text layoutX="123.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cut and Book!" textAlignment="CENTER" wrappingWidth="330.20556640625">
          <font>
             <Font size="39.0" />
          </font>
