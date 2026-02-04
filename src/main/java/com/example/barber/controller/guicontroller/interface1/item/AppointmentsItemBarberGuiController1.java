@@ -74,8 +74,9 @@ public class AppointmentsItemBarberGuiController1 extends AppointemntsItemGuiCon
     @FXML
     public void terminateApp(ActionEvent event){
         try{
+            System.out.println("TERMINA APPUNTAMENTO");
             checkRequestAppController.setStateAppointments(rBean, StatoRichieste.TERMINATA);
-            rBean.setState(StatoRichieste.ACCETTATA);
+            rBean.setState(StatoRichieste.TERMINATA);
             checkRequestAppController.addAppointmentsToList(rBean);
             switchPage.replaceScene(event, "/view/interface1/HomePageBarber1.fxml");
         }catch (Exception e){

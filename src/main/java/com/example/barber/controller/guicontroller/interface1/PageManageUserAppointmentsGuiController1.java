@@ -58,12 +58,18 @@ public class PageManageUserAppointmentsGuiController1 implements Observer, Initi
                 itemController.setAll(rBean);
                 this.listViewRefiutedDeclined.getItems().add(pane);
                 //SETTA IL PANE RIFIUTATA
-            } else if (Objects.equals(rBean.getState().getId(), "ACCETTATA") || Objects.equals(rBean.getState().getId(), "TERMINATA")) {
+            } else if (Objects.equals(rBean.getState().getId(), "ACCETTATA")) {
                 pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource(appointmentsItemFxml).openStream()));
                 itemController = fxmlLoader.getController();
                 itemController.setAll(rBean);
                 this.listViewAcceptedAppointments.getItems().add(pane);
                 //SETTA IL PANE ACCETATA
+            }else if (Objects.equals(rBean.getState().getId(), "TERMINATA")) {
+                pane = fxmlLoader.load(Objects.requireNonNull(getClass().getResource(appointmentsItemFxml).openStream()));
+                itemController = fxmlLoader.getController();
+                itemController.setAll(rBean);
+                this.listViewAcceptedAppointments.getItems().add(pane);
+                //SETTA IL PANE ANNULLATA
             }
         }catch (Exception e){
             //DA mette le systemexception

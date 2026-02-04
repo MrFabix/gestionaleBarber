@@ -95,8 +95,7 @@ public class Query {
     }
 
     public void updateAppointmentById(int appointmentId, String newState) throws SystemException {
-        final String sql = "UPDATE appointments SET state = ? WHERE idAppointments = ?"; // o appoitments
-
+        final String sql = "UPDATE appointments SET state = ? WHERE idappointments = ?";
         try (PreparedStatement ps = MySqlConnection.getInstance().connect().prepareStatement(sql)) {
             ps.setString(1, newState);   // "ACCETTATA" | "RIFIUTATA" | "PENDENTE"
             ps.setInt(2, appointmentId);
