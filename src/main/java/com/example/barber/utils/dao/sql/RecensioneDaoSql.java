@@ -9,7 +9,6 @@ public class RecensioneDaoSql implements RecensioneDao {
     Query query = new Query();
     public void insertRecensione(RecensioneModel recensioneModel) throws SystemException {
 
-        System.out.println("RecensioneDaoSql insertRecensione");
         query.insertRecensione(recensioneModel);
     }
 
