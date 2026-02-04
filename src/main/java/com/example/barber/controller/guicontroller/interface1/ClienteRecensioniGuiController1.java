@@ -63,7 +63,6 @@ public class ClienteRecensioniGuiController1 implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("ClienteRecensioniGuiController1 initialized");
 
         // Qui poi metterai: loadMyReviewsFromDB(idClienteLoggato)
         seedDemoMyReviews();
