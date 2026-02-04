@@ -14,4 +14,5 @@ public abstract class DaoFactory {
     public abstract LoginDao loginDao();
     public abstract RequestAppointmentsDao requestAppointmentsDao();
     public abstract ServiceDao serviceDao();
+    public abstract RecensioneDao recensioneDao();
 }

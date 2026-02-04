@@ -492,4 +492,27 @@ public class Query {
         }
         return new RequestAppointmentsModel();
     }
+
+    public void insertRecensione(RecensioneModel recensioneModel) throws SystemException {
+        String query = "INSERT INTO review (id_appuntamento, fk_user, star_review, note_review,created_at) VALUES (?, ?, ?, ?,?)";
+
+        try (PreparedStatement ps = MySqlConnection.getInstance().connect().prepareStatement(query)) {
+            ps.setInt(1, recensioneModel.getIdAppuntamento());
+            ps.setInt(2, recensioneModel.getIdCliente());
+            ps.setInt(3, recensioneModel.getVoto());
+            ps.setString(4, recensioneModel.getTesto());
+            ps.setTimestamp(5, recensioneModel.getCreatedAt()  );
+
+            ps.executeUpdate();
+        } catch (SQLException | SystemException e) {
+            SystemException exception = new SystemException();
+            ErrorDialog.getInstance().handleException(e);
+            exception.initCause(e);
+            throw exception;
+        }
+    }
+
+
+
+
 }

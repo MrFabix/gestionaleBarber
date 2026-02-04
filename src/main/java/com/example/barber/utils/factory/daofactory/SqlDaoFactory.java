@@ -10,6 +10,6 @@ public class SqlDaoFactory extends DaoFactory {
     public LoginDao loginDao()  { return new LoginDaoSql(); }
     public RequestAppointmentsDao requestAppointmentsDao() { return new RequestAppointmentsDaoSql(); }
     public ServiceDao serviceDao(){ return new ServiceDaoSql(); }
-
+    public RecensioneDao recensioneDao() { return new RecensioneDaoSql(); }
 }
 

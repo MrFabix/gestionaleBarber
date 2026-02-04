@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.Integer?>
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" spacing="20" alignment="CENTER" prefWidth="400" prefHeight="350" fx:controller="com.example.barber.controller.guicontroller.interface1.ClienteRecensioniGuiController1">
+    <Label text="Lascia una recensione" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+    <TextArea fx:id="textRecensione" promptText="Scrivi qui la tua recensione..." prefRowCount="5" wrapText="true" maxWidth="350" />
+    <HBox spacing="10" alignment="CENTER">
+        <Label text="Voto:" />
+        <ComboBox fx:id="comboVoto" prefWidth="60">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <Integer fx:value="1" />
+                    <Integer fx:value="2" />
+                    <Integer fx:value="3" />
+                    <Integer fx:value="4" />
+                    <Integer fx:value="5" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+    </HBox>
+    <HBox spacing="15" alignment="CENTER">
+        <Button text="Invia" onAction="#onInviaRecensione" />
+        <Button text="Annulla" onAction="#onAnnulla" />
+    </HBox>
+</VBox>

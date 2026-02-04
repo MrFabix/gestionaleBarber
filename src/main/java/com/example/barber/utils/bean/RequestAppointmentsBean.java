@@ -49,8 +49,6 @@ public class RequestAppointmentsBean implements GenericBean{
             this.date = date;
         }
     }
-
-
     public void setDateRaw(LocalDate date) { this.date = date; }
 
     public String getDescription() { return description; }
@@ -60,7 +58,6 @@ public class RequestAppointmentsBean implements GenericBean{
     public void setState(StatoRichieste state) { this.state = state; }
 
     public void setOrario(String orario) { this.orario = orario; }
-
 
     public String getService() { return service; }
 

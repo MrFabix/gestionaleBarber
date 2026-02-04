@@ -3,6 +3,7 @@ package com.example.barber.utils.scene;
 
 import com.example.barber.Main;
 import com.example.barber.controller.guicontroller.interface1.BarberDetailGuiController;
+import com.example.barber.controller.guicontroller.interface1.ClienteRecensioniGuiController1;
 import com.example.barber.controller.guicontroller.interface2.BarberDetailGuiController2;
 import com.example.barber.utils.bean.IdBean;
 import com.example.barber.utils.exception.myexception.SystemException;
@@ -54,8 +55,6 @@ public class SwitchPage {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = null;
-
-
         try {
             scene = new Scene(fxmlLoader.load());
             // Gestisci BarberDetailGuiController
@@ -68,6 +67,11 @@ public class SwitchPage {
                 BarberDetailGuiController2 controller = fxmlLoader.getController();
                 if (controller != null) {
                     controller.setBarberDetails(id);
+                }
+            } else if (fxml.equals("/view/interface1/clienteRecensioneForm1.fxml")) {
+                ClienteRecensioniGuiController1 controller = fxmlLoader.getController();
+                if (controller != null) {
+                    controller.setIdBean(id);
                 }
             }
         } catch (IOException e) {

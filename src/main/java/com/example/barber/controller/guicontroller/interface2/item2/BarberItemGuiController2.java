@@ -28,8 +28,6 @@ public class BarberItemGuiController2 {
         sp.switchPageId("/view/interface2/BarberDetail2.fxml", event, idBean);
     }
 
-
-
     // Metodo per impostare i dettagli del barbiere
     public void setBarberDetails(BarberBean2 bean) {
         barberNameLabel.setText(bean.getName());

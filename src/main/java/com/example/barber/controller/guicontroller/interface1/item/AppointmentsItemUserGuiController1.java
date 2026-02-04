@@ -1,5 +1,6 @@
 package com.example.barber.controller.guicontroller.interface1.item;
 
+import com.example.barber.utils.bean.IdBean;
 import com.example.barber.utils.bean.RequestAppointmentsBean;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -14,22 +15,24 @@ public class AppointmentsItemUserGuiController1 extends AppointemntsItemGuiContr
     @FXML
     private Button buttonRecensione;
 
-    private RequestAppointmentsBean rBean;
     private SwitchPage switchPage = new SwitchPage();
 
     public void setAll(RequestAppointmentsBean rBean){
-        this.rBean = rBean;
         labelIndirizzo.setText(rBean.getAddressBarber());
         super.bind(rBean.getNameUser(), rBean.getDate().toString(), rBean.getOrario(), rBean.getService(), rBean.getState().getId());
         buttonRecensione.setVisible(rBean.getState().getId().equals("TERMINATA"));
+        buttonRecensione.setUserData(rBean.getIdAppointement()); // oppure rBean.getIdAppuntamento() se serve l'id appuntamento
     }
 
     @FXML
     public void onRecensioneClick(ActionEvent event) {
+        IdBean idBean = new IdBean();
+        idBean.setId((int) buttonRecensione.getUserData());//id dell'appuntamento
         try {
-            switchPage.replaceScene(event, "/view/interface1/clienteRecensioni.fxml");
+            switchPage.switchPageId( "/view/interface1/clienteRecensioneForm1.fxml", event,idBean);
         } catch (com.example.barber.utils.exception.myexception.SystemException e) {
             e.printStackTrace();
+
         }
     }
 }

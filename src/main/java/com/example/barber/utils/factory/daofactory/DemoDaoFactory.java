@@ -12,4 +12,5 @@ public class DemoDaoFactory extends DaoFactory{
     public LoginDao loginDao()  { return new LoginDaoDemo(); }
     public RequestAppointmentsDao requestAppointmentsDao() { return new RequestAppointmentsDaoDemo(); }
     public ServiceDao serviceDao(){ return new ServiceDaoDemo(); }
+    public RecensioneDao recensioneDao() { return new RecensioneDaoDemo(); }
 }
