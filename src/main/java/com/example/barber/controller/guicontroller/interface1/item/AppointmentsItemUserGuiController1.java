@@ -21,11 +21,7 @@ public class AppointmentsItemUserGuiController1 extends AppointemntsItemGuiContr
         this.rBean = rBean;
         labelIndirizzo.setText(rBean.getAddressBarber());
         super.bind(rBean.getNameUser(), rBean.getDate().toString(), rBean.getOrario(), rBean.getService(), rBean.getState().getId());
-        if (rBean.getState().getId().equals("TERMINATA")) {
-            buttonRecensione.setVisible(true);
-        } else {
-            buttonRecensione.setVisible(false);
-        }
+        buttonRecensione.setVisible(rBean.getState().getId().equals("TERMINATA"));
     }
 
     @FXML
@@ -33,7 +29,6 @@ public class AppointmentsItemUserGuiController1 extends AppointemntsItemGuiContr
         try {
             switchPage.replaceScene(event, "/view/interface1/clienteRecensioni.fxml");
         } catch (com.example.barber.utils.exception.myexception.SystemException e) {
-            // Gestione dell'errore, puoi mostrare un dialogo o loggare
             e.printStackTrace();
         }
     }
