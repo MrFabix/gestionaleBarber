@@ -12,37 +12,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListRecensioniEngineering {
-    private SetterClass setterClass = new SetterClass();
+    private final SetterClass setterClass = new SetterClass();
 
 
-    public List<RecensioneBean> getMyRecensioni(int id) throws SystemException {
-        List< RecensioneModel> list = null;
-        List< RecensioneBean> listBean = null;
-        DaoFactory daoFactory = DaoFactory.getFactory(ModeManager.get());
-        RecensioneDao recensioneDao = daoFactory.recensioneDao();
-        list = recensioneDao.getMyRecensioni(id);
-        listBean = new ArrayList<>();
-        for(RecensioneModel recensioneModel : list){
+    private List<RecensioneBean> convertToBeanList(List<RecensioneModel> modelList) {
+        List<RecensioneBean> beanList = new ArrayList<>();
+        for (RecensioneModel recensioneModel : modelList) {
             RecensioneBean recensioneBean = new RecensioneBean();
             setterClass.setRecensioneBeanFromModel(recensioneBean, recensioneModel);
-            listBean.add(recensioneBean);
+            beanList.add(recensioneBean);
         }
-        return listBean;
+        return beanList;
+    }
+
+    public List<RecensioneBean> getMyRecensioni(int id) throws SystemException {
+        DaoFactory daoFactory = DaoFactory.getFactory(ModeManager.get());
+        RecensioneDao recensioneDao = daoFactory.recensioneDao();
+        List<RecensioneModel> list = recensioneDao.getMyRecensioni(id);
+        return convertToBeanList(list);
     }
 
     public List<RecensioneBean> getMyRecensioniBarbiere(int id) throws SystemException {
-        List< RecensioneModel> list = null;
-        List< RecensioneBean> listBean = null;
         DaoFactory daoFactory = DaoFactory.getFactory(ModeManager.get());
         RecensioneDao recensioneDao = daoFactory.recensioneDao();
-        list = recensioneDao.getMyRecensioniBarbiere(id);
-        listBean = new ArrayList<>();
-        for(RecensioneModel recensioneModel : list){
-            RecensioneBean recensioneBean = new RecensioneBean();
-            setterClass.setRecensioneBeanFromModel(recensioneBean, recensioneModel);
-            listBean.add(recensioneBean);
-        }
-        return listBean;
+        List<RecensioneModel> list = recensioneDao.getMyRecensioniBarbiere(id);
+        return convertToBeanList(list);
     }
 
 
