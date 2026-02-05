@@ -14,6 +14,17 @@ public class RecensioneDaoDemo implements RecensioneDao {
     public List<RecensioneModel> getMyRecensioni(int id) {
         return null;
     }
+    @Override
+    public List<RecensioneModel> getMyRecensioniBarbiere(int id) {
+        return null;
+    }
+
+    @Override
+    public void reportRecensione(int idRecensione) {
+            return ;
+    }
+
+
 
 
 }

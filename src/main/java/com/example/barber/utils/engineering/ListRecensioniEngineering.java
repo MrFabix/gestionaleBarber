@@ -29,4 +29,23 @@ public class ListRecensioniEngineering {
         }
         return listBean;
     }
+
+    public List<RecensioneBean> getMyRecensioniBarbiere(int id) throws SystemException {
+        List< RecensioneModel> list = null;
+        List< RecensioneBean> listBean = null;
+        DaoFactory daoFactory = DaoFactory.getFactory(ModeManager.get());
+        RecensioneDao recensioneDao = daoFactory.recensioneDao();
+        list = recensioneDao.getMyRecensioniBarbiere(id);
+        System.out.println("ListRecensioniEngineering getMyRecensioniBarbiere: " + list);
+        listBean = new ArrayList<>();
+        for(RecensioneModel recensioneModel : list){
+            RecensioneBean recensioneBean = new RecensioneBean();
+            setterClass.setRecensioneBeanFromModel(recensioneBean, recensioneModel);
+            listBean.add(recensioneBean);
+        }
+        return listBean;
+    }
+
+
+
 }

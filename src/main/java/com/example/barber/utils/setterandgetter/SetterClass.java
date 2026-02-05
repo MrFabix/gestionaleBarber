@@ -140,7 +140,10 @@ public class SetterClass{
         recensioneBean.setIdAppuntamento(model.getIdAppuntamento());
         recensioneBean.setCreatedAt(model.getCreatedAt());
         recensioneBean.setNomeBarbiere(model.getNomeBarbiere());
+        recensioneBean.setNomeCliente(model.getNomeCliente());
+        recensioneBean.setIdRecensione(model.getIdRecensione());
         recensioneBean.setVoto(model.getVoto());
+
     }
 
 
@@ -150,6 +153,8 @@ public class SetterClass{
         bean.setIdAppuntamento(recensioneBean.getIdAppuntamento());
         bean.setCreatedAt(recensioneBean.getCreatedAt());
         bean.setVoto(recensioneBean.getVoto());
+        bean.setNomeCliente(recensioneBean.getNomeCliente());
+        bean.setIdRecensione(recensioneBean.getIdRecensione());
         bean.setNomeBarbiere(recensioneBean.getNomeBarbiere());
     }
 }

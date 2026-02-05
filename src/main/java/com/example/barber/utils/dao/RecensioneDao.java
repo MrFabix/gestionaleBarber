@@ -8,4 +8,6 @@ import java.util.List;
 public interface  RecensioneDao {
      void insertRecensione(RecensioneModel recensioneModel) throws SystemException;
      List<RecensioneModel> getMyRecensioni(int id) throws SystemException;
+     List<RecensioneModel> getMyRecensioniBarbiere(int id) throws SystemException;
+     void reportRecensione(int idRecensione) throws SystemException;
 }

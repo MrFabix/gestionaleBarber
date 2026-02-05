@@ -7,6 +7,7 @@ import java.sql.Timestamp;
 public class RecensioneBean implements GenericBean{
 
     private int idCliente;
+    private int idRecensione;
     private int idAppuntamento;   // o idAppuntamento
     private int voto;
     private String testo;
@@ -30,7 +31,12 @@ public class RecensioneBean implements GenericBean{
     public void setNomeCliente(String nomeCliente) { this.nomeCliente = nomeCliente; }
     public String getNomeBarbiere() { return nomeBarbiere; }
     public void setNomeBarbiere(String nomeBarbiere) { this.nomeBarbiere = nomeBarbiere; }
-
+    public int getIdRecensione() {
+        return idRecensione;
+    }
+    public void setIdRecensione(int idRecensione) {
+        this.idRecensione = idRecensione;
+    }
 
     //tostring
     @Override
@@ -42,6 +48,9 @@ public class RecensioneBean implements GenericBean{
                 ", testo='" + testo + '\'' +
                 ", createdAt=" + createdAt +
                 ", nomeBarbiere='" + nomeBarbiere + '\'' +
+                "nomeCliente='" + nomeCliente + '\'' +
                 '}';
     }
+
+
 }

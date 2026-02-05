@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 public class RecensioneModel {
     protected int idCliente;
     protected int idAppuntamento;      // o idAppuntamento, dipende dal tuo dominio
+    protected int idRecensione;
     protected int voto;            // 1..5
     protected String testo;
     protected Timestamp createdAt;
@@ -36,7 +37,8 @@ public class RecensioneModel {
     public void setNomeCliente(String nomeCliente) { this.nomeCliente = nomeCliente; }
     public String getNomeBarbiere() { return nomeBarbiere; }
     public void setNomeBarbiere(String nomeBarbiere) { this.nomeBarbiere = nomeBarbiere; }
-
+    public  int getIdRecensione() { return idRecensione; }
+    public void setIdRecensione(int idRecensione) { this.idRecensione = idRecensione; }
 
 
 

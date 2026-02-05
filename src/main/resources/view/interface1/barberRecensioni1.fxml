@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface1.BarberRecensioniGuiController1">
+    <!-- Includi il menu di navigazione -->
+    <fx:include fx:id="navigationBar" source="navbar1.fxml" />
+    <ListView fx:id="recensioniList" layoutX="258.0" layoutY="96.0" prefHeight="442.0" prefWidth="515.0" />
+    <TextField fx:id="searchRecensioni" layoutX="258.0" layoutY="38.0"  prefHeight="36.0" prefWidth="156.0" promptText="Search" />
+</AnchorPane>

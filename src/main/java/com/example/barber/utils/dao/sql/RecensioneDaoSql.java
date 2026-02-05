@@ -16,4 +16,12 @@ public class RecensioneDaoSql implements RecensioneDao {
         return query.getMyRecensioni(id);
     }
 
+    public List<RecensioneModel> getMyRecensioniBarbiere(int id) throws SystemException {
+        return query.getMyRecensioniBarbiere(id);
+    }
+
+    public void reportRecensione(int idRecensione) throws SystemException {
+        query.reportRecensione(idRecensione);
+    }
+
 }

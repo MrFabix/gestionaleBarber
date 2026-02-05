@@ -6,8 +6,9 @@
 
 <HBox prefWidth="350.0" spacing="10" style="-fx-background-color: #dc0f3f; -fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: black; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.barber.controller.guicontroller.interface1.item.RecensioneItemGuiController">
     <!-- Layout per una singola recensione -->
-    <Label fx:id="barberName" text="Nome Barbiere" style="-fx-background-radius: 5; -fx-padding: 5;"/>
+    <Label fx:id="name" text="Nome" style="-fx-background-radius: 5; -fx-padding: 5;"/>
     <Label fx:id="reviewDateLabel" text="Data" style="-fx-background-radius: 5; -fx-padding: 5;"/>
     <Label fx:id="reviewRatingLabel" text="Voto" style="-fx-background-radius: 5; -fx-padding: 5;"/>
     <Label fx:id="reviewTextLabel" prefWidth="150.0" text="Testo della recensione" style="-fx-background-radius: 5; -fx-padding: 5;"/>
+    <MFXButton fx:id="reportReviewButton"  visible="false" text="Segnala" style="-fx-background-color: #ff0000; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 5;" onAction="#reportReview"/>
 </HBox>

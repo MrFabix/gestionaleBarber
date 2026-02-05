@@ -1,6 +1,6 @@
 package com.example.barber.controller.guicontroller.interface1;
 
-import com.example.barber.controller.appcontroller.ClienteRecensioneAppController;
+import com.example.barber.controller.appcontroller.RecensioneAppController;
 import com.example.barber.utils.Session;
 import com.example.barber.utils.bean.ClientBean;
 import com.example.barber.utils.bean.IdBean;
@@ -52,8 +52,8 @@ public class ClienteRecensioneFormGuiController1 implements Initializable {
         recensioneBean.setTesto(textRecensione.getText());
         try {
             //invio la recensione
-            ClienteRecensioneAppController clienteRecensioneAppController = new ClienteRecensioneAppController();
-            clienteRecensioneAppController.inviaRecensione(recensioneBean);
+            RecensioneAppController recensioneAppController = new RecensioneAppController();
+            recensioneAppController.inviaRecensione(recensioneBean);
             //mostro messaggio di successo
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Recensione Inviata");
