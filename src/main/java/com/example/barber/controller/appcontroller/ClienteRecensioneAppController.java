@@ -1,15 +1,10 @@
 package com.example.barber.controller.appcontroller;
 
-import com.example.barber.controller.guicontroller.interface1.ClienteRecensioniGuiController1;
 import com.example.barber.model.RecensioneModel;
-import com.example.barber.utils.bean.BarberBean;
-import com.example.barber.utils.bean.IdBean;
+
 import com.example.barber.utils.bean.RecensioneBean;
 import com.example.barber.utils.dao.RecensioneDao;
-import com.example.barber.utils.engineering.ListBarberEngineering;
 import com.example.barber.utils.engineering.ListRecensioniEngineering;
-import com.example.barber.utils.exception.myexception.EmailNotValidException;
-import com.example.barber.utils.exception.myexception.EmptyInputException;
 import com.example.barber.utils.exception.myexception.SystemException;
 import com.example.barber.utils.factory.daofactory.DaoFactory;
 import com.example.barber.utils.managermode.ModeManager;
