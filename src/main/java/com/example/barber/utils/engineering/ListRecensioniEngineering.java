@@ -36,7 +36,6 @@ public class ListRecensioniEngineering {
         DaoFactory daoFactory = DaoFactory.getFactory(ModeManager.get());
         RecensioneDao recensioneDao = daoFactory.recensioneDao();
         list = recensioneDao.getMyRecensioniBarbiere(id);
-        System.out.println("ListRecensioniEngineering getMyRecensioniBarbiere: " + list);
         listBean = new ArrayList<>();
         for(RecensioneModel recensioneModel : list){
             RecensioneBean recensioneBean = new RecensioneBean();
