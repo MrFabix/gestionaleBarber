@@ -40,6 +40,7 @@ public class NavbarGuiController1 implements Initializable {
         switch(Session.getInstance().getCredentials().getType().getRoleId()){
             case "CLIENTE" -> setupCliente(vBox);
             case "BARBIERE" -> setupBarbiere(vBox);
+            case "MODERATORE" -> setupModeratore(vBox);
             default -> vBox.getChildren().clear();
         }
         pane.getChildren().add(vBox);
@@ -57,6 +58,12 @@ public class NavbarGuiController1 implements Initializable {
         vBox.getChildren().add(createButton("Gestione Appuntamenti", "/view/interface1/HomePageBarberAppointments1.fxml"));
         vBox.getChildren().add(createButton("Recensioni Ricevute", "/view/interface1/barberRecensioni1.fxml"));
         vBox.getChildren().add(createButton("Modifica Negozio", "/view/interface1/ManageShop1.fxml"));
+        vBox.getChildren().add(logOutButton("Logout"));
+    }
+
+    private void setupModeratore(VBox vBox) {
+        vBox.getChildren().add(createButton("HomePage Moderatore","/view/interface1/HomePageModeratore.fxml"));
+        vBox.getChildren().add(createButton("Gestione Segnalazioni", "/view/interface1/ManageSegnalazioni1.fxml"));
         vBox.getChildren().add(logOutButton("Logout"));
     }
 

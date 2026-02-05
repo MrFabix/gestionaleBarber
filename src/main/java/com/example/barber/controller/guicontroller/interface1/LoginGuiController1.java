@@ -40,7 +40,7 @@ public class LoginGuiController1 {
                 } else if (credentialsBean.getType().getRoleId().equals("BARBIERE")) {
                     sp.replaceScene(event, "/view/interface1/HomePageBarber1.fxml");
                 } else if (credentialsBean.getType().getRoleId().equals("MODERATORE")) {
-                    sp.replaceScene(event, "/view/interface1/homepageModerator.fxml");
+                    sp.replaceScene(event, "/view/interface1/HomePageModeratore.fxml");
                 }
             }catch (WrongCredentialsException | SystemException | EmptyInputException  | EmailNotValidException e ){
                 ErrorDialog.getInstance().handleException(e);

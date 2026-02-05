@@ -228,11 +228,13 @@ public class Query {
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
                 ruolo = Role.fromString(rs.getString("type"));
+
                 return ruolo;
 
             } else {
                 return null;
             }
+
 
 
         } catch (SQLException e) {

@@ -51,7 +51,7 @@ public class LoginGuiController2 {
             } else if (credentialsBean.getType().getRoleId().equals("BARBIERE")) {
                 sp.replaceScene(event, "/view/interface2/homePageBarber2.fxml");
             } else if(credentialsBean.getType().getRoleId().equals("MODERATORE")){
-                sp.replaceScene(event, "/homepageModerator.fxml");
+                sp.replaceScene(event, "/view/interface2/HomePageModerator.fxml");
             }
         } catch (SystemException | WrongCredentialsException | EmptyInputException  | EmailNotValidException e) {
             // Gestisce altri tipi di eccezioni

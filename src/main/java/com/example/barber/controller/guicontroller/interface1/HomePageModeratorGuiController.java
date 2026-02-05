@@ -10,7 +10,7 @@ public class HomePageModeratorGuiController {
 
     @FXML
     private void initialize() {
-        //Not implements
+        //
 
     }
 

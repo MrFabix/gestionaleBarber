@@ -26,7 +26,6 @@ public class LoginAppController {
 
         DaoFactory daoFactory = DaoFactory.getFactory(ModeManager.get());
         LoginDao loginDao = daoFactory.loginDao();
-
         credentialsModel.setType(loginDao.getRole(credentialsModel));
         credentialsBean.setType(credentialsModel.getType());
         if(credentialsModel.getType() == null){
