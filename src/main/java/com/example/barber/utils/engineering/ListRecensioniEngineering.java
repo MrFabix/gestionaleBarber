@@ -1,7 +1,6 @@
 package com.example.barber.utils.engineering;
 
 import com.example.barber.model.RecensioneModel;
-import com.example.barber.utils.bean.IdBean;
 import com.example.barber.utils.bean.RecensioneBean;
 import com.example.barber.utils.dao.RecensioneDao;
 import com.example.barber.utils.exception.myexception.SystemException;

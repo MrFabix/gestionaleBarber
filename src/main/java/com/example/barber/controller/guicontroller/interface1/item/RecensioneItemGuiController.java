@@ -18,7 +18,6 @@ public class RecensioneItemGuiController {
     private MFXButton replyButton;
 
     public void setRecensioneDetails(RecensioneBean bean) {
-        System.out.println(bean);
         barberName.setText(bean.getNomeBarbiere());
         reviewDateLabel.setText(bean.getCreatedAt().toString());
         reviewRatingLabel.setText(String.valueOf(bean.getVoto()));
