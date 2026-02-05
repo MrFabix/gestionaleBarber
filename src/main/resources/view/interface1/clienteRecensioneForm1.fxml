@@ -3,7 +3,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.collections.FXCollections?>
 <?import java.lang.Integer?>
-<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" spacing="20" alignment="CENTER" prefWidth="400" prefHeight="350" fx:controller="com.example.barber.controller.guicontroller.interface1.ClienteRecensioniGuiController1">
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" spacing="20" alignment="CENTER" prefWidth="400" prefHeight="350" fx:controller="com.example.barber.controller.guicontroller.interface1.ClienteRecensioneFormGuiController1">
     <Label text="Lascia una recensione" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
     <TextArea fx:id="textRecensione" promptText="Scrivi qui la tua recensione..." prefRowCount="5" wrapText="true" maxWidth="350" />
     <HBox spacing="10" alignment="CENTER">

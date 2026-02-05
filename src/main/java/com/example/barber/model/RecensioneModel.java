@@ -8,12 +8,15 @@ public class RecensioneModel {
     protected int voto;            // 1..5
     protected String testo;
     protected Timestamp createdAt;
+    protected String nomeCliente;
+    protected String nomeBarbiere;
 
-    public RecensioneModel(int idCliente, int idAppuntamento, int voto, String testo) {
+    public RecensioneModel(int idCliente, int idAppuntamento, int voto, String testo, String nomeBarbiere) {
         this.idCliente = idCliente;
         this.idAppuntamento = idAppuntamento;
         this.voto = voto;
         this.testo = testo;
+        this.nomeBarbiere = nomeBarbiere;
         this.createdAt = new Timestamp(System.currentTimeMillis());
     }
 
@@ -29,6 +32,13 @@ public class RecensioneModel {
     public void setTesto(String testo) { this.testo = testo; }
     public Timestamp getCreatedAt() { return createdAt; }
     public void setCreatedAt(Timestamp createdAt) { this.createdAt = createdAt; }
+    public String getNomeCliente() { return nomeCliente; }
+    public void setNomeCliente(String nomeCliente) { this.nomeCliente = nomeCliente; }
+    public String getNomeBarbiere() { return nomeBarbiere; }
+    public void setNomeBarbiere(String nomeBarbiere) { this.nomeBarbiere = nomeBarbiere; }
+
+
+
 
 
 }

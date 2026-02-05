@@ -34,6 +34,16 @@ import java.util.ArrayList;
         }
     }
 
+    //Aggiungo le recensioni alla lista delle recensioni del barbiere
+    public void addRecensioniToList(List<RecensioneBean> listBean) {
+        if(listBean != null && !listBean.isEmpty()) {
+            for (RecensioneBean recensioneBean : listBean) {
+                beans.add(recensioneBean);
+                notify(recensioneBean);
+            }
+        }
+    }
+
 
 
 

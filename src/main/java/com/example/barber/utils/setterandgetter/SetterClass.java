@@ -132,4 +132,24 @@ public class SetterClass{
         serviceBean.setNomeServizio(model.getNomeServizio());
         serviceBean.setPrezzo(model.getPrezzo());
     }
+
+
+    public void setRecensioneBeanFromModel(RecensioneBean recensioneBean, RecensioneModel model) {
+        recensioneBean.setTesto(model.getTesto());
+        recensioneBean.setIdCliente(model.getIdCliente());
+        recensioneBean.setIdAppuntamento(model.getIdAppuntamento());
+        recensioneBean.setCreatedAt(model.getCreatedAt());
+        recensioneBean.setNomeBarbiere(model.getNomeBarbiere());
+        recensioneBean.setVoto(model.getVoto());
+    }
+
+
+    public void setRecensione(RecensioneBean bean, RecensioneBean recensioneBean) {
+        bean.setTesto(recensioneBean.getTesto());
+        bean.setIdCliente(recensioneBean.getIdCliente());
+        bean.setIdAppuntamento(recensioneBean.getIdAppuntamento());
+        bean.setCreatedAt(recensioneBean.getCreatedAt());
+        bean.setVoto(recensioneBean.getVoto());
+        bean.setNomeBarbiere(recensioneBean.getNomeBarbiere());
+    }
 }
