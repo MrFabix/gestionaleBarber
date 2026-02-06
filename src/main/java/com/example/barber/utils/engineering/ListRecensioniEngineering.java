@@ -25,6 +25,10 @@ public class ListRecensioniEngineering {
         return beanList;
     }
 
+    public List<RecensioneBean> convertModelListToBeanList(List<RecensioneModel> modelList) {
+        return convertToBeanList(modelList);
+    }
+
     public List<RecensioneBean> getMyRecensioni(int id) throws SystemException {
         DaoFactory daoFactory = DaoFactory.getFactory(ModeManager.get());
         RecensioneDao recensioneDao = daoFactory.recensioneDao();

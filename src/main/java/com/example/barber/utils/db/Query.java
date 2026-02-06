@@ -577,6 +577,61 @@ public class Query {
         }
     }
 
+    public List<RecensioneModel> getReportedRecensioni() throws SystemException {
+        String query = "SELECT id_review, id_appuntamento, fk_user, star_review, note_review, created_at, " +
+                "user.name AS nome_cliente, barber.name AS nome_barbiere " +
+                "FROM review " +
+                "JOIN appointments ON review.id_appuntamento = appointments.idAppointments " +
+                "JOIN user ON appointments.idUtente = user.id " +
+                "JOIN barber ON appointments.idBarber = barber.id " +
+                "WHERE review.report = 1";
+        List<RecensioneModel> recensioneModels = new ArrayList<>();
+        try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                RecensioneModel recensioneModel = new RecensioneModel();
+                recensioneModel.setIdRecensione(rs.getInt("id_review"));
+                recensioneModel.setIdAppuntamento(rs.getInt("id_appuntamento"));
+                recensioneModel.setIdCliente(rs.getInt("fk_user"));
+                recensioneModel.setVoto(rs.getInt("star_review"));
+                recensioneModel.setTesto(rs.getString("note_review"));
+                recensioneModel.setNomeCliente(rs.getString("nome_cliente"));
+                recensioneModel.setNomeBarbiere(rs.getString("nome_barbiere"));
+                recensioneModel.setCreatedAt(rs.getTimestamp("created_at"));
+                recensioneModels.add(recensioneModel);
+            }
+            return recensioneModels;
+        } catch (SQLException e) {
+            SystemException exception = new SystemException();
+            exception.initCause(e);
+            throw exception;
+        }
+    }
+
+    public void approveRecensione(int idRecensione) throws SystemException {
+        String query = "UPDATE review SET report = 0 WHERE id_review = ?";
+        try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
+            preparedStatement.setInt(1, idRecensione);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            SystemException exception = new SystemException();
+            exception.initCause(e);
+            throw exception;
+        }
+    }
+
+    public void deleteRecensione(int idRecensione) throws SystemException {
+        String query = "DELETE FROM review WHERE id_review = ?";
+        try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
+            preparedStatement.setInt(1, idRecensione);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            SystemException exception = new SystemException();
+            exception.initCause(e);
+            throw exception;
+        }
+    }
+
 
 
 

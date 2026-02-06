@@ -12,8 +12,10 @@ import com.example.barber.utils.factory.daofactory.DaoFactory;
 import com.example.barber.utils.managermode.ModeManager;
 import com.example.barber.utils.observer.GenericBeanList;
 import com.example.barber.utils.observer.Observer;
+import com.example.barber.utils.setterandgetter.SetterClass;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecensioneAppController {
@@ -56,6 +58,33 @@ public class RecensioneAppController {
         } catch (SystemException e) {
             ErrorDialog.getInstance().handleException(e);
         }
+    }
+
+    public List<RecensioneBean> getReportedRecensioni() throws SystemException {
+        DaoFactory daoFactory = DaoFactory.getFactory(ModeManager.get());
+        RecensioneDao recensioneDao = daoFactory.recensioneDao();
+        List<RecensioneModel> recensioneModels = recensioneDao.getReportedRecensioni();
+        
+        SetterClass setterClass = new SetterClass();
+        List<RecensioneBean> recensioneBeans = new ArrayList<>();
+        for (RecensioneModel model : recensioneModels) {
+            RecensioneBean bean = new RecensioneBean();
+            setterClass.setRecensioneBeanFromModel(bean, model);
+            recensioneBeans.add(bean);
+        }
+        return recensioneBeans;
+    }
+
+    public void approveRecensione(IdBean idRecensione) throws SystemException {
+        DaoFactory daoFactory = DaoFactory.getFactory(ModeManager.get());
+        RecensioneDao recensioneDao = daoFactory.recensioneDao();
+        recensioneDao.approveRecensione(idRecensione.getId());
+    }
+
+    public void deleteRecensione(IdBean idRecensione) throws SystemException {
+        DaoFactory daoFactory = DaoFactory.getFactory(ModeManager.get());
+        RecensioneDao recensioneDao = daoFactory.recensioneDao();
+        recensioneDao.deleteRecensione(idRecensione.getId());
     }
 
 

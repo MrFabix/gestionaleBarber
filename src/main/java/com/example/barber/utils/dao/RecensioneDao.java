@@ -10,4 +10,7 @@ public interface  RecensioneDao {
      List<RecensioneModel> getMyRecensioni(int id) throws SystemException;
      List<RecensioneModel> getMyRecensioniBarbiere(int id) throws SystemException;
      void reportRecensione(int idRecensione) throws SystemException;
+     List<RecensioneModel> getReportedRecensioni() throws SystemException;
+     void approveRecensione(int idRecensione) throws SystemException;
+     void deleteRecensione(int idRecensione) throws SystemException;
 }
