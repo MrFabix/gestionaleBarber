@@ -38,6 +38,15 @@ public class RecensioneItemGuiController {
         //setto identificativo del bottone per segnalare la recensione, in questo modo posso identificare quale recensione è stata segnalata
         reportReviewButton.setId(String.valueOf(bean.getIdRecensione()));
         reportReviewButton.setVisible(true);
+        
+        //se la recensione è già segnalata (report = 1), disabilito il bottone
+        if (bean.getReport() == 1) {
+            reportReviewButton.setDisable(true);
+            reportReviewButton.setText("Segnalata");
+        } else {
+            reportReviewButton.setDisable(false);
+            reportReviewButton.setText("Segnala");
+        }
     }
 
     @FXML

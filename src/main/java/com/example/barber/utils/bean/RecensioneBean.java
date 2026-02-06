@@ -14,6 +14,7 @@ public class RecensioneBean implements GenericBean{
     private String nomeCliente;
     private String nomeBarbiere;
     private Timestamp createdAt;
+    private int report;
 
     public final Trigger trigger = new Trigger();
 
@@ -36,6 +37,12 @@ public class RecensioneBean implements GenericBean{
     }
     public void setIdRecensione(int idRecensione) {
         this.idRecensione = idRecensione;
+    }
+    public int getReport() {
+        return report;
+    }
+    public void setReport(int report) {
+        this.report = report;
     }
 
     //tostring

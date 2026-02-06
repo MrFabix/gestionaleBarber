@@ -540,7 +540,7 @@ public class Query {
     }
 
     public List<RecensioneModel> getMyRecensioniBarbiere(int id) throws SystemException {
-        String query = "SELECT id_review, id_appuntamento, fk_user, star_review, note_review, created_at, user.name AS nome_cliente FROM review JOIN appointments ON review.id_appuntamento = appointments.idAppointments JOIN user ON appointments.idUtente = user.id WHERE appointments.idBarber = ?";
+        String query = "SELECT id_review, id_appuntamento, fk_user, star_review, note_review, created_at, report, user.name AS nome_cliente FROM review JOIN appointments ON review.id_appuntamento = appointments.idAppointments JOIN user ON appointments.idUtente = user.id WHERE appointments.idBarber = ?";
         List<RecensioneModel> recensioneModels = new ArrayList<>();
         try (PreparedStatement preparedStatement = MySqlConnection.getInstance().connect().prepareStatement(query)) {
             preparedStatement.setInt(1, id);
@@ -552,8 +552,9 @@ public class Query {
                 recensioneModel.setIdCliente(rs.getInt("fk_user"));
                 recensioneModel.setVoto(rs.getInt("star_review"));
                 recensioneModel.setTesto(rs.getString("note_review"));
-                recensioneModel.setNomeCliente(rs.getString(7));
                 recensioneModel.setCreatedAt(rs.getTimestamp("created_at"));
+                recensioneModel.setReport(rs.getInt("report"));
+                recensioneModel.setNomeCliente(rs.getString("nome_cliente"));
                 recensioneModels.add(recensioneModel);
             }
             return recensioneModels;

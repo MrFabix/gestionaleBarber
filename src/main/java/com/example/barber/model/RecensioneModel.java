@@ -11,6 +11,7 @@ public class RecensioneModel {
     protected Timestamp createdAt;
     protected String nomeCliente;
     protected String nomeBarbiere;
+    protected int report;
 
     public RecensioneModel(int idCliente, int idAppuntamento, int voto, String testo, String nomeBarbiere) {
         this.idCliente = idCliente;
@@ -39,6 +40,8 @@ public class RecensioneModel {
     public void setNomeBarbiere(String nomeBarbiere) { this.nomeBarbiere = nomeBarbiere; }
     public  int getIdRecensione() { return idRecensione; }
     public void setIdRecensione(int idRecensione) { this.idRecensione = idRecensione; }
+    public int getReport() { return report; }
+    public void setReport(int report) { this.report = report; }
 
 
 
