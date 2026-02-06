@@ -16,9 +16,65 @@ public final class MemoryDemo {
     protected static final List<CredentialsModel> CredentialsModelList = new ArrayList<>();
     protected static final List<ClientModel> ClientModelList = new ArrayList<>();
     protected static final List<BarberModel> BarberModelList = new ArrayList<>();
+    protected static final List<ModeratorModel> ModeratorModelList = new ArrayList<>();
     protected static final List<ServiceModel> ServiceModelList = List.of(new ServiceModel(15.0, "Barba", 0));
     protected static final List<RequestAppointmentsModel> RequestAppointmentsModelList = new ArrayList<>();
+    protected static final List<RecensioneModel> RecensioneModelList = new ArrayList<>();
     private static final String ERRORE_ID_NON_VALIDO = "Errore id non valido";
+
+    static {
+        // ===== MODERATORE DEMO =====
+        ModeratorModel moderator = new ModeratorModel();
+        moderator.setId(999);
+        moderator.setUsername("admin");
+        moderator.setName("Moderatore Demo");
+        moderator.setEmail("admin@barber.com");
+        moderator.setPhone("1234567890");
+        ModeratorModelList.add(moderator);
+
+        CredentialsModel modCredentials = new CredentialsModel();
+        modCredentials.setUsername("admin");
+        modCredentials.setPassword("admin");
+        modCredentials.setType(Role.MODERATORE);
+        CredentialsModelList.add(modCredentials);
+
+        // ===== BARBIERE DEMO =====
+        BarberModel barber = new BarberModel();
+        barber.setId(1);
+        barber.setUsername("barbiere");
+        barber.setName("Mario Rossi");
+        barber.setEmail("mario@barber.com");
+        barber.setPhone("3331234567");
+        barber.setCity("Roma");
+        barber.setAddress("Via Roma 123");
+        barber.setDescription("Barbiere esperto con 10 anni di esperienza");
+        barber.setOrarioInizio("09:00");
+        barber.setOrarioFine("19:00");
+        BarberModelList.add(barber);
+
+        CredentialsModel barberCredentials = new CredentialsModel();
+        barberCredentials.setUsername("barbiere");
+        barberCredentials.setPassword("barbiere");
+        barberCredentials.setType(Role.BARBER);
+        CredentialsModelList.add(barberCredentials);
+
+        // ===== CLIENTE DEMO =====
+        ClientModel client = new ClientModel();
+        client.setId(100);
+        client.setUsername("cliente");
+        client.setName("Luca");
+        client.setSurname("Bianchi");
+        client.setEmail("luca@example.com");
+        client.setPhone("3339876543");
+        client.setGender("M");
+        ClientModelList.add(client);
+
+        CredentialsModel clientCredentials = new CredentialsModel();
+        clientCredentials.setUsername("cliente");
+        clientCredentials.setPassword("cliente");
+        clientCredentials.setType(Role.CLIENTE);
+        CredentialsModelList.add(clientCredentials);
+    }
 
     private MemoryDemo() {
         //Costruttore
@@ -218,6 +274,83 @@ public final class MemoryDemo {
             }
         }
         return false;
+    }
+
+    public static void insertRecensione(RecensioneModel recensioneModel) {
+        if(recensioneModel == null){
+            return;
+        }
+        recensioneModel.setIdRecensione(RecensioneModelList.size() + 1);
+        RecensioneModelList.add(recensioneModel);
+    }
+
+    public static List<RecensioneModel> getMyRecensioni(int id) {
+        List<RecensioneModel> result = new ArrayList<>();
+        for (RecensioneModel r : RecensioneModelList) {
+            if (r.getIdCliente() == id) {
+                result.add(r);
+            }
+        }
+        return result;
+    }
+
+    public static List<RecensioneModel> getMyRecensioniBarbiere(int idBarber) {
+        List<RecensioneModel> result = new ArrayList<>();
+        for (RecensioneModel r : RecensioneModelList) {
+            for (RequestAppointmentsModel app : RequestAppointmentsModelList) {
+                if (app.getAppId() == r.getIdAppuntamento() && app.getIdBarber() == idBarber) {
+                    result.add(r);
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+
+    public static void reportRecensione(int idRecensione) {
+        for (RecensioneModel r : RecensioneModelList) {
+            if (r.getIdRecensione() == idRecensione) {
+                r.setReport(1);
+                break;
+            }
+        }
+    }
+
+    public static List<RecensioneModel> getReportedRecensioni() {
+        List<RecensioneModel> result = new ArrayList<>();
+        for (RecensioneModel r : RecensioneModelList) {
+            if (r.getReport() == 1) {
+                result.add(r);
+            }
+        }
+        return result;
+    }
+
+    public static void approveRecensione(int idRecensione) {
+        for (RecensioneModel r : RecensioneModelList) {
+            if (r.getIdRecensione() == idRecensione) {
+                r.setReport(0);
+                break;
+            }
+        }
+    }
+
+    public static void deleteRecensione(int idRecensione) {
+        RecensioneModelList.removeIf(r -> r.getIdRecensione() == idRecensione);
+    }
+
+    public static ModeratorModel getModeratorByUsername(String username) throws SystemException {
+        if (username == null || username.isBlank()) {
+            throw new SystemException("Username mancante");
+        }
+        String u = username.trim();
+
+        for (ModeratorModel m : ModeratorModelList) {
+            if (u.equalsIgnoreCase(m.getUsername())) {
+                return m;
+            }
+        }
+        throw new SystemException("Moderatore non trovato: " + username);
     }
 
 }
