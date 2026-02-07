@@ -17,6 +17,7 @@ public class Query {
     private static final String ADDRESS = "address";
     private static final String PHONE = "phone";
     private static final String EMAIL = "email";
+    private static final String ID_APPUNTAMENTO = "id_appuntamento";
 
 
 
@@ -523,7 +524,7 @@ public class Query {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 RecensioneModel recensioneModel = new RecensioneModel();
-                recensioneModel.setIdAppuntamento(rs.getInt("id_appuntamento"));
+                recensioneModel.setIdAppuntamento(rs.getInt(ID_APPUNTAMENTO));
                 recensioneModel.setIdCliente(rs.getInt("fk_user"));
                 recensioneModel.setVoto(rs.getInt("star_review"));
                 recensioneModel.setTesto(rs.getString("note_review"));
@@ -548,7 +549,7 @@ public class Query {
             while (rs.next()) {
                 RecensioneModel recensioneModel = new RecensioneModel();
                 recensioneModel.setIdRecensione(rs.getInt("id_review"));
-                recensioneModel.setIdAppuntamento(rs.getInt("id_appuntamento"));
+                recensioneModel.setIdAppuntamento(rs.getInt(ID_APPUNTAMENTO));
                 recensioneModel.setIdCliente(rs.getInt("fk_user"));
                 recensioneModel.setVoto(rs.getInt("star_review"));
                 recensioneModel.setTesto(rs.getString("note_review"));
@@ -592,7 +593,7 @@ public class Query {
             while (rs.next()) {
                 RecensioneModel recensioneModel = new RecensioneModel();
                 recensioneModel.setIdRecensione(rs.getInt("id_review"));
-                recensioneModel.setIdAppuntamento(rs.getInt("id_appuntamento"));
+                recensioneModel.setIdAppuntamento(rs.getInt(ID_APPUNTAMENTO));
                 recensioneModel.setIdCliente(rs.getInt("fk_user"));
                 recensioneModel.setVoto(rs.getInt("star_review"));
                 recensioneModel.setTesto(rs.getString("note_review"));
