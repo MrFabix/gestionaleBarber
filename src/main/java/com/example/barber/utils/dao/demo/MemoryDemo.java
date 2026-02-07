@@ -5,6 +5,7 @@ import com.example.barber.model.*;
 import com.example.barber.utils.enumeration.ruoli.Role;
 import com.example.barber.utils.enumeration.statorichieste.StatoRichieste;
 import com.example.barber.utils.exception.myexception.SystemException;
+import com.example.barber.utils.exception.myexception.WrongCredentialsException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,27 +22,30 @@ public final class MemoryDemo {
     protected static final List<RequestAppointmentsModel> RequestAppointmentsModelList = new ArrayList<>();
     protected static final List<RecensioneModel> RecensioneModelList = new ArrayList<>();
     private static final String ERRORE_ID_NON_VALIDO = "Errore id non valido";
+    private static final String ADMIN = "admin";
+    private static final String BARBIERE = "barbiere";
+    private static final String CLIENTE = "cliente";
 
     static {
         // ===== MODERATORE DEMO =====
         ModeratorModel moderator = new ModeratorModel();
         moderator.setId(999);
-        moderator.setUsername("admin");
+        moderator.setUsername(ADMIN);
         moderator.setName("Moderatore Demo");
         moderator.setEmail("admin@barber.com");
         moderator.setPhone("1234567890");
         ModeratorModelList.add(moderator);
 
         CredentialsModel modCredentials = new CredentialsModel();
-        modCredentials.setUsername("admin");
-        modCredentials.setPassword("admin");
+        modCredentials.setUsername(ADMIN);
+        modCredentials.setPassword(ADMIN);
         modCredentials.setType(Role.MODERATORE);
         CredentialsModelList.add(modCredentials);
 
         // ===== BARBIERE DEMO =====
         BarberModel barber = new BarberModel();
         barber.setId(1);
-        barber.setUsername("barbiere");
+        barber.setUsername(BARBIERE);
         barber.setName("Mario Rossi");
         barber.setEmail("mario@barber.com");
         barber.setPhone("3331234567");
@@ -53,15 +57,15 @@ public final class MemoryDemo {
         BarberModelList.add(barber);
 
         CredentialsModel barberCredentials = new CredentialsModel();
-        barberCredentials.setUsername("barbiere");
-        barberCredentials.setPassword("barbiere");
+        barberCredentials.setUsername(BARBIERE);
+        barberCredentials.setPassword(BARBIERE);
         barberCredentials.setType(Role.BARBER);
         CredentialsModelList.add(barberCredentials);
 
         // ===== CLIENTE DEMO =====
         ClientModel client = new ClientModel();
         client.setId(100);
-        client.setUsername("cliente");
+        client.setUsername(CLIENTE);
         client.setName("Luca");
         client.setSurname("Bianchi");
         client.setEmail("luca@example.com");
@@ -70,8 +74,8 @@ public final class MemoryDemo {
         ClientModelList.add(client);
 
         CredentialsModel clientCredentials = new CredentialsModel();
-        clientCredentials.setUsername("cliente");
-        clientCredentials.setPassword("cliente");
+        clientCredentials.setUsername(CLIENTE);
+        clientCredentials.setPassword(CLIENTE);
         clientCredentials.setType(Role.CLIENTE);
         CredentialsModelList.add(clientCredentials);
     }
@@ -138,24 +142,26 @@ public final class MemoryDemo {
         throw new IllegalArgumentException("Barbiere non trovato: " + username);
     }
 
-    public static Role getRole(CredentialsModel input) throws SystemException {
+    public static Role getRole(CredentialsModel input) throws WrongCredentialsException {
 
         if (input == null
                 || input.getUsername() == null || input.getUsername().isBlank()
                 || input.getPassword() == null || input.getPassword().isBlank()) {
-            throw new SystemException("Credenziali mancanti");
+            throw new WrongCredentialsException();
         }
 
         String u = input.getUsername().trim();
-        String p = input.getPassword();
+        String p = input.getPassword().trim();
 
 
         for (CredentialsModel c : CredentialsModelList) {
-            if (u.equalsIgnoreCase(c.getUsername()) && p.equals(c.getPassword())) {
+            if (c.getUsername() != null && c.getPassword() != null
+                    && u.equalsIgnoreCase(c.getUsername().trim())
+                    && p.equals(c.getPassword().trim())) {
                 return c.getType();
             }
         }
-        throw new IllegalArgumentException("Credenziali non valide");
+        throw new WrongCredentialsException();
     }
 
     public static List<BarberModel> getAllBarber() {
