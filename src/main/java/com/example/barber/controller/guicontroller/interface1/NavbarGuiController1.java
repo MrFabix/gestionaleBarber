@@ -63,7 +63,6 @@ public class NavbarGuiController1 implements Initializable {
 
     private void setupModeratore(VBox vBox) {
         vBox.getChildren().add(createButton("HomePage Moderatore","/view/interface1/HomePageModeratore.fxml"));
-        vBox.getChildren().add(createButton("Gestione Segnalazioni", "/view/interface1/ManageSegnalazioni1.fxml"));
         vBox.getChildren().add(logOutButton("Logout"));
     }
 
