@@ -79,14 +79,14 @@ public class NavBarGuiController2 implements Initializable {
         private void setupCliente(HBox hBox) {
             hBox.getChildren().add(createButton("HomePage Cliente", "/view/interface2/HomePageClient2.fxml"));
             hBox.getChildren().add(createButton("Appuntamenti", "/view/interface2/HomePageClientAppointments2.fxml"));
-            hBox.getChildren().add(createButton("Recensioni Effettuate", "not location set"));
+            hBox.getChildren().add(createButton("Recensioni Effettuate", "/view/interface2/clienteRecensioni2.fxml"));
             hBox.getChildren().add(logOutButton("Logout"));
         }
 
         private void setupBarbiere(HBox hBox) {
             hBox.getChildren().add(createButton("HomePage Barbiere", "/view/interface2/HomePageBarber2.fxml"));
             hBox.getChildren().add(createButton("Gestione Appuntamenti", "/view/interface2/HomePageBarberAppointments2.fxml"));
-            hBox.getChildren().add(createButton("Recensioni Ricevute", "not location set"));
+            hBox.getChildren().add(createButton("Recensioni Ricevute", "/view/interface2/barberRecensioni2.fxml"));
             hBox.getChildren().add(createButton("Modifica Negozio", "/view/interface2/ManageShop2.fxml"));
             hBox.getChildren().add(logOutButton("Logout"));
         }

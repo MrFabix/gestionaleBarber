@@ -5,6 +5,7 @@ import com.example.barber.Main;
 import com.example.barber.controller.guicontroller.interface1.BarberDetailGuiController;
 import com.example.barber.controller.guicontroller.interface1.ClienteRecensioneFormGuiController1;
 import com.example.barber.controller.guicontroller.interface2.BarberDetailGuiController2;
+import com.example.barber.controller.guicontroller.interface2.ClienteRecensioneFormGuiController2;
 import com.example.barber.utils.bean.IdBean;
 import com.example.barber.utils.exception.myexception.SystemException;
 import javafx.event.ActionEvent;
@@ -70,6 +71,11 @@ public class SwitchPage {
                 }
             } else if (fxml.equals("/view/interface1/clienteRecensioneForm1.fxml")) {
                 ClienteRecensioneFormGuiController1 controller = fxmlLoader.getController();
+                if (controller != null) {
+                    controller.setIdBean(id);
+                }
+            } else if (fxml.equals("/view/interface2/clienteRecensioneForm2.fxml")) {
+                ClienteRecensioneFormGuiController2 controller = fxmlLoader.getController();
                 if (controller != null) {
                     controller.setIdBean(id);
                 }

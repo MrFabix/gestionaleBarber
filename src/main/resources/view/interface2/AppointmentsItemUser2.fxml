@@ -9,6 +9,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.Button?>
 <AnchorPane xmlns="http://javafx.com/javafx/23.0.1"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.example.barber.controller.guicontroller.interface2.item2.AppointmentsItemUserGuiControllerSecondInterface"
@@ -42,6 +43,9 @@
             <Label fx:id="labelServizio"  text="Servizio"  style="-fx-text-fill: black;"/>
             <Label fx:id="labelData"      text="Data"      style="-fx-text-fill: black;"/>
             <Label fx:id="labelOrario"    text="Orario"    style="-fx-text-fill: black;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button fx:id="buttonRecensione" text="Lascia Recensione" visible="false" onAction="#onRecensioneClick"
+                    style="-fx-background-color: #10b981; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 8 16; -fx-font-weight: bold;"/>
          </HBox>
 
          <!-- (opzionale) seconda linea come nell’originale -->

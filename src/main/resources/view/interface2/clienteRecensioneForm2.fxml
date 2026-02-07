@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.Integer?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.barber.controller.guicontroller.interface2.ClienteRecensioneFormGuiController2"
+            style="-fx-background-color: linear-gradient(to bottom, #10b981, #0ea5a4, #059669);">
+   <fx:include fx:id="navigationBar" source="navbar2.fxml" AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"/>
+
+   <VBox spacing="20" alignment="CENTER" layoutX="250.0" layoutY="150.0" 
+         style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 30;"
+         prefWidth="400" prefHeight="350">
+      <Label text="Lascia una recensione" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #1f2937;" />
+      
+      <VBox spacing="8">
+         <Label text="Recensione:" style="-fx-font-size: 14px; -fx-text-fill: #374151;"/>
+         <TextArea fx:id="textRecensione" promptText="Scrivi qui la tua recensione..." 
+                   prefRowCount="5" wrapText="true" maxWidth="340"
+                   style="-fx-background-radius: 8; -fx-border-color: #d1d5db; -fx-border-radius: 8;"/>
+      </VBox>
+
+      <HBox spacing="10" alignment="CENTER">
+         <Label text="Voto:" style="-fx-font-size: 14px; -fx-text-fill: #374151;"/>
+         <ComboBox fx:id="comboVoto" prefWidth="80"
+                   style="-fx-background-radius: 8;">
+            <items>
+               <FXCollections fx:factory="observableArrayList">
+                  <Integer fx:value="1" />
+                  <Integer fx:value="2" />
+                  <Integer fx:value="3" />
+                  <Integer fx:value="4" />
+                  <Integer fx:value="5" />
+               </FXCollections>
+            </items>
+         </ComboBox>
+      </HBox>
+
+      <HBox spacing="15" alignment="CENTER">
+         <Button text="Invia" onAction="#onInviaRecensione"
+                 style="-fx-background-color: #10b981; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 10 30; -fx-font-weight: bold; -fx-font-size: 14px;"/>
+         <Button text="Annulla" onAction="#onAnnulla"
+                 style="-fx-background-color: #ef4444; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 10 30; -fx-font-weight: bold; -fx-font-size: 14px;"/>
+      </HBox>
+   </VBox>
+</AnchorPane>

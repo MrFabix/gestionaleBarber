@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.barber.controller.guicontroller.interface2.BarberRecensioniGuiController2">
+   <fx:include fx:id="navigationBar" source="navbar2.fxml" AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"/>
+   <AnchorPane AnchorPane.topAnchor="80.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+      <children>
+         <Rectangle layoutX="0.0" layoutY="0.0" width="900.0" height="520.0" mouseTransparent="true" strokeWidth="0" fill="linear-gradient(to bottom, #10b981, #0ea5a4, #059669)"/>
+
+         <Label alignment="CENTER" contentDisplay="CENTER"
+                layoutX="118.0" layoutY="14.0"
+                prefHeight="9.0" prefWidth="575.0"
+                text="Recensioni Ricevute" textFill="white">
+            <font>
+               <Font name="Arial Bold" size="40.0"/>
+            </font>
+         </Label>
+
+         <TextField fx:id="searchRecensioni"
+                    layoutX="46.0" layoutY="70.0"
+                    prefHeight="40.0" prefWidth="260.0"
+                    promptText="Cerca recensione..."
+                    style="-fx-background-color: white; -fx-text-fill: black; -fx-prompt-text-fill: #6b7280; -fx-background-radius: 10;" />
+
+         <ListView fx:id="recensioniList"
+                   layoutX="46.0" layoutY="120.0"
+                   prefHeight="448.0" prefWidth="668.0"
+                   style="-fx-background-color: #0b1220; -fx-control-inner-background: #0b1220; -fx-background-insets: 0; -fx-border-color: #374151; -fx-border-width: 2;"
+                   AnchorPane.leftAnchor="46.0"
+                   AnchorPane.rightAnchor="41.0"
+                   AnchorPane.topAnchor="120.0"
+                   AnchorPane.bottomAnchor="32.4">
+            <effect>
+               <DropShadow/>
+            </effect>
+         </ListView>
+
+      </children>
+   </AnchorPane>
+
+</AnchorPane>
