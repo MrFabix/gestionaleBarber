@@ -21,6 +21,8 @@ import java.util.ResourceBundle;
 
 public class NavbarGuiController1 implements Initializable {
 
+    private static final String LOGOUT_LABEL = "Logout";
+
     @FXML
     private AnchorPane navAnchor;
     SwitchPage switchPage = new SwitchPage();
@@ -50,7 +52,7 @@ public class NavbarGuiController1 implements Initializable {
         vBox.getChildren().add(createButton("HomePage Cliente","/view/interface1/homePageClient1.fxml"));
         vBox.getChildren().add(createButton("Appuntamenti", "/view/interface1/HomePageClientAppointments1.fxml"));
         vBox.getChildren().add(createButton("Recensioni Effettuate", "/view/interface1/clienteRecensioni1.fxml"));
-        vBox.getChildren().add(logOutButton("Logout"));
+        vBox.getChildren().add(logOutButton(LOGOUT_LABEL));
     }
 
     private void setupBarbiere(VBox vBox) {
@@ -58,12 +60,12 @@ public class NavbarGuiController1 implements Initializable {
         vBox.getChildren().add(createButton("Gestione Appuntamenti", "/view/interface1/HomePageBarberAppointments1.fxml"));
         vBox.getChildren().add(createButton("Recensioni Ricevute", "/view/interface1/barberRecensioni1.fxml"));
         vBox.getChildren().add(createButton("Modifica Negozio", "/view/interface1/ManageShop1.fxml"));
-        vBox.getChildren().add(logOutButton("Logout"));
+        vBox.getChildren().add(logOutButton(LOGOUT_LABEL));
     }
 
     private void setupModeratore(VBox vBox) {
         vBox.getChildren().add(createButton("HomePage Moderatore","/view/interface1/HomePageModeratore.fxml"));
-        vBox.getChildren().add(logOutButton("Logout"));
+        vBox.getChildren().add(logOutButton(LOGOUT_LABEL));
     }
 
     private MFXButton createButton(String name, String fxml){
