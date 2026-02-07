@@ -2,6 +2,7 @@ package com.example.barber.controller.guicontroller.interface1.item;
 
 import com.example.barber.utils.bean.IdBean;
 import com.example.barber.utils.bean.RequestAppointmentsBean;
+import com.example.barber.utils.exception.ErrorDialog;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
@@ -31,8 +32,7 @@ public class AppointmentsItemUserGuiController1 extends AppointemntsItemGuiContr
         try {
             switchPage.switchPageId( "/view/interface1/clienteRecensioneForm1.fxml", event,idBean);
         } catch (com.example.barber.utils.exception.myexception.SystemException e) {
-            e.printStackTrace();
-
+            ErrorDialog.getInstance().handleException(e);
         }
     }
 }

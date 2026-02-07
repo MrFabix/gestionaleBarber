@@ -3,6 +3,7 @@ package com.example.barber.controller.guicontroller.interface2.item2;
 
 import com.example.barber.utils.bean.IdBean;
 import com.example.barber.utils.bean.interfaccia2.RequestAppointmentsBean2;
+import com.example.barber.utils.exception.ErrorDialog;
 import com.example.barber.utils.scene.SwitchPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -52,7 +53,7 @@ public class AppointmentsItemUserGuiControllerSecondInterface{
         try {
             switchPage.switchPageId("/view/interface2/clienteRecensioneForm2.fxml", event, idBean);
         } catch (com.example.barber.utils.exception.myexception.SystemException e) {
-            e.printStackTrace();
+            ErrorDialog.getInstance().handleException(e);
         }
     }
 }
