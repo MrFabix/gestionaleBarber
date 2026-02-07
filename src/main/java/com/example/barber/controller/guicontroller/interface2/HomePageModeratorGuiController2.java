@@ -78,14 +78,16 @@ public class HomePageModeratorGuiController2 {
 
     private void showReviewDetails(RecensioneBean review) {
         if (review != null) {
-            String details = String.format(
-                    "ID Recensione: %d\n" +
-                    "Cliente: %s\n" +
-                    "Barbiere: %s\n" +
-                    "Voto: %d stelle\n" +
-                    "Data: %s\n" +
-                    "ID Appuntamento: %d\n\n" +
-                    "Testo della recensione:\n%s",
+            String details = """
+                    ID Recensione: %d
+                    Cliente: %s
+                    Barbiere: %s
+                    Voto: %d stelle
+                    Data: %s
+                    ID Appuntamento: %d
+                    
+                    Testo della recensione:
+                    %s""".formatted(
                     review.getIdRecensione(),
                     review.getNomeCliente(),
                     review.getNomeBarbiere(),
