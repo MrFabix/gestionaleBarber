@@ -18,7 +18,10 @@ public class Query {
     private static final String PHONE = "phone";
     private static final String EMAIL = "email";
     private static final String ID_APPUNTAMENTO = "id_appuntamento";
-
+    private static final String FK_USER = "fk_user";
+    private static final String STAR_REVIEW = "star_review";
+    private static final String NOTE_REVIEW = "note_review";
+    private static final String CREATED_AT = "created_at";
 
 
     public void updateOrarioDB(BarberModel barberModel) throws SystemException {
@@ -525,11 +528,11 @@ public class Query {
             while (rs.next()) {
                 RecensioneModel recensioneModel = new RecensioneModel();
                 recensioneModel.setIdAppuntamento(rs.getInt(ID_APPUNTAMENTO));
-                recensioneModel.setIdCliente(rs.getInt("fk_user"));
-                recensioneModel.setVoto(rs.getInt("star_review"));
-                recensioneModel.setTesto(rs.getString("note_review"));
+                recensioneModel.setIdCliente(rs.getInt(FK_USER));
+                recensioneModel.setVoto(rs.getInt(STAR_REVIEW));
+                recensioneModel.setTesto(rs.getString(NOTE_REVIEW));
                 recensioneModel.setNomeBarbiere(rs.getString(6));
-                recensioneModel.setCreatedAt(rs.getTimestamp("created_at"));
+                recensioneModel.setCreatedAt(rs.getTimestamp(CREATED_AT));
                 recensioneModels.add(recensioneModel);
             }
             return recensioneModels;
@@ -550,10 +553,10 @@ public class Query {
                 RecensioneModel recensioneModel = new RecensioneModel();
                 recensioneModel.setIdRecensione(rs.getInt("id_review"));
                 recensioneModel.setIdAppuntamento(rs.getInt(ID_APPUNTAMENTO));
-                recensioneModel.setIdCliente(rs.getInt("fk_user"));
-                recensioneModel.setVoto(rs.getInt("star_review"));
-                recensioneModel.setTesto(rs.getString("note_review"));
-                recensioneModel.setCreatedAt(rs.getTimestamp("created_at"));
+                recensioneModel.setIdCliente(rs.getInt(FK_USER));
+                recensioneModel.setVoto(rs.getInt(STAR_REVIEW));
+                recensioneModel.setTesto(rs.getString(NOTE_REVIEW));
+                recensioneModel.setCreatedAt(rs.getTimestamp(CREATED_AT));
                 recensioneModel.setReport(rs.getInt("report"));
                 recensioneModel.setNomeCliente(rs.getString("nome_cliente"));
                 recensioneModels.add(recensioneModel);
@@ -594,12 +597,12 @@ public class Query {
                 RecensioneModel recensioneModel = new RecensioneModel();
                 recensioneModel.setIdRecensione(rs.getInt("id_review"));
                 recensioneModel.setIdAppuntamento(rs.getInt(ID_APPUNTAMENTO));
-                recensioneModel.setIdCliente(rs.getInt("fk_user"));
-                recensioneModel.setVoto(rs.getInt("star_review"));
-                recensioneModel.setTesto(rs.getString("note_review"));
+                recensioneModel.setIdCliente(rs.getInt(FK_USER));
+                recensioneModel.setVoto(rs.getInt(STAR_REVIEW));
+                recensioneModel.setTesto(rs.getString(NOTE_REVIEW));
                 recensioneModel.setNomeCliente(rs.getString("nome_cliente"));
                 recensioneModel.setNomeBarbiere(rs.getString("nome_barbiere"));
-                recensioneModel.setCreatedAt(rs.getTimestamp("created_at"));
+                recensioneModel.setCreatedAt(rs.getTimestamp(CREATED_AT));
                 recensioneModels.add(recensioneModel);
             }
             return recensioneModels;

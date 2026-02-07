@@ -20,6 +20,7 @@ import java.util.ResourceBundle;
 
 public class NavBarGuiController2 implements Initializable {
 
+        private static final String LOGOUT_LABEL = "Logout";
 
         @FXML
         private AnchorPane navAnchor;
@@ -81,7 +82,7 @@ public class NavBarGuiController2 implements Initializable {
             hBox.getChildren().add(createButton("HomePage Cliente", "/view/interface2/HomePageClient2.fxml"));
             hBox.getChildren().add(createButton("Appuntamenti", "/view/interface2/HomePageClientAppointments2.fxml"));
             hBox.getChildren().add(createButton("Recensioni Effettuate", "/view/interface2/clienteRecensioni2.fxml"));
-            hBox.getChildren().add(logOutButton("Logout"));
+            hBox.getChildren().add(logOutButton(LOGOUT_LABEL));
         }
 
         private void setupBarbiere(HBox hBox) {
@@ -89,12 +90,12 @@ public class NavBarGuiController2 implements Initializable {
             hBox.getChildren().add(createButton("Gestione Appuntamenti", "/view/interface2/HomePageBarberAppointments2.fxml"));
             hBox.getChildren().add(createButton("Recensioni Ricevute", "/view/interface2/barberRecensioni2.fxml"));
             hBox.getChildren().add(createButton("Modifica Negozio", "/view/interface2/ManageShop2.fxml"));
-            hBox.getChildren().add(logOutButton("Logout"));
+            hBox.getChildren().add(logOutButton(LOGOUT_LABEL));
         }
 
         private void setupModeratore(HBox hBox) {
             hBox.getChildren().add(createButton("HomePage Moderatore", "/view/interface2/HomePageModeratore2.fxml"));
-            hBox.getChildren().add(logOutButton("Logout"));
+            hBox.getChildren().add(logOutButton(LOGOUT_LABEL));
         }
 
         private MFXButton createButton(String name, String fxml) {
